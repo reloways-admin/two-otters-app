@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./v5/styles.css";
 
 export const metadata: Metadata = {
   title: "Two Otters — Free AI Audit",
