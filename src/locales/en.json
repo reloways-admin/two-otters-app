@@ -1,0 +1,229 @@
+{
+  "nav": {
+    "logo": "Two Otters",
+    "links": [
+      { "label": "Why Us", "href": "#features" },
+      { "label": "Process", "href": "#process" },
+      { "label": "Services", "href": "#values" },
+      { "label": "Who We're For", "href": "#persona" },
+      { "label": "About", "href": "#about" },
+      { "label": "FAQ", "href": "#faq" }
+    ],
+    "cta": "Let's Talk",
+    "langToggle": { "en": "EN", "he": "עב" }
+  },
+  "hero": {
+    "eyebrow": "🦦🦦 Two Otters Studio",
+    "headlinePart1": "You have the vision.",
+    "headlinePart2": "We bring it",
+    "headlineHighlight": "to life.",
+    "sub": "Strategic UX/UI design and a working prototype — in weeks, not months. No surprises, no endless waiting. Exactly what you had in mind.",
+    "cta1": "Let's Talk →",
+    "cta2": "How it works",
+    "stats": [
+      { "num": "50+", "label": "Products launched" },
+      { "num": "3–4", "label": "Weeks to prototype" },
+      { "num": "20+", "label": "Combined years of experience" }
+    ]
+  },
+  "features": {
+    "label": "Why Two Otters?",
+    "heading": "Speed. Precision. Vision from your head to the screen.",
+    "sub": "No more spinning wheels going nowhere. You want a concrete direction, fast.",
+    "cards": [
+      {
+        "icon": "⚡",
+        "title": "Speed",
+        "desc": "A working prototype in weeks, not months. Every month your product isn't live is money and opportunity lost."
+      },
+      {
+        "icon": "🎯",
+        "title": "Precision",
+        "desc": "We get inside your head and bring your vision out accurately. No more gap between imagination and reality."
+      },
+      {
+        "icon": "🔄",
+        "title": "Agility",
+        "desc": "Real-time revisions and changes before you commit. Being flexible, iterating, and refining is part of the process."
+      }
+    ],
+    "quote": "\"I waited two months and got a pathetic PDF. The project went nowhere.\"",
+    "quoteAttr": "— The typical pain we solve"
+  },
+  "process": {
+    "label": "Our Process",
+    "heading": "How we work",
+    "sub": "A method built on strategic mapping, fast creation, and real-time feedback.",
+    "steps": [
+      {
+        "title": "Vision Extraction",
+        "desc": "We get inside your head — mapping the strategic thinking, understanding the product, the market, and the 'why' behind everything."
+      },
+      {
+        "title": "Strategic UX & Architecture",
+        "desc": "We build the structure, flows, and user experience. Not a pathetic PDF — a living spec you can actually feel."
+      },
+      {
+        "title": "Working Prototype ✨",
+        "desc": "We create a prototype you can click, scroll, and feel. 'Seeing it before you commit.' — that's our differentiator."
+      },
+      {
+        "title": "Real-time Refinements",
+        "desc": "Feedback → changes → fine-tuning. Almost in real-time, until the result matches exactly what you had in mind."
+      },
+      {
+        "title": "Perfect Handoff",
+        "desc": "Files, reports, and clear guidelines. You're never dependent on us to keep developing your brand."
+      }
+    ]
+  },
+  "values": {
+    "label": "Our Services",
+    "heading": "What we offer",
+    "cards": [
+      {
+        "emoji": "🎯",
+        "title": "Positioning & Language Package",
+        "desc": "We sharpen your identity, target audience, and value proposition. Includes competitor mapping, differentiation, messaging, and a visual language system that sets your product apart."
+      },
+      {
+        "emoji": "🌐",
+        "title": "Website & UX Package",
+        "desc": "We build the structure and messaging of your site, then translate it into wireframes and user flows — intuitive, conversion-focused, and ready for design."
+      },
+      {
+        "emoji": "⚙️",
+        "title": "Marketing System & Design Infrastructure",
+        "desc": "Long-term infrastructure: lead magnets, a basic funnel, connected digital assets, and a design system that lets you build everything consistently and fast."
+      },
+      {
+        "emoji": "🔍",
+        "title": "Focused Strategic Process",
+        "desc": "A short, intensive session to audit your current state, define a new direction, and deliver a clear action plan — fast."
+      },
+      {
+        "emoji": "🤝",
+        "title": "Monthly Retainer",
+        "desc": "Ongoing strategic advisory, design QA for your dev team, and product decision support — professional coverage without hiring full-time."
+      },
+      {
+        "emoji": "🤖",
+        "title": "AI Insight Blueprint",
+        "desc": "A fast diagnostic tool that scans your digital assets and generates a detailed strategic + UX report in minutes. Sharper than weeks of discovery meetings."
+      }
+    ]
+  },
+  "persona": {
+    "label": "Who we're for",
+    "heading": "If this sounds like you, we'll probably work great together",
+    "yesTitle": "✅ A great fit",
+    "noTitle": "❌ Not our fit",
+    "yesItems": [
+      "You have a clear direction — you just need someone to execute it right",
+      "You're ready to give real-time feedback and be a real partner in the process",
+      "You understand that strategy is part of the product",
+      "You've invested before and don't want to repeat a failed experience",
+      "You have a serious budget and want a precise result"
+    ],
+    "noItems": [
+      "You're looking for an execution-only vendor with no strategic thinking",
+      "You're not willing to be a real partner in the process",
+      "You have no direction and want someone to think for you",
+      "You're looking for generic template-based design",
+      "You're not willing to look at a prototype and give feedback"
+    ],
+    "momentsLabel": "When do people come to us?",
+    "moments": [
+      { "emoji": "🚀", "title": "Before Launch", "desc": "Want to launch right and not make the same mistakes" },
+      { "emoji": "🔁", "title": "After Failure", "desc": "Went through a process, didn't get what they wanted" },
+      { "emoji": "🔀", "title": "Org Change", "desc": "Time pressure, need to rebuild quickly" },
+      { "emoji": "🤯", "title": "Nobody Gets It", "desc": "Every vendor did something different" },
+      { "emoji": "⏱️", "title": "No Time to Wait", "desc": "Want results in weeks, not months" }
+    ]
+  },
+  "about": {
+    "label": "About Us",
+    "heading": "Hey! 👋\nWe're Amir and Keren.",
+    "paragraphs": [
+      "Together we are Two Otters Studio. Since we met back at the community center in high school, the current has taken us many places — but like true otters, we always held hands and stayed together.",
+      "Even after more than two decades, we're known for our playfulness and sharpness in everything we do. Yes, like otters (minus the sharpness — we have no way to verify that)."
+    ],
+    "imgPlaceholder": "Photo of Amir & Keren",
+    "amir": {
+      "name": "Amir Shalev",
+      "role": "UX/UI Expert"
+    },
+    "keren": {
+      "name": "Keren Reitler",
+      "role": "Strategy, Storytelling & Product Language"
+    }
+  },
+  "faq": {
+    "label": "FAQ",
+    "heading": "Things probably on your mind",
+    "items": [
+      {
+        "q": "How long does the process take?",
+        "a": "Usually within 3–4 weeks you have a working prototype. A full strategic design process takes between one and three months, depending on the project size."
+      },
+      {
+        "q": "What do I get at the end?",
+        "a": "An interactive prototype you can click and feel, a strategic spec document, design files, and clear guidelines that let you continue independently."
+      },
+      {
+        "q": "I've already done a spec process — why will this time be different?",
+        "a": "Because this time you'll see the product before you commit. Instead of a PDF that gets shelved, you get a working prototype you can touch and give feedback on in real time."
+      },
+      {
+        "q": "What's the difference between a prototype and a finished product?",
+        "a": "A prototype is an interactive model that simulates the user experience. It's not final code, but it lets you feel, test, and refine before investing in development."
+      },
+      {
+        "q": "How much does it cost to work with you?",
+        "a": "Every project is priced based on its size and complexity. We'd love to chat and understand what you're building — then we'll tailor a precise proposal."
+      },
+      {
+        "q": "What happens after I receive the prototype?",
+        "a": "You move to development with all the files and reports. You're not dependent on us — but we're here if you need support in the design and development phase too."
+      }
+    ]
+  },
+  "contact": {
+    "label": "Let's Talk",
+    "heading": "You have a vision? Great.",
+    "sub": "Tell us a bit about what you're building and we'll get back to you within 48 hours.",
+    "fields": {
+      "name": "Full name",
+      "email": "Email",
+      "phone": "Phone",
+      "company": "Company / Project name",
+      "role": "What's your role?",
+      "message": "Tell us briefly — what are you building and what's your biggest pain point?"
+    },
+    "submit": "Send it →",
+    "trust": [
+      "Response within 48 hours",
+      "First call is free",
+      "No commitment required"
+    ]
+  },
+  "footer": {
+    "tagline": "Strategic design, UX/UI, and a working prototype — exactly what you had in mind, only faster.",
+    "navLabel": "Navigate",
+    "nav": [
+      { "label": "Why Us", "href": "#features" },
+      { "label": "Process", "href": "#process" },
+      { "label": "Services", "href": "#values" },
+      { "label": "Who We're For", "href": "#persona" },
+      { "label": "About", "href": "#about" },
+      { "label": "FAQ", "href": "#faq" }
+    ],
+    "contactLabel": "Get in Touch",
+    "contactLinks": [
+      { "label": "hello@twootters.studio", "href": "mailto:hello@twootters.studio" },
+      { "label": "Instagram", "href": "#" },
+      { "label": "LinkedIn", "href": "#" }
+    ],
+    "copy": "© 2026 Two Otters Studio. All rights reserved. 🦦"
+  }
+}

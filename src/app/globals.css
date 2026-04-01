@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+/* Two Otters brand tokens — adjust as design evolves */
+:root {
+  /* Agent colors */
+  --color-amir: #0d9488;   /* teal-600 */
+  --color-keren: #d97706;  /* amber-600 */
+  /* Background */
+  --color-bg: #fafaf9;
+  --color-surface: #ffffff;
+  /* Tier backgrounds — progressive boldness */
+  --color-tier1-bg: #ffffff;
+  --color-tier2-bg: #fafaf9;
+  --color-tier3-bg: #1c1917;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: #1c1917;
+  font-family: 'Google Sans', system-ui, sans-serif;
+}
+
+/* Offset all anchor targets so the fixed nav doesn't overlap */
+[id] {
+  scroll-margin-top: 64px;
+}

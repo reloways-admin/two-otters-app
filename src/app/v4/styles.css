@@ -1,0 +1,307 @@
+@import "tailwindcss";
+
+/* ========================================
+   V4 DESIGN TOKENS
+   Headspace-inspired warm palette
+   ======================================== */
+:root {
+  --v4-orange: #F47D20;
+  --v4-orange-light: #FFF3E8;
+  --v4-orange-deep: #E0600A;
+  --v4-teal: #00B2A0;
+  --v4-teal-light: #E6F9F7;
+  --v4-teal-dark: #008F80;
+  --v4-navy: #2C2549;
+  --v4-navy-light: #3D3560;
+  --v4-cream: #FFF9F0;
+  --v4-cream-dark: #FEF0DB;
+  --v4-warm-white: #FFFDFB;
+  --v4-coral: #FF6F61;
+  --v4-lavender: #C3B1E1;
+  --v4-lavender-light: #F3EEFB;
+  --v4-sky: #8ECAE6;
+  --v4-sky-light: #E8F6FC;
+  --v4-text-dark: #1E1B3A;
+  --v4-text-body: #4A4565;
+  --v4-text-muted: #8B85A0;
+  --v4-radius-sm: 12px;
+  --v4-radius-md: 20px;
+  --v4-radius-lg: 32px;
+  --v4-radius-xl: 48px;
+  --v4-radius-pill: 100px;
+  --font-heading: 'Google Sans Display', 'Google Sans', system-ui, sans-serif;
+  --font-body:    'Google Sans', system-ui, sans-serif;
+}
+
+/* ========================================
+   BASE
+   ======================================== */
+.v4-page {
+  font-family: var(--font-body);
+  background: var(--v4-warm-white);
+  color: var(--v4-text-dark);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+.v4-page h1,
+.v4-page h2,
+.v4-page h3,
+.v4-page h4 {
+  font-family: var(--font-heading);
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+@keyframes v4-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes v4-shape-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(10px, -15px) scale(1.05); }
+  66% { transform: translate(-8px, 8px) scale(0.97); }
+}
+
+@keyframes v4-badge-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.v4-float { animation: v4-float 6s ease-in-out infinite; }
+.v4-blob { animation: v4-shape-drift 8s ease-in-out infinite; }
+.v4-badge-float { animation: v4-badge-float 3s ease-in-out infinite; }
+
+/* ========================================
+   NAV
+   ======================================== */
+.v4-nav {
+  position: fixed;
+  top: 0; right: 0; left: 0;
+  z-index: 1000;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.v4-nav.scrolled {
+  background: rgba(255, 253, 251, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* ========================================
+   HERO SHAPES
+   ======================================== */
+.v4-hero-shape {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ========================================
+   SECTION WAVE DIVIDERS
+   ======================================== */
+.v4-wave {
+  position: relative;
+  overflow: visible;
+}
+
+.v4-wave-bottom {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 2;
+}
+
+.v4-wave-bottom svg {
+  display: block;
+  width: 100%;
+}
+
+/* ========================================
+   FAQ ACCORDION
+   ======================================== */
+.v4-faq-answer {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.v4-faq-answer.open {
+  max-height: 600px;
+  opacity: 1;
+}
+
+/* ========================================
+   FORM INPUTS
+   ======================================== */
+.v4-input {
+  width: 100%;
+  padding: 14px 18px;
+  border: none;
+  border-radius: var(--v4-radius-md);
+  font-size: 15px;
+  font-family: var(--font-body);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--v4-text-dark);
+  outline: none;
+  transition: box-shadow 0.2s;
+}
+
+.v4-input::placeholder {
+  color: var(--v4-text-muted);
+}
+
+.v4-input:focus {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+.v4-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+.v4-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: var(--v4-radius-pill);
+  font-size: 16px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+  white-space: nowrap;
+}
+
+.v4-btn-orange {
+  background: var(--v4-orange);
+  color: white;
+  box-shadow: 0 6px 24px rgba(244, 125, 32, 0.35);
+}
+
+.v4-btn-orange:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(244, 125, 32, 0.45);
+}
+
+.v4-btn-outline {
+  background: white;
+  color: var(--v4-navy);
+  border: 2px solid rgba(44, 37, 73, 0.15);
+}
+
+.v4-btn-outline:hover {
+  border-color: var(--v4-orange);
+  color: var(--v4-orange);
+  transform: translateY(-2px);
+}
+
+.v4-btn-navy {
+  background: var(--v4-navy);
+  color: white;
+  box-shadow: 0 6px 24px rgba(44, 37, 73, 0.3);
+}
+
+.v4-btn-navy:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(44, 37, 73, 0.4);
+}
+
+.v4-btn-white-outline {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.v4-btn-white-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   PROCESS TIMELINE
+   ======================================== */
+.v4-process-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 56px;
+  inset-inline-start: 27px;
+  width: 2px;
+  height: calc(100% - 28px);
+  background: linear-gradient(to bottom, var(--v4-orange), var(--v4-teal));
+  opacity: 0.2;
+  border-radius: 2px;
+}
+
+/* ========================================
+   SECTION TAG / PILL
+   ======================================== */
+.v4-section-tag {
+  display: inline-block;
+  background: var(--v4-orange-light);
+  color: var(--v4-orange);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 18px;
+  border-radius: var(--v4-radius-pill);
+  letter-spacing: 0.5px;
+}
+
+.v4-section-tag-dark {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--v4-orange);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 900px) {
+  .v4-features-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .v4-values-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .v4-persona-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .v4-moments-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .v4-about-layout {
+    flex-direction: column !important;
+  }
+  .v4-footer-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .v4-moments-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .v4-hero-btns {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .v4-hero-stats {
+    gap: 24px !important;
+  }
+  .v4-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+/* ========================================
+   V5 DESIGN TOKENS
+   Headspace-inspired: pure white + paint surfaces
+   ======================================== */
+:root {
+  /* Base */
+  --v5-white: #FFFFFF;
+
+  /* Paint surfaces — flat, vivid pastel washes */
+  --v5-paint-mint:     #E6F5EE;
+  --v5-paint-peach:    #FFF0E6;
+  --v5-paint-sky:      #E8F3FF;
+  --v5-paint-lavender: #F0ECFF;
+  --v5-paint-lemon:    #FFF8E6;
+  --v5-paint-rose:     #FFF0F4;
+
+  /* Accent */
+  --v5-accent:       #F47D20;
+  --v5-accent-hover: #E0600A;
+  --v5-accent-light: #FFF0E6;
+
+  /* Secondary */
+  --v5-teal:       #009688;
+  --v5-teal-light: #E0F5F2;
+
+  /* Text */
+  --v5-text-dark:  #111827;
+  --v5-text-body:  #374151;
+  --v5-text-muted: #9CA3AF;
+
+  /* Structural */
+  --v5-border:      rgba(0, 0, 0, 0.07);
+  --v5-shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.05);
+  --v5-shadow-md:   0 8px 28px rgba(0, 0, 0, 0.07);
+  --v5-shadow-lg:   0 20px 56px rgba(0, 0, 0, 0.08);
+
+  /* Radius */
+  --v5-r-sm:   12px;
+  --v5-r-md:   20px;
+  --v5-r-lg:   28px;
+  --v5-r-xl:   40px;
+  --v5-r-pill: 100px;
+
+  /* Typography */
+  --font-heading: 'Google Sans Display', 'Google Sans', system-ui, sans-serif;
+  --font-body:    'Google Sans', system-ui, sans-serif;
+}
+
+/* ========================================
+   BASE
+   ======================================== */
+.v5-page {
+  font-family: var(--font-body);
+  background: var(--v5-white);
+  color: var(--v5-text-dark);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+.v5-page h1,
+.v5-page h2,
+.v5-page h3,
+.v5-page h4 {
+  font-family: var(--font-heading);
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+@keyframes v5-drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33%  { transform: translate(8px, -10px) rotate(2deg); }
+  66%  { transform: translate(-6px, 6px) rotate(-1deg); }
+}
+
+@keyframes v5-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+.v5-drift { animation: v5-drift 10s ease-in-out infinite; }
+.v5-float { animation: v5-float 5s ease-in-out infinite; }
+
+/* ========================================
+   NAV
+   ======================================== */
+.v5-nav {
+  position: fixed;
+  top: 0; right: 0; left: 0;
+  z-index: 1000;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.v5-nav.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 var(--v5-border);
+}
+
+/* ========================================
+   SECTION TAG
+   ======================================== */
+.v5-tag {
+  display: inline-block;
+  background: var(--v5-accent-light);
+  color: var(--v5-accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: var(--v5-r-pill);
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+.v5-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: var(--v5-r-pill);
+  font-size: 15px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.v5-btn-primary {
+  background: var(--v5-accent);
+  color: white;
+  box-shadow: 0 4px 20px rgba(244, 125, 32, 0.3);
+}
+.v5-btn-primary:hover {
+  background: var(--v5-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(244, 125, 32, 0.38);
+}
+
+.v5-btn-ghost {
+  background: white;
+  color: var(--v5-text-dark);
+  border: 1.5px solid var(--v5-border);
+  box-shadow: var(--v5-shadow-sm);
+}
+.v5-btn-ghost:hover {
+  border-color: var(--v5-accent);
+  color: var(--v5-accent);
+  transform: translateY(-2px);
+}
+
+.v5-btn-dark {
+  background: var(--v5-text-dark);
+  color: white;
+  box-shadow: 0 4px 20px rgba(17, 24, 39, 0.22);
+}
+.v5-btn-dark:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(17, 24, 39, 0.3);
+}
+
+/* ========================================
+   FORM INPUTS
+   ======================================== */
+.v5-input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid var(--v5-border);
+  border-radius: var(--v5-r-md);
+  font-size: 15px;
+  font-family: var(--font-body);
+  background: white;
+  color: var(--v5-text-dark);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.v5-input::placeholder { color: var(--v5-text-muted); }
+.v5-input:focus {
+  border-color: var(--v5-accent);
+  box-shadow: 0 0 0 3px rgba(244, 125, 32, 0.1);
+}
+
+.v5-textarea { min-height: 120px; resize: vertical; }
+
+/* ========================================
+   PROCESS CONNECTOR LINE
+   ======================================== */
+.v5-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 52px;
+  left: 25px;
+  width: 2px;
+  height: calc(100% - 24px);
+  background: var(--v5-border);
+  border-radius: 2px;
+}
+
+/* ========================================
+   FAQ ACCORDION
+   ======================================== */
+.v5-faq-body {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+}
+.v5-faq-body.open {
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 900px) {
+  .v5-features-grid   { grid-template-columns: 1fr !important; }
+  .v5-values-grid     { grid-template-columns: 1fr !important; }
+  .v5-persona-grid    { grid-template-columns: 1fr !important; }
+  .v5-moments-grid    { grid-template-columns: repeat(2, 1fr) !important; }
+  .v5-about-layout    { flex-direction: column !important; }
+  .v5-footer-grid     { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 600px) {
+  .v5-moments-grid { grid-template-columns: 1fr !important; }
+  .v5-hero-btns    { flex-direction: column !important; align-items: stretch !important; }
+  .v5-hero-stats   { gap: 20px !important; }
+  .v5-form-grid    { grid-template-columns: 1fr !important; }
+}
