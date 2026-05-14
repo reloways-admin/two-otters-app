@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import { useState } from 'react'
 
 const NAV_LINKS = [
@@ -24,7 +23,8 @@ export default function NavV6() {
           {/* Right: logo + hamburger — first in DOM = right in RTL */}
           <div className="v6-nav-right">
             <a href="#" className="v6-nav-logo">
-              <Image src="/logo.png" alt="The Two Otters Studio" width={80} height={80} priority />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo.svg" alt="The Two Otters Studio" className="v6-nav-logo-img" />
             </a>
             <button
               className="v6-nav-hamburger"

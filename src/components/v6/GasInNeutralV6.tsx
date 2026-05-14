@@ -67,7 +67,7 @@ function GasCard({ card }: { card: Card }) {
             src={card.image}
             alt=""
             fill
-            style={{ objectFit: 'contain', objectPosition: card.imagePosition ?? 'bottom center' }}
+            style={{ objectFit: 'contain', objectPosition: card.imagePosition ?? 'center' }}
           />
         </div>
       ) : (
@@ -80,23 +80,41 @@ function GasCard({ card }: { card: Card }) {
 export default function GasInNeutralV6() {
   return (
     <section className="v6-gas" id="process">
-      <Image
-        src="/background-sketch1.png"
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/background-sketch-v03.svg"
         alt=""
-        fill
         aria-hidden="true"
-        style={{ objectFit: 'cover', objectPosition: 'center' }}
+        style={{ position: 'absolute', top: '28%', left: '50%', transform: 'translateX(-50%)', height: '55vh', width: 'auto', maxWidth: 'none', opacity: 0.55 }}
       />
       <div className="v6-container" style={{ position: 'relative', zIndex: 1 }}>
         <h2 className="v6-section-heading">
           להיות פול גז בניוטרל
           <br />
           <span className="bold">
-            <span className="underline">זה כבר לא אתם.</span>
+            זה כבר{' '}
+            <span className="v6-swoosh-word">
+              לא אתם
+              <svg
+                className="v6-hero-swoosh"
+                width="221" height="18" viewBox="0 0 221 18"
+                fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M214.5 8.5C179.833 5.16666 74.2 2.89994 5 8.49994"
+                  stroke="#BAB4FA" strokeWidth="8" strokeLinecap="round"
+                  pathLength="1"
+                />
+              </svg>
+            </span>
+            .
           </span>
         </h2>
         <p className="v6-section-sub">
-          השיטה שלנו מקצרת את הדרך מרעיון לפרוטוטייפ עובד ומאפשרת לכם להגיע למוצר מדויק יותר — מהר יותר.
+          השיטה שלנו מקצרת את הדרך <strong>מרעיון לפרוטוטייפ עובד</strong>
+          <br />
+          ומאפשרת לכם להגיע למוצר מדויק מהר יותר.
         </p>
 
         <div className="v6-gas-grid">

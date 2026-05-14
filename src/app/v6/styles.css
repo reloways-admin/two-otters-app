@@ -54,7 +54,7 @@
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 16px 40px;
+  padding: 32px 40px;
 }
 .v6-nav-inner {
   display: flex;
@@ -70,8 +70,11 @@
   gap: 4px;
   text-decoration: none;
 }
-.v6-nav-logo img {
+.v6-nav-logo img,
+.v6-nav-logo-img {
   display: block;
+  height: 80px;
+  width: auto;
 }
 .v6-nav-links-wrap {
   background: var(--v6-white);
@@ -194,25 +197,23 @@
 
 /* ─── Hero ─── */
 .v6-hero {
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  min-height: 100svh;
   background-color: var(--v6-bg);
   background-image: radial-gradient(circle, #DEDBFF 2px, transparent 2px);
   background-size: 24px 24px;
   overflow: hidden;
-  padding-bottom: 48px;
-  min-height: 100svh;
 }
 .v6-hero-text {
   flex-shrink: 0;
-  padding: 100px 40px 0;
+  padding: 180px 40px 0;
   text-align: center;
 }
 .v6-hero-title {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 400;
   line-height: 1.1;
-  margin: 0 0 6px;
+  margin: 0 0 32px;
   color: var(--v6-text);
 }
 .v6-hero-title .bold {
@@ -220,39 +221,72 @@
   display: block;
 }
 .v6-hero-underline {
-  text-decoration: underline;
-  text-decoration-color: var(--v6-purple-line);
-  text-decoration-thickness: 4px;
-  text-underline-offset: 8px;
-}
-.v6-hero-sub {
-  font-size: 1rem;
-  color: var(--v6-text-mid);
-  margin: 12px auto 4px;
-  max-width: 460px;
-  line-height: 1.75;
-}
-.v6-hero-bold {
-  font-size: 0.9375rem;
-  font-weight: 700;
-  color: var(--v6-text);
-  margin: 0 auto 0;
-}
-/* Journey flow — sized to match Figma 1920px proportions exactly:
-   illustration is 1639.5 × 648.952 px on a 1920px canvas (85.4% wide) */
-.v6-hero-flow {
   position: relative;
-  width: 85.4%;           /* 1639.5 / 1920 */
-  aspect-ratio: 1639.5 / 648.952;
-  margin: -40px 0 0 auto; /* right-aligned, pulled up 40px */
-  flex-shrink: 0;
+  display: inline-block;
+}
+.v6-hero-swoosh {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+.v6-hero-desc {
+  font-size: 24px;
+  color: var(--v6-text);
+  margin: 20px auto 0;
+  max-width: 608px;
+  line-height: 1.8;
+  text-align: center;
+}
+.v6-hero-desc strong {
+  font-weight: 700;
+}
+/* Journey flow — always 70px above the fold, -10px off the right, 85% wide */
+.v6-hero-flow {
+  position: absolute;
+  bottom: 70px;
+  right: -10px;
+  width: 85%;
+}
+.v6-hero-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Floating person tags */
+.v6-hero-tag {
+  position: absolute;
+  height: auto;
+  pointer-events: none;
+  animation: v6-hero-float 3s ease-in-out infinite;
+}
+.v6-hero-tag--amir {
+  width: clamp(90px, 7.2vw, 129px);
+  /* Figma: left=225/1440=15.6% of SVG, top=71.91/414=17.4% of SVG */
+  left: 15.6%;
+  top: 17%;
+  animation-delay: 0s;
+}
+.v6-hero-tag--keren {
+  width: clamp(80px, 6.5vw, 116px);
+  /* Figma: left=818/1440=56.8% of SVG, top=82.91/414=20% of SVG */
+  left: 56.8%;
+  top: 20%;
+  animation-delay: 1.2s;
+}
+
+@keyframes v6-hero-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
 }
 
 /* ─── Gas in Neutral ─── */
 .v6-gas {
-  padding: 100px 40px;
+  padding: 80px 40px 80px;
   position: relative;
-  overflow: hidden;
 }
 .v6-section-heading {
   text-align: center;
@@ -262,32 +296,33 @@
   margin: 0 0 4px;
 }
 .v6-section-heading .bold { font-weight: 900; }
-.v6-section-heading .underline {
-  text-decoration: underline;
-  text-decoration-color: var(--v6-purple-line);
-  text-decoration-thickness: 3px;
-  text-underline-offset: 6px;
+.v6-swoosh-word {
+  position: relative;
+  display: inline-block;
 }
 .v6-section-sub {
   text-align: center;
-  color: var(--v6-text-mid);
-  font-size: 1rem;
+  color: #4A4565;
+  font-size: 22px;
   line-height: 1.7;
-  max-width: 480px;
-  margin: 16px auto 52px;
+  max-width: 700px;
+  margin: 40px auto 52px;
 }
 .v6-gas-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(10, 1fr);
   gap: 16px;
-  max-width: 960px;
+  max-width: 1040px;
   margin: 0 auto;
 }
-.v6-gas-card.yellow,
-.v6-gas-card.green { grid-column: span 2; }
+/* RTL: column 1 = right edge, column 11 = left edge */
+.v6-gas-card.yellow  { grid-column: 1 / 8; }   /* wide on the right */
+.v6-gas-card.blue    { grid-column: 8 / 11; }  /* narrow on the left */
+.v6-gas-card.purple  { grid-column: 1 / 4; }   /* narrow on the right */
+.v6-gas-card.green   { grid-column: 4 / 11; }  /* wide on the left */
 .v6-gas-card {
-  padding: 32px 28px;
-  min-height: 280px;
+  padding: 28px 28px;
+  min-height: 220px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -299,62 +334,58 @@
 .v6-gas-card.green  { background: var(--v6-card-green); }
 .v6-gas-card.purple { background: var(--v6-card-purple); }
 .v6-gas-card-title {
-  font-size: 1.25rem;
+  font-size: 26px;
   font-weight: 800;
-  line-height: 1.3;
+  line-height: 1.25;
   color: var(--v6-text);
 }
 .v6-gas-card.green .v6-gas-card-title,
 .v6-gas-card.purple .v6-gas-card-title { color: #fff; }
 .v6-gas-card-body {
-  font-size: 0.875rem;
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.6;
   color: rgba(30,27,75,0.75);
 }
 .v6-gas-card.green .v6-gas-card-body,
 .v6-gas-card.purple .v6-gas-card-body { color: rgba(255,255,255,0.88); }
 .v6-gas-illus {
-  margin-top: auto;
-  height: 90px;
-  background: rgba(255,255,255,0.3);
-  border-radius: var(--v6-r-md);
+  flex: 1;
+  min-height: 100px;
+  background: transparent;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2.5rem;
 }
-.v6-gas-card.yellow .v6-gas-illus { background: rgba(255,255,255,0.5); }
+.v6-gas-card.yellow .v6-gas-illus,
 .v6-gas-card.blue .v6-gas-illus,
 .v6-gas-card.purple .v6-gas-illus,
 .v6-gas-card.green .v6-gas-illus { background: transparent; border-radius: 0; }
-.v6-gas-illus-img,
-.v6-gas-card.yellow .v6-gas-illus-img,
-.v6-gas-card.blue .v6-gas-illus-img,
-.v6-gas-card.purple .v6-gas-illus-img {
+.v6-gas-card.blue .v6-gas-illus,
+.v6-gas-card.purple .v6-gas-illus,
+.v6-gas-card.green .v6-gas-illus {
+  flex: unset;
+  height: 160px;
+  margin-top: auto;
+}
+.v6-gas-illus-img {
   position: relative;
-  height: 140px;
+  width: 100%;
+  height: 100%;
   background: transparent;
   border-radius: 0;
-}
-.v6-gas-card.blue .v6-gas-illus-img,
-.v6-gas-card.purple .v6-gas-illus-img,
-.v6-gas-card.green .v6-gas-illus-img {
-  height: 180px;
-  margin-top: auto;
-  margin-left: -28px;
-  margin-right: -28px;
-  margin-bottom: -32px;
-  width: calc(100% + 56px);
 }
 
 /* ─── Spiral Method ─── */
 .v6-spiral {
   padding: 100px 40px 120px;
   background: linear-gradient(to bottom, #f7f7f7 0%, #fff 30%);
+  overflow: visible; /* don't clip the spiral SVG arrow tail */
 }
 .v6-spiral-header {
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 96px;
 }
 .v6-spiral-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
@@ -366,9 +397,10 @@
 .v6-spiral-sub {
   font-size: 1.2rem;
   color: #4a4565;
-  max-width: 640px;
+  max-width: 900px;
   margin: 0 auto;
   line-height: 1.6;
+  white-space: nowrap;
 }
 
 /* ── spiral canvas: SVG in flow, cards overlaid ── */
@@ -376,11 +408,15 @@
   position: relative;
   max-width: 1060px;
   margin: 0 auto 48px;
+  overflow: visible; /* never clip the spiral arrow tail */
+  padding-bottom: 8%; /* room for the arrow tail after translateY shift */
 }
 .v6-spiral-svg {
   display: block;
   width: 100%;
   height: auto; /* SVG aspect ratio (1064×1059) drives canvas height */
+  overflow: visible; /* allow the arrow endpoint to paint outside the SVG viewport */
+  transform: translateY(-6%); /* shift spiral visually upward into the card cluster */
 }
 /* Absolute overlay — fills the spiral canvas */
 .v6-spiral-top-grid {
@@ -388,11 +424,11 @@
   inset: 0;
 }
 
-/* Cards absolutely positioned to match Figma overlapping layout */
-.v6-spiral-card-1 { left: 45.6%; top:  0%;   width: 54.4%; z-index: 2; }
-.v6-spiral-card-2 { left:  0%;   top:  6.5%; width: 52.3%; z-index: 2; }
-.v6-spiral-card-3 { left: 46.5%; top: 31%;   width: 50.1%; z-index: 1; }
-.v6-spiral-card-4 { left:  6.7%; top: 27%;   width: 40.7%; z-index: 1; }
+/* Cards absolutely positioned — z-index: blue(4) > yellow(3) > green(2) = purple(2) */
+.v6-spiral-card-1 { right: 0; left: auto; top: 0;    width: 60.2%; height: 390px; z-index: 2; }
+.v6-spiral-card-2 { left: 0%;   top: 6.5%;  width: 57.9%; height: 368px; z-index: 2; }
+.v6-spiral-card-3 { left: 46.5%; top: 24%;  width: 53%; height: 370px; z-index: 3; padding-left: 38%; }
+.v6-spiral-card-4 { left:  2%; top: 26%;  width: 45%;   height: 367px; z-index: 4; }
 
 .v6-spiral-card {
   position: absolute;
@@ -404,6 +440,8 @@
   gap: 12px;
   overflow: hidden;
 }
+/* Blue card: extra top padding so content clears the overlapping purple card */
+.v6-spiral-card-4 { padding-top: 80px; }
 .v6-spiral-card-num {
   font-size: 1.4rem;
   font-weight: 700;
@@ -427,13 +465,106 @@
   margin: 0;
   max-width: 320px;
 }
+/* All canvas-level illustrations sit above all cards (z-index: 20) */
+/* Horse — above all cards, top-center junction of green & purple */
+.v6-spiral-horse {
+  position: absolute;
+  left: 48%;
+  top: -1%;
+  width: 22%;
+  height: auto;
+  z-index: 20;
+  pointer-events: none;
+}
+/* Papers (step-2) — above green, purple & yellow, right side of purple area */
+.v6-spiral-papers {
+  position: absolute;
+  left: 35%;
+  top: 10%;
+  width: 22%;
+  height: auto;
+  z-index: 20;
+  pointer-events: none;
+}
+/* Screens (step-3) — above green, purple & yellow, left portion of yellow card */
+.v6-spiral-screens {
+  position: absolute;
+  left: 42%;
+  top: 26%;
+  width: 24%;
+  height: auto;
+  z-index: 20;
+  pointer-events: none;
+}
+/* Spaceship — above all cards, between blue & purple */
+.v6-spiral-spaceship {
+  position: absolute;
+  left: -3%;
+  top: 30%;
+  width: 18%;
+  height: auto;
+  z-index: 20;
+  pointer-events: none;
+}
+
 .v6-spiral-card-illus {
   position: absolute;
-  bottom: 0;
-  left: 0;    /* in RTL, left = start edge visually */
-  width: 180px;
-  height: 200px;
   pointer-events: none;
+  height: auto;
+}
+/* step-1 (245×205) — left side of green card */
+.v6-spiral-card-1 .v6-spiral-card-illus {
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 38%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center left;
+}
+/* step-2 (266×291) — right side of purple card */
+.v6-spiral-card-2 .v6-spiral-card-illus {
+  right: 6%;
+  bottom: 0;
+  left: auto;
+  width: 32%;
+}
+/* step-3 (306×374) — fills the left side of yellow card top-to-bottom */
+.v6-spiral-card-3 .v6-spiral-card-illus {
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 40%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center left;
+}
+/* step-4 (182×189) — left-center of blue card */
+.v6-spiral-card-4 .v6-spiral-card-illus {
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36%;
+}
+
+/* Purple card (card 2): all text left-aligned, space for right-side icon */
+.v6-spiral-card-2,
+.v6-spiral-card-2 .v6-spiral-card-num,
+.v6-spiral-card-2 .v6-spiral-card-title,
+.v6-spiral-card-2 .v6-spiral-card-subtitle,
+.v6-spiral-card-2 .v6-spiral-card-body {
+  text-align: left !important;
+  direction: ltr;
+}
+.v6-spiral-card-2 .v6-spiral-card-body {
+  max-width: 58%;
+}
+/* Desktop: all illustrations are canvas-level — hide in-card versions */
+.v6-spiral-card-1 .v6-spiral-card-illus,
+.v6-spiral-card-2 .v6-spiral-card-illus,
+.v6-spiral-card-3 .v6-spiral-card-illus,
+.v6-spiral-card-4 .v6-spiral-card-illus {
+  display: none;
 }
 
 /* ── "Don't stop at spec" heading ── */
@@ -473,7 +604,6 @@
 .v6-spiral-step-header {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
   gap: 16px;
 }
 .v6-spiral-step-title {
@@ -481,11 +611,13 @@
   font-weight: 800;
   margin: 0;
   line-height: 1.3;
+  text-align: right;
 }
 .v6-spiral-step-subtitle {
   font-size: 0.9rem;
   color: rgba(30,27,75,0.65);
   margin: 0;
+  text-align: right;
 }
 .v6-spiral-step-num {
   font-size: 2rem;
@@ -493,12 +625,14 @@
   line-height: 1;
   color: #2c2549;
   flex-shrink: 0;
+  order: -1; /* pull to right side in RTL flex row */
 }
 .v6-spiral-step-body {
   font-size: 0.875rem;
   line-height: 1.65;
   color: rgba(30,27,75,0.8);
   margin: 0;
+  text-align: right;
 }
 
 /* ─── What We Offer ─── */
@@ -664,14 +798,18 @@
   flex: 1;
   position: relative;
   min-height: 380px;
-  /* Allow vertical bleed (top/bottom) and right bleed into card area,
-     but clip at the column's left edge to prevent horizontal page overflow */
-  clip-path: inset(-600px -600px -600px 0);
+  overflow: hidden; /* keep illustration inside the card */
 }
-/* Illustration: positioned via inline style from card data */
+/* Illustration: fills the column, object-fit contains the image */
 .v6-offer-mvp-illus {
   position: absolute;
-  /* top / left / width / height set via inline style */
+  inset: 16px; /* small inset so illustration doesn't touch the card edges */
+  width: auto !important;
+  height: auto !important;
+  top: 16px !important;
+  left: 16px !important;
+  right: 16px !important;
+  bottom: 16px !important;
 }
 
 /* Tags strip */
@@ -863,6 +1001,11 @@
   justify-content: center;
   flex-shrink: 0;
 }
+.v6-persona-icon-img {
+  height: 100px;
+  width: auto;
+  display: block;
+}
 .v6-persona-title {
   font-size: 0.87rem;
   font-weight: 700;
@@ -891,14 +1034,17 @@
   display: inline-block;
   margin-bottom: 36px;
 }
-.v6-about-waving-hand {
-  position: absolute;
-  top: -56px;
-  right: 50%;
-  transform: translateX(50%) rotate(-19.7deg);
-  width: 56px;
-  height: 60px;
-  pointer-events: none;
+.v6-about-title-olah {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.v6-about-hand {
+  height: 0.85em;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
 }
 .v6-about-title {
   font-size: clamp(2rem, 5vw, 4.5rem);
@@ -1084,140 +1230,216 @@
 }
 
 /* ─── Contact ─── */
+/* ─── Contact ─── */
 .v6-contact {
-  padding: 100px 40px;
-  background: var(--v6-bg-alt);
   position: relative;
-  overflow: hidden;
+  overflow: hidden;   /* clip stone/path SVG so they never push scroll past the footer */
+  background: #f7f7f7;
+  padding: 100px 40px 0;
 }
-.v6-contact-deco {
+/* Dark stone wave — starts mid-section, bleeds into footer */
+.v6-contact-stone {
   position: absolute;
-  opacity: 0.35;
+  top: 600px;          /* matches Figma: stone starts ~691px from section top */
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 1920px;
+  width: 100%;
+  height: auto;
+  display: block;
   pointer-events: none;
+  z-index: 0;
+}
+/* Decorative path stroke — horizontal, placed below the form */
+.v6-contact-path {
+  position: absolute;
+  top: 230px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 3113px;  /* native SVG width — bleeds outside viewport */
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 1;
+}
+.v6-contact-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 200px;
+}
+.v6-contact-heading {
+  text-align: center;
+  margin-bottom: 48px;
 }
 .v6-contact-title {
-  text-align: center;
-  font-size: clamp(1.75rem, 3.5vw, 2.375rem);
+  font-size: clamp(2rem, 3vw, 2.75rem);   /* Figma: 44px */
   font-weight: 900;
-  margin: 0 0 10px;
+  color: #0b0b0b;
+  margin: 0 0 12px;
+  line-height: 1.7;
 }
 .v6-contact-sub {
-  text-align: center;
-  color: var(--v6-text-mid);
-  font-size: 1rem;
-  margin: 0 auto 44px;
+  font-size: 1.125rem;   /* Figma: 18px */
+  color: #0b0b0b;
+  margin: 0;
+  line-height: 1.7;
 }
-.v6-contact-form {
+/* White form card — Figma: 600px, p-48px, rounded-40px */
+.v6-contact-card {
   background: #fff;
-  border-radius: var(--v6-r-lg);
-  padding: 36px 40px 40px;
-  max-width: 480px;
-  margin: 0 auto;
-  box-shadow: 0 4px 40px rgba(92, 62, 239, 0.07);
-  position: relative;
-  z-index: 1;
-}
-.v6-form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-.v6-form-field { margin-bottom: 12px; }
-.v6-input, .v6-textarea {
+  border-radius: 40px;
+  padding: 48px;
   width: 100%;
-  padding: 14px 18px;
-  border: 1.5px solid var(--v6-border);
-  border-radius: var(--v6-r-full);
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;    /* Figma: 16px between form groups */
+  margin-bottom: 48px;
+}
+/* Input fields — Figma: rounded-20px, border rgba(0,0,0,0.2), h-53.5px */
+.v6-field {
+  width: 100%;
+  height: 53.5px;
+  padding: 0 18px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
   font-family: var(--v6-font);
-  font-size: 0.9rem;
-  color: var(--v6-text);
+  font-size: 0.9375rem;
+  color: #000;
   background: #fff;
   direction: rtl;
   text-align: right;
   box-sizing: border-box;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
-.v6-input::placeholder, .v6-textarea::placeholder { color: var(--v6-text-muted); }
-.v6-input:focus { border-color: var(--v6-purple-mid); }
-.v6-textarea {
-  border-radius: var(--v6-r-md);
+.v6-field::placeholder { color: rgba(0, 0, 0, 0.4); }
+.v6-field:focus {
+  border-color: #5b09e0;
+  box-shadow: 0 0 0 3px rgba(91, 9, 224, 0.1);
+}
+.v6-field--textarea {
+  height: 120px;
+  padding: 14px 18px;
   resize: vertical;
-  min-height: 110px;
 }
-.v6-textarea:focus { border-color: var(--v6-purple-mid); }
-.v6-form-submit {
+/* 2-col row — Figma: gap-16px */
+.v6-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+/* Submit button — Figma: bg #5b09e0, rounded-100px, full width */
+.v6-contact-btn {
   width: 100%;
-  margin-top: 8px;
-  padding: 16px;
-  background: var(--v6-purple-btn);
+  padding: 16px 24px;
+  background: #5b09e0;
   color: #fff;
   font-family: var(--v6-font);
-  font-size: 1.0625rem;
-  font-weight: 800;
+  font-size: 1.125rem;
+  font-weight: 700;
   border: none;
-  border-radius: var(--v6-r-full);
+  border-radius: 100px;
   cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
+  transition: background 0.2s, transform 0.12s;
 }
-.v6-form-submit:hover {
-  background: #4a2dd4;
+.v6-contact-btn:hover {
+  background: #4a07c0;
   transform: translateY(-1px);
 }
+/* Trust items — on dark bg → white text, plain ✓ */
+.v6-contact-trust {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.v6-contact-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;   /* Figma: 14px */
+  font-weight: 400;
+  color: #fff;           /* on dark stone background */
+}
+.v6-contact-trust-check {
+  font-size: 1rem;
+  color: #fff;
+  line-height: 1;
+}
+/* ─── Legacy aliases (for any remaining references) ─── */
+.v6-form-submit { display: none; }
 
 /* ─── Footer ─── */
 .v6-footer {
-  background: var(--v6-black);
+  background: #010101;
   color: #fff;
-  padding: 60px 40px 32px;
+  padding: 56px 40px 32px;
+  position: relative;
+  z-index: 1;   /* above the overflowing contact stone SVG */
 }
-.v6-footer-grid {
-  max-width: var(--v6-container);
-  margin: 0 auto;
+.v6-footer-inner {
   display: grid;
+  /* Figma: brand 510px | nav 255px | contact 255px — 2:1:1 ratio */
   grid-template-columns: 2fr 1fr 1fr;
   gap: 40px;
   padding-bottom: 40px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  align-items: start;
 }
-.v6-footer-brand { display: flex; flex-direction: column; gap: 14px; }
-.v6-footer-logo  { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1rem; }
-.v6-footer-badge {
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  background: #F59E0B;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1rem;
-}
-.v6-footer-tagline {
-  font-size: 0.875rem;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.65;
-  max-width: 240px;
-}
-.v6-footer-col h4 {
-  font-size: 0.8125rem;
+.v6-footer-col { display: flex; flex-direction: column; gap: 0; }
+.v6-footer-col-heading {
+  font-size: 0.9375rem;   /* Figma: 15px, bold */
   font-weight: 700;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.5);
   margin: 0 0 16px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  text-align: right;
 }
-.v6-footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-.v6-footer-links a {
-  color: rgba(255,255,255,0.78);
+.v6-footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;   /* Figma: 10px */
+}
+.v6-footer-list a {
+  color: #fff;
   text-decoration: none;
-  font-size: 0.875rem;
+  font-size: 0.875rem;   /* Figma: 14px */
+  line-height: 1.7;
   transition: color 0.18s;
 }
-.v6-footer-links a:hover { color: #fff; }
+.v6-footer-list a:hover { color: rgba(255,255,255,0.7); }
+.v6-footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.v6-footer-brand-top { display: flex; align-items: center; }
+.v6-footer-logo {
+  height: 64px;
+  width: auto;
+  display: block;
+}
+.v6-footer-tagline {
+  font-size: 0.875rem;   /* Figma: 14px */
+  color: #fff;
+  line-height: 1.7;
+  text-align: right;
+}
 .v6-footer-bottom {
   max-width: var(--v6-container);
-  margin: 28px auto 0;
+  margin: 25px auto 0;
   text-align: center;
-  font-size: 0.8125rem;
-  color: rgba(255,255,255,0.38);
+  font-size: 0.8125rem;   /* Figma: 13px */
+  color: #fff;
 }
 
 /* ─── Responsive ─── */
@@ -1238,35 +1460,78 @@
   .v6-spiral-card-2,
   .v6-spiral-card-3,
   .v6-spiral-card-4 {
-    position: static;
+    position: relative !important;  /* keep so absolute illustrations stay inside the card */
     left: auto !important;
     top: auto !important;
     width: 100% !important;
     z-index: auto !important;
+    padding-top: 36px !important;      /* reset desktop overrides */
+    padding-left: 140px !important;    /* room for left-side illustration */
+    min-height: 160px;
   }
+  /* Canvas-level images not needed in mobile */
+  .v6-spiral-horse,
+  .v6-spiral-papers,
+  .v6-spiral-screens,
+  .v6-spiral-spaceship { display: none; }
+  /* All card illustrations: left side, full card height */
+  .v6-spiral-card .v6-spiral-card-illus {
+    display: block !important;
+    position: absolute;
+    left: 16px !important;
+    right: auto !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: 108px !important;
+    height: 100% !important;
+    object-fit: contain;
+    object-position: center left;
+    transform: none !important;
+  }
+  /* Reset purple card text alignment in mobile — back to RTL right-aligned */
+  .v6-spiral-card-2,
+  .v6-spiral-card-2 .v6-spiral-card-num,
+  .v6-spiral-card-2 .v6-spiral-card-title,
+  .v6-spiral-card-2 .v6-spiral-card-subtitle,
+  .v6-spiral-card-2 .v6-spiral-card-body {
+    text-align: right !important;
+    direction: rtl;
+  }
+  .v6-spiral-card-2 .v6-spiral-card-body { max-width: none; }
   .v6-spiral-steps { grid-template-columns: 1fr; max-width: 520px; }
   .v6-gas-grid     { grid-template-columns: 1fr; max-width: 520px; }
   .v6-gas-card.yellow,
-  .v6-gas-card.green { grid-column: span 1; }
+  .v6-gas-card.blue,
+  .v6-gas-card.purple,
+  .v6-gas-card.green { grid-column: 1 / -1; }
   .v6-offer-grid   { grid-template-columns: 1fr; max-width: 520px; }
   .v6-match-grid      { grid-template-columns: 1fr; max-width: 480px; }
   .v6-match-card-wrap { padding-top: 60px; }
   .v6-match-illus     { height: 180px; margin-top: -60px; }
   .v6-personas-grid { grid-template-columns: repeat(3, 1fr); }
-  .v6-footer-grid  { grid-template-columns: 1fr; gap: 32px; }
+  .v6-footer-inner { grid-template-columns: 1fr; gap: 32px; }
   .v6-about-title  { font-size: 2.25rem; }
+  .v6-contact-stone { top: 500px; }
+  .v6-contact-path { display: none; }
 }
 @media (max-width: 600px) {
   .v6-nav { padding: 14px 20px; }
   .v6-nav-links-wrap { display: none; }
   .v6-nav-cta-desktop { display: none; }
   .v6-nav-hamburger { display: flex; }
-  .v6-hero { padding: 120px 24px 48px; }
-  .v6-hero-flow { width: 100%; }
-  .v6-gas, .v6-offer, .v6-who-body, .v6-about, .v6-faq, .v6-contact { padding: 64px 20px; }
+  .v6-hero { min-height: 60svh; }
+  .v6-hero-text { padding: 100px 24px 0; }
+  .v6-hero-desc { font-size: 1rem; max-width: 90vw; }
+  .v6-hero-flow { width: 100%; bottom: 40px; }
+  .v6-hero-tag  { display: none; }
+  .v6-gas, .v6-offer, .v6-who-body, .v6-about, .v6-faq { padding: 64px 20px; }
+  .v6-contact { padding: 64px 20px 0; }
+  .v6-contact-inner { padding-bottom: 60px; }
+  .v6-contact-card { padding: 28px 20px; max-width: 100%; border-radius: 24px; }
   .v6-form-row { grid-template-columns: 1fr; }
+  .v6-contact-stone { top: 400px; }
   .v6-personas-grid { grid-template-columns: 1fr; max-width: 360px; }
   .v6-about-bubble { display: none; }
-  .v6-contact-form { padding: 28px 20px 32px; }
   .v6-footer { padding: 48px 20px 24px; }
+  .v6-footer-inner { grid-template-columns: 1fr; gap: 32px; }
 }

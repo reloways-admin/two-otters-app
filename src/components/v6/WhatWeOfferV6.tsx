@@ -32,8 +32,8 @@ const WIDE_CARDS: WideCard[] = [
     tags: ['אסטרטגיה', 'חווית משתמש', 'עיצוב ממשק', 'ייעוץ', 'הטמעת תהליכי AI'],
     imageSrc: '/space.png',
     imageAlt: 'מרעיון למוצר — אילוסטרציה',
-    illusTop: -80, illusLeft: 40, illusWidth: 260, illusHeight: 320,
-    wrapPaddingTop: 90,
+    illusTop: 0, illusLeft: 0, illusWidth: 260, illusHeight: 320,
+    wrapPaddingTop: 0,
   },
   {
     id: 'offer-upgrade',
@@ -44,8 +44,8 @@ const WIDE_CARDS: WideCard[] = [
     tags: ['הטמעת תהליכי AI', 'ייעוץ', 'עיצוב ממשק', 'חווית משתמש', 'אסטרטגיה'],
     imageSrc: '/cleaning.png',
     imageAlt: 'לשדרג את האתר הקיים — אילוסטרציה',
-    illusTop: -60, illusLeft: -30, illusWidth: 420, illusHeight: 280,
-    wrapPaddingTop: 70,
+    illusTop: 0, illusLeft: 0, illusWidth: 420, illusHeight: 280,
+    wrapPaddingTop: 0,
   },
   {
     id: 'offer-marketing',
@@ -56,8 +56,8 @@ const WIDE_CARDS: WideCard[] = [
     tags: ['הטמעת תהליכי AI', 'ייעוץ', 'עיצוב ממשק', 'חווית משתמש', 'אסטרטגיה'],
     imageSrc: '/working.png',
     imageAlt: 'תשתית שיווקית — אילוסטרציה',
-    illusTop: -40, illusLeft: -20, illusWidth: 380, illusHeight: 254,
-    wrapPaddingTop: 50,
+    illusTop: 0, illusLeft: 0, illusWidth: 380, illusHeight: 254,
+    wrapPaddingTop: 0,
   },
   {
     id: 'offer-newsite',
@@ -68,8 +68,8 @@ const WIDE_CARDS: WideCard[] = [
     tags: ['הטמעת תהליכי AI', 'ייעוץ', 'עיצוב ממשק', 'חווית משתמש', 'אסטרטגיה'],
     imageSrc: '/holding.png',
     imageAlt: 'אתר למותג חדש — אילוסטרציה',
-    illusTop: 10, illusLeft: -15, illusWidth: 340, illusHeight: 227,
-    wrapPaddingTop: 20,
+    illusTop: 0, illusLeft: 0, illusWidth: 340, illusHeight: 227,
+    wrapPaddingTop: 0,
   },
 ]
 

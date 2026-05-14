@@ -1,19 +1,21 @@
 'use client'
 
-import Image from 'next/image'
+import Image from 'next/image'  // still used for photos
 
 export default function WhoWeAreV6() {
   return (
     <section className="v6-about" id="about">
       <div className="v6-container">
 
-        {/* Title with waving hand */}
+        {/* Title with otter hand next to אולה */}
         <div className="v6-about-title-wrap">
-          <div className="v6-about-waving-hand">
-            <Image src="/waving-hand.png" alt="" width={76} height={82} style={{ objectFit: 'contain' }} />
-          </div>
           <h2 className="v6-about-title">
-            אולה!<br />אנחנו אמיר וקרן.
+            <span className="v6-about-title-olah">
+              אולה!
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/otter-hand.svg" alt="" className="v6-about-hand" aria-hidden="true" />
+            </span>
+            <br />אנחנו אמיר וקרן.
           </h2>
         </div>
 

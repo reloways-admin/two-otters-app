@@ -1,7 +1,5 @@
 'use client'
 
-import Image from 'next/image'
-import { useSquircle } from '@/hooks/useSquircle'
 
 const MAIN_CARDS = [
   {
@@ -11,8 +9,8 @@ const MAIN_CARDS = [
     title: 'שלב האסטרטגיה',
     subtitle: 'נקודת ההתחלה',
     body: 'מתחילים עם הבנה עמוקה של המוצר, השוק והמטרות ומתרגמים את הכל לבריף חד שרצים עליו.',
-    illus: '/spiral-horse.png',
-    illusAlt: 'chess knight illustration',
+    illus: '/step-1.svg',
+    illusAlt: 'horse illustration',
   },
   {
     num: '2',
@@ -21,7 +19,7 @@ const MAIN_CARDS = [
     title: 'שלב האיפיון',
     subtitle: 'איפיון UX אסטרטגי',
     body: 'מתחילים עם הבנה עמוקה של המוצר, השוק והמטרות ומתרגמים את הכל לבריף חד שרצים עליו.',
-    illus: '/spiral-notes.png',
+    illus: '/step-2.svg',
     illusAlt: 'UX notes illustration',
   },
   {
@@ -31,8 +29,8 @@ const MAIN_CARDS = [
     title: 'שלב הפרוטוטייפ',
     subtitle: 'עובד במהירות שיא',
     body: 'בשלב הזה מפסיקים לדמיין ומתחילים לראות. מקבלים פרוטוטייפ עובד שאפשר ללחוץ עליו, להרגיש אותו ולתת פידבק קונקרטי על משהו מוחשי.',
-    illus: null,
-    illusAlt: '',
+    illus: '/step-3.svg',
+    illusAlt: 'prototype illustration',
   },
   {
     num: '4',
@@ -41,8 +39,8 @@ const MAIN_CARDS = [
     title: 'שלב הפרוטוטייפ',
     subtitle: 'עובד במהירות שיא',
     body: 'בשלב הזה מפסיקים לדמיין ומתחילים לראות. מקבלים פרוטוטייפ עובד שאפשר ללחוץ עליו, להרגיש אותו ולתת פידבק קונקרטי על משהו מוחשי.',
-    illus: '/spiral-rocket.png',
-    illusAlt: 'rocket illustration',
+    illus: '/step-4.svg',
+    illusAlt: 'spaceship illustration',
   },
 ]
 
@@ -76,12 +74,10 @@ const STEPS = [
 type MainCard = typeof MAIN_CARDS[0]
 
 function SpiralCard({ card, index }: { card: MainCard; index: number }) {
-  const { ref, style: squircleStyle } = useSquircle(40, 0.6)
   return (
     <div
-      ref={ref}
       className={`v6-spiral-card v6-spiral-card-${index + 1}`}
-      style={{ background: card.bg, color: card.textColor, ...squircleStyle }}
+      style={{ background: card.bg, color: card.textColor }}
     >
       <span className="v6-spiral-card-num">{card.num}</span>
       <div className="v6-spiral-card-text">
@@ -90,9 +86,8 @@ function SpiralCard({ card, index }: { card: MainCard; index: number }) {
       </div>
       <p className="v6-spiral-card-body">{card.body}</p>
       {card.illus && (
-        <div className="v6-spiral-card-illus">
-          <Image src={card.illus} alt={card.illusAlt} fill style={{ objectFit: 'contain', objectPosition: 'center' }} />
-        </div>
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={card.illus} alt={card.illusAlt} className="v6-spiral-card-illus" />
       )}
     </div>
   )
@@ -121,6 +116,14 @@ export default function SpiralV6() {
             {MAIN_CARDS.map((card, i) => (
               <SpiralCard key={card.num} card={card} index={i} />
             ))}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/step-1.svg" alt="" className="v6-spiral-horse" aria-hidden="true" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/step-2.svg" alt="" className="v6-spiral-papers" aria-hidden="true" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/step-3.svg" alt="" className="v6-spiral-screens" aria-hidden="true" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/step-4.svg" alt="" className="v6-spiral-spaceship" aria-hidden="true" />
           </div>
         </div>
 

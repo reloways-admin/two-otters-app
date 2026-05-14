@@ -22,27 +22,27 @@ const YES_LIST = [
 
 const PERSONAS = [
   {
-    icon: '/mobile.png',
+    icon: '/mobile.svg',
     title: 'בא לכם לראות,\nלפני שמתחייבים',
     desc: 'התהליך האפיוני שלנו מהיר ואתם מקבלים פרוטוטייפ שעובד וקל לשנות',
   },
   {
-    icon: '/a-to-b.png',
+    icon: '/a-to-b.svg',
     title: 'חשוב לכם לעבוד עם ספק אחד שלוקח אחריות',
     desc: 'אנחנו מספקים לכם את כל החוויה מהרעיון עד העלייה לאוויר. אין צורך לנהל 10 אנשים',
   },
   {
-    icon: '/light.png',
+    icon: '/lightning.svg',
     title: 'החלום שלכם שהתהליך\nלא יקח שנה',
     desc: 'שלבי העבודה והתהליכים שלנו קצרים בחודשים ממה שמקובל. זה לא בא על חשבון האיכות...',
   },
   {
-    icon: '/stamp.png',
+    icon: '/stamp.svg',
     title: 'נמאס לכם\nמחובבנים ושרלטנים',
     desc: 'באחריות - אתם תקבלו את מה ששילמתם עליו ותאהבו את התוצאה. זו המומחיות שלנו',
   },
   {
-    icon: '/target.png',
+    icon: '/target.svg',
     title: 'רוצים להישאר רלוונטים,\nאבל לא ברור איך...',
     desc: 'בין כל הטרנדים והטכנולוגיות, נעזור לכם להבין מה הכי מתאים כדי שתשארו רלוונטים',
   },
@@ -139,7 +139,8 @@ export default function WhoCanWorkV6() {
             {PERSONAS.map(p => (
               <div key={p.title} className="v6-persona-card">
                 <div className="v6-persona-icon">
-                  <Image src={p.icon} alt="" width={100} height={111} style={{ objectFit: 'contain' }} />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={p.icon} alt="" className="v6-persona-icon-img" />
                 </div>
                 <div className="v6-persona-title">
                   {p.title.split('\n').map((line, i, arr) => (
