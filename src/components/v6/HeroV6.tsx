@@ -36,14 +36,9 @@ export default function HeroV6({ t }: { t: HeroT }) {
         </p>
       </div>
 
-      {/* Illustration with floating tags */}
       <div className="v6-hero-flow">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/hero-v04.svg"
-          alt={t.imgAlt}
-          className="v6-hero-svg"
-        />
+        <img src="/hero-v04.svg" alt={t.imgAlt} className="v6-hero-svg" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/amir-tag.svg"  alt={t.amirAlt}  className="v6-hero-tag v6-hero-tag--amir"  aria-hidden="true" />
         {/* eslint-disable-next-line @next/next/no-img-element */}

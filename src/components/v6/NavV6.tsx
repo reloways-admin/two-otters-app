@@ -60,7 +60,13 @@ export default function NavV6({ t, lang, onLangChange }: Props) {
               aria-label="Switch language"
               onClick={() => onLangChange(lang === 'he' ? 'en' : 'he')}
             >
-              {lang === 'he' ? '🇺🇸' : '🇮🇱'}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={lang === 'he' ? '/language-english.svg' : '/language-hebrew.svg'}
+                alt={lang === 'he' ? 'Switch to English' : 'Switch to Hebrew'}
+                width={28}
+                height={28}
+              />
             </button>
             <a href="#contact" className="v6-btn-primary v6-nav-cta-desktop">{t.cta}</a>
           </div>

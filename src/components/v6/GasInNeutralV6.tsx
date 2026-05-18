@@ -7,9 +7,9 @@ import en from '@/locales/v6-en.json'
 type GasT = typeof en.gas
 
 const CARD_META = [
-  { color: 'yellow', image: '/not-an-ai-studio-sketch.png', imagePosition: 'right bottom' },
+  { color: 'yellow', image: '/not-an-ai-studio-sketch.png', imagePosition: 'center center' },
   { color: 'blue',   image: '/forget-sketch.png',           imagePosition: 'bottom center' },
-  { color: 'purple', image: '/super-power-sketch.png',      imagePosition: 'bottom center' },
+  { color: 'purple', image: '/hands.svg',                    imagePosition: 'bottom 65%' },
   { color: 'green',  image: '/tetris-sketch.png',           imagePosition: 'bottom center' },
 ]
 
