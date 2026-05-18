@@ -1,15 +1,19 @@
 'use client'
 
-export default function HeroV6() {
+import en from '@/locales/v6-en.json'
+
+type HeroT = typeof en.hero
+
+export default function HeroV6({ t }: { t: HeroT }) {
   return (
     <section className="v6-hero" id="why">
       <div className="v6-hero-text">
         <h1 className="v6-hero-title">
-          הדרך הכי קצרה
+          {t.titleLine1}
           <span className="bold">
-            מרעיון{' '}
+            {t.titleBold}{' '}
             <span className="v6-hero-underline">
-              למוצר
+              {t.titleUnderline}
               <svg
                 className="v6-hero-swoosh"
                 width="221" height="18" viewBox="0 0 221 18"
@@ -27,8 +31,8 @@ export default function HeroV6() {
           </span>
         </h1>
         <p className="v6-hero-desc">
-          מתחילים מפרוטוטייפ שאפשר ללחוץ עליו, להרגיש אותו ולשנות אותו.{' '}
-          <strong>רק כשזה מדויק - יוצאים לעיצוב ופיתוח</strong>
+          {t.desc}{' '}
+          <strong>{t.descStrong}</strong>
         </p>
       </div>
 
@@ -37,14 +41,13 @@ export default function HeroV6() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/hero-v04.svg"
-          alt="הדרך מרעיון למוצר — המחשה"
+          alt={t.imgAlt}
           className="v6-hero-svg"
         />
-        {/* Floating person tags */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/amir-tag.svg"  alt="אמיר" className="v6-hero-tag v6-hero-tag--amir"  aria-hidden="true" />
+        <img src="/amir-tag.svg"  alt={t.amirAlt}  className="v6-hero-tag v6-hero-tag--amir"  aria-hidden="true" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/keren-tag.svg" alt="קרן"  className="v6-hero-tag v6-hero-tag--keren" aria-hidden="true" />
+        <img src="/keren-tag.svg" alt={t.kerenAlt} className="v6-hero-tag v6-hero-tag--keren" aria-hidden="true" />
       </div>
     </section>
   )

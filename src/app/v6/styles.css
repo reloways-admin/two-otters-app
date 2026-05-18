@@ -1460,33 +1460,34 @@
   .v6-spiral-card-2,
   .v6-spiral-card-3,
   .v6-spiral-card-4 {
-    position: relative !important;  /* keep so absolute illustrations stay inside the card */
+    position: relative !important;
     left: auto !important;
     top: auto !important;
     width: 100% !important;
+    height: auto !important;
     z-index: auto !important;
-    padding-top: 36px !important;      /* reset desktop overrides */
-    padding-left: 140px !important;    /* room for left-side illustration */
-    min-height: 160px;
+    padding-top: 36px !important;
+    padding-left: 36px !important;
   }
   /* Canvas-level images not needed in mobile */
   .v6-spiral-horse,
   .v6-spiral-papers,
   .v6-spiral-screens,
   .v6-spiral-spaceship { display: none; }
-  /* All card illustrations: left side, full card height */
+  /* All card illustrations: in-flow below text */
   .v6-spiral-card .v6-spiral-card-illus {
     display: block !important;
-    position: absolute;
-    left: 16px !important;
+    position: static !important;
+    left: auto !important;
     right: auto !important;
-    top: 0 !important;
-    bottom: 0 !important;
-    width: 108px !important;
-    height: 100% !important;
+    top: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    height: 140px !important;
     object-fit: contain;
-    object-position: center left;
+    object-position: center;
     transform: none !important;
+    margin-top: 8px;
   }
   /* Reset purple card text alignment in mobile — back to RTL right-aligned */
   .v6-spiral-card-2,
@@ -1515,6 +1516,13 @@
   .v6-contact-path { display: none; }
 }
 @media (max-width: 600px) {
+  .v6-nav--scrolled {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 16px rgba(0,0,0,0.08);
+    transition: background 0.25s, box-shadow 0.25s;
+  }
   .v6-nav { padding: 14px 20px; }
   .v6-nav-links-wrap { display: none; }
   .v6-nav-cta-desktop { display: none; }

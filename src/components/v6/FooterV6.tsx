@@ -1,13 +1,8 @@
 'use client'
 
-const NAV_LINKS = [
-  { label: 'למה אנחנו',     href: '#why' },
-  { label: 'התהליך',        href: '#process' },
-  { label: 'המוצרים שלנו', href: '#offer' },
-  { label: 'למי מתאים',    href: '#who' },
-  { label: 'עלינו',         href: '#about' },
-  { label: 'שאלות נפוצות', href: '#faq' },
-]
+import en from '@/locales/v6-en.json'
+
+type FooterT = typeof en.footer
 
 const CONTACT_LINKS = [
   { label: 'hello@twootters.studio', href: 'mailto:hello@twootters.studio' },
@@ -15,35 +10,36 @@ const CONTACT_LINKS = [
   { label: 'LinkedIn',               href: 'https://linkedin.com' },
 ]
 
-export default function FooterV6() {
+export default function FooterV6({ t }: { t: FooterT }) {
+  const taglineLines = t.tagline.split('\n')
+
   return (
     <footer className="v6-footer">
       <div className="v6-container v6-footer-inner">
 
-        {/* Brand col — first in DOM = rightmost in RTL */}
         <div className="v6-footer-brand">
           <div className="v6-footer-brand-top">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo.svg" alt="Two Otters Studio" className="v6-footer-logo" />
           </div>
           <p className="v6-footer-tagline">
-            אפיון UX/UI ופרוטוטייפ עובד —<br />בדיוק מה שהיה לכם בראש. רק מהר יותר.
+            {taglineLines.map((line, i) => (
+              <span key={i}>{line}{i < taglineLines.length - 1 && <br />}</span>
+            ))}
           </p>
         </div>
 
-        {/* Nav col */}
         <div className="v6-footer-col">
-          <h4 className="v6-footer-col-heading">ניווט</h4>
+          <h4 className="v6-footer-col-heading">{t.navHeading}</h4>
           <ul className="v6-footer-list">
-            {NAV_LINKS.map(l => (
+            {t.navLinks.map(l => (
               <li key={l.href}><a href={l.href}>{l.label}</a></li>
             ))}
           </ul>
         </div>
 
-        {/* Contact col — last in DOM = leftmost in RTL */}
         <div className="v6-footer-col">
-          <h4 className="v6-footer-col-heading">בואו נדבר</h4>
+          <h4 className="v6-footer-col-heading">{t.contactHeading}</h4>
           <ul className="v6-footer-list">
             {CONTACT_LINKS.map(l => (
               <li key={l.href}>
@@ -56,7 +52,7 @@ export default function FooterV6() {
       </div>
 
       <div className="v6-footer-bottom">
-        <span>© 2026 Two Otters Studio. כל הזכויות שמורות.</span>
+        <span>{t.copyright}</span>
       </div>
     </footer>
   )

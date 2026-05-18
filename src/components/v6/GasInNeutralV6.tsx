@@ -2,45 +2,15 @@
 
 import Image from 'next/image'
 import { useSquircle } from '@/hooks/useSquircle'
+import en from '@/locales/v6-en.json'
 
-type Card = {
-  color: string
-  title: string
-  body: string
-  image?: string
-  imagePosition?: string
-  icon?: string
-}
+type GasT = typeof en.gas
 
-const CARDS: Card[] = [
-  {
-    color: 'yellow',
-    title: 'אנחנו לא סטודיו AI',
-    body: 'כן. אנחנו משתמשים בכלים של בינה מלאכותית. אבל כל אחד יכול להריץ פרומפט. לא כולם יודעים לשאול את השאלות הנכונות. לשלב. לבשל. הנה — אנחנו כן.',
-    image: '/not-an-ai-studio-sketch.png',
-    imagePosition: 'right bottom',
-  },
-  {
-    color: 'blue',
-    title: 'תשכחו מחודשים מתישים של אפיון',
-    body: 'אתם מקבלים פרוטוטייפ עובד תוך שבועות בודדים, כדי שתוכלו "להרגיש" את השימוש במוצר שלכם לפני עיצוב ופיתוח.',
-    image: '/forget-sketch.png',
-    imagePosition: 'bottom center',
-  },
-  {
-    color: 'purple',
-    title: "מתרגמים ויז'ן למוצר עובד",
-    body: 'זה הסופר-פאואר שלנו. באים מוכנים עם שאלות, רפרנסים ותשובות — ועוזרים לכם לתרגם את מה שדמיינתם למוצר עובד.',
-    image: '/super-power-sketch.png',
-    imagePosition: 'bottom center',
-  },
-  {
-    color: 'green',
-    title: 'לא פחות מפיקסל פרפקט',
-    body: 'פרוטוטייפ מאושר. תיעוד מסודר. ארכיטקטורה נכונה. הכל ברור ומדויק לרמת הפיקסל, כדי שתוכלו לקחת את הפרוטוטייפ לשלב הבא.',
-    image: '/tetris-sketch.png',
-    imagePosition: 'bottom center',
-  },
+const CARD_META = [
+  { color: 'yellow', image: '/not-an-ai-studio-sketch.png', imagePosition: 'right bottom' },
+  { color: 'blue',   image: '/forget-sketch.png',           imagePosition: 'bottom center' },
+  { color: 'purple', image: '/super-power-sketch.png',      imagePosition: 'bottom center' },
+  { color: 'green',  image: '/tetris-sketch.png',           imagePosition: 'bottom center' },
 ]
 
 const BG: Record<string, string> = {
@@ -50,34 +20,32 @@ const BG: Record<string, string> = {
   green:  '#13D04F',
 }
 
-function GasCard({ card }: { card: Card }) {
+function GasCard({ title, body, color, image, imagePosition }: {
+  title: string; body: string; color: string; image: string; imagePosition: string
+}) {
   const { ref, style: squircleStyle } = useSquircle(64, 0.6)
 
   return (
     <div
       ref={ref}
-      className={`v6-gas-card ${card.color}`}
-      style={{ background: BG[card.color], ...squircleStyle }}
+      className={`v6-gas-card ${color}`}
+      style={{ background: BG[color], ...squircleStyle }}
     >
-      <div className="v6-gas-card-title">{card.title}</div>
-      <div className="v6-gas-card-body">{card.body}</div>
-      {card.image ? (
-        <div className="v6-gas-illus v6-gas-illus-img">
-          <Image
-            src={card.image}
-            alt=""
-            fill
-            style={{ objectFit: 'contain', objectPosition: card.imagePosition ?? 'center' }}
-          />
-        </div>
-      ) : (
-        <div className="v6-gas-illus">{card.icon ?? null}</div>
-      )}
+      <div className="v6-gas-card-title">{title}</div>
+      <div className="v6-gas-card-body">{body}</div>
+      <div className="v6-gas-illus v6-gas-illus-img">
+        <Image
+          src={image}
+          alt=""
+          fill
+          style={{ objectFit: 'contain', objectPosition: imagePosition }}
+        />
+      </div>
     </div>
   )
 }
 
-export default function GasInNeutralV6() {
+export default function GasInNeutralV6({ t }: { t: GasT }) {
   return (
     <section className="v6-gas" id="process">
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -89,12 +57,12 @@ export default function GasInNeutralV6() {
       />
       <div className="v6-container" style={{ position: 'relative', zIndex: 1 }}>
         <h2 className="v6-section-heading">
-          להיות פול גז בניוטרל
+          {t.title1}
           <br />
           <span className="bold">
-            זה כבר{' '}
+            {t.title2Bold}{' '}
             <span className="v6-swoosh-word">
-              לא אתם
+              {t.titleUnderline}
               <svg
                 className="v6-hero-swoosh"
                 width="221" height="18" viewBox="0 0 221 18"
@@ -112,14 +80,21 @@ export default function GasInNeutralV6() {
           </span>
         </h2>
         <p className="v6-section-sub">
-          השיטה שלנו מקצרת את הדרך <strong>מרעיון לפרוטוטייפ עובד</strong>
+          {t.sub1} <strong>{t.sub1Strong}</strong>
           <br />
-          ומאפשרת לכם להגיע למוצר מדויק מהר יותר.
+          {t.sub2}
         </p>
 
         <div className="v6-gas-grid">
-          {CARDS.map(card => (
-            <GasCard key={card.title} card={card} />
+          {t.cards.map((card, i) => (
+            <GasCard
+              key={i}
+              title={card.title}
+              body={card.body}
+              color={CARD_META[i].color}
+              image={CARD_META[i].image}
+              imagePosition={CARD_META[i].imagePosition}
+            />
           ))}
         </div>
       </div>

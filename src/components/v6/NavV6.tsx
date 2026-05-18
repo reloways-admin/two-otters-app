@@ -1,24 +1,32 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import en from '@/locales/v6-en.json'
 
-const NAV_LINKS = [
-  { label: 'למה אנחנו',     href: '#process' },
-  { label: 'שיטת הספירלה', href: '#spiral' },
-  { label: 'המוצרים שלנו', href: '#offer' },
-  { label: 'למי מתאים',    href: '#who' },
-  { label: 'עלינו',         href: '#about' },
-  { label: 'שאלות',        href: '#faq' },
-]
+type NavT = typeof en.nav
+type Lang = 'en' | 'he'
 
-export default function NavV6() {
+interface Props {
+  t: NavT
+  lang: Lang
+  onLangChange: (lang: Lang) => void
+}
+
+export default function NavV6({ t, lang, onLangChange }: Props) {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const close = () => setOpen(false)
 
   return (
     <>
-      <nav className="v6-nav">
+      <nav className={`v6-nav${scrolled ? ' v6-nav--scrolled' : ''}`}>
         <div className="v6-nav-inner">
           {/* Right: logo + hamburger — first in DOM = right in RTL */}
           <div className="v6-nav-right">
@@ -28,7 +36,7 @@ export default function NavV6() {
             </a>
             <button
               className="v6-nav-hamburger"
-              aria-label={open ? 'סגור תפריט' : 'פתח תפריט'}
+              aria-label={open ? t.closeMenu : t.openMenu}
               aria-expanded={open}
               onClick={() => setOpen(o => !o)}
             >
@@ -40,15 +48,21 @@ export default function NavV6() {
 
           {/* Center: nav links pill (desktop) */}
           <div className="v6-nav-links-wrap">
-            {NAV_LINKS.map(l => (
+            {t.links.map(l => (
               <a key={l.href} href={l.href} className="v6-nav-link">{l.label}</a>
             ))}
           </div>
 
           {/* Left: lang + CTA — last in DOM = left in RTL */}
           <div className="v6-nav-actions">
-            <button className="v6-nav-lang" aria-label="Switch language">🇺🇸</button>
-            <a href="#contact" className="v6-btn-primary v6-nav-cta-desktop">בואו נדבר</a>
+            <button
+              className="v6-nav-lang"
+              aria-label="Switch language"
+              onClick={() => onLangChange(lang === 'he' ? 'en' : 'he')}
+            >
+              {lang === 'he' ? '🇺🇸' : '🇮🇱'}
+            </button>
+            <a href="#contact" className="v6-btn-primary v6-nav-cta-desktop">{t.cta}</a>
           </div>
         </div>
       </nav>
@@ -56,13 +70,13 @@ export default function NavV6() {
       {/* Mobile drawer */}
       <div className={`v6-nav-drawer ${open ? 'v6-nav-drawer--open' : ''}`} aria-hidden={!open}>
         <div className="v6-nav-drawer-inner">
-          {NAV_LINKS.map(l => (
+          {t.links.map(l => (
             <a key={l.href} href={l.href} className="v6-nav-drawer-link" onClick={close}>
               {l.label}
             </a>
           ))}
           <a href="#contact" className="v6-btn-primary v6-nav-drawer-cta" onClick={close}>
-            בואו נדבר
+            {t.cta}
           </a>
         </div>
       </div>

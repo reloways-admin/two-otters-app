@@ -1,58 +1,50 @@
 'use client'
 
-import Image from 'next/image'  // still used for photos
+import Image from 'next/image'
+import en from '@/locales/v6-en.json'
 
-export default function WhoWeAreV6() {
+type AboutT = typeof en.about
+
+export default function WhoWeAreV6({ t }: { t: AboutT }) {
   return (
     <section className="v6-about" id="about">
       <div className="v6-container">
 
-        {/* Title with otter hand next to אולה */}
         <div className="v6-about-title-wrap">
           <h2 className="v6-about-title">
             <span className="v6-about-title-olah">
-              אולה!
+              {t.greeting}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/otter-hand.svg" alt="" className="v6-about-hand" aria-hidden="true" />
             </span>
-            <br />אנחנו אמיר וקרן.
+            <br />{t.title}
           </h2>
         </div>
 
+        <p className="v6-about-body">{t.body1}</p>
+        <p className="v6-about-body">{t.body2}</p>
         <p className="v6-about-body">
-          הכרנו אי שם בתיכון ובמשך השנים הזרם לקח אותנו להרבה מקומות,
-          אבל כמו לוטרות אמיתיות (שמחזיקות ידיים) — תמיד נשארנו יחד.
-        </p>
-        <p className="v6-about-body">
-          בטח הגעתם לכאן כי יש לכם רעיון, ואתם רוצים לראות אותו מוחשי ומהר.
-          וזו החדשנות בשיטת הספירלה שלנו — אנחנו לוקחים רעיונות למוצרים ומוציאים אותם לפועל בזריזות ודייקנות.
-        </p>
-        <p className="v6-about-body">
-          בתכלס, אנחנו מוציאים לאוויר בדיוק מה שהיה לכם בראש.{' '}
-          <b>רק מהר יותר ממה שציפיתם.</b>
+          {t.body3}{' '}
+          <b>{t.body3Bold}</b>
         </p>
 
         {/* Photos */}
         <div className="v6-about-photos-wrap">
 
-          {/* Bubble — Amir (right in RTL) */}
           <div className="v6-about-bubble v6-about-bubble--amir">
-            <Image src="/bubble-amir.png" alt="אמיר שלו — מומחה UX ו-UI" fill style={{ objectFit: 'contain' }} />
+            <Image src="/bubble-amir.png" alt={t.amirBubbleAlt} fill style={{ objectFit: 'contain' }} />
           </div>
 
-          {/* Bubble — Keren (left in RTL) */}
           <div className="v6-about-bubble v6-about-bubble--keren">
-            <Image src="/bubble-keren.png" alt="קרן רייטלר — מומחית אסטרטגיה, סטוריטלינג ושפה מוצרית" fill style={{ objectFit: 'contain' }} />
+            <Image src="/bubble-keren.png" alt={t.kerenBubbleAlt} fill style={{ objectFit: 'contain' }} />
           </div>
 
           <div className="v6-about-photos">
-            {/* Amir — first in DOM = right in RTL */}
             <div className="v6-about-photo amir">
-              <Image src="/amir.png" alt="אמיר שלו" fill style={{ objectFit: 'contain', objectPosition: 'bottom center' }} />
+              <Image src="/amir.png" alt={t.amirPhotoAlt} fill style={{ objectFit: 'contain', objectPosition: 'bottom center' }} />
             </div>
-            {/* Keren — second in DOM = left in RTL */}
             <div className="v6-about-photo keren">
-              <Image src="/keren.png" alt="קרן רייטלר" fill style={{ objectFit: 'contain', objectPosition: 'bottom center' }} />
+              <Image src="/keren.png" alt={t.kerenPhotoAlt} fill style={{ objectFit: 'contain', objectPosition: 'bottom center' }} />
             </div>
           </div>
 

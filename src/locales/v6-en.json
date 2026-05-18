@@ -1,0 +1,305 @@
+{
+  "nav": {
+    "links": [
+      { "label": "Why Us", "href": "#process" },
+      { "label": "Our Method", "href": "#spiral" },
+      { "label": "What We Offer", "href": "#offer" },
+      { "label": "Who We Work With", "href": "#who" },
+      { "label": "About", "href": "#about" },
+      { "label": "FAQ", "href": "#faq" }
+    ],
+    "cta": "Let's Talk",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "titleLine1": "The shortest path",
+    "titleBold": "from idea",
+    "titleUnderline": "to product",
+    "desc": "We start with a clickable prototype you can feel and change.",
+    "descStrong": "Only when it's right — we move to design and development",
+    "imgAlt": "From idea to product — illustration",
+    "amirAlt": "Amir",
+    "kerenAlt": "Keren"
+  },
+  "gas": {
+    "title1": "Full throttle,",
+    "title2Bold": "but going",
+    "titleUnderline": "nowhere",
+    "sub1": "Our method shortens the path",
+    "sub1Strong": "from idea to a working prototype",
+    "sub2": "and gets you to a precise product faster.",
+    "cards": [
+      {
+        "title": "We're not an AI studio",
+        "body": "Yes, we use AI tools. But anyone can run a prompt. Not everyone knows how to ask the right questions. How to combine. How to cook. That's where we come in."
+      },
+      {
+        "title": "Forget months of exhausting spec work",
+        "body": "You get a working prototype in just a few weeks, so you can \"feel\" your product in use before committing to design and development."
+      },
+      {
+        "title": "We translate vision into a working product",
+        "body": "That's our superpower. We come prepared with questions, references, and answers — helping you translate what you imagined into something real."
+      },
+      {
+        "title": "Nothing less than pixel perfect",
+        "body": "Approved prototype. Organized documentation. Solid architecture. Everything clear and pixel-precise, so you can take the prototype to the next stage."
+      }
+    ]
+  },
+  "spiral": {
+    "title1": "Meet",
+    "titleBold": "The Spiral Method",
+    "sub": "Forget linear processes. We work in parallel, in full sync, and refine as we move.",
+    "cards": [
+      {
+        "num": "1",
+        "title": "Strategy Phase",
+        "subtitle": "The starting point",
+        "body": "We start with a deep understanding of the product, market, and goals — then translate everything into a sharp brief we run with.",
+        "illusAlt": "horse illustration"
+      },
+      {
+        "num": "2",
+        "title": "UX Spec Phase",
+        "subtitle": "Strategic UX design",
+        "body": "We start with a deep understanding of the product, market, and goals — then translate everything into a sharp brief we run with.",
+        "illusAlt": "UX notes illustration"
+      },
+      {
+        "num": "3",
+        "title": "Prototype Phase",
+        "subtitle": "Working at record speed",
+        "body": "This is where we stop imagining and start seeing. You get a working prototype you can click, feel, and give concrete feedback on.",
+        "illusAlt": "prototype illustration"
+      },
+      {
+        "num": "4",
+        "title": "Prototype Phase",
+        "subtitle": "Working at record speed",
+        "body": "This is where we stop imagining and start seeing. You get a working prototype you can click, feel, and give concrete feedback on.",
+        "illusAlt": "spaceship illustration"
+      }
+    ],
+    "moreTitle": "Don't stop at the spec...",
+    "moreSub": "Here's how we take you all the way until your product is live and kicking",
+    "steps": [
+      {
+        "num": "7",
+        "title": "Design Phase",
+        "subtitle": "Dressing your product",
+        "body": "The exciting design stage, where we translate your messages and personality into a visual language that highlights your brand in every pixel."
+      },
+      {
+        "num": "5",
+        "title": "Brand Voice Phase",
+        "subtitle": "Your brand's unique voice",
+        "body": "We give your business character, tone of voice, and writing guidelines — so your audience doesn't just recognize you, they feel like they know you."
+      },
+      {
+        "num": "8",
+        "title": "Development Phase",
+        "subtitle": "With you until you're live",
+        "body": "After all the hard work, it's time to make sure the design and UX are properly implemented — until what goes live looks exactly like what we planned."
+      },
+      {
+        "num": "6",
+        "title": "Content Writing Phase",
+        "subtitle": "The words that drive your product",
+        "body": "We write the content for your site, platform, or app with your brand's precise tone. The language aligns with your strategy and design."
+      }
+    ]
+  },
+  "offer": {
+    "heading": "So... what would you like us to build together?",
+    "cards": [
+      {
+        "anchorLabel": "Idea to Product",
+        "title": "From idea to product\nat lightning speed",
+        "subtitle": "Start and finish in a sprint",
+        "timing": "Up to 6 weeks",
+        "desc": "We start from strategy. Move to spec. Arrive at a working prototype you can click, feel, and change. You leave with everything approved, documented, and ready for the next stage.",
+        "imageAlt": "From idea to product — illustration",
+        "tags": ["Strategy", "UX", "UI Design", "Consulting", "AI Process Integration"]
+      },
+      {
+        "anchorLabel": "Site Upgrade",
+        "title": "Upgrade your\nexisting site",
+        "timing": "4–6 months",
+        "desc": "Your old site no longer represents you. It's time to take it several levels up — to match your business goals, strengthen your reputation, and support your growth.\n\nAnd if you want to leave the competition in the dust... that's what we do best :)",
+        "imageAlt": "Upgrade your existing site — illustration",
+        "tags": ["AI Process Integration", "Consulting", "UI Design", "UX", "Strategy"]
+      },
+      {
+        "anchorLabel": "Marketing Infrastructure",
+        "title": "Marketing infrastructure\nevery business needs",
+        "timing": "1–2 months to set up",
+        "desc": "You can work hard, or you can work smart 😜\n\nWe build customer journeys, automations, and dashboards that replace manual work.\n\nSo you can finally see what's working and reap the rewards...",
+        "imageAlt": "Marketing infrastructure — illustration",
+        "tags": ["AI Process Integration", "Consulting", "UI Design", "UX", "Strategy"]
+      },
+      {
+        "anchorLabel": "New Brand Site",
+        "title": "A site for your\nbrand new brand",
+        "timing": "4–6 months",
+        "desc": "Your brand needs a site that makes you memorable and drives action...\nWe love this challenge! We build your site from strategy down to the last pixel — fast, precise, ready to launch.\n\nIf you're going to have a site, have it with the Otters.\nBecause first impressions don't come twice :)",
+        "imageAlt": "New brand site — illustration",
+        "tags": ["AI Process Integration", "Consulting", "UI Design", "UX", "Strategy"]
+      }
+    ]
+  },
+  "who": {
+    "marqueeText": "Which otter are you?",
+    "title": "If this sounds like you,\nwe'll probably work great together",
+    "yesAlt": "It's a match",
+    "noAlt": "Swipe left — not a match",
+    "yesList": [
+      "You have an idea and are looking for someone to bring it to life",
+      "You understand that your feedback and guidance are part of the success",
+      "You see strategy as an inseparable part of the product",
+      "You want a positive experience with the people you work with",
+      "You've defined a clear budget for a premium process"
+    ],
+    "noList": [
+      "You're looking for an execution vendor only — no thinking involved",
+      "You want \"set it and forget it\" and have no time to be involved",
+      "Honestly, you haven't really thought about what you want",
+      "A generic template design is fine by you",
+      "\"Budget? We haven't thought about that...\""
+    ],
+    "personasTitle": "When do people reach out?",
+    "personas": [
+      {
+        "title": "You want to see it,\nbefore you commit",
+        "desc": "Our process is fast and you get a working prototype that's easy to change."
+      },
+      {
+        "title": "You want one vendor\nwho takes full responsibility",
+        "desc": "We deliver the full experience from idea to launch. No need to manage 10 people."
+      },
+      {
+        "title": "Your dream is a process\nthat doesn't take a year",
+        "desc": "Our stages and processes are months shorter than what's standard. That doesn't come at the cost of quality..."
+      },
+      {
+        "title": "You're tired of\namateurs and charlatans",
+        "desc": "Guaranteed — you'll get exactly what you paid for and you'll love the result. That's our expertise."
+      },
+      {
+        "title": "You want to stay relevant,\nbut aren't sure how...",
+        "desc": "Among all the trends and technologies, we'll help you understand what fits best so you stay relevant."
+      }
+    ]
+  },
+  "about": {
+    "greeting": "Hey!",
+    "title": "We're Amir and Keren.",
+    "body1": "We met somewhere in high school and over the years the current took us to many places, but like true otters (who hold hands) — we always stayed together.",
+    "body2": "You're probably here because you have an idea, and you want to see it real and fast. That's the innovation behind our Spiral Method — we take ideas and turn them into products, quickly and precisely.",
+    "body3": "Simply put, we launch exactly what you had in mind.",
+    "body3Bold": "Just faster than you expected.",
+    "amirBubbleAlt": "Amir Shalev — UX & UI Expert",
+    "kerenBubbleAlt": "Keren Reitler — Strategy, Storytelling & Brand Voice Expert",
+    "amirPhotoAlt": "Amir Shalev",
+    "kerenPhotoAlt": "Keren Reitler"
+  },
+  "testimonials": {
+    "title": "We had a great time working together",
+    "items": [
+      {
+        "quote": "This is a testimonial in smaller text, to allow room for many more details and words that users can read to understand the feelings and experience.",
+        "name": "First Last Name",
+        "role": "Job title / role",
+        "avatar": "😊"
+      },
+      {
+        "quote": "This is a testimonial in a larger text size — short and punchy.",
+        "name": "First Last Name",
+        "role": "Job title / role",
+        "avatar": "😊"
+      },
+      {
+        "quote": "This is a testimonial in smaller text, to allow room for many more details and words that users can read to understand the feelings and experience.",
+        "name": "First Last Name",
+        "role": "Job title / role",
+        "avatar": "😊"
+      },
+      {
+        "quote": "This is a testimonial in smaller text, to allow room for many more details and words that users can read.",
+        "name": "First Last Name",
+        "role": "Job title / role",
+        "avatar": "😊"
+      },
+      {
+        "quote": "This is a testimonial in a larger text size — short and punchy.",
+        "name": "First Last Name",
+        "role": "Job title / role",
+        "avatar": "😊"
+      }
+    ]
+  },
+  "faq": {
+    "heading": "This is probably what's on your mind",
+    "items": [
+      {
+        "q": "How long does the process take?",
+        "a": "Every project is unique and has its own complexity.\nThat said, we typically reach a working prototype within just a few weeks.\nA full product build including strategic spec, design, and content writing takes 3–4 months.\n\nFor any timeline estimate, we'll align on clear expectations right at the start of the project."
+      },
+      {
+        "q": "What's the final deliverable I'll receive?",
+        "a": "At the end of the spec process, our clients receive an interactive prototype you can click and feel, a strategic spec document, design files, and clear guidelines that let you move forward independently (or continue the project with us)."
+      },
+      {
+        "q": "I've already done a spec process — what's unique about your work?",
+        "a": "Our methodology is unique and doesn't exist at other studios (as far as we know).\nOur entire process is built on certainty for our clients. It's important to us that you see the product's user experience before committing to development (which is the expensive and lengthy part).\n\nInstead of a PDF that gets shelved or a Figma link, you get a working prototype you can click and understand the user experience.\nFor the first time, in just a few weeks you can experience the product and refine it quickly."
+      },
+      {
+        "q": "What's the difference between a prototype and a finished product?",
+        "a": "A prototype is an interactive model that simulates the user experience.\nIt's not final code and doesn't include the precise visual design.\nBut it lets you feel, test, and refine your product before investing in development."
+      },
+      {
+        "q": "How much does it cost to work together?",
+        "a": "Every project is priced according to its size and complexity.\nWe'd love to talk and understand what you're building, then tailor a precise proposal."
+      },
+      {
+        "q": "What happens after we get the prototype?",
+        "a": "You move on to development with all the files and reports. You're not dependent on us — but we're here if you need guidance in the design and development stage too."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Got a vision? Great.",
+    "sub": "Tell us a bit about what you're building and we'll get back to you within 48 hours.",
+    "namePlaceholder": "Full name",
+    "emailPlaceholder": "Email",
+    "companyPlaceholder": "Company / project name",
+    "phonePlaceholder": "Phone",
+    "rolePlaceholder": "What's your role?",
+    "messagePlaceholder": "Tell us briefly — what are you building and what's your biggest pain point?",
+    "submitBtn": "Let's Talk",
+    "emailSubjectPrefix": "Website inquiry —",
+    "emailLabels": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "company": "Company",
+      "role": "Role"
+    },
+    "trust": ["No commitment", "First call is free", "Response within 48 hours"]
+  },
+  "footer": {
+    "tagline": "UX/UI spec and working prototype —\nexactly what you had in mind. Just faster.",
+    "navHeading": "Navigation",
+    "contactHeading": "Let's Talk",
+    "navLinks": [
+      { "label": "Why Us", "href": "#why" },
+      { "label": "Our Process", "href": "#process" },
+      { "label": "What We Offer", "href": "#offer" },
+      { "label": "Who We Work With", "href": "#who" },
+      { "label": "About", "href": "#about" },
+      { "label": "FAQ", "href": "#faq" }
+    ],
+    "copyright": "© 2026 Two Otters Studio. All rights reserved."
+  }
+}
