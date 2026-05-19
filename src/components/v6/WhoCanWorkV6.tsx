@@ -5,7 +5,7 @@ import en from '@/locales/v6-en.json'
 
 type WhoT = typeof en.who
 
-const EYES = ['/eyes-v01.png', '/eyes-v02.png', '/eyes-v03.png', '/eyes-v02.png']
+const EYES = ['/eyes-v01.png']
 const PERSONA_ICONS = ['/mobile.svg', '/a-to-b.svg', '/lightning.svg', '/stamp.svg', '/target.svg']
 
 function MarqueeUnit({ text }: { text: string }) {
@@ -22,13 +22,13 @@ function MarqueeUnit({ text }: { text: string }) {
 }
 
 export default function WhoCanWorkV6({ t }: { t: WhoT }) {
-  const units = Array.from({ length: 8 })
+  const units = Array.from({ length: 20 })
 
   return (
     <section className="v6-who" id="who">
       {/* Blue ticker marquee */}
       <div className="v6-marquee-strip">
-        <div className="v6-marquee-inner">
+        <div className="v6-marquee-track">
           {units.map((_, i) => <MarqueeUnit key={i} text={t.marqueeText} />)}
           {units.map((_, i) => <MarqueeUnit key={`b${i}`} text={t.marqueeText} />)}
         </div>
@@ -49,7 +49,7 @@ export default function WhoCanWorkV6({ t }: { t: WhoT }) {
               <div className="v6-match-card yes">
                 <div className="v6-match-illus">
                   <Image
-                    src="/its-a-match.png"
+                    src="/its-a-match-v01.svg"
                     alt={t.yesAlt}
                     fill
                     style={{ objectFit: 'contain', objectPosition: 'bottom center' }}
@@ -73,7 +73,7 @@ export default function WhoCanWorkV6({ t }: { t: WhoT }) {
               <div className="v6-match-card no">
                 <div className="v6-match-illus">
                   <Image
-                    src="/swipe-left.png"
+                    src="/swipe-left-v01.svg"
                     alt={t.noAlt}
                     fill
                     style={{ objectFit: 'contain', objectPosition: 'bottom center' }}

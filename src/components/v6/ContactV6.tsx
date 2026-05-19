@@ -58,8 +58,8 @@ export default function ContactV6({ t }: { t: ContactT }) {
         <div className="v6-contact-trust">
           {t.trust.map(item => (
             <div key={item} className="v6-contact-trust-item">
-              <span>{item}</span>
               <span className="v6-contact-trust-check">✓</span>
+              <span>{item}</span>
             </div>
           ))}
         </div>
