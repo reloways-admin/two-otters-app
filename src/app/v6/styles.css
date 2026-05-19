@@ -37,7 +37,6 @@
   font-family: var(--v6-font);
   color: var(--v6-text);
   background: var(--v6-bg);
-  direction: rtl;
   overflow-x: hidden;
 }
 
@@ -55,6 +54,17 @@
   right: 0;
   z-index: 100;
   padding: 32px 40px;
+  transition: padding 0.25s;
+}
+.v6-nav--scrolled {
+  padding: 12px 40px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 16px rgba(0,0,0,0.08);
+}
+.v6-nav--scrolled .v6-nav-logo-img {
+  height: 44px;
 }
 .v6-nav-inner {
   display: grid;
@@ -75,6 +85,7 @@
   display: block;
   height: 80px;
   width: auto;
+  transition: height 0.25s;
 }
 .v6-nav-links-wrap {
   background: var(--v6-white);
@@ -97,6 +108,8 @@
 .v6-nav-link:hover { background: var(--v6-purple-soft); }
 .v6-nav-actions { display: flex; align-items: center; gap: 14px; justify-self: left; }
 .v6-nav-right { display: flex; align-items: center; gap: 12px; justify-self: right; }
+[dir="ltr"] .v6-nav-actions { justify-self: right; }
+[dir="ltr"] .v6-nav-right { justify-self: left; }
 
 /* ── Hamburger button ── */
 .v6-nav-hamburger {
@@ -151,12 +164,12 @@
   text-decoration: none;
   padding: 14px 16px;
   width: 100%;
-  text-align: right;
+  text-align: start;
   border-radius: var(--v6-r-md);
   transition: background 0.18s;
 }
 .v6-nav-drawer-link:hover { background: var(--v6-purple-soft); }
-.v6-nav-drawer-cta { margin-top: 20px; text-align: center; }
+.v6-nav-drawer-cta { margin-top: 20px; text-align: center; display: block; width: 100%; }
 
 /* ── Backdrop ── */
 .v6-nav-backdrop {
@@ -1565,6 +1578,25 @@
   .v6-nav-links-wrap { display: none; }
   .v6-nav-cta-desktop { display: none; }
   .v6-nav-hamburger { display: flex; }
+  .v6-nav-inner {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+  .v6-nav-actions { justify-self: unset; }
+  .v6-nav-right {
+    justify-self: unset;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .v6-nav-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    margin-top: -28px;
+  }
   .v6-nav--scrolled {
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(12px);
