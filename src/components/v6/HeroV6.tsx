@@ -4,7 +4,11 @@ import en from '@/locales/v6-en.json'
 
 type HeroT = typeof en.hero
 
-export default function HeroV6({ t }: { t: HeroT }) {
+export default function HeroV6({ t, lang = 'he' }: { t: HeroT; lang?: 'en' | 'he' }) {
+  const suffix = lang === 'en' ? '-english' : ''
+  const heroSrc = `/hero-v04${suffix}.svg`
+  const amirSrc = `/amir-tag${suffix}.svg`
+  const kerenSrc = `/keren-tag${suffix}.svg`
   return (
     <section className="v6-hero" id="why">
       <div className="v6-hero-text">
@@ -31,18 +35,18 @@ export default function HeroV6({ t }: { t: HeroT }) {
           </span>
         </h1>
         <p className="v6-hero-desc">
-          {t.desc}{' '}
+          {t.desc}{lang === 'en' ? <br /> : ' '}
           <strong>{t.descStrong}</strong>
         </p>
       </div>
 
       <div className="v6-hero-flow">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/hero-v04.svg" alt={t.imgAlt} className="v6-hero-svg" />
+        <img src={heroSrc} alt={t.imgAlt} className="v6-hero-svg" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/amir-tag.svg"  alt={t.amirAlt}  className="v6-hero-tag v6-hero-tag--amir"  aria-hidden="true" />
+        <img src={amirSrc}  alt={t.amirAlt}  className="v6-hero-tag v6-hero-tag--amir"  aria-hidden="true" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/keren-tag.svg" alt={t.kerenAlt} className="v6-hero-tag v6-hero-tag--keren" aria-hidden="true" />
+        <img src={kerenSrc} alt={t.kerenAlt} className="v6-hero-tag v6-hero-tag--keren" aria-hidden="true" />
       </div>
     </section>
   )

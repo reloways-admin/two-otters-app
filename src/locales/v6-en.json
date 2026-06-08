@@ -13,137 +13,162 @@
     "closeMenu": "Close menu"
   },
   "hero": {
-    "titleLine1": "The shortest path",
-    "titleBold": "from idea",
-    "titleUnderline": "to product",
-    "desc": "We start with a clickable prototype you can feel and change.",
-    "descStrong": "Only when it's right — we move to design and development",
+    "titleLine1": "From idea to product",
+    "titleBold": "in",
+    "titleUnderline": "NO TIME",
+    "desc": "moving forward to design and development",
+    "descStrong": "Only when it’s closest to perfect",
     "imgAlt": "From idea to product — illustration",
     "amirAlt": "Amir",
     "kerenAlt": "Keren"
   },
+  "work": {
+    "heading": "Projects we’ve built together",
+    "sub": "Strategy and design, hand in hand. Here’s what that looks like in the wild.",
+    "projects": [
+      {
+        "title": "FinCat",
+        "tagline": "A FinTech brand, rebuilt from strategy to launch.",
+        "tags": "Brand · UX/UI · Marketing system",
+        "href": "/work/fincat",
+        "color": "yellow",
+        "coverLabel": "FinCat",
+        "image": "/fincat/cover.jpg"
+      },
+      {
+        "title": "More work, on the way",
+        "tagline": "We’re lining up the next cases to share.",
+        "tags": "Coming soon",
+        "href": "",
+        "color": "soft",
+        "coverLabel": "",
+        "image": ""
+      }
+    ]
+  },
   "gas": {
-    "title1": "Full throttle,",
-    "title2Bold": "but going",
-    "titleUnderline": "nowhere",
-    "sub1": "Our method shortens the path",
-    "sub1Strong": "from idea to a working prototype",
-    "sub2": "and gets you to a precise product faster.",
+    "title1": "spinning your wheels",
+    "title2Bold": "",
+    "titleUnderline": "STOP",
+    "sub1": "Our method cuts the path from idea to working prototype.",
+    "sub1Strong": "faster.",
+    "sub2": "You land on the right product,",
     "cards": [
       {
-        "title": "We're not an AI studio",
-        "body": "Yes, we use AI tools. But anyone can run a prompt. Not everyone knows how to ask the right questions. How to combine. How to cook. That's where we come in."
+        "title": "We’re not an AI studio. We just use it really well.",
+        "body": "Sure, we use AI. But anyone can run a prompt. The real skill is asking the right questions, giving the right inputs, and turning output into something worth shipping. That part – that’s us."
       },
       {
-        "title": "Forget months of exhausting spec work",
-        "body": "You get a working prototype in just a few weeks, so you can \"feel\" your product in use before committing to design and development."
+        "title": "Working prototype in weeks, not months.",
+        "body": "You get a working prototype in a handful of weeks – so you can feel your product before design and development even begin."
       },
       {
-        "title": "We translate vision into a working product",
-        "body": "That's our superpower. We come prepared with questions, references, and answers — helping you translate what you imagined into something real."
+        "title": "We turn vision into a working product",
+        "body": "That’s our superpower. We come prepared with questions, references, and sharp thinking, and help you translate what you imagined into something that actually works."
       },
       {
-        "title": "Nothing less than pixel perfect",
-        "body": "Approved prototype. Organized documentation. Solid architecture. Everything clear and pixel-precise, so you can take the prototype to the next stage."
+        "title": "Nothing less than pixel perfect.",
+        "body": "Approved prototype. Clean docs. Solid architecture. Pixel-precise and ready for the next stage."
       }
     ]
   },
   "spiral": {
-    "title1": "Meet",
-    "titleBold": "The Spiral Method",
-    "sub": "Forget linear processes. We work in parallel, in full sync, and refine as we move.",
+    "title1": "Spirals beat straight lines.",
+    "titleBold": "",
+    "sub": "That is why our special method called ",
+    "subBold": "“The Spiral”",
     "cards": [
       {
         "num": "1",
-        "title": "Strategy Phase",
-        "subtitle": "The starting point",
-        "body": "We start with a deep understanding of the product, market, and goals — then translate everything into a sharp brief we run with.",
+        "title": "Phase 01 | ",
+        "subtitle": "Strategy",
+        "body": "We dig deep into the product, market, and goals – and turn it all into a sharp brief we can run with.",
         "illusAlt": "horse illustration"
       },
       {
         "num": "2",
-        "title": "UX Spec Phase",
-        "subtitle": "Strategic UX design",
-        "body": "We start with a deep understanding of the product, market, and goals — then translate everything into a sharp brief we run with.",
+        "title": "Phase 02 | ",
+        "subtitle": "Strategic UX Discovery",
+        "body": "We turn the brief into a blueprint with messages, functionality and flows. Everything defined before we start building.",
         "illusAlt": "UX notes illustration"
       },
       {
         "num": "3",
-        "title": "Prototype Phase",
-        "subtitle": "Working at record speed",
-        "body": "This is where we stop imagining and start seeing. You get a working prototype you can click, feel, and give concrete feedback on.",
+        "title": "Phase 03 | ",
+        "subtitle": "Prototype",
+        "body": "Stop imagining. Start seeing. A working prototype you can click, feel, and give concrete feedback on. Finally, something tangible to react to.",
         "illusAlt": "prototype illustration"
       },
       {
         "num": "4",
-        "title": "Prototype Phase",
-        "subtitle": "Working at record speed",
-        "body": "This is where we stop imagining and start seeing. You get a working prototype you can click, feel, and give concrete feedback on.",
+        "title": "Phase 04 | ",
+        "subtitle": "Hand-Off",
+        "body": "Approved prototype, full documentation, and clear guidelines – so anyone who touches your brand from here on knows exactly what to do.",
         "illusAlt": "spaceship illustration"
       }
     ],
-    "moreTitle": "Don't stop at the spec...",
-    "moreSub": "Here's how we take you all the way until your product is live and kicking",
+    "moreTitle": "Don’t stop halfway",
+    "moreSub": "We keep on going until it’s alive, kicking, and in the wild.",
     "steps": [
       {
         "num": "7",
-        "title": "Design Phase",
+        "title": "Design",
         "subtitle": "Dressing your product",
-        "body": "The exciting design stage, where we translate your messages and personality into a visual language that highlights your brand in every pixel."
+        "body": "Now everything becomes visible. Strategy becomes color. Voice becomes type. Copy becomes layout."
       },
       {
         "num": "5",
-        "title": "Brand Voice Phase",
-        "subtitle": "Your brand's unique voice",
-        "body": "We give your business character, tone of voice, and writing guidelines — so your audience doesn't just recognize you, they feel like they know you."
+        "title": "Brand’s voice",
+        "subtitle": "Give your uniqueness a voice",
+        "body": "Character. Tone. A writing playbook that makes every word unmistakably yours. So people don’t just recognize you... they trust you. (Which is rarer than it sounds.)"
       },
       {
         "num": "8",
-        "title": "Development Phase",
-        "subtitle": "With you until you're live",
-        "body": "After all the hard work, it's time to make sure the design and UX are properly implemented — until what goes live looks exactly like what we planned."
+        "title": "Development",
+        "subtitle": "Right beside you all the way to launch",
+        "body": "After all the hard work, we make sure nothing gets lost between the design file and the live site. What ships matches what we promised. Pixel for pixel."
       },
       {
         "num": "6",
-        "title": "Content Writing Phase",
-        "subtitle": "The words that drive your product",
-        "body": "We write the content for your site, platform, or app with your brand's precise tone. The language aligns with your strategy and design."
+        "title": "Copy, & Micro-Copy",
+        "subtitle": "Words that drive your product",
+        "body": "From the welcome screen to check-out, and everything in between. Every word, in your voice. Strategy, design and language are finally aligned."
       }
     ]
   },
   "offer": {
-    "heading": "So... what would you like us to build together?",
+    "heading": "So... what are you in the mood for?",
     "cards": [
       {
         "anchorLabel": "Idea to Product",
-        "title": "From idea to product\nat lightning speed",
-        "subtitle": "Start and finish in a sprint",
+        "title": "From idea to product",
+        "subtitle": "Start and finish in one sprint",
         "timing": "Up to 6 weeks",
-        "desc": "We start from strategy. Move to spec. Arrive at a working prototype you can click, feel, and change. You leave with everything approved, documented, and ready for the next stage.",
+        "desc": "We start with strategy. Move to discovery. Land on a working prototype you can click, feel, and change. You leave with everything approved, documented, and ready for what’s next.",
         "imageAlt": "From idea to product — illustration",
         "tags": ["Strategy", "UX", "UI Design", "Consulting", "AI Process Integration"]
       },
       {
         "anchorLabel": "Site Upgrade",
-        "title": "Upgrade your\nexisting site",
+        "title": "Upgrade your existing site",
         "timing": "4–6 months",
-        "desc": "Your old site no longer represents you. It's time to take it several levels up — to match your business goals, strengthen your reputation, and support your growth.\n\nAnd if you want to leave the competition in the dust... that's what we do best :)",
+        "desc": "Your current site is out dated and dosen’t deliver. Time to take it up several levels so it could meet your business goals, build momentum, and support your growth. And if you want to leave the competition in the dust... that’s what we’re best at :)",
         "imageAlt": "Upgrade your existing site — illustration",
         "tags": ["AI Process Integration", "Consulting", "UI Design", "UX", "Strategy"]
       },
       {
         "anchorLabel": "Marketing Infrastructure",
-        "title": "Marketing infrastructure\nevery business needs",
+        "title": "Smart marketing infrastructure",
         "timing": "1–2 months to set up",
-        "desc": "You can work hard, or you can work smart 😜\n\nWe build customer journeys, automations, and dashboards that replace manual work.\n\nSo you can finally see what's working and reap the rewards...",
+        "desc": "You could work hard. We prefer to work smart 😅 We build customer journeys, automations, and dashboards that replace manual work. So you can finally see what’s working. (And, obviously, reap the rewards)",
         "imageAlt": "Marketing infrastructure — illustration",
         "tags": ["AI Process Integration", "Consulting", "UI Design", "UX", "Strategy"]
       },
       {
         "anchorLabel": "New Brand Site",
-        "title": "A site for your\nbrand new brand",
+        "title": "A new site\nfor a NEW brand",
         "timing": "4–6 months",
-        "desc": "Your brand needs a site that makes you memorable and drives action...\nWe love this challenge! We build your site from strategy down to the last pixel — fast, precise, ready to launch.\n\nIf you're going to have a site, have it with the Otters.\nBecause first impressions don't come twice :)",
+        "desc": "Your brand needs a site that makes you memorable and drives action... We loved the challenge! We build it from strategy to the last pixel - fast, precise, and ready to launch.\n\nThe Otters are here to help you create the perfect first impression for your brand.",
         "imageAlt": "New brand site — illustration",
         "tags": ["AI Process Integration", "Consulting", "UI Design", "UX", "Strategy"]
       }
@@ -151,54 +176,54 @@
   },
   "who": {
     "marqueeText": "Which otter are you?",
-    "title": "If this sounds like you,\nwe'll probably work great together",
-    "yesAlt": "It's a match",
-    "noAlt": "Swipe left — not a match",
+    "title": "Either we click,\nor we don’t.",
+    "yesAlt": "It’s a match!",
+    "noAlt": "Swipe left :(",
     "yesList": [
-      "You have an idea and are looking for someone to bring it to life",
-      "You understand that your feedback and guidance are part of the success",
-      "You see strategy as an inseparable part of the product",
-      "You want a positive experience with the people you work with",
-      "You've defined a clear budget for a premium process"
+      "You need someone to bring your idea to life",
+      "You want to give feedback and be part of the process",
+      "You understand that strategy is inseparable from the product",
+      "You’ve set a clear budget for a premium process",
+      "You want to enjoy working with the studio you chose"
     ],
     "noList": [
-      "You're looking for an execution vendor only — no thinking involved",
-      "You want \"set it and forget it\" and have no time to be involved",
-      "Honestly, you haven't really thought about what you want",
-      "A generic template design is fine by you",
-      "\"Budget? We haven't thought about that...\""
+      "You want hands, not minds",
+      "‘Set it and forget it’ - and no time to be involved",
+      "Honestly, you haven’t thought about what you actually want",
+      "Generic template design is ‘good enough’ for you",
+      "‘Budget? We haven’t really thought about that...’"
     ],
-    "personasTitle": "When do people reach out?",
+    "personasTitle": "If any of this is you...",
     "personas": [
       {
-        "title": "You want to see it,\nbefore you commit",
-        "desc": "Our process is fast and you get a working prototype that's easy to change."
+        "title": "You’re trying to keep up. But it’s a lot.",
+        "desc": "We help you cut through the noise. So you know what to bet on, not just what’s trending."
       },
       {
-        "title": "You want one vendor\nwho takes full responsibility",
-        "desc": "We deliver the full experience from idea to launch. No need to manage 10 people."
+        "title": "You’ve been burned before.",
+        "desc": "We deliver what we promise. You’ll love the result. That’s the work."
       },
       {
-        "title": "Your dream is a process\nthat doesn't take a year",
-        "desc": "Our stages and processes are months shorter than what's standard. That doesn't come at the cost of quality..."
+        "title": "You don’t have an entire year.",
+        "desc": "We move months faster than the industry. Better quality. Less time."
       },
       {
-        "title": "You're tired of\namateurs and charlatans",
-        "desc": "Guaranteed — you'll get exactly what you paid for and you'll love the result. That's our expertise."
+        "title": "You’re done playing project manager.",
+        "desc": "We handle it end-to-end. Strategy, design, copy, dev. One team. One number to call."
       },
       {
-        "title": "You want to stay relevant,\nbut aren't sure how...",
-        "desc": "Among all the trends and technologies, we'll help you understand what fits best so you stay relevant."
+        "title": "You want to see it work before you commit",
+        "desc": "Discovery moves fast. You walk away with a working prototype you can touch, test, and change"
       }
     ]
   },
   "about": {
-    "greeting": "Hey!",
-    "title": "We're Amir and Keren.",
-    "body1": "We met somewhere in high school and over the years the current took us to many places, but like true otters (who hold hands) — we always stayed together.",
-    "body2": "You're probably here because you have an idea, and you want to see it real and fast. That's the innovation behind our Spiral Method — we take ideas and turn them into products, quickly and precisely.",
-    "body3": "Simply put, we launch exactly what you had in mind.",
-    "body3Bold": "Just faster than you expected.",
+    "greeting": "Hola!",
+    "title": "Amir & Keren here...",
+    "body1": "We are besties since high school and business partners for several years. During the years the current took us to a lot of different places. But like real otters ... we held on.",
+    "body2": "That’s enough about us. You are probably here because you have an idea you want to bring to life. The good news is that the our Spiral Method is built for it. Turning ideas into working products with precision, no drift.",
+    "body3": "We translate your idea into a website, a platform or an app. Just faster than you expected.",
+    "body3Bold": "",
     "amirBubbleAlt": "Amir Shalev — UX & UI Expert",
     "kerenBubbleAlt": "Keren Reitler — Strategy, Storytelling & Brand Voice Expert",
     "amirPhotoAlt": "Amir Shalev",
@@ -240,37 +265,37 @@
     ]
   },
   "faq": {
-    "heading": "This is probably what's on your mind",
+    "heading": "If it crossed your mind, we have an answer",
     "items": [
       {
-        "q": "How long does the process take?",
-        "a": "Every project is unique and has its own complexity.\nThat said, we typically reach a working prototype within just a few weeks.\nA full product build including strategic spec, design, and content writing takes 3–4 months.\n\nFor any timeline estimate, we'll align on clear expectations right at the start of the project."
+        "q": "How long does it take?",
+        "a": "You get a working prototype in 3-4 weeks. The full process - strategic spec plus design - runs one to three months, depending on scope."
       },
       {
-        "q": "What's the final deliverable I'll receive?",
-        "a": "At the end of the spec process, our clients receive an interactive prototype you can click and feel, a strategic spec document, design files, and clear guidelines that let you move forward independently (or continue the project with us)."
+        "q": "What’s the final deliverable?",
+        "a": "An interactive prototype you can click and feel. A strategic spec document, design files, and clear guidelines - so you can keep going on your own."
       },
       {
-        "q": "I've already done a spec process — what's unique about your work?",
-        "a": "Our methodology is unique and doesn't exist at other studios (as far as we know).\nOur entire process is built on certainty for our clients. It's important to us that you see the product's user experience before committing to development (which is the expensive and lengthy part).\n\nInstead of a PDF that gets shelved or a Figma link, you get a working prototype you can click and understand the user experience.\nFor the first time, in just a few weeks you can experience the product and refine it quickly."
+        "q": "I’ve been through a spec process before. Why would this be different?",
+        "a": "Because this time, you see it before you commit. Forget the PDF that gets archived - you get a working prototype you can touch and respond to in real time."
       },
       {
-        "q": "What's the difference between a prototype and a finished product?",
-        "a": "A prototype is an interactive model that simulates the user experience.\nIt's not final code and doesn't include the precise visual design.\nBut it lets you feel, test, and refine your product before investing in development."
+        "q": "What’s the difference between a prototype and a finished product?",
+        "a": "A prototype is an interactive model that simulates the real user experience. It’s not final code - but it lets you feel, test, and refine before you invest in development."
       },
       {
-        "q": "How much does it cost to work together?",
-        "a": "Every project is priced according to its size and complexity.\nWe'd love to talk and understand what you're building, then tailor a precise proposal."
+        "q": "How much does it cost?",
+        "a": "Every project is priced by size and complexity. We’d love to hear what you’re building - and from there, we tailor a precise quote."
       },
       {
-        "q": "What happens after we get the prototype?",
-        "a": "You move on to development with all the files and reports. You're not dependent on us — but we're here if you need guidance in the design and development stage too."
+        "q": "What happens after I have the prototype?",
+        "a": "You move into development with all the files and documentation. You’re not locked in - but we’re around if you want us with you through design and dev too."
       }
     ]
   },
   "contact": {
-    "title": "Got a vision? Great.",
-    "sub": "Tell us a bit about what you're building and we'll get back to you within 48 hours.",
+    "title": "Got a vision?",
+    "sub": "Tell us more and we’ll get back to you in two business days",
     "namePlaceholder": "Full name",
     "emailPlaceholder": "Email",
     "companyPlaceholder": "Company / project name",
@@ -301,5 +326,68 @@
       { "label": "FAQ", "href": "#faq" }
     ],
     "copyright": "© 2026 Two Otters Studio. All rights reserved."
+  },
+  "caseFincat": {
+    "brand": "the two otters",
+    "back": "← All work",
+    "eyebrow": "Case study · FinTech",
+    "titleA": "FinCat, rebuilt from ",
+    "titleHi": "strategy to launch",
+    "lede": "A financial-comparison brand reimagined — a new brand foundation, a full UX/UI system, and a marketing engine that runs itself. Strategy and design didn’t hand off; they ran in parallel, each one sharpening the other.",
+    "clientL": "Client", "client": "FinCat",
+    "industryL": "Industry", "industry": "FinTech",
+    "roleL": "Our role", "role": "Strategy · Brand · UX/UI · Marketing system",
+    "timelineL": "Timeline", "timeline": "A few focused weeks",
+    "viewLive": "View live project →",
+    "coverAlt": "FinCat homepage — the live product",
+    "glanceKicker": "At a glance",
+    "glanceTitle": "An established brand that needed to feel new.",
+    "glanceBody": "FinCat helps people find the right financial service providers, with verified ratings. The product worked — but the brand and the site no longer matched the business, and there was no marketing engine behind it. We rebuilt all three at once.",
+    "chips": ["Full rebrand", "10+ content pages", "Custom icon set", "Personas & funnels", "Marketing automations", "Brand story & voice"],
+    "challengeKicker": "The challenge",
+    "challengeTitle": "Two hard constraints, one moving target.",
+    "challengeBody": "We had to lift an existing visual language — keeping the cat mascot and the black, yellow and white palette people already recognized — while designing the entire site before its custom illustrations existed. And we had to do it for more than one audience at the same time, without losing the thread of a single, coherent brand.",
+    "approachKicker": "The approach",
+    "approachTitle": "The Spiral, not the relay race.",
+    "approachBody": "Most studios run strategy, then design, then marketing — each one waiting on the last. We work in a spiral: the tracks move together and refine as they go, so a decision in one immediately sharpens the other. On FinCat that wasn’t a slogan — it’s literally how the work got made.",
+    "workedKicker": "How we worked",
+    "workedTitle": "Two otters, one loop.",
+    "workedBody": "Strategy and design weren’t separate deliverables — they fed each other, step by step. Here’s the back-and-forth that built FinCat.",
+    "trackAmir": "Amir · Design & UX",
+    "trackKeren": "Keren · Strategy & brand",
+    "loops": [
+      { "first": "keren",
+        "keren": "Built FinCat a brand foundation from scratch — values, vision, brand story and a shared terminology — even though the brand already existed.",
+        "amir": "Turned that terminology into the product itself: UI labels, microcopy and a visual language that says the same thing the brand does." },
+      { "first": "amir",
+        "amir": "Designed a clickable prototype of the whole site — every page, before a single illustration existed.",
+        "keren": "Used those real screens to pressure-test funnel messaging and CTAs, so the words were proven before development began." },
+      { "first": "keren",
+        "keren": "Mapped the audiences into personas and segments, each with its own funnel and intent.",
+        "amir": "Shaped onboarding and flows around those personas, so each visitor meets the screen built for them." },
+      { "first": "amir",
+        "amir": "Built a tailor-made icon set and component system for the site.",
+        "keren": "Carried it straight into landing pages, email sequences and paid assets — one brand language, everywhere." }
+    ],
+    "loopNote": "Neither track could have produced this result on its own.",
+    "showcaseKicker": "The work",
+    "showcaseTitle": "Brand, product and engine — in one voice.",
+    "shots": ["Brand mascot & character system", "Tailor-made icon set", "Onboarding & registration flow", "Community & marketplace", "Landing pages", "Full site — 10+ pages, login & profiles"],
+    "resultsKicker": "What changed",
+    "resultsTitle": "A brand that finally matches the business.",
+    "results": [
+      { "b": "One coherent brand", "p": "From values to UI labels to ad copy — the same voice everywhere, built on a foundation that didn’t exist before." },
+      { "b": "A site, proven before build", "p": "A clickable prototype let messaging and flows get tested on real screens, so development started from certainty." },
+      { "b": "A marketing engine that runs itself", "p": "Modular funnels and automations turn one click into a pre-planned set of actions across every platform." }
+    ],
+    "quote": "“Add a sentence from the FinCat client here.”",
+    "quoteCite": "— Client name, role · FinCat",
+    "deliverKicker": "What we delivered",
+    "deliverTitle": "Everything, end to end.",
+    "deliverables": ["Brand foundation: values, vision & story", "Brand terminology & tone of voice", "UX strategy & site architecture", "Full UX/UI design — 10+ pages", "Tailor-made icon & component system", "Clickable prototype", "Personas & audience segmentation", "Multi-platform content strategy", "Marketing funnels & automations", "Landing pages & email sequences"],
+    "finalTitle": "Got a project like this?",
+    "finalSub": "Strategy and design, in parallel. From idea to product — just faster.",
+    "finalCta": "Let’s talk",
+    "finalGhost": "See more work →"
   }
 }

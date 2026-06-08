@@ -6,7 +6,9 @@ import en from '@/locales/v6-en.json'
 type WhoT = typeof en.who
 
 const EYES = ['/eyes-v01.png']
-const PERSONA_ICONS = ['/mobile.svg', '/a-to-b.svg', '/lightning.svg', '/stamp.svg', '/target.svg']
+// Icon order follows each locale's persona order (English LTR is the reverse of Hebrew RTL)
+const PERSONA_ICONS_HE = ['/mobile.svg', '/a-to-b.svg', '/lightning.svg', '/stamp.svg', '/target.svg']
+const PERSONA_ICONS_EN = ['/target.svg', '/stamp.svg', '/lightning.svg', '/a-to-b.svg', '/mobile.svg']
 
 function MarqueeUnit({ text }: { text: string }) {
   return (
@@ -21,8 +23,9 @@ function MarqueeUnit({ text }: { text: string }) {
   )
 }
 
-export default function WhoCanWorkV6({ t }: { t: WhoT }) {
+export default function WhoCanWorkV6({ t, lang = 'he' }: { t: WhoT; lang?: 'en' | 'he' }) {
   const units = Array.from({ length: 20 })
+  const personaIcons = lang === 'en' ? PERSONA_ICONS_EN : PERSONA_ICONS_HE
 
   return (
     <section className="v6-who" id="who">
@@ -38,7 +41,9 @@ export default function WhoCanWorkV6({ t }: { t: WhoT }) {
         <div className="v6-container">
           <h2 className="v6-who-title">
             {t.title.split('\n').map((line, i, arr) => (
-              <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+              <span key={i} className={lang === 'en' && i > 0 ? 'v6-who-title-light' : undefined}>
+                {line}{i < arr.length - 1 && <br />}
+              </span>
             ))}
           </h2>
 
@@ -100,7 +105,7 @@ export default function WhoCanWorkV6({ t }: { t: WhoT }) {
               <div key={i} className="v6-persona-card">
                 <div className="v6-persona-icon">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={PERSONA_ICONS[i]} alt="" className="v6-persona-icon-img" />
+                  <img src={personaIcons[i]} alt="" className="v6-persona-icon-img" />
                 </div>
                 <div className="v6-persona-title">
                   {p.title.split('\n').map((line, j, arr) => (

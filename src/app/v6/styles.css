@@ -286,6 +286,11 @@
   right: -10px;
   width: 85%;
 }
+/* English (LTR): same placement as Hebrew but anchored to the left */
+[dir="ltr"] .v6-hero-flow {
+  right: auto;
+  left: -10px;
+}
 .v6-hero-svg {
   display: block;
   width: 100%;
@@ -313,10 +318,82 @@
   top: 20%;
   animation-delay: 1.2s;
 }
+/* English (LTR): the hero illustration is mirrored, so mirror the tag
+   positions (anchor from the right) to keep Amir & Keren over the same
+   journey stages as the Hebrew version */
+[dir="ltr"] .v6-hero-tag--amir  { left: auto; right: 15.6%; }
+[dir="ltr"] .v6-hero-tag--keren { left: auto; right: 56.8%; }
 
 @keyframes v6-hero-float {
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(-8px); }
+}
+
+/* ─── Our work together ─── */
+.v6-work { padding: 88px 40px 0; }
+.v6-work-sub {
+  text-align: center;
+  font-size: 1.15rem;
+  color: var(--v6-text-mid);
+  max-width: 620px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+.v6-work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.v6-work-link { text-decoration: none; color: inherit; display: block; }
+.v6-work-card {
+  background: var(--v6-white);
+  border: 2px solid var(--v6-text);
+  border-radius: var(--v6-r-lg);
+  overflow: hidden;
+  height: 100%;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.v6-work-link:hover .v6-work-card {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 0 -6px var(--v6-purple-line);
+}
+.v6-work-cover {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.v6-work-cover-label {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+.v6-work-cover-img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.v6-work-info { padding: 24px 26px 28px; text-align: start; }
+.v6-work-title { font-size: 1.4rem; font-weight: 800; margin: 0; }
+.v6-work-tagline { font-size: 1rem; color: var(--v6-text-mid); margin: 8px 0 0; line-height: 1.5; }
+.v6-work-tags {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--v6-purple);
+}
+/* "coming soon" tile — muted, non-interactive */
+.v6-work-card--soon {
+  background: var(--v6-bg);
+  border-style: dashed;
+  border-color: var(--v6-purple-line);
+}
+.v6-work-card--soon .v6-work-title,
+.v6-work-card--soon .v6-work-tagline { color: var(--v6-text-muted); }
+.v6-work-card--soon .v6-work-tags { color: var(--v6-text-muted); }
+
+@media (max-width: 760px) {
+  .v6-work { padding: 56px 20px 0; }
+  .v6-work-grid { grid-template-columns: 1fr; max-width: 420px; }
 }
 
 /* ─── Gas in Neutral ─── */
@@ -505,6 +582,9 @@
   opacity: 0.75;
   margin: 0;
 }
+/* English phase-card title: "Phase 0X | " regular prefix + bold name on one line */
+.v6-spiral-card-title--phase { font-weight: 800; }
+.v6-spiral-card-title--phase .v6-spiral-phase-pre { font-weight: 400; }
 .v6-spiral-card-body {
   font-size: 0.95rem;
   line-height: 1.65;
@@ -605,6 +685,8 @@
 .v6-spiral-card-2 .v6-spiral-card-body {
   max-width: 58%;
 }
+/* English: keep the longer purple-card title clear of the right-side papers icon */
+[dir="ltr"] .v6-spiral-card-2 .v6-spiral-card-title { max-width: 58%; }
 /* Desktop: all illustrations are canvas-level — hide in-card versions */
 .v6-spiral-card-1 .v6-spiral-card-illus,
 .v6-spiral-card-2 .v6-spiral-card-illus,
@@ -612,6 +694,27 @@
 .v6-spiral-card-4 .v6-spiral-card-illus {
   display: none;
 }
+/* English (LTR): phase-card text is left-aligned and pushed clear of the
+   left-side illustrations (horse on card 1, screens on 3, spaceship on 4).
+   Hebrew text is right-aligned so it already clears them — RTL untouched. */
+[dir="ltr"] .v6-spiral-card-1,
+[dir="ltr"] .v6-spiral-card-1 .v6-spiral-card-num,
+[dir="ltr"] .v6-spiral-card-1 .v6-spiral-card-title,
+[dir="ltr"] .v6-spiral-card-1 .v6-spiral-card-body,
+[dir="ltr"] .v6-spiral-card-3 .v6-spiral-card-num,
+[dir="ltr"] .v6-spiral-card-3 .v6-spiral-card-title,
+[dir="ltr"] .v6-spiral-card-3 .v6-spiral-card-body,
+[dir="ltr"] .v6-spiral-card-4 .v6-spiral-card-num,
+[dir="ltr"] .v6-spiral-card-4 .v6-spiral-card-title,
+[dir="ltr"] .v6-spiral-card-4 .v6-spiral-card-body {
+  text-align: left;
+}
+[dir="ltr"] .v6-spiral-card-1 { padding-left: 34%; }
+[dir="ltr"] .v6-spiral-card-3 { padding-left: 22%; }
+[dir="ltr"] .v6-spiral-card-4 { padding-left: 14%; }
+/* English: the wrapped purple-card title makes its body taller, so drop the
+   blue card lower to stop it covering the purple card's last line */
+[dir="ltr"] .v6-spiral-card-4 { top: 31%; }
 
 /* ── "Don't stop at spec" heading ── */
 .v6-spiral-more {
@@ -679,6 +782,12 @@
   color: rgba(30,27,75,0.8);
   margin: 0;
   text-align: right;
+}
+/* English (LTR): step cards read left-aligned (number on the left) */
+[dir="ltr"] .v6-spiral-step-title,
+[dir="ltr"] .v6-spiral-step-subtitle,
+[dir="ltr"] .v6-spiral-step-body {
+  text-align: left;
 }
 
 /* ─── What We Offer ─── */
@@ -838,6 +947,12 @@
   color: #2c2549;
   margin: 0;
 }
+/* English (LTR): left-align offer card title, subtitle & description (desktop + mobile) */
+[dir="ltr"] .v6-offer-mvp-title,
+[dir="ltr"] .v6-offer-mvp-sub,
+[dir="ltr"] .v6-offer-desc {
+  text-align: left;
+}
 
 /* Illustration column — left side (second in DOM, left in RTL) */
 .v6-offer-mvp-illus-col {
@@ -966,6 +1081,17 @@
   margin: 0 0 48px;
   line-height: 1.2;
 }
+/* English: second title line is regular weight ("Either we click," bold / "or we don’t." regular) */
+.v6-who-title-light { font-weight: 400; }
+/* English: fluid match cards (fill the container, shrink with viewport) with
+   slightly tighter bullets so each stays on one line on normal desktop widths */
+[dir="ltr"] .v6-match-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  width: 100%;
+  max-width: none;
+}
+[dir="ltr"] .v6-match-card { padding-left: 28px; padding-right: 28px; }
+[dir="ltr"] .v6-match-list li { font-size: 0.9rem; }
 .v6-match-grid {
   display: grid;
   grid-template-columns: 460px 460px;
@@ -1134,6 +1260,10 @@
 }
 .v6-about-photo.amir  { background: #0061ef; border-radius: 0 20px 20px 0; }
 .v6-about-photo.keren { background: #620ee8; border-radius: 20px 0 0 20px; }
+/* English (LTR): keep the same visual order as the design/Hebrew
+   (Keren left, Amir right) so photos line up under their bubbles and the
+   base corner radii give rounded outer corners + a straight middle seam */
+[dir="ltr"] .v6-about-photos { flex-direction: row-reverse; }
 
 /* Speech bubble images — positioned to match Figma exactly */
 .v6-about-bubble {
@@ -1281,6 +1411,9 @@
   direction: rtl;
   text-align: right;
 }
+/* English (LTR): question + answer read left-aligned inside the accordion */
+[dir="ltr"] .v6-faq-q { direction: ltr; text-align: left; }
+[dir="ltr"] .v6-faq-a-inner { direction: ltr; text-align: left; }
 
 /* ─── Contact ─── */
 /* ─── Contact ─── */
@@ -1371,6 +1504,8 @@
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .v6-field::placeholder { color: rgba(0, 0, 0, 0.4); }
+/* English (LTR): form fields read left-to-right */
+[dir="ltr"] .v6-field { direction: ltr; text-align: left; }
 .v6-field:focus {
   border-color: #5b09e0;
   box-shadow: 0 0 0 3px rgba(91, 9, 224, 0.1);
@@ -1456,6 +1591,8 @@
   margin: 0 0 16px;
   text-align: right;
 }
+/* English (LTR): footer column headings align left over their columns */
+[dir="ltr"] .v6-footer-col-heading { text-align: left; }
 .v6-footer-list {
   list-style: none;
   padding: 0;
@@ -1490,6 +1627,8 @@
   line-height: 1.7;
   text-align: right;
 }
+/* English (LTR): footer tagline reads left-aligned */
+[dir="ltr"] .v6-footer-tagline { text-align: left; }
 .v6-footer-bottom {
   max-width: var(--v6-container);
   margin: 25px auto 0;
@@ -1555,6 +1694,15 @@
     direction: rtl;
   }
   .v6-spiral-card-2 .v6-spiral-card-body { max-width: none; }
+  /* English (LTR) on mobile: purple card stays left-aligned */
+  [dir="ltr"] .v6-spiral-card-2,
+  [dir="ltr"] .v6-spiral-card-2 .v6-spiral-card-num,
+  [dir="ltr"] .v6-spiral-card-2 .v6-spiral-card-title,
+  [dir="ltr"] .v6-spiral-card-2 .v6-spiral-card-subtitle,
+  [dir="ltr"] .v6-spiral-card-2 .v6-spiral-card-body {
+    text-align: left !important;
+    direction: ltr;
+  }
   .v6-spiral-steps { grid-template-columns: 1fr; max-width: 520px; }
   .v6-gas-grid     { grid-template-columns: 1fr; max-width: 520px; }
   .v6-gas-card.yellow,

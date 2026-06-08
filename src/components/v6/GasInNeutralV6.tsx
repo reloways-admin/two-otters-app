@@ -45,7 +45,24 @@ function GasCard({ title, body, color, image, imagePosition }: {
   )
 }
 
-export default function GasInNeutralV6({ t }: { t: GasT }) {
+function Swoosh() {
+  return (
+    <svg
+      className="v6-hero-swoosh"
+      width="221" height="18" viewBox="0 0 221 18"
+      fill="none" xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M214.5 8.5C179.833 5.16666 74.2 2.89994 5 8.49994"
+        stroke="#BAB4FA" strokeWidth="8" strokeLinecap="round"
+        pathLength="1"
+      />
+    </svg>
+  )
+}
+
+export default function GasInNeutralV6({ t, lang = 'he' }: { t: GasT; lang?: 'en' | 'he' }) {
   return (
     <section className="v6-gas" id="process">
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -56,34 +73,44 @@ export default function GasInNeutralV6({ t }: { t: GasT }) {
         style={{ position: 'absolute', top: '28%', left: '50%', transform: 'translateX(-50%)', height: '55vh', width: 'auto', maxWidth: 'none', opacity: 0.55 }}
       />
       <div className="v6-container" style={{ position: 'relative', zIndex: 1 }}>
-        <h2 className="v6-section-heading">
-          {t.title1}
-          <br />
-          <span className="bold">
-            {t.title2Bold}{' '}
-            <span className="v6-swoosh-word">
-              {t.titleUnderline}
-              <svg
-                className="v6-hero-swoosh"
-                width="221" height="18" viewBox="0 0 221 18"
-                fill="none" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path
-                  d="M214.5 8.5C179.833 5.16666 74.2 2.89994 5 8.49994"
-                  stroke="#BAB4FA" strokeWidth="8" strokeLinecap="round"
-                  pathLength="1"
-                />
-              </svg>
-            </span>
-            .
-          </span>
-        </h2>
-        <p className="v6-section-sub">
-          {t.sub1} <strong>{t.sub1Strong}</strong>
-          <br />
-          {t.sub2}
-        </p>
+        {lang === 'en' ? (
+          <>
+            <h2 className="v6-section-heading">
+              <span className="bold">
+                <span className="v6-swoosh-word">
+                  {t.titleUnderline}
+                  <Swoosh />
+                </span>
+              </span>{' '}
+              {t.title1}
+            </h2>
+            <p className="v6-section-sub">
+              {t.sub1}
+              <br />
+              {t.sub2} <strong>{t.sub1Strong}</strong>
+            </p>
+          </>
+        ) : (
+          <>
+            <h2 className="v6-section-heading">
+              {t.title1}
+              <br />
+              <span className="bold">
+                {t.title2Bold}{' '}
+                <span className="v6-swoosh-word">
+                  {t.titleUnderline}
+                  <Swoosh />
+                </span>
+                .
+              </span>
+            </h2>
+            <p className="v6-section-sub">
+              {t.sub1} <strong>{t.sub1Strong}</strong>
+              <br />
+              {t.sub2}
+            </p>
+          </>
+        )}
 
         <div className="v6-gas-grid">
           {t.cards.map((card, i) => (

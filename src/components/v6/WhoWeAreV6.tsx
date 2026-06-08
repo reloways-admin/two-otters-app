@@ -5,7 +5,8 @@ import en from '@/locales/v6-en.json'
 
 type AboutT = typeof en.about
 
-export default function WhoWeAreV6({ t }: { t: AboutT }) {
+export default function WhoWeAreV6({ t, lang = 'he' }: { t: AboutT; lang?: 'en' | 'he' }) {
+  const bubbleSuffix = lang === 'en' ? 'english' : 'hebrew'
   return (
     <section className="v6-about" id="about">
       <div className="v6-container">
@@ -32,11 +33,11 @@ export default function WhoWeAreV6({ t }: { t: AboutT }) {
         <div className="v6-about-photos-wrap">
 
           <div className="v6-about-bubble v6-about-bubble--amir">
-            <Image src="/bubble-amir.png" alt={t.amirBubbleAlt} fill style={{ objectFit: 'contain' }} />
+            <Image src={`/bubble-amir-${bubbleSuffix}.svg`} alt={t.amirBubbleAlt} fill style={{ objectFit: 'contain' }} />
           </div>
 
           <div className="v6-about-bubble v6-about-bubble--keren">
-            <Image src="/bubble-keren.png" alt={t.kerenBubbleAlt} fill style={{ objectFit: 'contain' }} />
+            <Image src={`/bubble-keren-${bubbleSuffix}.svg`} alt={t.kerenBubbleAlt} fill style={{ objectFit: 'contain' }} />
           </div>
 
           <div className="v6-about-photos">
