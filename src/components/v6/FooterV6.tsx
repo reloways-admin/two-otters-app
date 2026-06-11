@@ -20,7 +20,7 @@ export default function FooterV6({ t }: { t: FooterT }) {
         <div className="v6-footer-brand">
           <div className="v6-footer-brand-top">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo-white.svg" alt="Two Otters Studio" className="v6-footer-logo" />
+            <img src="/logo-2otters-white-vertical.svg" alt="Two Otters Studio" className="v6-footer-logo" />
           </div>
           <p className="v6-footer-tagline">
             {taglineLines.map((line, i) => (

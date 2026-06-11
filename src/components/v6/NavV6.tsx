@@ -34,7 +34,7 @@ export default function NavV6({ t, lang, onLangChange, hrefPrefix = '' }: Props)
           <div className="v6-nav-right">
             <a href={`${hrefPrefix}#`} className="v6-nav-logo">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-black.svg" alt="The Two Otters Studio" className="v6-nav-logo-img" />
+              <img src="/logo-2otters-black-vertical.svg" alt="The Two Otters Studio" className="v6-nav-logo-img" />
             </a>
             <button
               className="v6-nav-hamburger"
