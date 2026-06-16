@@ -1,6 +1,6 @@
 'use client'
 
-import en from '@/locales/v6-en.json'
+import en from '@/locales/v7-en.json'
 
 type WorkT = typeof en.work
 
@@ -16,41 +16,41 @@ function ProjectCard({ p }: { p: WorkT['projects'][0] }) {
   const cover = COVER_BG[p.color] ?? COVER_BG.soft
   const isLink = !!p.href
   return (
-    <div className={`v6-work-card${isLink ? '' : ' v6-work-card--soon'}`}>
+    <div className={`v7-work-card${isLink ? '' : ' v7-work-card--soon'}`}>
       <div
-        className="v6-work-cover"
+        className="v7-work-cover"
         style={p.image ? undefined : { background: cover.bg, color: cover.fg }}
       >
-        {p.by && <span className="v6-work-by">{p.by}</span>}
+        {p.by && <span className="v7-work-by">{p.by}</span>}
         {p.image ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={p.image} alt={p.title} className="v6-work-cover-img" />
+          <img src={p.image} alt={p.title} className="v7-work-cover-img" />
         ) : (
-          p.coverLabel && <span className="v6-work-cover-label">{p.coverLabel}</span>
+          p.coverLabel && <span className="v7-work-cover-label">{p.coverLabel}</span>
         )}
       </div>
-      <div className="v6-work-info">
-        <h3 className="v6-work-title">{p.title}</h3>
-        <p className="v6-work-tagline">{p.tagline}</p>
-        {p.tags && <span className="v6-work-tags">{p.tags}</span>}
+      <div className="v7-work-info">
+        <h3 className="v7-work-title">{p.title}</h3>
+        <p className="v7-work-tagline">{p.tagline}</p>
+        {p.tags && <span className="v7-work-tags">{p.tags}</span>}
       </div>
     </div>
   )
 }
 
-export default function WorkV6({ t, lang = 'he' }: { t: WorkT; lang?: 'en' | 'he' }) {
+export default function WorkV7({ t, lang = 'he' }: { t: WorkT; lang?: 'en' | 'he' }) {
   return (
-    <section className="v6-work" id="work">
-      <div className="v6-container">
-        <h2 className="v6-section-heading" style={{ marginBottom: 12 }}>
+    <section className="v7-work" id="work">
+      <div className="v7-container">
+        <h2 className="v7-section-heading" style={{ marginBottom: 12 }}>
           <span className="bold">{t.heading}</span>
         </h2>
-        <p className="v6-work-sub">{t.sub}</p>
+        <p className="v7-work-sub">{t.sub}</p>
 
-        <div className="v6-work-grid">
+        <div className="v7-work-grid">
           {t.projects.map((p, i) =>
             p.href ? (
-              <a key={i} href={`${p.href}?lang=${lang}`} className="v6-work-link" aria-label={p.title}>
+              <a key={i} href={`${p.href}?lang=${lang}`} className="v7-work-link" aria-label={p.title}>
                 <ProjectCard p={p} />
               </a>
             ) : (

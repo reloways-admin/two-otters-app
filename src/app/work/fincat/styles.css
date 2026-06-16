@@ -155,13 +155,19 @@
 .cs-shot.contain img { object-fit: contain; padding: 26px; }
 .cs-shot figcaption { margin-top: 12px; font-weight: 600; font-size: 0.92rem; color: var(--cs-mid); }
 
-/* results */
-.cs-results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
+/* results — colored outcome cards */
+.cs-results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px; }
 .cs-result {
-  background: var(--cs-white); border: 1.5px solid var(--cs-line); border-radius: 22px; padding: 28px;
+  border: 2px solid var(--cs-ink);
+  border-radius: 24px;
+  padding: 28px 26px;
 }
-.cs-result b { display: block; font-size: 1.05rem; margin-bottom: 8px; }
-.cs-result p { margin: 0; color: var(--cs-mid); line-height: 1.55; font-size: 0.95rem; }
+.cs-result-icon { display: block; font-size: 1.9rem; line-height: 1; margin-bottom: 14px; }
+.cs-result b { display: block; font-size: 1.2rem; color: var(--cs-ink); margin-bottom: 8px; }
+.cs-result p { margin: 0; color: rgba(30, 27, 75, 0.78); line-height: 1.55; font-size: 0.95rem; }
+@media (max-width: 800px) {
+  .cs-results { grid-template-columns: 1fr; }
+}
 
 /* quote */
 .cs-quote { text-align: center; padding: 76px 0; }
@@ -174,16 +180,47 @@
 .cs-deliver { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 40px; margin-top: 30px; }
 .cs-deliver li { list-style: none; padding: 12px 0; border-bottom: 1px solid var(--cs-line); font-weight: 600; }
 
-/* final CTA */
+/* final CTA — brand-purple banner with two otter mascots */
 .cs-final {
-  background: var(--cs-ink); color: #fff; border-radius: 36px; padding: 72px 48px; text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--cs-purple);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.13) 2px, transparent 2px);
+  background-size: 26px 26px;
+  border-radius: 36px;
+  padding: 76px 48px 100px;
+  text-align: center;
   margin: 0 0 80px;
 }
-.cs-final h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin: 0; }
-.cs-final p { color: rgba(255,255,255,0.7); font-size: 1.15rem; margin: 16px 0 32px; }
-.cs-final .cs-cta-link { background: var(--cs-purple); }
-.cs-final-row { display: flex; gap: 16px; justify-content: center; align-items: center; flex-wrap: wrap; }
-.cs-final-row a.ghost { color: #fff; text-decoration: none; font-weight: 600; opacity: 0.8; }
+.cs-final-inner { position: relative; z-index: 2; }
+.cs-final h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin: 0; color: #fff; }
+.cs-final p { color: rgba(255, 255, 255, 0.82); font-size: 1.15rem; margin: 16px 0 30px; }
+.cs-final-row { display: flex; gap: 18px; justify-content: center; align-items: center; flex-wrap: wrap; }
+.cs-final-btn {
+  background: #fff; color: var(--cs-purple); text-decoration: none; font-weight: 800;
+  padding: 14px 32px; border-radius: 9999px; transition: transform 0.12s;
+}
+.cs-final-btn:hover { transform: translateY(-2px); }
+.cs-final-ghost { color: #fff; text-decoration: none; font-weight: 600; opacity: 0.85; }
+.cs-final-ghost:hover { opacity: 1; }
+/* two otters peeking from the bottom corners (cropped from the match-otter to hide its bubble) */
+.cs-final-otter {
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+  width: 124px;
+  height: 150px;
+  background: url('/its-a-match.png') no-repeat;
+  background-size: 215px auto;
+  background-position: -16px bottom;
+}
+.cs-final-otter--start { inset-inline-start: 20px; }
+.cs-final-otter--end { inset-inline-end: 20px; transform: scaleX(-1); }
+@media (max-width: 640px) {
+  .cs-final { padding: 56px 22px 86px; }
+  .cs-final-otter { width: 84px; height: 108px; background-size: 150px auto; background-position: -10px bottom; }
+}
 
 /* responsive */
 @media (max-width: 860px) {

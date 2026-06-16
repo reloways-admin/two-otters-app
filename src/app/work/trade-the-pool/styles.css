@@ -1,0 +1,71 @@
+/* Trade The Pool — solo case study additions (reuses ../fincat/styles.css) */
+
+/* solo note in the hero */
+.cs-solo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0 0;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--cs-purple);
+  background: var(--cs-purple-soft);
+  border-radius: 9999px;
+  padding: 7px 16px;
+}
+
+/* placeholder cover + showcase tiles (until real screens are dropped in) */
+.cs-cover--ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 8;
+  background: linear-gradient(135deg, #5C3EEF, #A8B5FD);
+  color: #fff;
+  font-weight: 900;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  letter-spacing: 0.01em;
+}
+.cs-ph {
+  width: 100%;
+  height: 240px;
+  border-radius: 20px;
+  border: 2px solid var(--cs-ink);
+}
+
+/* solo process timeline */
+.cs-steps {
+  margin-top: 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.cs-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  background: var(--cs-white);
+  border: 2px solid var(--cs-ink);
+  border-radius: 22px;
+  padding: 22px 24px;
+}
+.cs-step-num {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--cs-purple);
+  color: #fff;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+}
+.cs-step p {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 1rem;
+  color: var(--cs-ink);
+  padding-top: 6px;
+}

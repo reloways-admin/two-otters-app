@@ -1,6 +1,6 @@
 'use client'
 
-import en from '@/locales/v6-en.json'
+import en from '@/locales/v7-en.json'
 
 type TestimonialsT = typeof en.testimonials
 
@@ -15,25 +15,25 @@ function initials(name: string): string {
     .join('')
 }
 
-export default function TestimonialsV6({ t }: { t: TestimonialsT }) {
+export default function TestimonialsV7({ t }: { t: TestimonialsT }) {
   return (
-    <section className="v6-testimonials">
-      <div className="v6-container">
-        <h2 className="v6-testimonials-title">{t.title}</h2>
-        <div className="v6-t-stars" aria-hidden="true">
+    <section className="v7-testimonials">
+      <div className="v7-container">
+        <h2 className="v7-testimonials-title">{t.title}</h2>
+        <div className="v7-t-stars" aria-hidden="true">
           {Array.from({ length: 5 }).map((_, i) => (
             <span key={i}>★</span>
           ))}
         </div>
 
-        <div className="v6-t-masonry">
+        <div className="v7-t-masonry">
           {t.items.map((item, i) => {
             const photo = (item as { photo?: string }).photo
             return (
-              <article key={i} className="v6-tcard">
-                <header className="v6-tcard-head">
+              <article key={i} className="v7-tcard">
+                <header className="v7-tcard-head">
                   <span
-                    className="v6-tcard-avatar"
+                    className="v7-tcard-avatar"
                     style={photo ? undefined : { background: AV_COLORS[i % AV_COLORS.length] }}
                   >
                     {photo ? (
@@ -43,12 +43,12 @@ export default function TestimonialsV6({ t }: { t: TestimonialsT }) {
                       initials(item.name)
                     )}
                   </span>
-                  <span className="v6-tcard-meta">
-                    <span className="v6-tcard-name">{item.name}</span>
-                    <span className="v6-tcard-role">{item.role}</span>
+                  <span className="v7-tcard-meta">
+                    <span className="v7-tcard-name">{item.name}</span>
+                    <span className="v7-tcard-role">{item.role}</span>
                   </span>
                 </header>
-                <p className="v6-tcard-quote">{item.quote}</p>
+                <p className="v7-tcard-quote">{item.quote}</p>
               </article>
             )
           })}
