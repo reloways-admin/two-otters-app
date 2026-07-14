@@ -40,7 +40,6 @@ export default function TradeThePoolCaseStudy() {
             {t.titleA}<span className="u">{t.titleHi}</span>
           </h1>
           <p className="cs-lede">{t.lede}</p>
-          <p className="cs-solo">🦦 {t.soloNote}</p>
 
           <dl className="cs-meta">
             <div><dt>{t.clientL}</dt><dd>{t.client}</dd></div>

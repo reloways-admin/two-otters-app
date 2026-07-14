@@ -21,7 +21,6 @@ function ProjectCard({ p }: { p: WorkT['projects'][0] }) {
         className="v7-work-cover"
         style={p.image ? undefined : { background: cover.bg, color: cover.fg }}
       >
-        {p.by && <span className="v7-work-by">{p.by}</span>}
         {p.image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={p.image} alt={p.title} className="v7-work-cover-img" />

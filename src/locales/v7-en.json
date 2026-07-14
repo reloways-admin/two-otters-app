@@ -73,6 +73,24 @@
         "coverLabel": "ThatPerk",
         "image": "/that-perk/cover.jpg",
         "by": "Together"
+      },
+      {
+        "title": "The5ers",
+        "tagline": "A proprietary trading fund — brand & product.",
+        "tags": "Coming soon",
+        "href": "/work/the5ers",
+        "color": "green",
+        "coverLabel": "The5ers",
+        "image": "/the5ers/cover.jpg"
+      },
+      {
+        "title": "Keren Rightler",
+        "tagline": "Coming soon.",
+        "tags": "Coming soon",
+        "href": "/work/keren-rightler",
+        "color": "purple",
+        "coverLabel": "Keren Rightler",
+        "image": "/keren-rightler/cover.jpg"
       }
     ]
   },
@@ -182,7 +200,8 @@
           "UI Design",
           "Consulting",
           "AI Process Integration"
-        ]
+        ],
+        "cta": "Let's start a sprint"
       },
       {
         "anchorLabel": "Site Upgrade",
@@ -196,7 +215,8 @@
           "UI Design",
           "UX",
           "Strategy"
-        ]
+        ],
+        "cta": "Let's upgrade your site"
       },
       {
         "anchorLabel": "Marketing Infrastructure",
@@ -210,7 +230,8 @@
           "UI Design",
           "UX",
           "Strategy"
-        ]
+        ],
+        "cta": "Let's build your infrastructure"
       },
       {
         "anchorLabel": "New Brand Site",
@@ -224,7 +245,8 @@
           "UI Design",
           "UX",
           "Strategy"
-        ]
+        ],
+        "cta": "Let's build a new site"
       }
     ]
   },
@@ -287,34 +309,38 @@
     "title": "We had a great time working together",
     "items": [
       {
-        "quote": "This is a testimonial in smaller text, to allow room for many more details and words that users can read to understand the feelings and experience.",
+        "quote": "Keren, I'll take a moment to be emotional. Thank you for guiding us through this scary journey — the move from a free initiative to a business that actually sells something. A transition that was beautiful aesthetically and worked well in terms of UX, accompanied by questions that pushed us to think and come back with sharper answers. Thank you 💙",
         "name": "First Last Name",
         "role": "Job title / role",
         "avatar": "😊"
       },
       {
-        "quote": "This is a testimonial in a larger text size — short and punchy.",
-        "name": "First Last Name",
-        "role": "Job title / role",
-        "avatar": "😊"
+        "name": "Gil Ben Hor",
+        "role": "CEO & Founder · The5ers",
+        "photo": "/testimonials/gil-ben-hor.jpg",
+        "quote": "As part of our rebranding process, we asked Keren to help us articulate our brand narrative in one coherent voice. Keren took full ownership of the project and quickly became an integral part of our internal strategy team — unlike any other third party we'd worked with.\n\nAs the project progressed, Keren continually expanded her duties and responsibilities. It reflects her attitude and dedication, with the most generous and professional approach.\n\nKeren offers a unique blend of creativity, a YES-CAN-DO attitude and an agile approach to change when needed. She adapts quickly and is exceptionally open.\n\nThese qualities make her a rare professional to work with, and in an inspiring way she leads us all the way to the conclusion of our brand story."
       },
       {
-        "quote": "This is a testimonial in smaller text, to allow room for many more details and words that users can read to understand the feelings and experience.",
-        "name": "First Last Name",
-        "role": "Job title / role",
-        "avatar": "😊"
+        "name": "Michal",
+        "role": "VP Marketing · Home Style",
+        "quote": "I look at the spec you created and I'm completely blown away! Insane work!!! Huge respect!!!"
       },
       {
-        "quote": "This is a testimonial in smaller text, to allow room for many more details and words that users can read.",
-        "name": "First Last Name",
-        "role": "Job title / role",
-        "avatar": "😊"
+        "name": "Adv. Gal Rosby Mor",
+        "role": "Attorney",
+        "quote": "Keren branded my entire firm.\n\nAfter many \"marketing people\", I finally found someone who genuinely became the marketing partner of my business.\n\nThe messaging, the precise website and the smart marketing funnels made a real difference in our reputation and in the volume of client inquiries."
       },
       {
-        "quote": "This is a testimonial in a larger text size — short and punchy.",
-        "name": "First Last Name",
-        "role": "Job title / role",
-        "avatar": "😊"
+        "name": "Keren Rightler",
+        "role": "Owner of Method Queen",
+        "quote": "I was so impressed with Amir's original approach, creativity, and manners, that I even had him work on my own brand. Even after our project was done, I still consulted with Amir—my satisfaction was clearly his priority.",
+        "photo": "/testimonials/keren-rightler.jpg"
+      },
+      {
+        "name": "Adi Nudel",
+        "role": "CEO, Financial Cat",
+        "quote": "Amir's ability to communicate ideas visually is truly remarkable. His work is both technically proficient and creatively vibrant.",
+        "photo": "/testimonials/adi-nudel.jpg"
       }
     ]
   },
@@ -515,7 +541,7 @@
   "caseTradePool": {
     "brand": "the two otters",
     "back": "← All work",
-    "eyebrow": "Case study · FinTech · Solo",
+    "eyebrow": "Case study · FinTech",
     "soloNote": "A solo project by Amir.",
     "titleA": "Trade The Pool — ",
     "titleHi": "bold, young, credible",
@@ -600,7 +626,7 @@
   "caseThatPerk": {
     "brand": "the two otters",
     "back": "← All work",
-    "eyebrow": "Case study · Mobility · Together",
+    "eyebrow": "Case study · Mobility",
     "collabNote": "A two-otters project — Amir & Keren.",
     "titleA": "ThatPerk — ",
     "titleHi": "making carpool the obvious choice",

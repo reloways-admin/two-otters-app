@@ -7,8 +7,8 @@ type WhoT = typeof en.who
 
 const EYES = ['/eyes-v01.png']
 // Icon order follows each locale's persona order (English LTR is the reverse of Hebrew RTL)
-const PERSONA_ICONS_HE = ['/mobile.svg', '/a-to-b.svg', '/lightning.svg', '/stamp.svg', '/target.svg']
-const PERSONA_ICONS_EN = ['/target.svg', '/stamp.svg', '/lightning.svg', '/a-to-b.svg', '/mobile.svg']
+const PERSONA_ICONS_HE = ['/phone-t.png', '/ab-t.png', '/light-t.png', '/stamp-t.png', '/target-t.png']
+const PERSONA_ICONS_EN = ['/target-t.png', '/stamp-t.png', '/light-t.png', '/ab-t.png', '/phone-t.png']
 
 function MarqueeUnit({ text }: { text: string }) {
   return (

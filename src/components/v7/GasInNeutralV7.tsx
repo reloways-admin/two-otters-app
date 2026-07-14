@@ -7,9 +7,9 @@ import en from '@/locales/v7-en.json'
 type GasT = typeof en.gas
 
 const CARD_META = [
-  { color: 'yellow', image: '/ai-card.svg', imagePosition: 'bottom center' },
-  { color: 'blue',   image: '/card-prototype-1.svg',        imagePosition: 'bottom center' },
-  { color: 'purple', image: '/light-hands.png',              imagePosition: 'bottom center' },
+  { color: 'yellow', image: '/not-an-ai-studio-sketch.png', imagePosition: 'center center' },
+  { color: 'blue',   image: '/forget-sketch.png',           imagePosition: 'bottom center' },
+  { color: 'purple', image: '/hands.svg',                    imagePosition: 'bottom 65%' },
   { color: 'green',  image: '/tetris-sketch.png',           imagePosition: 'bottom center' },
 ]
 
@@ -23,7 +23,7 @@ const BG: Record<string, string> = {
 function GasCard({ title, body, color, image, imagePosition }: {
   title: string; body: string; color: string; image: string; imagePosition: string
 }) {
-  const { ref, style: squircleStyle } = useSquircle(24, 0.6)
+  const { ref, style: squircleStyle } = useSquircle(64, 0.6)
 
   return (
     <div

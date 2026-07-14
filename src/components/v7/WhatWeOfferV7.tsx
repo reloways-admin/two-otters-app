@@ -23,6 +23,8 @@ function WideOfferCard({ card, meta, isRTL }: {
   return (
     <div id={meta.id} className="v7-offer-mvp-wrap" style={{ paddingTop: meta.wrapPaddingTop }}>
       <div className="v7-offer-card v7-offer-card--mvp">
+        {/* Timing badge — pinned to the card's top corner (start side) */}
+        <span className="v7-offer-timing v7-offer-timing--mvp">{card.timing}</span>
         <div className="v7-offer-mvp-row">
 
           {/* Text column — first in DOM = right in RTL */}
@@ -35,12 +37,17 @@ function WideOfferCard({ card, meta, isRTL }: {
             {'subtitle' in card && card.subtitle && (
               <p className="v7-offer-mvp-sub">{card.subtitle}</p>
             )}
-            <span className="v7-offer-timing v7-offer-timing--mvp">{card.timing}</span>
             <div className="v7-offer-desc">
               {descParts.map((part, i) => (
                 <p key={i} style={{ margin: i > 0 ? '8px 0 0' : 0 }}>{part}</p>
               ))}
             </div>
+            <a href="#contact" className="v7-offer-mvp-cta">
+              {card.cta}
+              <svg className="v7-offer-mvp-cta-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
           </div>
 
           {/* Illustration column — second in DOM = left in RTL */}

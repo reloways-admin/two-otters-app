@@ -48,7 +48,9 @@ export default function TestimonialsV7({ t }: { t: TestimonialsT }) {
                     <span className="v7-tcard-role">{item.role}</span>
                   </span>
                 </header>
-                <p className="v7-tcard-quote">{item.quote}</p>
+                {item.quote.split('\n\n').map((para, j) => (
+                  <p key={j} className="v7-tcard-quote">{para}</p>
+                ))}
               </article>
             )
           })}
