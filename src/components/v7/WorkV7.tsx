@@ -30,6 +30,7 @@ function ProjectCard({ p }: { p: WorkT['projects'][0] }) {
       </div>
       <div className="v7-work-info">
         <h3 className="v7-work-title">{p.title}</h3>
+        {p.subtitle && <p className="v7-work-subtitle">{p.subtitle}</p>}
         <p className="v7-work-tagline">{p.tagline}</p>
         {p.tags && <span className="v7-work-tags">{p.tags}</span>}
       </div>

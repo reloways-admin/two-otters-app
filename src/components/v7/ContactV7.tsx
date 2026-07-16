@@ -9,16 +9,40 @@ export default function ContactV7({ t }: { t: ContactT }) {
   const [form, setForm] = useState({
     name: '', email: '', phone: '', company: '', role: '', message: '',
   })
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    window.location.href = `mailto:hello@twootters.studio?subject=${t.emailSubjectPrefix} ${form.name}&body=${encodeURIComponent(
-      `${t.emailLabels.name}: ${form.name}\n${t.emailLabels.email}: ${form.email}\n${t.emailLabels.phone}: ${form.phone}\n${t.emailLabels.company}: ${form.company}\n${t.emailLabels.role}: ${form.role}\n\n${form.message}`
-    )}`
+    setStatus('sending')
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          subject: `${t.emailSubjectPrefix} ${form.name}`,
+          from_name: form.name,
+          // Sender's email — Web3Forms sets this as the reply-to so you can reply directly.
+          email: form.email,
+          [t.emailLabels.name]: form.name,
+          [t.emailLabels.email]: form.email,
+          [t.emailLabels.phone]: form.phone,
+          [t.emailLabels.company]: form.company,
+          [t.emailLabels.role]: form.role,
+          message: form.message,
+        }),
+      })
+      if (!res.ok) throw new Error(`Web3Forms responded ${res.status}`)
+      setStatus('success')
+      setForm({ name: '', email: '', phone: '', company: '', role: '', message: '' })
+    } catch (err) {
+      console.error('Contact form submit failed:', err)
+      setStatus('error')
+    }
   }
 
   return (
@@ -52,7 +76,15 @@ export default function ContactV7({ t }: { t: ContactT }) {
             onChange={handleChange}
             required
           />
-          <button type="submit" className="v7-contact-btn">{t.submitBtn}</button>
+          <button type="submit" className="v7-contact-btn" disabled={status === 'sending'}>
+            {status === 'sending' ? t.sendingBtn : t.submitBtn}
+          </button>
+          {status === 'success' && (
+            <p className="v7-contact-status v7-contact-status--success" role="status">{t.successMsg}</p>
+          )}
+          {status === 'error' && (
+            <p className="v7-contact-status v7-contact-status--error" role="alert">{t.errorMsg}</p>
+          )}
         </form>
 
         <div className="v7-contact-trust">

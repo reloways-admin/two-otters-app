@@ -351,13 +351,16 @@
 .v7-work-grid > * {
   width: calc((100% - 48px) / 3);
 }
-.v7-work-link { text-decoration: none; color: inherit; display: block; }
+.v7-work-link { text-decoration: none; color: inherit; display: flex; }
 .v7-work-card {
   background: var(--v7-white);
   border: 2px solid var(--v7-text);
   border-radius: var(--v7-r-lg);
   overflow: hidden;
   height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 .v7-work-link:hover .v7-work-card {
@@ -366,6 +369,7 @@
 }
 .v7-work-cover {
   aspect-ratio: 16 / 9;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -375,7 +379,7 @@
   font-weight: 900;
   letter-spacing: -0.01em;
 }
-.v7-work-cover-img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.v7-work-cover-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
 .v7-work-cover { position: relative; }
 .v7-work-by {
   position: absolute;
@@ -389,16 +393,26 @@
   padding: 5px 12px;
   border-radius: var(--v7-r-full);
 }
-.v7-work-info { padding: 24px 26px 28px; text-align: start; }
+.v7-work-info {
+  padding: 24px 26px 28px;
+  text-align: start;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 .v7-work-title { font-size: 1.4rem; font-weight: 800; margin: 0; }
+.v7-work-subtitle { font-size: 1rem; font-weight: 700; color: var(--v7-text-mid); margin: 2px 0 0; }
 .v7-work-tagline { font-size: 1rem; color: var(--v7-text-mid); margin: 8px 0 0; line-height: 1.5; }
 .v7-work-tags {
   display: inline-block;
-  margin-top: 14px;
+  margin-top: 18px;
+  padding-top: 14px;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--v7-purple);
 }
+/* pin the labels to the bottom so they line up across cards in a row */
+.v7-work-info .v7-work-tags { margin-top: auto; }
 /* "coming soon" tile — muted, non-interactive */
 .v7-work-card--soon {
   background: var(--v7-bg);
@@ -481,6 +495,7 @@
   font-size: 16px;
   line-height: 1.6;
   color: rgba(30,27,75,0.75);
+  white-space: pre-line;
 }
 .v7-gas-card.green .v7-gas-card-body,
 .v7-gas-card.purple .v7-gas-card-body { color: rgba(255,255,255,0.88); }
@@ -1632,6 +1647,19 @@
   background: #4a07c0;
   transform: translateY(-1px);
 }
+.v7-contact-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+.v7-contact-status {
+  margin-top: 4px;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  text-align: center;
+}
+.v7-contact-status--success { color: #16a34a; }
+.v7-contact-status--error { color: #dc2626; }
 /* Trust items — on dark bg → white text, plain ✓ */
 .v7-contact-trust {
   display: flex;

@@ -36,13 +36,13 @@
     "titleUnderline": "NO TIME",
     "desc": "moving forward to design and development",
     "descStrong": "Only when it’s closest to perfect",
-    "imgAlt": "From idea to product — illustration",
+    "imgAlt": "From idea to product - illustration",
     "amirAlt": "Amir",
     "kerenAlt": "Keren"
   },
   "work": {
     "heading": "Work we’re proud of",
-    "sub": "Strategy and design — some together, some solo. Here’s a taste.",
+    "sub": "Strategy and design - some together, some solo. Here’s a taste.",
     "projects": [
       {
         "title": "FinCat",
@@ -56,7 +56,7 @@
       },
       {
         "title": "Trade The Pool",
-        "tagline": "A bold, young FinTech brand — built fast.",
+        "tagline": "A bold, young FinTech brand - built fast.",
         "tags": "Design system · Art direction · Web",
         "href": "/work/trade-the-pool",
         "color": "purple",
@@ -76,7 +76,7 @@
       },
       {
         "title": "The5ers",
-        "tagline": "A proprietary trading fund — brand & product.",
+        "tagline": "A proprietary trading fund - brand & product.",
         "tags": "Coming soon",
         "href": "/work/the5ers",
         "color": "green",
@@ -104,11 +104,11 @@
     "cards": [
       {
         "title": "We’re not an AI studio. We just use it really well.",
-        "body": "Sure, we use AI. But anyone can run a prompt. The real skill is asking the right questions, giving the right inputs, and turning output into something worth shipping. That part – that’s us."
+        "body": "Sure, we use AI. But anyone can run a prompt. The real skill is asking the right questions, giving the right inputs, and turning output into something worth shipping. That part - that’s us."
       },
       {
         "title": "Working prototype in weeks, not months.",
-        "body": "You get a working prototype in a handful of weeks – so you can feel your product before design and development even begin."
+        "body": "You get a working prototype in a handful of weeks - so you can feel your product before design and development even begin."
       },
       {
         "title": "We turn vision into a working product",
@@ -130,7 +130,7 @@
         "num": "1",
         "title": "Phase 01 | ",
         "subtitle": "Strategy",
-        "body": "We dig deep into the product, market, and goals – and turn it all into a sharp brief we can run with.",
+        "body": "We dig deep into the product, market, and goals - and turn it all into a sharp brief we can run with.",
         "illusAlt": "horse illustration"
       },
       {
@@ -151,7 +151,7 @@
         "num": "4",
         "title": "Phase 04 | ",
         "subtitle": "Hand-Off",
-        "body": "Approved prototype, full documentation, and clear guidelines – so anyone who touches your brand from here on knows exactly what to do.",
+        "body": "Approved prototype, full documentation, and clear guidelines - so anyone who touches your brand from here on knows exactly what to do.",
         "illusAlt": "spaceship illustration"
       }
     ],
@@ -193,7 +193,7 @@
         "subtitle": "Start and finish in one sprint",
         "timing": "Up to 6 weeks",
         "desc": "We start with strategy. Move to discovery. Land on a working prototype you can click, feel, and change. You leave with everything approved, documented, and ready for what’s next.",
-        "imageAlt": "From idea to product — illustration",
+        "imageAlt": "From idea to product - illustration",
         "tags": [
           "Strategy",
           "UX",
@@ -205,9 +205,9 @@
       {
         "anchorLabel": "Site Upgrade",
         "title": "Upgrade your existing site",
-        "timing": "4–6 months",
+        "timing": "4-6 months",
         "desc": "Your current site is out dated and dosen’t deliver. Time to take it up several levels so it could meet your business goals, build momentum, and support your growth. And if you want to leave the competition in the dust... that’s what we’re best at :)",
-        "imageAlt": "Upgrade your existing site — illustration",
+        "imageAlt": "Upgrade your existing site - illustration",
         "tags": [
           "AI Process Integration",
           "Consulting",
@@ -219,9 +219,9 @@
       {
         "anchorLabel": "Marketing Infrastructure",
         "title": "Smart marketing infrastructure",
-        "timing": "1–2 months to set up",
+        "timing": "1-2 months to set up",
         "desc": "You could work hard. We prefer to work smart 😅 We build customer journeys, automations, and dashboards that replace manual work. So you can finally see what’s working. (And, obviously, reap the rewards)",
-        "imageAlt": "Marketing infrastructure — illustration",
+        "imageAlt": "Marketing infrastructure - illustration",
         "tags": [
           "AI Process Integration",
           "Consulting",
@@ -233,9 +233,9 @@
       {
         "anchorLabel": "New Brand Site",
         "title": "A new site\nfor a NEW brand",
-        "timing": "4–6 months",
+        "timing": "4-6 months",
         "desc": "Your brand needs a site that makes you memorable and drives action... We loved the challenge! We build it from strategy to the last pixel - fast, precise, and ready to launch.\n\nThe Otters are here to help you create the perfect first impression for your brand.",
-        "imageAlt": "New brand site — illustration",
+        "imageAlt": "New brand site - illustration",
         "tags": [
           "AI Process Integration",
           "Consulting",
@@ -296,8 +296,8 @@
     "body2": "That’s enough about us. You are probably here because you have an idea you want to bring to life. The good news is that the our Spiral Method is built for it. Turning ideas into working products with precision, no drift.",
     "body3": "We translate your idea into a website, a platform or an app. Just faster than you expected.",
     "body3Bold": "",
-    "amirBubbleAlt": "Amir Shalev — UX & UI Expert",
-    "kerenBubbleAlt": "Keren Reitler — Strategy, Storytelling & Brand Voice Expert",
+    "amirBubbleAlt": "Amir Shalev - UX & UI Expert",
+    "kerenBubbleAlt": "Keren Reitler - Strategy, Storytelling & Brand Voice Expert",
     "amirPhotoAlt": "Amir Shalev",
     "kerenPhotoAlt": "Keren Reitler"
   },
@@ -311,7 +311,7 @@
         "avatar": "😊"
       },
       {
-        "quote": "This is a testimonial in a larger text size — short and punchy.",
+        "quote": "This is a testimonial in a larger text size - short and punchy.",
         "name": "First Last Name",
         "role": "Job title / role",
         "avatar": "😊"
@@ -329,7 +329,7 @@
         "avatar": "😊"
       },
       {
-        "quote": "This is a testimonial in a larger text size — short and punchy.",
+        "quote": "This is a testimonial in a larger text size - short and punchy.",
         "name": "First Last Name",
         "role": "Job title / role",
         "avatar": "😊"
@@ -373,9 +373,9 @@
     "companyPlaceholder": "Company / project name",
     "phonePlaceholder": "Phone",
     "rolePlaceholder": "What's your role?",
-    "messagePlaceholder": "Tell us briefly — what are you building and what's your biggest pain point?",
+    "messagePlaceholder": "Tell us briefly - what are you building and what's your biggest pain point?",
     "submitBtn": "Let's Talk",
-    "emailSubjectPrefix": "Website inquiry —",
+    "emailSubjectPrefix": "Website inquiry -",
     "emailLabels": {
       "name": "Name",
       "email": "Email",
@@ -390,7 +390,7 @@
     ]
   },
   "footer": {
-    "tagline": "UX/UI spec and working prototype —\nexactly what you had in mind. Just faster.",
+    "tagline": "UX/UI spec and working prototype -\nexactly what you had in mind. Just faster.",
     "navHeading": "Navigation",
     "contactHeading": "Let's Talk",
     "navLinks": [
@@ -427,7 +427,7 @@
     "eyebrow": "Case study · FinTech",
     "titleA": "FinCat, rebuilt from ",
     "titleHi": "strategy to launch",
-    "lede": "A financial-comparison brand reimagined — a new brand foundation, a full UX/UI system, and a marketing engine that runs itself. Strategy and design didn’t hand off; they ran in parallel, each one sharpening the other.",
+    "lede": "A financial-comparison brand reimagined - a new brand foundation, a full UX/UI system, and a marketing engine that runs itself. Strategy and design didn’t hand off; they ran in parallel, each one sharpening the other.",
     "clientL": "Client",
     "client": "FinCat",
     "industryL": "Industry",
@@ -437,10 +437,10 @@
     "timelineL": "Timeline",
     "timeline": "A few focused weeks",
     "viewLive": "View live project →",
-    "coverAlt": "FinCat homepage — the live product",
+    "coverAlt": "FinCat homepage - the live product",
     "glanceKicker": "At a glance",
     "glanceTitle": "An established brand that needed to feel new.",
-    "glanceBody": "FinCat helps people find the right financial service providers, with verified ratings. The product worked — but the brand and the site no longer matched the business, and there was no marketing engine behind it. We rebuilt all three at once.",
+    "glanceBody": "FinCat helps people find the right financial service providers, with verified ratings. The product worked - but the brand and the site no longer matched the business, and there was no marketing engine behind it. We rebuilt all three at once.",
     "chips": [
       "Full rebrand",
       "10+ content pages",
@@ -451,24 +451,24 @@
     ],
     "challengeKicker": "The challenge",
     "challengeTitle": "Two hard constraints, one moving target.",
-    "challengeBody": "We had to lift an existing visual language — keeping the cat mascot and the black, yellow and white palette people already recognized — while designing the entire site before its custom illustrations existed. And we had to do it for more than one audience at the same time, without losing the thread of a single, coherent brand.",
+    "challengeBody": "We had to lift an existing visual language - keeping the cat mascot and the black, yellow and white palette people already recognized - while designing the entire site before its custom illustrations existed. And we had to do it for more than one audience at the same time, without losing the thread of a single, coherent brand.",
     "approachKicker": "The approach",
     "approachTitle": "The Spiral, not the relay race.",
-    "approachBody": "Most studios run strategy, then design, then marketing — each one waiting on the last. We work in a spiral: the tracks move together and refine as they go, so a decision in one immediately sharpens the other. On FinCat that wasn’t a slogan — it’s literally how the work got made.",
+    "approachBody": "Most studios run strategy, then design, then marketing - each one waiting on the last. We work in a spiral: the tracks move together and refine as they go, so a decision in one immediately sharpens the other. On FinCat that wasn’t a slogan - it’s literally how the work got made.",
     "workedKicker": "How we worked",
     "workedTitle": "Two otters, one loop.",
-    "workedBody": "Strategy and design weren’t separate deliverables — they fed each other, step by step. Here’s the back-and-forth that built FinCat.",
+    "workedBody": "Strategy and design weren’t separate deliverables - they fed each other, step by step. Here’s the back-and-forth that built FinCat.",
     "trackAmir": "Amir · Design & UX",
     "trackKeren": "Keren · Strategy & brand",
     "loops": [
       {
         "first": "keren",
-        "keren": "Built FinCat a brand foundation from scratch — values, vision, brand story and a shared terminology — even though the brand already existed.",
+        "keren": "Built FinCat a brand foundation from scratch - values, vision, brand story and a shared terminology - even though the brand already existed.",
         "amir": "Turned that terminology into the product itself: UI labels, microcopy and a visual language that says the same thing the brand does."
       },
       {
         "first": "amir",
-        "amir": "Designed a clickable prototype of the whole site — every page, before a single illustration existed.",
+        "amir": "Designed a clickable prototype of the whole site - every page, before a single illustration existed.",
         "keren": "Used those real screens to pressure-test funnel messaging and CTAs, so the words were proven before development began."
       },
       {
@@ -479,26 +479,26 @@
       {
         "first": "amir",
         "amir": "Built a tailor-made icon set and component system for the site.",
-        "keren": "Carried it straight into landing pages, email sequences and paid assets — one brand language, everywhere."
+        "keren": "Carried it straight into landing pages, email sequences and paid assets - one brand language, everywhere."
       }
     ],
     "loopNote": "Neither track could have produced this result on its own.",
     "showcaseKicker": "The work",
-    "showcaseTitle": "Brand, product and engine — in one voice.",
+    "showcaseTitle": "Brand, product and engine - in one voice.",
     "shots": [
       "Brand mascot & character system",
       "Tailor-made icon set",
       "Onboarding & registration flow",
       "Community & marketplace",
       "Landing pages",
-      "Full site — 10+ pages, login & profiles"
+      "Full site - 10+ pages, login & profiles"
     ],
     "resultsKicker": "What changed",
     "resultsTitle": "A brand that finally matches the business.",
     "results": [
       {
         "b": "One coherent brand",
-        "p": "From values to UI labels to ad copy — the same voice everywhere, built on a foundation that didn’t exist before."
+        "p": "From values to UI labels to ad copy - the same voice everywhere, built on a foundation that didn’t exist before."
       },
       {
         "b": "A site, proven before build",
@@ -510,14 +510,14 @@
       }
     ],
     "quote": "“Add a sentence from the FinCat client here.”",
-    "quoteCite": "— Client name, role · FinCat",
+    "quoteCite": "- Client name, role · FinCat",
     "deliverKicker": "What we delivered",
     "deliverTitle": "Everything, end to end.",
     "deliverables": [
       "Brand foundation: values, vision & story",
       "Brand terminology & tone of voice",
       "UX strategy & site architecture",
-      "Full UX/UI design — 10+ pages",
+      "Full UX/UI design - 10+ pages",
       "Tailor-made icon & component system",
       "Clickable prototype",
       "Personas & audience segmentation",
@@ -526,7 +526,7 @@
       "Landing pages & email sequences"
     ],
     "finalTitle": "Got a project like this?",
-    "finalSub": "Strategy and design, in parallel. From idea to product — just faster.",
+    "finalSub": "Strategy and design, in parallel. From idea to product - just faster.",
     "finalCta": "Let’s talk",
     "finalGhost": "See more work →"
   },
@@ -535,9 +535,9 @@
     "back": "← All work",
     "eyebrow": "Case study · FinTech",
     "soloNote": "A solo project by Amir.",
-    "titleA": "Trade The Pool — ",
+    "titleA": "Trade The Pool - ",
     "titleHi": "bold, young, credible",
-    "lede": "A day-trading platform that gives traders unlimited buying power and guidance from pros. The catch: two weeks to invent a whole design language — bold and cheeky, but still trustworthy with people’s money.",
+    "lede": "A day-trading platform that gives traders unlimited buying power and guidance from pros. The catch: two weeks to invent a whole design language - bold and cheeky, but still trustworthy with people’s money.",
     "clientL": "Client",
     "client": "Trade The Pool",
     "industryL": "Industry",
@@ -547,10 +547,10 @@
     "timelineL": "Timeline",
     "timeline": "~1 month (2 weeks for the design language)",
     "viewLive": "View the project →",
-    "coverAlt": "Trade The Pool — website design",
+    "coverAlt": "Trade The Pool - website design",
     "glanceKicker": "At a glance",
     "glanceTitle": "A young brand that still had to feel safe with your money.",
-    "glanceBody": "Trade The Pool lets day traders trade stocks with unlimited buying power and guidance from analysts with 15+ years of experience. The product is bold and youthful by nature — the design had to match that energy without losing the credibility a financial product needs.",
+    "glanceBody": "Trade The Pool lets day traders trade stocks with unlimited buying power and guidance from analysts with 15+ years of experience. The product is bold and youthful by nature - the design had to match that energy without losing the credibility a financial product needs.",
     "chips": [
       "Design system",
       "Art direction",
@@ -560,16 +560,16 @@
     ],
     "challengeKicker": "The challenge",
     "challengeTitle": "Two weeks. Almost no brand. A blank page.",
-    "challengeBody": "With only a handful of brand values to go on, I had two weeks to invent a complete visual language from scratch — bold, young and memorable, yet credible enough for a financial product people trust with real money.",
+    "challengeBody": "With only a handful of brand values to go on, I had two weeks to invent a complete visual language from scratch - bold, young and memorable, yet credible enough for a financial product people trust with real money.",
     "approachKicker": "The approach",
     "approachTitle": "Move fast, commit to a point of view.",
-    "approachBody": "No time to hedge. I explored two distinct directions, put a clear opinion behind each, and let the client choose — then built the chosen language all the way to a working prototype.",
+    "approachBody": "No time to hedge. I explored two distinct directions, put a clear opinion behind each, and let the client choose - then built the chosen language all the way to a working prototype.",
     "processKicker": "How it came together",
-    "processTitle": "From a few brand values to a working site — solo.",
+    "processTitle": "From a few brand values to a working site - solo.",
     "steps": [
       "Turned the few brand values into a sharp creative brief: bold, young, memorable.",
       "Explored two distinct design directions and presented each with a clear rationale.",
-      "Built the chosen language into a full design system — type, color, characters, components.",
+      "Built the chosen language into a full design system - type, color, characters, components.",
       "Designed the full site and a high-fidelity prototype, ready to hand to development."
     ],
     "showcaseKicker": "The work",
@@ -581,7 +581,7 @@
       "Features, decluttered"
     ],
     "resultsKicker": "What changed",
-    "resultsTitle": "Young and bold — and still trustworthy.",
+    "resultsTitle": "Young and bold - and still trustworthy.",
     "results": [
       {
         "b": "A language built fast",
@@ -597,7 +597,7 @@
       }
     ],
     "quote": "“Add a sentence from the Trade The Pool client here.”",
-    "quoteCite": "— Client name, role · Trade The Pool",
+    "quoteCite": "- Client name, role · Trade The Pool",
     "deliverKicker": "What was delivered",
     "deliverTitle": "Everything, solo.",
     "deliverables": [
@@ -611,7 +611,7 @@
       "Art direction"
     ],
     "finalTitle": "Got a project like this?",
-    "finalSub": "Strategy and design, fast. From idea to product — just faster.",
+    "finalSub": "Strategy and design, fast. From idea to product - just faster.",
     "finalCta": "Let’s talk",
     "finalGhost": "See more work →"
   },
@@ -619,10 +619,10 @@
     "brand": "the two otters",
     "back": "← All work",
     "eyebrow": "Case study · Mobility",
-    "collabNote": "A two-otters project — Amir & Keren.",
-    "titleA": "ThatPerk — ",
+    "collabNote": "A two-otters project - Amir & Keren.",
+    "titleA": "ThatPerk - ",
     "titleHi": "making carpool the obvious choice",
-    "lede": "An organizational ride-share platform that turns the daily commute into a perk. We shaped a product that gets employees carpooling — rewarding them with points and perks, and giving organizations a dashboard full of insight.",
+    "lede": "An organizational ride-share platform that turns the daily commute into a perk. We shaped a product that gets employees carpooling - rewarding them with points and perks, and giving organizations a dashboard full of insight.",
     "clientL": "Client",
     "client": "ThatPerk",
     "industryL": "Industry",
@@ -630,9 +630,9 @@
     "roleL": "Role",
     "role": "UX/UI · Product Design · Web Design",
     "timelineL": "Scope",
-    "timeline": "End to end — marketing site & product dashboard",
+    "timeline": "End to end - marketing site & product dashboard",
     "viewLive": "View the project →",
-    "coverAlt": "ThatPerk — website design",
+    "coverAlt": "ThatPerk - website design",
     "glanceKicker": "At a glance",
     "glanceTitle": "Carpooling people actually want to do.",
     "glanceBody": "ThatPerk helps organizations cut parking, traffic and emissions by making ride-share to work genuinely rewarding. Employees earn points and perks for sharing rides; the company gets a dashboard that turns everyday commutes into measurable impact.",
@@ -645,17 +645,17 @@
     ],
     "challengeKicker": "The challenge",
     "challengeTitle": "Make carpooling feel like a perk, not a chore.",
-    "challengeBody": "Organizational ride-share usually fails because it asks people to give something up. The challenge was to flip that — design a product that makes sharing a ride the fun, obvious, rewarding choice for employees, while giving organizations clear proof of the savings.",
+    "challengeBody": "Organizational ride-share usually fails because it asks people to give something up. The challenge was to flip that - design a product that makes sharing a ride the fun, obvious, rewarding choice for employees, while giving organizations clear proof of the savings.",
     "approachKicker": "The approach",
     "approachTitle": "One clear story: win-win-win.",
-    "approachBody": "We built everything around a single idea — good for the employee, the organization and the environment. A bold, friendly brand for the marketing site, and a calm, data-rich dashboard for the people running it.",
+    "approachBody": "We built everything around a single idea - good for the employee, the organization and the environment. A bold, friendly brand for the marketing site, and a calm, data-rich dashboard for the people running it.",
     "processKicker": "How it came together",
     "processTitle": "Two otters, one loop.",
     "steps": [
-      "Mapped the two audiences — the employees who ride, and the organization that runs it.",
+      "Mapped the two audiences - the employees who ride, and the organization that runs it.",
       "Shaped the win-win-win story and a bold, friendly visual language.",
       "Designed the marketing site to sell the perk and book demos.",
-      "Designed the organizational dashboard — savings, distance and usage at a glance."
+      "Designed the organizational dashboard - savings, distance and usage at a glance."
     ],
     "showcaseKicker": "The work",
     "showcaseTitle": "From the pitch to the dashboard.",
@@ -680,7 +680,7 @@
       }
     ],
     "quote": "“Add a sentence from the ThatPerk client here.”",
-    "quoteCite": "— Client name, role · ThatPerk",
+    "quoteCite": "- Client name, role · ThatPerk",
     "deliverKicker": "What was delivered",
     "deliverTitle": "Product and brand, together.",
     "deliverables": [
@@ -693,13 +693,13 @@
       "Responsive web design"
     ],
     "finalTitle": "Got a project like this?",
-    "finalSub": "Two designers, one tight loop — from idea to product.",
+    "finalSub": "Two designers, one tight loop - from idea to product.",
     "finalCta": "Let’s talk",
     "finalGhost": "See more work →"
   },
   "caseThe5ers": {
     "eyebrow": "Case study · Proprietary trading",
-    "titleA": "The5ers — ",
+    "titleA": "The5ers - ",
     "titleHi": "funding the world's top traders.",
     "lede": "The5ers is an online proprietary trading fund that funds the top forex traders worldwide. Founded in 2016, The5ers was one of the pioneers of funding traders programs, offering a unique career opportunity for talented and disciplined traders.",
     "clientL": "Client",
@@ -722,7 +722,7 @@
   },
   "caseKerenRightler": {
     "eyebrow": "Case study",
-    "titleA": "Keren Rightler — ",
+    "titleA": "Keren Rightler - ",
     "titleHi": "coming soon.",
     "lede": "Project description coming soon.",
     "clientL": "Client",
