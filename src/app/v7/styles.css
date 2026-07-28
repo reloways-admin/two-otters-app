@@ -546,7 +546,6 @@
 }
 .v7-spiral-header {
   text-align: center;
-  margin-bottom: 96px;
 }
 .v7-spiral-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
@@ -564,195 +563,97 @@
   white-space: nowrap;
 }
 
-/* ── spiral canvas: SVG in flow, cards overlaid ── */
+/* ── Spiral canvas — faithful 1:1 recreation of the Figma frame (1381.3 × 1367.2).
+   Cards and illustrations sit at the exact Figma coordinates (% of the frame);
+   font sizes, padding and radii use cqw so the whole composition scales with the
+   canvas width and stays proportional at any desktop size. ── */
 .v7-spiral-canvas {
   position: relative;
-  max-width: 1060px;
-  margin: 0 auto 48px;
-  overflow: visible; /* never clip the spiral arrow tail */
-  padding-bottom: 8%; /* room for the arrow tail after translateY shift */
-}
-.v7-spiral-svg {
-  display: block;
+  container-type: inline-size;
   width: 100%;
-  height: auto; /* SVG aspect ratio (1064×1059) drives canvas height */
-  overflow: visible; /* allow the arrow endpoint to paint outside the SVG viewport */
-  transform: translateY(-6%); /* shift spiral visually upward into the card cluster */
+  max-width: 1120px;
+  aspect-ratio: 1381.3 / 1367.2;
+  margin: -78px auto 48px;   /* pull the canvas up so the cards sit closer to the title */
+  overflow: visible;
 }
-/* Absolute overlay — fills the spiral canvas */
-.v7-spiral-top-grid {
+/* Background spiral path */
+.v7-spiral-svg {
   position: absolute;
-  inset: 0;
+  left: 6%;
+  top: 11%;
+  width: 88%;
+  height: auto;
+  transform: none;
+  z-index: 0;
+  pointer-events: none;
 }
+.v7-spiral-top-grid { position: absolute; inset: 0; z-index: 1; }
 
-/* Cards absolutely positioned — z-index: blue(4) > yellow(3) > green(2) = purple(2) */
-.v7-spiral-card-1 { right: 0; left: auto; top: 0;    width: 60.2%; height: 390px; z-index: 2; }
-.v7-spiral-card-2 { left: 0%;   top: 6.5%;  width: 57.9%; height: 368px; z-index: 2; }
-.v7-spiral-card-3 { left: 46.5%; top: 24%;  width: 53%; height: 370px; z-index: 3; padding-left: 38%; }
-.v7-spiral-card-4 { left:  2%; top: 26%;  width: 45%;   height: 367px; z-index: 4; }
-
+/* Cards — container direction LTR so flex placement matches the Figma layout
+   (start = left, end = right); the Hebrew text inside is switched back to RTL. */
 .v7-spiral-card {
   position: absolute;
+  direction: ltr;
   border: 3px solid #020202;
-  border-radius: 40px;
-  padding: 36px 40px 32px;
+  border-radius: 2.9cqw;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.58cqw;
   overflow: hidden;
 }
-/* Blue card: extra top padding so content clears the overlapping purple card */
-.v7-spiral-card-4 { padding-top: 80px; }
-.v7-spiral-card-num {
-  font-size: 1.4rem;
-  font-weight: 700;
-  opacity: 0.85;
-}
-.v7-spiral-card-title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  line-height: 1.2;
-  margin: 0;
-}
-.v7-spiral-card-subtitle {
-  font-size: 1rem;
-  font-weight: 400;
-  opacity: 0.75;
-  margin: 0;
-}
-/* English phase-card title: "Phase 0X | " regular prefix + bold name on one line */
-.v7-spiral-card-title--phase { font-weight: 800; }
+.v7-spiral-card-1 { left: 45.25%; top: 18.24%; width: 46.21%; height: 28.52%; z-index: 1;
+  background: #68d68b; color: #000; align-items: flex-end;
+  padding: 3.47cqw 4.05cqw 1.74cqw 2.90cqw; }
+.v7-spiral-card-2 { left: 6.52%;  top: 21.68%; width: 44.45%; height: 26.92%; z-index: 2;
+  background: #aa83eb; color: #fff; align-items: flex-start;
+  padding: 2.32cqw 5.21cqw 1.74cqw 2.90cqw; }
+.v7-spiral-card-3 { left: 46.01%; top: 43.69%; width: 42.55%; height: 27.06%; z-index: 3;
+  background: #fbdd7c; color: #000; align-items: flex-end;
+  padding: 1.74cqw 1.74cqw 1.74cqw 2.90cqw; }
+.v7-spiral-card-4 { left: 13%; top: 41.13%; width: 34.54%; height: 26.84%; z-index: 4;
+  background: #a6c4fa; color: #000; align-items: flex-end;
+  padding: 4.63cqw 2.90cqw 1.74cqw 2.90cqw; }
+
+.v7-spiral-card-num { font-size: 1.74cqw; font-weight: 600; line-height: 1; }
+.v7-spiral-card-text { display: flex; flex-direction: column; width: 21.5cqw; }
+.v7-spiral-card-title { font-size: 2.32cqw; font-weight: 700; line-height: 2.75cqw; margin: 0; }
+.v7-spiral-card-subtitle { font-size: 2.32cqw; font-weight: 400; line-height: 2.75cqw; margin: 0; }
+.v7-spiral-card-title--phase { font-weight: 700; }
 .v7-spiral-card-title--phase .v7-spiral-phase-pre { font-weight: 400; }
-.v7-spiral-card-body {
-  font-size: 0.95rem;
-  line-height: 1.65;
-  margin: 0;
-  max-width: 320px;
-}
-/* All canvas-level illustrations sit above all cards (z-index: 20) */
-/* Horse — above all cards, top-center junction of green & purple */
-.v7-spiral-horse {
-  position: absolute;
-  left: 48%;
-  top: -1%;
-  width: 22%;
-  height: auto;
-  z-index: 20;
-  pointer-events: none;
-}
-/* Papers (step-2) — above green, purple & yellow, right side of purple area */
-.v7-spiral-papers {
-  position: absolute;
-  left: 35%;
-  top: 10%;
-  width: 22%;
-  height: auto;
-  z-index: 20;
-  pointer-events: none;
-}
-/* Screens (step-3) — above green, purple & yellow, left portion of yellow card */
-.v7-spiral-screens {
-  position: absolute;
-  left: 42%;
-  top: 26%;
-  width: 24%;
-  height: auto;
-  z-index: 20;
-  pointer-events: none;
-}
-/* Spaceship — above all cards, between blue & purple */
-.v7-spiral-spaceship {
-  position: absolute;
-  left: -3%;
-  top: 30%;
-  width: 18%;
-  height: auto;
-  z-index: 20;
-  pointer-events: none;
-}
+.v7-spiral-card-body { font-size: 1.30cqw; font-weight: 400; line-height: 1.74cqw; margin: 0; width: 21.5cqw; white-space: pre-line; }
 
-.v7-spiral-card-illus {
-  position: absolute;
-  pointer-events: none;
-  height: auto;
-}
-/* step-1 (245×205) — left side of green card */
-.v7-spiral-card-1 .v7-spiral-card-illus {
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 38%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center left;
-}
-/* step-2 (266×291) — right side of purple card */
-.v7-spiral-card-2 .v7-spiral-card-illus {
-  right: 6%;
-  bottom: 0;
-  left: auto;
-  width: 32%;
-}
-/* step-3 (306×374) — fills the left side of yellow card top-to-bottom */
-.v7-spiral-card-3 .v7-spiral-card-illus {
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 40%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center left;
-}
-/* step-4 (182×189) — left-center of blue card */
-.v7-spiral-card-4 .v7-spiral-card-illus {
-  left: 5%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 36%;
-}
+/* Hebrew text: RTL + right-aligned inside the (LTR-positioned) blocks */
+[dir="rtl"] .v7-spiral-card-num,
+[dir="rtl"] .v7-spiral-card-text,
+[dir="rtl"] .v7-spiral-card-title,
+[dir="rtl"] .v7-spiral-card-subtitle,
+[dir="rtl"] .v7-spiral-card-body { direction: rtl; text-align: right; }
+/* English text: LTR + left-aligned */
+[dir="ltr"] .v7-spiral-card-num,
+[dir="ltr"] .v7-spiral-card-title,
+[dir="ltr"] .v7-spiral-card-subtitle,
+[dir="ltr"] .v7-spiral-card-body { direction: ltr; text-align: left; }
+/* Purple card (card 2): text left-aligned */
+[dir="rtl"] .v7-spiral-card-2 .v7-spiral-card-num,
+[dir="rtl"] .v7-spiral-card-2 .v7-spiral-card-text,
+[dir="rtl"] .v7-spiral-card-2 .v7-spiral-card-title,
+[dir="rtl"] .v7-spiral-card-2 .v7-spiral-card-subtitle,
+[dir="rtl"] .v7-spiral-card-2 .v7-spiral-card-body { text-align: left; }
 
-/* Purple card (card 2): all text left-aligned, space for right-side icon */
-.v7-spiral-card-2,
-.v7-spiral-card-2 .v7-spiral-card-num,
-.v7-spiral-card-2 .v7-spiral-card-title,
-.v7-spiral-card-2 .v7-spiral-card-subtitle,
-.v7-spiral-card-2 .v7-spiral-card-body {
-  text-align: left !important;
-  direction: ltr;
-}
-.v7-spiral-card-2 .v7-spiral-card-body {
-  max-width: 58%;
-}
-/* English: keep the longer purple-card title clear of the right-side papers icon */
-[dir="ltr"] .v7-spiral-card-2 .v7-spiral-card-title { max-width: 58%; }
-/* Desktop: all illustrations are canvas-level — hide in-card versions */
-.v7-spiral-card-1 .v7-spiral-card-illus,
-.v7-spiral-card-2 .v7-spiral-card-illus,
-.v7-spiral-card-3 .v7-spiral-card-illus,
-.v7-spiral-card-4 .v7-spiral-card-illus {
-  display: none;
-}
-/* English (LTR): phase-card text is left-aligned and pushed clear of the
-   left-side illustrations (horse on card 1, screens on 3, spaceship on 4).
-   Hebrew text is right-aligned so it already clears them — RTL untouched. */
-[dir="ltr"] .v7-spiral-card-1,
-[dir="ltr"] .v7-spiral-card-1 .v7-spiral-card-num,
-[dir="ltr"] .v7-spiral-card-1 .v7-spiral-card-title,
-[dir="ltr"] .v7-spiral-card-1 .v7-spiral-card-body,
-[dir="ltr"] .v7-spiral-card-3 .v7-spiral-card-num,
-[dir="ltr"] .v7-spiral-card-3 .v7-spiral-card-title,
-[dir="ltr"] .v7-spiral-card-3 .v7-spiral-card-body,
-[dir="ltr"] .v7-spiral-card-4 .v7-spiral-card-num,
-[dir="ltr"] .v7-spiral-card-4 .v7-spiral-card-title,
-[dir="ltr"] .v7-spiral-card-4 .v7-spiral-card-body {
-  text-align: left;
-}
-[dir="ltr"] .v7-spiral-card-1 { padding-left: 34%; }
-[dir="ltr"] .v7-spiral-card-3 { padding-left: 22%; }
-[dir="ltr"] .v7-spiral-card-4 { padding-left: 14%; }
-/* English: the wrapped purple-card title makes its body taller, so drop the
-   blue card lower to stop it covering the purple card's last line */
-[dir="ltr"] .v7-spiral-card-4 { top: 31%; }
+/* ── Illustrations — Figma frame bounds (% of frame). All above the cards;
+   papers (step-2) above screens (step-3), per the design's stacking. ── */
+.v7-spiral-horse,
+.v7-spiral-papers,
+.v7-spiral-screens,
+.v7-spiral-spaceship { position: absolute; height: auto; pointer-events: none; }
+.v7-spiral-horse     { left: 45.6%; top: 21.6%; width: 17.7%; z-index: 6; }
+.v7-spiral-papers    { left: 31.5%; top: 25.3%; width: 19.3%; z-index: 8; }
+.v7-spiral-screens   { left: 42%; top: 43.8%; width: 22.2%; z-index: 5; }
+.v7-spiral-spaceship { left: 9.5%;  top: 43.0%; width: 13.2%; z-index: 6; }
+
+/* Desktop: canvas-level illustrations only — hide the in-card copies */
+.v7-spiral-card-illus { position: absolute; pointer-events: none; height: auto; }
+.v7-spiral-card .v7-spiral-card-illus { display: none; }
 
 /* ── "Don't stop at spec" heading ── */
 .v7-spiral-more {
@@ -1260,7 +1161,8 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 14px;
-  max-width: 940px;
+  /* Just wide enough that every title fits in 2 lines at a readable size */
+  max-width: 1050px;
   margin: 0 auto;
 }
 .v7-persona-card {
@@ -1288,11 +1190,13 @@
   display: block;
 }
 .v7-persona-title {
-  font-size: 0.87rem;
+  font-size: 0.9rem;
   font-weight: 700;
   line-height: 1.45;
   color: var(--v7-text);
   text-align: center;
+  /* Every title fits in exactly 2 lines at this width — reserve 2 lines */
+  min-height: calc(0.9rem * 1.45 * 2);
 }
 .v7-persona-text {
   font-size: 0.75rem;
@@ -1359,9 +1263,24 @@
 .v7-about-photo {
   flex: 1;
   position: relative;
+  overflow: hidden; /* clip Keren's wider cut-out to her panel */
 }
 .v7-about-photo.amir  { background: #0061ef; border-radius: 0 20px 20px 0; }
 .v7-about-photo.keren { background: #620ee8; border-radius: 20px 0 0 20px; }
+/* Size both cut-outs by HEIGHT (not aspect-fit) so Amir and Keren are always
+   the exact same height on every screen size. Keren's photo is wider — her
+   extra width simply extends and is clipped by the panel, instead of the whole
+   image shrinking (which made her shorter, especially on narrow mobile). */
+.v7-about-photo img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 90%;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+}
 /* English (LTR): keep the same visual order as the design/Hebrew
    (Keren left, Amir right) so photos line up under their bubbles and the
    base corner radii give rounded outer corners + a straight middle seam */
@@ -1761,7 +1680,10 @@
 /* ─── Responsive ─── */
 @media (max-width: 900px) {
   .v7-spiral-svg { display: none; }
-  .v7-spiral-canvas { margin-bottom: 16px; }
+  /* Subtitle must wrap on mobile (it's nowrap on desktop) + room before the cards */
+  .v7-spiral-sub { white-space: normal; }
+  .v7-spiral-header { margin-bottom: 32px; }
+  .v7-spiral-canvas { margin-top: 0; margin-bottom: 16px; aspect-ratio: auto; container-type: normal; }
   .v7-spiral-top-grid {
     position: static;
     inset: auto;
@@ -1771,6 +1693,13 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+  }
+  /* Fixed sizing on mobile (cqw fonts/paddings would shrink to nothing) */
+  .v7-spiral-card {
+    direction: rtl;
+    border-radius: 24px;
+    gap: 10px;
+    padding: 36px !important;
   }
   .v7-spiral-card-1,
   .v7-spiral-card-2,
@@ -1782,9 +1711,15 @@
     width: 100% !important;
     height: auto !important;
     z-index: auto !important;
-    padding-top: 36px !important;
-    padding-left: 36px !important;
   }
+  .v7-spiral-card-num { font-size: 1.3rem; }
+  /* Full-width text so right-aligned content hugs the card's right edge (RTL) */
+  .v7-spiral-card-num,
+  .v7-spiral-card-text,
+  .v7-spiral-card-body { width: 100%; }
+  .v7-spiral-card-title { font-size: 1.5rem; line-height: 1.2; }
+  .v7-spiral-card-subtitle { font-size: 1.15rem; line-height: 1.3; }
+  .v7-spiral-card-body { font-size: 1rem; line-height: 1.55; }
   /* Canvas-level images not needed in mobile */
   .v7-spiral-horse,
   .v7-spiral-papers,

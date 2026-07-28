@@ -32,8 +32,8 @@ export default function WhoCanWorkV7({ t, lang = 'he' }: { t: WhoT; lang?: 'en' 
       {/* Blue ticker marquee */}
       <div className="v7-marquee-strip">
         <div className="v7-marquee-track">
-          {units.map((_, i) => <MarqueeUnit key={i} text={t.marqueeText} />)}
-          {units.map((_, i) => <MarqueeUnit key={`b${i}`} text={t.marqueeText} />)}
+          {units.map((_, i) => <MarqueeUnit key={i} text={t.marqueePhrases[i % t.marqueePhrases.length]} />)}
+          {units.map((_, i) => <MarqueeUnit key={`b${i}`} text={t.marqueePhrases[i % t.marqueePhrases.length]} />)}
         </div>
       </div>
 

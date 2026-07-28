@@ -256,7 +256,13 @@
     ]
   },
   "who": {
-    "marqueeText": "Which otter are you?",
+    "marqueePhrases": [
+      "Don't worry - the otters are here",
+      "We'll crack this",
+      "Everyone will say \"wow\"",
+      "Check-check and we're live",
+      "Exactly what you wanted"
+    ],
     "title": "Either we click,\nor we don’t.",
     "yesAlt": "It’s a match!",
     "noAlt": "Swipe left :(",

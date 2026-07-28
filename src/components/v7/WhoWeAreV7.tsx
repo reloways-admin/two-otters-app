@@ -42,10 +42,12 @@ export default function WhoWeAreV7({ t, lang = 'he' }: { t: AboutT; lang?: 'en' 
 
           <div className="v7-about-photos">
             <div className="v7-about-photo amir">
-              <Image src="/amir.png" alt={t.amirPhotoAlt} fill style={{ objectFit: 'contain', objectPosition: 'bottom center' }} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/amir-photo.png" alt={t.amirPhotoAlt} />
             </div>
             <div className="v7-about-photo keren">
-              <Image src="/keren.png" alt={t.kerenPhotoAlt} fill style={{ objectFit: 'contain', objectPosition: 'bottom center' }} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/keren-photo.png" alt={t.kerenPhotoAlt} />
             </div>
           </div>
 
