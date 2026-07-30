@@ -744,7 +744,11 @@
 /* ─── What We Offer ─── */
 .v7-offer {
   padding: 100px 40px;
-  background: linear-gradient(to bottom, #BAB4FA, #FFFFFF);
+  /* Dotted purple background, like the hero */
+  background-image:
+    radial-gradient(circle, #DEDBFF 2px, transparent 2px),
+    linear-gradient(to bottom, #BAB4FA, #FFFFFF);
+  background-size: 24px 24px, 100% 100%;
 }
 .v7-offer-grid {
   display: grid;
@@ -813,19 +817,22 @@
 }
 .v7-offer-tags span { display: inline-flex; align-items: center; gap: 4px; }
 
-/* MVP card override (timing badge) */
+/* MVP card timing chip — sits in the text flow, below the description */
 .v7-offer-timing--mvp {
-  position: absolute;
-  top: 0;
-  inset-inline-start: 40px;   /* align with the title's start (body has 40px side padding) */
-  z-index: 3;
-  background: #13d04f;
-  color: #fff;
-  font-size: 0.875rem;
-  font-weight: 600;
-  padding: 6px 16px;
-  border-radius: 0;
+  position: static;
+  z-index: 1;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;                          /* no fill */
+  border: none;                             /* no border */
+  color: #2c2549;                           /* neutral dark — no color accent */
+  font-size: 0.9rem;
+  font-weight: 500;                          /* not bold */
+  padding: 0;
   width: fit-content;
+  margin-top: 2px;
 }
 
 /* Anchor jump-links (replaces filter buttons) */
@@ -842,7 +849,7 @@
   padding: 12px 20px;
   border-radius: var(--v7-r-full);
   border: 2px solid #04202b;
-  background: transparent;
+  background: #BAB4FA; /* solid fill (section purple) so the dotted bg doesn't show through */
   font-family: var(--v7-font);
   font-size: 1.125rem;
   font-weight: 700;
@@ -878,7 +885,7 @@
 /* Text column — right side (first in DOM, right in RTL) */
 .v7-offer-mvp-body {
   flex: 1;
-  padding: 54px 40px 32px;   /* extra top padding clears the corner label */
+  padding: 40px 40px 32px;   /* badge no longer sits in the corner */
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -995,19 +1002,10 @@
   .v7-offer-mvp-illus-col {
     min-height: 0 !important;
     height: auto !important;
-    padding-top: 52px;   /* clears the full-width label bar above the illustration */
+    padding-top: 0;
     width: 100% !important;
     clip-path: none !important;
     overflow: visible !important;
-  }
-  /* Label stretches full width across the top of the card on mobile */
-  .v7-offer-timing--mvp {
-    inset-inline-start: 0;
-    inset-inline-end: 0;
-    width: auto;
-    display: block;
-    text-align: center;
-    border-radius: 22px 22px 0 0;   /* follow the card's rounded top corners */
   }
   .v7-offer-mvp-illus {
     position: relative !important;
@@ -1032,7 +1030,7 @@
   [dir="ltr"] .v7-offer-mvp-title,
   [dir="ltr"] .v7-offer-mvp-sub,
   [dir="ltr"] .v7-offer-desc { text-align: center !important; }
-  /* center the CTA on mobile (badge is pinned to the corner, out of flow) */
+  /* center the CTA & timing label on mobile */
   .v7-offer-timing,
   .v7-offer-mvp-cta { align-self: center !important; }
   .v7-offer-mvp-title { font-size: 2rem; }
@@ -1324,16 +1322,23 @@
   margin: 16px 0 40px;
   padding-inline-start: 6px; /* offset the letter-spacing so it reads centered */
 }
-/* masonry wall of cards */
+/* 3-column masonry wall, centered on the page */
 .v7-t-masonry {
-  columns: 3;
-  column-gap: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 22px;
+}
+.v7-t-col {
+  flex: 1 1 300px;
+  max-width: 352px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
 .v7-tcard {
-  display: inline-block;
   width: 100%;
-  break-inside: avoid;
-  margin-bottom: 22px;
   background: var(--v7-white);
   border-radius: var(--v7-r-lg);
   padding: 24px 26px;
@@ -1354,13 +1359,16 @@
 .v7-tcard-role { font-size: 0.82rem; color: var(--v7-text-mid); }
 .v7-tcard-quote { font-size: 0.95rem; line-height: 1.7; color: var(--v7-text-mid); margin: 0; }
 .v7-tcard-quote + .v7-tcard-quote { margin-top: 0.85em; }
-
-@media (max-width: 900px) {
-  .v7-t-masonry { columns: 2; }
+/* separator between two distinct feedbacks in one card */
+.v7-tcard-divider {
+  border: none;
+  border-top: 1px solid var(--v7-border);
+  width: 100%;
+  margin: 16px 0;
 }
+
 @media (max-width: 600px) {
   .v7-testimonials { padding: 64px 20px 72px; }
-  .v7-t-masonry { columns: 1; max-width: 440px; margin: 0 auto; }
 }
 
 /* ─── FAQ ─── */

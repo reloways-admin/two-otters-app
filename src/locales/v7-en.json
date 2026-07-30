@@ -164,28 +164,28 @@
     "moreSub": "We keep on going until it’s alive, kicking, and in the wild.",
     "steps": [
       {
-        "num": "7",
-        "title": "Design",
-        "subtitle": "Dressing your product",
-        "body": "Now everything becomes visible. Strategy becomes color. Voice becomes type. Copy becomes layout."
-      },
-      {
         "num": "5",
         "title": "Brand’s voice",
         "subtitle": "Give your uniqueness a voice",
         "body": "Character. Tone. A writing playbook that makes every word unmistakably yours. So people don’t just recognize you... they trust you. (Which is rarer than it sounds.)"
       },
       {
-        "num": "8",
-        "title": "Development",
-        "subtitle": "Right beside you all the way to launch",
-        "body": "After all the hard work, we make sure nothing gets lost between the design file and the live site. What ships matches what we promised. Pixel for pixel."
+        "num": "7",
+        "title": "Design",
+        "subtitle": "Dressing your product",
+        "body": "Now everything becomes visible. Strategy becomes color. Voice becomes type. Copy becomes layout."
       },
       {
         "num": "6",
         "title": "Copy, & Micro-Copy",
         "subtitle": "Words that drive your product",
         "body": "From the welcome screen to check-out, and everything in between. Every word, in your voice. Strategy, design and language are finally aligned."
+      },
+      {
+        "num": "8",
+        "title": "Development",
+        "subtitle": "Right beside you all the way to launch",
+        "body": "After all the hard work, we make sure nothing gets lost between the design file and the live site. What ships matches what we promised. Pixel for pixel."
       }
     ]
   },
@@ -320,12 +320,6 @@
     "title": "We had a great time working together",
     "items": [
       {
-        "quote": "Keren, I'll take a moment to be emotional. Thank you for guiding us through this scary journey - the move from a free initiative to a business that actually sells something. A transition that was beautiful aesthetically and worked well in terms of UX, accompanied by questions that pushed us to think and come back with sharper answers. Thank you 💙",
-        "name": "First Last Name",
-        "role": "Job title / role",
-        "avatar": "😊"
-      },
-      {
         "name": "Gil Ben Hor",
         "role": "CEO & Founder · The5ers",
         "photo": "/testimonials/gil-ben-hor.jpg",
@@ -342,15 +336,9 @@
         "quote": "Keren branded my entire firm.\n\nAfter many \"marketing people\", I finally found someone who genuinely became the marketing partner of my business.\n\nThe messaging, the precise website and the smart marketing funnels made a real difference in our reputation and in the volume of client inquiries."
       },
       {
-        "name": "Keren Rightler",
-        "role": "Owner of Method Queen",
-        "quote": "I was so impressed with Amir's original approach, creativity, and manners, that I even had him work on my own brand. Even after our project was done, I still consulted with Amir-my satisfaction was clearly his priority.",
-        "photo": "/testimonials/keren-rightler.jpg"
-      },
-      {
         "name": "Adi Nudel",
         "role": "CEO, Financial Cat",
-        "quote": "Amir's ability to communicate ideas visually is truly remarkable. His work is both technically proficient and creatively vibrant.",
+        "quote": "Amir's ability to communicate ideas visually is truly remarkable. His work is both technically proficient and creatively vibrant.\n\n---\n\nKeren, I'll take a moment to be emotional. Thank you for guiding us through this scary journey - the move from a free initiative to a business that actually sells something. A transition that was beautiful aesthetically and worked well in terms of UX, accompanied by questions that pushed us to think and come back with sharper answers. Thank you 💙",
         "photo": "/testimonials/adi-nudel.jpg"
       }
     ]

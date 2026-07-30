@@ -6,10 +6,10 @@ import en from '@/locales/v7-en.json'
 type OfferT = typeof en.offer
 
 const CARD_META = [
-  { id: 'offer-mvp',       imageSrc: '/card11.png',   illusTop: 0, illusLeft: 0, illusWidth: 480, illusHeight: 275, wrapPaddingTop: 0 },
-  { id: 'offer-upgrade',   imageSrc: '/card22.png',   illusTop: 0, illusLeft: 0, illusWidth: 460, illusHeight: 330, wrapPaddingTop: 0 },
-  { id: 'offer-marketing', imageSrc: '/card33.png',   illusTop: 0, illusLeft: 0, illusWidth: 420, illusHeight: 338, wrapPaddingTop: 0 },
-  { id: 'offer-newsite',   imageSrc: '/card44.png',   illusTop: 0, illusLeft: 0, illusWidth: 440, illusHeight: 318, wrapPaddingTop: 0 },
+  { id: 'offer-mvp',       imageSrc: '/offer-illus-1-fast.svg',       illusTop: 0, illusLeft: 0, illusWidth: 480, illusHeight: 275, wrapPaddingTop: 0 },
+  { id: 'offer-upgrade',   imageSrc: '/offer-illus-2-upgrade.svg',    illusTop: 0, illusLeft: 0, illusWidth: 460, illusHeight: 330, wrapPaddingTop: 0 },
+  { id: 'offer-marketing', imageSrc: '/offer-illus-3-marketing.svg',  illusTop: 0, illusLeft: 0, illusWidth: 420, illusHeight: 338, wrapPaddingTop: 0 },
+  { id: 'offer-newsite',   imageSrc: '/offer-illus-4-new-brand.svg',  illusTop: 0, illusLeft: 0, illusWidth: 440, illusHeight: 318, wrapPaddingTop: 0 },
 ]
 
 function WideOfferCard({ card, meta, isRTL }: {
@@ -23,8 +23,6 @@ function WideOfferCard({ card, meta, isRTL }: {
   return (
     <div id={meta.id} className="v7-offer-mvp-wrap" style={{ paddingTop: meta.wrapPaddingTop }}>
       <div className="v7-offer-card v7-offer-card--mvp">
-        {/* Timing badge — pinned to the card's top corner (start side) */}
-        <span className="v7-offer-timing v7-offer-timing--mvp">{card.timing}</span>
         <div className="v7-offer-mvp-row">
 
           {/* Text column — first in DOM = right in RTL */}
@@ -42,6 +40,8 @@ function WideOfferCard({ card, meta, isRTL }: {
                 <p key={i} style={{ margin: i > 0 ? '8px 0 0' : 0 }}>{part}</p>
               ))}
             </div>
+            {/* Timing label — below the description */}
+            <span className="v7-offer-timing v7-offer-timing--mvp">{card.timing}</span>
             <a href="#contact" className="v7-offer-mvp-cta">
               {card.cta}
               <svg className="v7-offer-mvp-cta-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
