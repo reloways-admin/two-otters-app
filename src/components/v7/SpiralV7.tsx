@@ -13,10 +13,10 @@ const CARD_META = [
 
 // Optional illustration per step, keyed by step number
 const STEP_ILLUS: Record<string, string> = {
-  '7': '/colors.png',      // שלב העיצוב
-  '5': '/megaphone.png',   // שלב פיתוח השפה
-  '8': '/browser.png',     // שלב הפיתוח
-  '6': '/feather-t.png',   // שלב כתיבת התוכן
+  '7': '/spiral-colors.svg',     // שלב העיצוב
+  '5': '/spiral-megaphone.svg',  // שלב פיתוח השפה
+  '8': '/spiral-browser.svg',    // שלב הפיתוח
+  '6': '/spiral-feather.svg',    // שלב כתיבת התוכן
 }
 
 function SpiralCard({ card, meta, index, lang }: {
