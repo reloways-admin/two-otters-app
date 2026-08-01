@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import NavV6 from '@/components/v6/NavV6'
 import '../../v6/styles.css'
-import '../fincat/styles.css'
+import '../case-study.css'
 import './styles.css'
 import en from '@/locales/v6-en.json'
 import he from '@/locales/v6-he.json'
@@ -32,32 +32,32 @@ export default function TradeThePoolCaseStudy() {
     <main className="cs" dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
       <NavV6 t={locales[lang].nav} lang={lang} onLangChange={setLang} hrefPrefix={`/v6?lang=${lang}`} />
 
-      {/* Hero */}
-      <header className="cs-hero">
-        <div className="cs-wrap">
-          <span className="cs-eyebrow">{t.eyebrow}</span>
-          <h1 className="cs-h1">
-            {t.titleA}<span className="u">{t.titleHi}</span>
-          </h1>
-          <p className="cs-lede">{t.lede}</p>
-
-          <dl className="cs-meta">
-            <div><dt>{t.clientL}</dt><dd>{t.client}</dd></div>
-            <div><dt>{t.industryL}</dt><dd>{t.industry}</dd></div>
-            <div><dt>{t.roleL}</dt><dd>{t.role}</dd></div>
-            <div><dt>{t.timelineL}</dt><dd>{t.timeline}</dd></div>
-          </dl>
-
-          <a className="cs-cta-link" href="https://tradethepool.com/" target="_blank" rel="noopener noreferrer">
-            {t.viewLive}
-          </a>
-
-          <div className="cs-cover">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/trade-the-pool/cover.jpg" alt={t.coverAlt} />
+      {/* Hero — FinCat-style two-column (text right, meta cols left) */}
+      <header className="hero">
+        <div className="hero-inner">
+          <div className="hero-text">
+            <div className="hero-tag">{t.eyebrow}</div>
+            <h1>{t.titleA}<span className="u">{t.titleHi}</span></h1>
+            <p className="hero-sub">{t.lede}</p>
           </div>
+          <aside className="hero-meta">
+            <div className="hero-meta-cols">
+              <div className="hmc"><span className="hmc-label">{t.industryL}</span><span className="hmc-value">{t.industry}</span></div>
+              <div className="hmc"><span className="hmc-label">{t.roleL}</span><span className="hmc-value">{t.role}</span></div>
+              <div className="hmc"><span className="hmc-label">{t.timelineL}</span><span className="hmc-value">{t.timeline}</span></div>
+            </div>
+            <a className="hero-live-link" href="https://tradethepool.com/" target="_blank" rel="noopener noreferrer">
+              {t.viewLive}
+            </a>
+          </aside>
         </div>
       </header>
+      <div className="cs-hero-media">
+        <div className="cs-hero-cover">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/trade-the-pool/cover.jpg" alt={t.coverAlt} />
+        </div>
+      </div>
 
       {/* At a glance */}
       <section className="cs-section">
