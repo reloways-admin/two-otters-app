@@ -68,6 +68,7 @@
       },
       {
         "title": "ThatPerk",
+        "hidden": true,
         "subtitle": "Sustainability startup",
         "tagline": "Turning the daily commute into a perk.",
         "tags": "Product · UX/UI · Marketing site",
@@ -89,6 +90,7 @@
       },
       {
         "title": "Keren Rightler",
+        "hidden": true,
         "subtitle": "Marketing & branding",
         "tagline": "Coming soon.",
         "tags": "Coming soon",

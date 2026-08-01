@@ -48,7 +48,7 @@ export default function WorkV7({ t, lang = 'he' }: { t: WorkT; lang?: 'en' | 'he
         <p className="v7-work-sub">{t.sub}</p>
 
         <div className="v7-work-grid">
-          {t.projects.map((p, i) =>
+          {t.projects.filter((p) => !(p as { hidden?: boolean }).hidden).map((p, i) =>
             p.href ? (
               <a key={i} href={`${p.href}?lang=${lang}`} className="v7-work-link" aria-label={p.title}>
                 <ProjectCard p={p} />
