@@ -3,42 +3,61 @@
 import en from '@/locales/v8-en.json'
 
 type WorkT = typeof en.work
+type Project = WorkT['projects'][0] & { hidden?: boolean }
 
-const COVER_BG: Record<string, { bg: string; fg: string }> = {
-  yellow: { bg: '#FFD166', fg: '#1a1407' },
-  blue:   { bg: '#A8B5FD', fg: '#1E1B4B' },
-  green:  { bg: '#3ECF7E', fg: '#04321c' },
-  purple: { bg: '#5C3EEF', fg: '#ffffff' },
-  soft:   { bg: '#EDE9FE', fg: '#7C5CED' },
+// Subtle per-project accent — just a tinted client-type chip + tag colour.
+// Keeps the section on-brand without flooding the cards with colour.
+const ACCENT: Record<string, { solid: string; soft: string }> = {
+  yellow: { solid: '#B8860B', soft: '#FBF0D0' },
+  purple: { solid: '#5C3EEF', soft: '#EBE6FE' },
+  green:  { solid: '#12904C', soft: '#DFF6EA' },
+  blue:   { solid: '#4256D0', soft: '#E7ECFD' },
+  soft:   { solid: '#7C5CED', soft: '#F1ECFE' },
 }
 
-function ProjectCard({ p }: { p: WorkT['projects'][0] }) {
-  const cover = COVER_BG[p.color] ?? COVER_BG.soft
-  const isLink = !!p.href
-  return (
-    <div className={`v8-work-card${isLink ? '' : ' v8-work-card--soon'}`}>
-      <div
-        className="v8-work-cover"
-        style={p.image ? undefined : { background: cover.bg, color: cover.fg }}
-      >
+function ProjectCard({ p, lang }: { p: Project; lang: 'en' | 'he' }) {
+  const acc = ACCENT[p.color] ?? ACCENT.soft
+  const view = lang === 'en' ? 'View project' : 'צפו בפרויקט'
+
+  const inner = (
+    <>
+      <div className="v8-work-cover">
         {p.image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={p.image} alt={p.title} className="v8-work-cover-img" />
         ) : (
           p.coverLabel && <span className="v8-work-cover-label">{p.coverLabel}</span>
         )}
+        <span className="v8-work-view" aria-hidden="true">
+          {view}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </span>
       </div>
       <div className="v8-work-info">
+        {p.subtitle && <span className="v8-work-kicker">{p.subtitle}</span>}
         <h3 className="v8-work-title">{p.title}</h3>
-        {p.subtitle && <p className="v8-work-subtitle">{p.subtitle}</p>}
         <p className="v8-work-tagline">{p.tagline}</p>
-        {p.tags && <span className="v8-work-tags">{p.tags}</span>}
+        {p.tags && <p className="v8-work-tags">{p.tags}</p>}
       </div>
-    </div>
+    </>
+  )
+
+  const style = { ['--acc' as string]: acc.solid, ['--acc-soft' as string]: acc.soft }
+
+  return p.href ? (
+    <a href={`${p.href}?lang=${lang}`} className="v8-work-card" style={style} aria-label={p.title}>
+      {inner}
+    </a>
+  ) : (
+    <div className="v8-work-card v8-work-card--soon" style={style}>{inner}</div>
   )
 }
 
 export default function WorkV8({ t, lang = 'he' }: { t: WorkT; lang?: 'en' | 'he' }) {
+  const projects = (t.projects as Project[]).filter((p) => !p.hidden)
+
   return (
     <section className="v8-work" id="work">
       <div className="v8-container">
@@ -48,15 +67,9 @@ export default function WorkV8({ t, lang = 'he' }: { t: WorkT; lang?: 'en' | 'he
         <p className="v8-work-sub">{t.sub}</p>
 
         <div className="v8-work-grid">
-          {t.projects.filter((p) => !(p as { hidden?: boolean }).hidden).map((p, i) =>
-            p.href ? (
-              <a key={i} href={`${p.href}?lang=${lang}`} className="v8-work-link" aria-label={p.title}>
-                <ProjectCard p={p} />
-              </a>
-            ) : (
-              <ProjectCard key={i} p={p} />
-            )
-          )}
+          {projects.map((p) => (
+            <ProjectCard key={p.title} p={p} lang={lang} />
+          ))}
         </div>
       </div>
     </section>
