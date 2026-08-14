@@ -24,6 +24,13 @@ export default function NavV8({ t, lang, onLangChange, hrefPrefix = '' }: Props)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Lock the page behind the full-screen menu so it can't scroll underneath
+  useEffect(() => {
+    const prev = document.body.style.overflow
+    document.body.style.overflow = open ? 'hidden' : prev || ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+
   const close = () => setOpen(false)
 
   return (
@@ -89,8 +96,6 @@ export default function NavV8({ t, lang, onLangChange, hrefPrefix = '' }: Props)
         </div>
       </div>
 
-      {/* Backdrop */}
-      {open && <div className="v8-nav-backdrop" onClick={close} aria-hidden="true" />}
     </>
   )
 }

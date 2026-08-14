@@ -137,13 +137,17 @@ html:has(.v8-page) body {
   display: block;
   width: 22px;
   height: 2px;
-  background: var(--v8-text);
+  background: #fff;   /* light over the dark hero at the top */
   border-radius: 2px;
-  transition: transform 0.25s, opacity 0.25s;
+  transition: transform 0.25s, opacity 0.25s, background 0.25s;
 }
+/* Once the nav turns white on scroll, the icon goes dark */
+.v8-nav--scrolled .v8-hamburger-bar { background: var(--v8-text); }
 .v8-hamburger-bar.open:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .v8-hamburger-bar.open:nth-child(2) { opacity: 0; }
 .v8-hamburger-bar.open:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* When the (white) full-screen menu is open, the X is always dark */
+.v8-hamburger-bar.open { background: var(--v8-text); }
 
 /* ── Mobile drawer ── */
 .v8-nav-drawer {
@@ -151,13 +155,15 @@ html:has(.v8-page) body {
   top: 0;
   right: 0;
   left: 0;
+  bottom: 0;                 /* full page — no gap, nothing showing behind */
   z-index: 99;
-  background: var(--v8-bg);
-  padding: 100px 28px 40px;
+  background: var(--v8-white);
+  padding: 110px 28px 48px;
   transform: translateY(-100%);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 .v8-nav-drawer--open { transform: translateY(0); }
 .v8-nav-drawer-inner {
@@ -179,6 +185,9 @@ html:has(.v8-page) body {
 }
 .v8-nav-drawer-link:hover { background: var(--v8-purple-soft); }
 .v8-nav-drawer-cta { margin-top: 20px; text-align: center; display: block; width: 100%; }
+/* Brand green — scoped under .v8-nav-drawer to beat .v8-btn-primary */
+.v8-nav-drawer .v8-nav-drawer-cta { background: #5aff00; color: #0b0b0b; }
+.v8-nav-drawer .v8-nav-drawer-cta:hover { background: #4ee600; color: #0b0b0b; }
 
 /* ── Backdrop ── */
 .v8-nav-backdrop {
@@ -192,7 +201,7 @@ html:has(.v8-page) body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background: var(--v8-white);
+  background: transparent;   /* no white pill over the dark hero */
   border: none;
   border-radius: var(--v8-r-full);
   padding: 6px 10px;
@@ -354,20 +363,6 @@ html:has(.v8-page) body {
   height: 100%;
   width: auto;
 }
-.v8-hero-tag {
-  position: absolute;
-  padding: 6px 15px;
-  background: #5eff00;
-  color: #1d2332;
-  font-family: 'Caladea', Georgia, serif;
-  font-weight: 700;
-  font-size: clamp(18px, 1.6vw, 30px);
-  line-height: 1;
-  white-space: nowrap;
-  z-index: 5;
-}
-.v8-hero-tag--amir  { bottom: 30%; left: -8px;  transform: rotate(5deg); }
-.v8-hero-tag--keren { bottom: 32%; right: -8px; transform: rotate(-5deg); }
 .v8-hero-cap {
   position: absolute;
   bottom: 28%;
@@ -423,7 +418,6 @@ html:has(.v8-page) body {
   .v8-hero-person { grid-row: 2; height: clamp(230px, 46vw, 380px); align-self: end; }
   .v8-hero-person--amir  { grid-column: 1; justify-self: center; }
   .v8-hero-person--keren { grid-column: 2; justify-self: center; }
-  .v8-hero-tag { font-size: clamp(14px, 4vw, 22px); }
   .v8-hero-cap { display: none; }
   .v8-hero-wave { height: 96px; background: var(--v8-bg); }
   .v8-hero-wave svg { display: none; }
@@ -1783,7 +1777,20 @@ html:has(.v8-page) body {
     text-align: left !important;
     direction: ltr;
   }
+  /* Bridge title/sub no longer tucks under the (desktop) spiral arrow — on mobile
+     the spiral is hidden, so push it BELOW the last card instead of overlapping it */
+  .v8-spiral-more { margin-top: 40px; }
   .v8-spiral-steps { grid-template-columns: 1fr; max-width: 520px; }
+  /* Steps 5–8: icon on top (bigger) so the text runs full width, edge to edge */
+  .v8-spiral-step {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    direction: rtl;
+  }
+  [dir="ltr"] .v8-spiral-step { direction: ltr; }
+  .v8-spiral-step-icon { width: 132px; margin-top: 0; }
+  .v8-spiral-step-content { width: 100%; }
   .v8-gas-grid     { grid-template-columns: 1fr; max-width: 520px; }
   .v8-gas-card.yellow,
   .v8-gas-card.blue,

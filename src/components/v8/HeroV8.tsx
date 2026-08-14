@@ -43,7 +43,6 @@ export default function HeroV8({ t, lang = 'he' }: { t: HeroT; lang?: 'en' | 'he
         <figure className="v8-hero-person v8-hero-person--amir">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/v8-hero-amir.png" alt={t.amirAlt} className="v8-hero-photo" />
-          <span className="v8-hero-tag v8-hero-tag--amir">{t.amirTag}</span>
           <figcaption className="v8-hero-cap">
             <strong>{t.amirName}</strong>
             {t.amirRole}
@@ -80,7 +79,6 @@ export default function HeroV8({ t, lang = 'he' }: { t: HeroT; lang?: 'en' | 'he
         <figure className="v8-hero-person v8-hero-person--keren">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/v8-hero-keren.png" alt={t.kerenAlt} className="v8-hero-photo" />
-          <span className="v8-hero-tag v8-hero-tag--keren">{t.kerenTag}</span>
           <figcaption className="v8-hero-cap">
             <strong>{t.kerenName}</strong>
             {t.kerenRole}
