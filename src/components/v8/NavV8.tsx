@@ -40,8 +40,13 @@ export default function NavV8({ t, lang, onLangChange, hrefPrefix = '' }: Props)
           {/* Right: logo + hamburger — first in DOM = right in RTL */}
           <div className="v8-nav-right">
             <a href={`${hrefPrefix}#`} className="v8-nav-logo">
+              {/* White over the dark hero at the top; black once the nav turns white on scroll */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-2otters-black-vertical.svg" alt="The Two Otters Studio" className="v8-nav-logo-img" />
+              <img
+                src={scrolled || open ? '/logo-2otters-black-vertical.svg' : '/logo-2otters-white-vertical.svg'}
+                alt="The Two Otters Studio"
+                className="v8-nav-logo-img"
+              />
             </a>
             <button
               className="v8-nav-hamburger"
