@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, type CSSProperties } from 'react'
 import en from '@/locales/v8-en.json'
 
 type NavT = typeof en.nav
@@ -35,7 +35,7 @@ export default function NavV8({ t, lang, onLangChange, hrefPrefix = '' }: Props)
 
   return (
     <>
-      <nav className={`v8-nav${scrolled ? ' v8-nav--scrolled' : ''}`}>
+      <nav className={`v8-nav${scrolled ? ' v8-nav--scrolled' : ''}${open ? ' v8-nav--menu-open' : ''}`}>
         <div className="v8-nav-inner">
           {/* Right: logo + hamburger — first in DOM = right in RTL */}
           <div className="v8-nav-right">
@@ -43,9 +43,18 @@ export default function NavV8({ t, lang, onLangChange, hrefPrefix = '' }: Props)
               {/* White over the dark hero at the top; black once the nav turns white on scroll */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={scrolled || open ? '/logo-2otters-black-vertical.svg' : '/logo-2otters-white-vertical.svg'}
+                src={scrolled || open ? '/v8-logo-dark.svg' : '/v8-logo-white.svg'}
                 alt="The Two Otters Studio"
                 className="v8-nav-logo-img"
+              />
+              {/* Mobile: the mark alone — the wordmark is illegible at nav size.
+                  Goes solid navy on the white scrolled nav, same as the full logo. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={scrolled || open ? '/v8-logo-mark-dark.svg' : '/v8-logo-mark.svg'}
+                alt=""
+                aria-hidden="true"
+                className="v8-nav-logo-mark"
               />
             </a>
             <button
@@ -90,13 +99,40 @@ export default function NavV8({ t, lang, onLangChange, hrefPrefix = '' }: Props)
       {/* Mobile drawer */}
       <div className={`v8-nav-drawer ${open ? 'v8-nav-drawer--open' : ''}`} aria-hidden={!open}>
         <div className="v8-nav-drawer-inner">
-          {t.links.map(l => (
-            <a key={l.href} href={`${hrefPrefix}${l.href}`} className="v8-nav-drawer-link" onClick={close}>
+          {/* --i drives the staggered rise-in (see .v8-nav-drawer--open in styles.css) */}
+          {t.links.map((l, i) => (
+            <a
+              key={l.href}
+              href={`${hrefPrefix}${l.href}`}
+              className="v8-nav-drawer-link"
+              style={{ '--i': i } as CSSProperties}
+              onClick={close}
+            >
               {l.label}
             </a>
           ))}
-          <a href={`${hrefPrefix}#contact`} className="v8-btn-primary v8-nav-drawer-cta" onClick={close}>
-            {t.cta}
+        </div>
+
+        {/* Pinned to the bottom of the drawer, whatever the link list does */}
+        <div className="v8-nav-drawer-foot">
+          <a
+            href={`${hrefPrefix}#contact`}
+            className="v8-btn-primary v8-nav-drawer-cta"
+            style={{ '--i': t.links.length } as CSSProperties}
+            onClick={close}
+          >
+            <span>{t.cta}</span>
+            <span className="v8-nav-drawer-cta-arrow" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
           </a>
         </div>
       </div>
