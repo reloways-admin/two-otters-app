@@ -56,11 +56,12 @@
         "href": "/work/fincat",
         "color": "yellow",
         "coverLabel": "FinCat",
-        "image": "/fincat/cover.jpg",
+        "image": "/fincat/card.webp",
         "by": "Together"
       },
       {
         "title": "Trade The Pool",
+        "hidden": true,
         "subtitle": "Bold FinTech brand",
         "tagline": "A bold, young FinTech brand - built fast.",
         "tags": "Design system · Art direction · Web",

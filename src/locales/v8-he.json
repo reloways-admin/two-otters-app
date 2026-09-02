@@ -56,11 +56,12 @@
         "href": "/work/fincat",
         "color": "yellow",
         "coverLabel": "FinCat",
-        "image": "/fincat/cover.jpg",
+        "image": "/fincat/card.webp",
         "by": "ביחד"
       },
       {
         "title": "Trade the Pool",
+        "hidden": true,
         "subtitle": "מותג פינטק נועז",
         "tagline": "מרעיון למוצר עובד במהירות הבזק",
         "tags": "אתר · ארט דיירקשן · מערכת עיצוב",
