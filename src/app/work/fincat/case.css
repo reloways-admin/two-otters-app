@@ -233,6 +233,11 @@
   flex-direction: column;
   gap: 24px;
 }
+/* The two copy blocks run to different lengths (4 lines vs 3), which used to
+   start the images at different heights. The columns already stretch to match,
+   so pushing each image to the floor of its column lines them up — and since
+   both images share an aspect ratio and width, their tops match too. */
+.fc-col img { margin-top: auto; }
 .fc-col-text {
   padding-inline-end: 32px;
   text-align: start;

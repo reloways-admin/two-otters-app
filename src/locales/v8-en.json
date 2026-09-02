@@ -47,6 +47,7 @@
   "work": {
     "heading": "Work we’re proud of",
     "sub": "Strategy and design - some together, some solo. Here’s a taste.",
+    "view": "View project",
     "projects": [
       {
         "title": "FinCat",
@@ -91,7 +92,7 @@
         "href": "/work/the5ers",
         "color": "green",
         "coverLabel": "The5ers",
-        "image": "/the5ers/cover.jpg"
+        "image": "/the5ers/card.webp"
       },
       {
         "title": "Keren Rightler",
@@ -440,113 +441,101 @@
     "copyright": "© 2026 Two Otters Studio. All rights reserved."
   },
   "caseFincat": {
-    "brand": "the two otters",
-    "back": "← All work",
-    "eyebrow": "Case study · FinTech",
-    "titleA": "FinCat, rebuilt from ",
-    "titleHi": "strategy to launch",
-    "lede": "A financial-comparison brand reimagined - a new brand foundation, a full UX/UI system, and a marketing engine that runs itself. Strategy and design didn’t hand off; they ran in parallel, each one sharpening the other.",
-    "clientL": "Client",
-    "client": "FinCat",
-    "industryL": "Industry",
-    "industry": "FinTech",
-    "roleL": "Our role",
-    "role": "Strategy · Brand · UX/UI · Marketing system",
-    "timelineL": "Timeline",
-    "timeline": "A few focused weeks",
-    "viewLive": "View live project →",
-    "coverAlt": "FinCat homepage - the live product",
-    "glanceKicker": "At a glance",
-    "glanceTitle": "An established brand that needed to feel new.",
-    "glanceBody": "FinCat helps people find the right financial service providers, with verified ratings. The product worked - but the brand and the site no longer matched the business, and there was no marketing engine behind it. We rebuilt all three at once.",
-    "chips": [
-      "Full rebrand",
-      "10+ content pages",
-      "Custom icon set",
-      "Personas & funnels",
-      "Marketing automations",
-      "Brand story & voice"
-    ],
-    "challengeKicker": "The challenge",
-    "challengeTitle": "Two hard constraints, one moving target.",
-    "challengeBody": "We had to lift an existing visual language - keeping the cat mascot and the black, yellow and white palette people already recognized - while designing the entire site before its custom illustrations existed. And we had to do it for more than one audience at the same time, without losing the thread of a single, coherent brand.",
-    "approachKicker": "The approach",
-    "approachTitle": "The Spiral, not the relay race.",
-    "approachBody": "Most studios run strategy, then design, then marketing - each one waiting on the last. We work in a spiral: the tracks move together and refine as they go, so a decision in one immediately sharpens the other. On FinCat that wasn’t a slogan - it’s literally how the work got made.",
-    "workedKicker": "How we worked",
-    "workedTitle": "Two otters, one loop.",
-    "workedBody": "Strategy and design weren’t separate deliverables - they fed each other, step by step. Here’s the back-and-forth that built FinCat.",
-    "trackAmir": "Amir · Design & UX",
-    "trackKeren": "Keren · Strategy & brand",
-    "loops": [
+    "title": "From community to business",
+    "logoAlt": "FinCat",
+    "stats": [
       {
-        "first": "keren",
-        "keren": "Built FinCat a brand foundation from scratch - values, vision, brand story and a shared terminology - even though the brand already existed.",
-        "amir": "Turned that terminology into the product itself: UI labels, microcopy and a visual language that says the same thing the brand does."
+        "label": "Audience",
+        "value": "137%",
+        "note": "Audience growth  -  52K → 123K"
       },
       {
-        "first": "amir",
-        "amir": "Designed a clickable prototype of the whole site - every page, before a single illustration existed.",
-        "keren": "Used those real screens to pressure-test funnel messaging and CTAs, so the words were proven before development began."
+        "label": "Automation",
+        "value": "5",
+        "note": "Automated funnels"
       },
       {
-        "first": "keren",
-        "keren": "Mapped the audiences into personas and segments, each with its own funnel and intent.",
-        "amir": "Shaped onboarding and flows around those personas, so each visitor meets the screen built for them."
-      },
-      {
-        "first": "amir",
-        "amir": "Built a tailor-made icon set and component system for the site.",
-        "keren": "Carried it straight into landing pages, email sequences and paid assets - one brand language, everywhere."
+        "label": "Time to launch",
+        "value": "5 mo",
+        "note": "From scoping to launch"
       }
     ],
-    "loopNote": "Neither track could have produced this result on its own.",
-    "showcaseKicker": "The work",
-    "showcaseTitle": "Brand, product and engine - in one voice.",
-    "shots": [
-      "Brand mascot & character system",
-      "Tailor-made icon set",
-      "Onboarding & registration flow",
-      "Community & marketplace",
-      "Landing pages",
-      "Full site - 10+ pages, login & profiles"
-    ],
-    "resultsKicker": "What changed",
-    "resultsTitle": "A brand that finally matches the business.",
-    "results": [
+    "meta": [
       {
-        "b": "One coherent brand",
-        "p": "From values to UI labels to ad copy - the same voice everywhere, built on a foundation that didn’t exist before."
+        "label": "Services",
+        "note": "Marketing strategy · Rebrand · Site scoping and copy · Marketing system · Project management"
       },
       {
-        "b": "A site, proven before build",
-        "p": "A clickable prototype let messaging and flows get tested on real screens, so development started from certainty."
+        "label": "Deliverables",
+        "note": "Brand foundation · Content portal site · Funnels and automations · Decks · Game cards · Guides · Digital courses"
       },
       {
-        "b": "A marketing engine that runs itself",
-        "p": "Modular funnels and automations turn one click into a pre-planned set of actions across every platform."
+        "label": "Industry",
+        "note": "Fintech · Financial marketplace"
       }
     ],
-    "quote": "“Add a sentence from the FinCat client here.”",
-    "quoteCite": "- Client name, role · FinCat",
-    "deliverKicker": "What we delivered",
-    "deliverTitle": "Everything, end to end.",
-    "deliverables": [
-      "Brand foundation: values, vision & story",
-      "Brand terminology & tone of voice",
-      "UX strategy & site architecture",
-      "Full UX/UI design - 10+ pages",
-      "Tailor-made icon & component system",
-      "Clickable prototype",
-      "Personas & audience segmentation",
-      "Multi-platform content strategy",
-      "Marketing funnels & automations",
-      "Landing pages & email sequences"
+    "overview": {
+      "title": "Overview",
+      "boldLead": "FinCat",
+      "body": [
+        " is a long-standing brand in the financial world. A community that wanted to become a brand and build a marketplace of advisors and service providers. They understood they needed to look and work like a business.",
+        "We approached it the way we would a new brand. We built a brand foundation from scratch, translated it into a fresh visual language, and set up a smart marketing infrastructure around it.",
+        "Strategy and design ran in parallel, so Adi and Dov Nodel's vision turned into something you can see, use and earn from."
+      ]
+    },
+    "strategy": {
+      "title": "The strategy",
+      "body": [
+        "From there we moved on to sharpening the audience. FinCat has more than one target audience, so we split the personas into separate funnels — each with its own language, examples and magnets, so every message meets the person the brand can actually help.",
+        "On that base we built a modular marketing infrastructure. Smart funnels that open with a gift product and mature into an offer, automations that fire at the press of a button, and a connection to the data that lets us keep sharpening the look, the messaging and the call to action — in real time.",
+        "Before we touched a single pixel, we got inside the brand's head. We set three goals and worked on them in parallel: growing the audience, improving sales and strengthening trust.",
+        "Around them we built one strategy that serves all three, with anchors that help the brand use every asset and repeat the work consistently."
+      ]
+    },
+    "materials": {
+      "title": "Marketing materials",
+      "body": [
+        "Building marketing assets — landing pages, email sequences and guides — and handing them on to paid marketing, SEO, development and more…"
+      ]
+    },
+    "cols": [
+      {
+        "title": "Project management",
+        "body": "The project runs in SaaS tools our clients and service providers can reach, so everyone plugs into the same work — from strategy through to sales and measurement. You can leave tasks, drop in deliverables and follow progress, all in full transparency with the client."
+      },
+      {
+        "title": "One consistent brand language",
+        "body": "Developing a terminology, a tone and a character for the brand, alongside writing a brand story with a strong, precise visual presence. In practice the “brand language” is a fine blend of words and visuals that creates something new and distinctive for the brand."
+      }
     ],
-    "finalTitle": "Got a project like this?",
-    "finalSub": "Strategy and design, in parallel. From idea to product - just faster.",
-    "finalCta": "Let’s talk",
-    "finalGhost": "See more work →"
+    "visual": {
+      "kicker": "It all comes together",
+      "title": "The visual language"
+    },
+    "operation": {
+      "title": "Running a complex marketing project",
+      "body": [
+        "Our project did not stop at scoping, copywriting, design and guiding development. Working with FinCat went well beyond building their marketplace.",
+        "We built a strong, automated marketing infrastructure and ran the whole operation in close collaboration with an SEO specialist, a media and advertising agency, an illustrator, a social lead, business partners, a development company and other service providers.",
+        "Throughout, we guarded the new brand lines fiercely, so that every element — including every new ad — spoke the same distinct brand language. We flagged budget overruns, and brought complex marketing terms and processes down to earth so the client could make informed decisions across all the many projects we took on."
+      ]
+    },
+    "quote": {
+      "body": [
+        "Amir's ability to communicate ideas visually is simply exceptional. His work is technically professional and also full of creativity and life.",
+        "Keren, I'll take a moment to be emotional. Thank you for the guidance along this frightening road, the move from a free initiative to a business that sells something. A move that was beautiful aesthetically and worked well in terms of user experience. A move accompanied by questions that sent us away to think and come back with tighter answers. Thank you 💙"
+      ],
+      "cite": "Adi Nodel, founder of FinCat"
+    },
+    "alt": {
+      "hero": "The FinCat site on a laptop screen",
+      "overview": "FinCat's comparison results page",
+      "materials": "FinCat marketing materials",
+      "projectMgmt": "The project management tools",
+      "brandLanguage": "FinCat's brand language",
+      "visual": "FinCat's visual language",
+      "operation": "Output from FinCat's marketing operation"
+    }
   },
   "caseTradePool": {
     "brand": "the two otters",

@@ -15,9 +15,8 @@ const ACCENT: Record<string, { solid: string; soft: string }> = {
   soft:   { solid: '#7C5CED', soft: '#F1ECFE' },
 }
 
-function ProjectCard({ p, lang }: { p: Project; lang: 'en' | 'he' }) {
+function ProjectCard({ p, view, lang }: { p: Project; view: string; lang: 'en' | 'he' }) {
   const acc = ACCENT[p.color] ?? ACCENT.soft
-  const view = lang === 'en' ? 'View project' : 'צפו בפרויקט'
 
   const inner = (
     <>
@@ -68,7 +67,7 @@ export default function WorkV8({ t, lang = 'he' }: { t: WorkT; lang?: 'en' | 'he
 
         <div className="v8-work-grid">
           {projects.map((p) => (
-            <ProjectCard key={p.title} p={p} lang={lang} />
+            <ProjectCard key={p.title} p={p} view={t.view} lang={lang} />
           ))}
         </div>
       </div>
