@@ -1,14 +1,66 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import NavV6 from '@/components/v6/NavV6'
-import '../../v6/styles.css'
-import '../case-study.css'
-import en from '@/locales/v6-en.json'
-import he from '@/locales/v6-he.json'
+import { useEffect, useState, type ReactNode } from 'react'
+import NavV8 from '@/components/v8/NavV8'
+import ContactV8 from '@/components/v8/ContactV8'
+import FooterV8 from '@/components/v8/FooterV8'
+import en from '@/locales/v8-en.json'
+import he from '@/locales/v8-he.json'
+import '../../v8/styles.css'
+import '../case-study-v8.css'
 
 type Lang = 'en' | 'he'
 const locales = { en, he } as const
+
+type Fact = { label: string; value?: string; note: string }
+
+function Facts({ items, variant }: { items: Fact[]; variant?: 'meta' }) {
+  return (
+    <div className={`cs8-facts${variant === 'meta' ? ' cs8-facts--meta' : ''}`}>
+      {items.map(item => (
+        <div key={item.label} className="cs8-fact">
+          <span className="cs8-fact-label">{item.label}</span>
+          {item.value && <span className="cs8-fact-value">{item.value}</span>}
+          <span className="cs8-fact-note">{item.note}</span>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function Prose({ kicker, title, paragraphs, bare }: {
+  kicker?: string
+  title: string
+  paragraphs: ReactNode[]
+  bare?: boolean
+}) {
+  return (
+    <section className="cs8-prose">
+      <div className={bare ? undefined : 'cs8-container'}>
+        <div className="cs8-prose-inner">
+          <div className="cs8-prose-heading">
+            {kicker && <p className="cs8-prose-kicker">{kicker}</p>}
+            <h2 className="cs8-prose-title">{title}</h2>
+          </div>
+          <div className="cs8-prose-body">
+            {paragraphs.map((p, i) => <p key={i}>{p}</p>)}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function Band({ src, alt }: { src: string; alt: string }) {
+  return (
+    <section className="cs8-band">
+      <div className="cs8-container">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt={alt} loading="lazy" />
+      </div>
+    </section>
+  )
+}
 
 export default function The5ersCaseStudy() {
   const [lang, setLang] = useState<Lang>('he')
@@ -18,64 +70,94 @@ export default function The5ersCaseStudy() {
     if (p === 'en' || p === 'he') setLang(p)
   }, [])
 
-  const t = locales[lang].caseThe5ers
+  useEffect(() => {
+    const bar = document.querySelector<HTMLElement>('.cs8-progress')
+    if (!bar) return
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      bar.style.width = max > 0 ? `${(window.scrollY / max) * 100}%` : '0%'
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const l = locales[lang]
+  const t = l.caseThe5ers
   const isRTL = lang === 'he'
 
   return (
-    <main className="cs" dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
-      <NavV6 t={locales[lang].nav} lang={lang} onLangChange={setLang} hrefPrefix={`/v6?lang=${lang}`} />
+    <main className="cs8" dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+      <div className="cs8-progress" aria-hidden="true" />
 
-      {/* Hero — FinCat-style two-column (text right, meta cols left) */}
-      <header className="hero">
-        <div className="hero-inner">
-          <div className="hero-text">
-            <div className="hero-tag">{t.eyebrow}</div>
-            <h1>{t.titleA}<span className="u">{t.titleHi}</span></h1>
-            <p className="hero-sub">{t.lede}</p>
+      <NavV8 t={l.nav} lang={lang} onLangChange={setLang} hrefPrefix={`/?lang=${lang}`} />
+
+      {/* ── Hero ──
+          No client logo: the Figma frame still carries FinCat's, left over from
+          duplicating that template, and we have no The 5ers mark in the repo. */}
+      <section className="cs8-hero">
+        <div className="cs8-container">
+          <div className="cs8-hero-head">
+            <h1 className="cs8-hero-title">{t.title}</h1>
           </div>
-          <aside className="hero-meta">
-            <div className="hero-meta-cols">
-              <div className="hmc"><span className="hmc-label">{t.industryL}</span><span className="hmc-value">{t.industry}</span></div>
-              <div className="hmc"><span className="hmc-label">{t.roleL}</span><span className="hmc-value">{t.role}</span></div>
-              <div className="hmc"><span className="hmc-label">{t.timelineL}</span><span className="hmc-value">{t.timeline}</span></div>
-            </div>
-            <a className="hero-live-link" href="https://the5ers.com/" target="_blank" rel="noopener noreferrer">
-              {t.viewLive}
-            </a>
-          </aside>
-        </div>
-      </header>
-      <div className="cs-hero-media">
-        <div className="cs-hero-cover">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/the5ers/cover.jpg" alt={t.coverAlt} />
-        </div>
-      </div>
 
-      {/* At a glance */}
-      <section className="cs-section">
-        <div className="cs-wrap">
-          <span className="cs-kicker">{t.glanceKicker}</span>
-          <h2 className="cs-h2">{t.glanceTitle}</h2>
-          <p className="cs-body">{t.glanceBody}</p>
+          <Facts items={t.stats} />
+
+          <div className="cs8-hero-figure">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/the5ers/cs/hero.webp" alt={t.alt.hero} fetchPriority="high" />
+          </div>
+
+          <Facts items={t.meta} variant="meta" />
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="cs-wrap">
-        <div className="cs-final">
-          <span className="cs-final-otter cs-final-otter--start" aria-hidden="true" />
-          <span className="cs-final-otter cs-final-otter--end" aria-hidden="true" />
-          <div className="cs-final-inner">
-            <h2>{t.finalTitle}</h2>
-            <p>{t.finalSub}</p>
-            <div className="cs-final-row">
-              <a className="cs-final-btn" href={`/v6?lang=${lang}#contact`}>{t.finalCta}</a>
-              <a className="cs-final-ghost" href={`/v6?lang=${lang}#work`}>{t.finalGhost}</a>
-            </div>
+      {/* ── Overview ── */}
+      <Prose
+        title={t.overview.title}
+        paragraphs={t.overview.body.map((p, i) =>
+          i === 0 ? <><b>{t.overview.boldLead}</b>{p}</> : p
+        )}
+      />
+
+      <Band src="/the5ers/cs/overview.webp" alt={t.alt.overview} />
+
+      {/* ── Strategy ── */}
+      <Prose title={t.strategy.title} paragraphs={t.strategy.body} />
+
+      {/* ── Voice and content (dark, with its own image) ── */}
+      <section className="cs8-materials">
+        <div className="cs8-container">
+          <Prose bare title={t.voice.title} paragraphs={t.voice.body} />
+          <div className="cs8-materials-figure">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/the5ers/cs/voice.webp" alt={t.alt.voice} loading="lazy" />
           </div>
         </div>
       </section>
+
+      {/* ── Visual language ── */}
+      <Prose kicker={t.visual.kicker} title={t.visual.title} paragraphs={t.visual.body} />
+
+      <Band src="/the5ers/cs/visual.webp" alt={t.alt.visual} />
+
+      {/* ── What was delivered ── */}
+      <Prose title={t.delivered.title} paragraphs={t.delivered.body} />
+
+      <Band src="/the5ers/cs/delivered.webp" alt={t.alt.delivered} />
+
+      {/* ── Testimonial ── */}
+      <section className="cs8-quote">
+        <div className="cs8-container">
+          <blockquote className="cs8-quote-body">
+            {t.quote.body.map((p, i) => <p key={i}>{p}</p>)}
+          </blockquote>
+          <cite className="cs8-quote-cite">{t.quote.cite}</cite>
+        </div>
+      </section>
+
+      <ContactV8 t={l.contact} />
+      <FooterV8 t={l.footer} />
     </main>
   )
 }

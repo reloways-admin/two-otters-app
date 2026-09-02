@@ -61,30 +61,6 @@
         "by": "Together"
       },
       {
-        "title": "Trade The Pool",
-        "hidden": true,
-        "subtitle": "Bold FinTech brand",
-        "tagline": "A bold, young FinTech brand - built fast.",
-        "tags": "Design system · Art direction · Web",
-        "href": "/work/trade-the-pool",
-        "color": "purple",
-        "coverLabel": "Trade The Pool",
-        "image": "/trade-the-pool/card.jpg",
-        "by": "Solo · Amir"
-      },
-      {
-        "title": "ThatPerk",
-        "hidden": true,
-        "subtitle": "Sustainability startup",
-        "tagline": "Turning the daily commute into a perk.",
-        "tags": "Product · UX/UI · Marketing site",
-        "href": "/work/that-perk",
-        "color": "blue",
-        "coverLabel": "ThatPerk",
-        "image": "/that-perk/cover.jpg",
-        "by": "Together"
-      },
-      {
         "title": "The5ers",
         "subtitle": "Trading fund",
         "tagline": "A proprietary trading fund - brand & product.",
@@ -93,17 +69,6 @@
         "color": "green",
         "coverLabel": "The5ers",
         "image": "/the5ers/card.webp"
-      },
-      {
-        "title": "Keren Rightler",
-        "hidden": true,
-        "subtitle": "Marketing & branding",
-        "tagline": "Coming soon.",
-        "tags": "Coming soon",
-        "href": "/work/keren-rightler",
-        "color": "purple",
-        "coverLabel": "Keren Rightler",
-        "image": "/keren-rightler/cover.jpg"
       }
     ]
   },
@@ -393,7 +358,7 @@
     "submitBtn": "Let's Talk",
     "sendingBtn": "Sending…",
     "successMsg": "Thanks - we got your message and will be in touch within two business days.",
-    "errorMsg": "Something went wrong sending your message. Please email us directly at hello@twootters.studio.",
+    "errorMsg": "Something went wrong sending your message. Please email us directly at hello@two-otters.studio.",
     "emailSubjectPrefix": "Website inquiry -",
     "emailLabels": {
       "name": "Name",
@@ -703,5 +668,92 @@
     "finalSub": "Two designers, one tight loop - from idea to product.",
     "finalCta": "Let’s talk",
     "finalGhost": "See more work →"
+  },
+  "caseThe5ers": {
+    "title": "Putting a face to the money",
+    "stats": [
+      {
+        "label": "Strategy phase",
+        "value": "3 months",
+        "note": "Before we touched the design"
+      },
+      {
+        "label": "Professional pillars",
+        "value": "3",
+        "note": "One language above them all"
+      },
+      {
+        "label": "Site templates",
+        "value": "13",
+        "note": "Content portal and courses"
+      }
+    ],
+    "meta": [
+      {
+        "label": "Services",
+        "note": "Brand strategy · Competitor mapping and differentiation · Brand story and messaging · Terminology · UX spec · Copywriting · Tone of voice"
+      },
+      {
+        "label": "Deliverables",
+        "note": "Strategic brief · Brand story · Messaging for three pillars · English tone of voice · Full site spec · 13 templates"
+      },
+      {
+        "label": "Industry",
+        "note": "Prop trading · Finance · Trader community"
+      }
+    ],
+    "overview": {
+      "title": "Overview",
+      "boldLead": "The 5ers",
+      "body": [
+        " funds traders and builds a whole community around them in the prop-trading world. There's an academy, webinars, masterminds and a lot of people learning to trade. They came to us with a strong marketing team but without a single outside eye looking at all of it together — so every marketing function did something right on its own without any of it converging into one brand language.",
+        "We went at the brand from the root. We mapped the arena, defined the differentiation, and built a brand story and messaging the whole team could work from. From there we moved on to the site spec and the visual language, so the strategy wouldn't stay in a document."
+      ]
+    },
+    "strategy": {
+      "title": "The strategy",
+      "body": [
+        "In the money category everyone sounds the same. We started with competitor mapping and one question — what do The 5ers do differently, not what do they do better.",
+        "The answer was the people. Not the capital and not the platform, but the traders themselves and the road they travel. We built the brand story, the messaging and the terminology the team still works with around that.",
+        "Three months of strategy came before any design. We defined three professional pillars, gave each its own nuance inside the language, and kept one language above them — so someone arriving to learn and someone arriving to join the programme meet the same brand in two registers.",
+        "We built the site spec straight out of the messaging, so the structure of the site tells the same story. Strategy and spec ran together, not one after the other."
+      ]
+    },
+    "voice": {
+      "title": "Voice and content",
+      "body": [
+        "The tone of voice was written in English. Friendly and leading — the kind that sits beside the trader and explains, while leaving no doubt who the authority in the room is. Alongside it we wrote the copy for every template and built a fixed terminology, so anyone writing for the brand sounds the same."
+      ]
+    },
+    "visual": {
+      "kicker": "It all comes together",
+      "title": "The visual language",
+      "body": [
+        "The finance category dries out fast, and most brands in it look alike. The brief was to build a world that doesn't look like yet another financial brand.",
+        "What came out is a world with people at the front. Faces, gazes and layers, and beneath them dollar signs and rising graphs — all the signals of the category, in the background, where they belong.",
+        "We presented two concepts. One was chosen, and we developed it all the way.",
+        "13 templates were designed in Figma and handed to development, so the team can maintain the site without coming back to us for every change."
+      ]
+    },
+    "delivered": {
+      "title": "What was delivered",
+      "body": [
+        "At the end of the process we handed over a brand story, a strategic brief, messaging and terminology, an English tone of voice, a full site spec and copy for every template. All of it wrapped in a precise, fresh and punchy design that sets the brand apart from its competitors at home and abroad.",
+        "The design was built in Figma and passed to development, with one language holding the content portal, the courses area and the three professional pillars. What had been a collection of materials — each right on its own — became one brand you can keep building on."
+      ]
+    },
+    "quote": {
+      "body": [
+        "We asked Keren to help us reformulate the brand narrative. Keren took full ownership of the project, to the point where she felt like part of our internal strategy team, unlike any other third party we've worked with. As the project progressed she expanded her areas of responsibility on her own initiative. Keren brings a rare combination of creativity, a yes-you-can-do attitude and agility with changes. She knows how to adapt to changes in plan and she is exceptionally open. These qualities make her a rare professional, one who leads us in an inspiring way to distil the unique essence of our brand story."
+      ],
+      "cite": "Gil Ben Hur, CEO, The 5ers"
+    },
+    "alt": {
+      "hero": "The 5ers site on a laptop screen",
+      "overview": "Screens from The 5ers site",
+      "voice": "The 5ers tone of voice and content",
+      "visual": "The 5ers visual language",
+      "delivered": "The deliverables handed to The 5ers"
+    }
   }
 }

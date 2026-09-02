@@ -5,7 +5,7 @@ import en from '@/locales/v8-en.json'
 type FooterT = typeof en.footer
 
 const CONTACT_LINKS = [
-  { label: 'hello@twootters.studio', href: 'mailto:hello@twootters.studio' },
+  { label: 'hello@two-otters.studio', href: 'mailto:hello@two-otters.studio' },
   { label: 'Instagram',              href: 'https://instagram.com' },
   { label: 'LinkedIn',               href: 'https://linkedin.com' },
 ]

@@ -7,7 +7,7 @@ import FooterV8 from '@/components/v8/FooterV8'
 import en from '@/locales/v8-en.json'
 import he from '@/locales/v8-he.json'
 import '../../v8/styles.css'
-import './case.css'
+import '../case-study-v8.css'
 
 type Lang = 'en' | 'he'
 const locales = { en, he } as const
@@ -16,12 +16,12 @@ type Fact = { label: string; value?: string; note: string }
 
 function Facts({ items, variant }: { items: Fact[]; variant?: 'meta' }) {
   return (
-    <div className={`fc-facts${variant === 'meta' ? ' fc-facts--meta' : ''}`}>
+    <div className={`cs8-facts${variant === 'meta' ? ' cs8-facts--meta' : ''}`}>
       {items.map(item => (
-        <div key={item.label} className="fc-fact">
-          <span className="fc-fact-label">{item.label}</span>
-          {item.value && <span className="fc-fact-value">{item.value}</span>}
-          <span className="fc-fact-note">{item.note}</span>
+        <div key={item.label} className="cs8-fact">
+          <span className="cs8-fact-label">{item.label}</span>
+          {item.value && <span className="cs8-fact-value">{item.value}</span>}
+          <span className="cs8-fact-note">{item.note}</span>
         </div>
       ))}
     </div>
@@ -37,14 +37,14 @@ function Prose({ kicker, title, paragraphs, bare }: {
   bare?: boolean
 }) {
   return (
-    <section className="fc-prose">
-      <div className={bare ? undefined : 'fc-container'}>
-        <div className="fc-prose-inner">
-          <div className="fc-prose-heading">
-            {kicker && <p className="fc-prose-kicker">{kicker}</p>}
-            <h2 className="fc-prose-title">{title}</h2>
+    <section className="cs8-prose">
+      <div className={bare ? undefined : 'cs8-container'}>
+        <div className="cs8-prose-inner">
+          <div className="cs8-prose-heading">
+            {kicker && <p className="cs8-prose-kicker">{kicker}</p>}
+            <h2 className="cs8-prose-title">{title}</h2>
           </div>
-          <div className="fc-prose-body">
+          <div className="cs8-prose-body">
             {paragraphs.map((p, i) => <p key={i}>{p}</p>)}
           </div>
         </div>
@@ -55,8 +55,8 @@ function Prose({ kicker, title, paragraphs, bare }: {
 
 function Band({ src, alt }: { src: string; alt: string }) {
   return (
-    <section className="fc-band">
-      <div className="fc-container">
+    <section className="cs8-band">
+      <div className="cs8-container">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={src} alt={alt} loading="lazy" />
       </div>
@@ -73,7 +73,7 @@ export default function FinCatCaseStudy() {
   }, [])
 
   useEffect(() => {
-    const bar = document.querySelector<HTMLElement>('.fc-progress')
+    const bar = document.querySelector<HTMLElement>('.cs8-progress')
     if (!bar) return
     const onScroll = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight
@@ -90,23 +90,23 @@ export default function FinCatCaseStudy() {
   const home = `/?lang=${lang}`
 
   return (
-    <main className="fc" dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
-      <div className="fc-progress" aria-hidden="true" />
+    <main className="cs8" dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+      <div className="cs8-progress" aria-hidden="true" />
 
       <NavV8 t={l.nav} lang={lang} onLangChange={setLang} hrefPrefix={home} />
 
       {/* ── Hero ── */}
-      <section className="fc-hero">
-        <div className="fc-container">
-          <div className="fc-hero-head">
+      <section className="cs8-hero">
+        <div className="cs8-container">
+          <div className="cs8-hero-head">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/fincat/cs/logo.svg" alt={t.logoAlt} className="fc-hero-logo" />
-            <h1 className="fc-hero-title">{t.title}</h1>
+            <img src="/fincat/cs/logo.svg" alt={t.logoAlt} className="cs8-hero-logo" />
+            <h1 className="cs8-hero-title">{t.title}</h1>
           </div>
 
           <Facts items={t.stats} />
 
-          <div className="fc-hero-figure">
+          <div className="cs8-hero-figure">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/fincat/cs/hero.webp" alt={t.alt.hero} fetchPriority="high" />
           </div>
@@ -129,29 +129,29 @@ export default function FinCatCaseStudy() {
       <Prose title={t.strategy.title} paragraphs={t.strategy.body} />
 
       {/* ── Marketing materials (dark, with two supporting columns) ── */}
-      <section className="fc-materials">
-        <div className="fc-container">
+      <section className="cs8-materials">
+        <div className="cs8-container">
           <Prose bare title={t.materials.title} paragraphs={t.materials.body} />
 
-          <div className="fc-materials-figure">
+          <div className="cs8-materials-figure">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/fincat/cs/materials.webp" alt={t.alt.materials} loading="lazy" />
           </div>
 
           {/* First column takes the start edge — right in Hebrew, left in English. */}
-          <div className="fc-cols">
-            <div className="fc-col">
-              <div className="fc-col-text">
-                <h2 className="fc-col-title">{t.cols[0].title}</h2>
+          <div className="cs8-cols">
+            <div className="cs8-col">
+              <div className="cs8-col-text">
+                <h2 className="cs8-col-title">{t.cols[0].title}</h2>
                 <p>{t.cols[0].body}</p>
               </div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/fincat/cs/project-mgmt.webp" alt={t.alt.projectMgmt} loading="lazy" />
             </div>
 
-            <div className="fc-col">
-              <div className="fc-col-text">
-                <h2 className="fc-col-title">{t.cols[1].title}</h2>
+            <div className="cs8-col">
+              <div className="cs8-col-text">
+                <h2 className="cs8-col-title">{t.cols[1].title}</h2>
                 <p>{t.cols[1].body}</p>
               </div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -172,12 +172,12 @@ export default function FinCatCaseStudy() {
       <Band src="/fincat/cs/operation.webp" alt={t.alt.operation} />
 
       {/* ── Testimonial ── */}
-      <section className="fc-quote">
-        <div className="fc-container">
-          <blockquote className="fc-quote-body">
+      <section className="cs8-quote">
+        <div className="cs8-container">
+          <blockquote className="cs8-quote-body">
             {t.quote.body.map((p, i) => <p key={i}>{p}</p>)}
           </blockquote>
-          <cite className="fc-quote-cite">{t.quote.cite}</cite>
+          <cite className="cs8-quote-cite">{t.quote.cite}</cite>
         </div>
       </section>
 
