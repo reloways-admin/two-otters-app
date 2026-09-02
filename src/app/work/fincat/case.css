@@ -1,0 +1,343 @@
+/* ─────────────────────────────────────────────────────────────
+   FinCat case study — built from Figma node 1931:13120
+   ("page final", file KqistPA9ENBH2YQtXqagMO).
+
+   Scoped entirely under .fc so it can't leak into the v8 site or
+   into work/fincat/styles.css, which is still the stylesheet for
+   the that-perk and keren-rightler case studies.
+
+   Figma is drawn on a 1920 canvas with a 1408 container (256px
+   side margins). Everything below keeps the Figma numbers at
+   full width and scales them down from there.
+   ───────────────────────────────────────────────────────────── */
+
+.fc {
+  --fc-navy:   #1d2332;   /* section + hero background */
+  --fc-green:  #5aff00;   /* stat figures */
+  --fc-white:  #fdfdfd;   /* headline white (not pure #fff) */
+  --fc-ink:    #1d2332;   /* body copy on light sections */
+  --fc-quote:  #161613;   /* testimonial — Rangoon Green in the file */
+  --fc-rule:   #424c67;   /* hairline between stat cells */
+
+  --fc-container: 1408px;
+  --fc-gutter:    clamp(20px, 4vw, 56px);
+
+  --fc-font: 'Google Sans', Arial, Helvetica, sans-serif;
+
+  background: #fff;
+  color: var(--fc-ink);
+  font-family: var(--fc-font);
+  /* `clip`, not `hidden`: hidden would make .fc its own scroll
+     container (overflow-y resolves to auto) and trap page scrolling. */
+  overflow-x: clip;
+}
+
+.fc *,
+.fc *::before,
+.fc *::after { box-sizing: border-box; }
+
+.fc p { margin: 0; }
+
+.fc-container {
+  width: 100%;
+  max-width: var(--fc-container);
+  margin-inline: auto;
+  padding-inline: var(--fc-gutter);
+}
+
+/* ── Reading progress bar ── */
+.fc-progress {
+  position: fixed;
+  top: 0;
+  inset-inline-start: 0;
+  height: 3px;
+  width: 0;
+  background: var(--fc-green);
+  z-index: 200;
+  transition: width 0.1s linear;
+}
+
+/* ═══ Hero ═══════════════════════════════════════════════════ */
+.fc-hero {
+  background: var(--fc-navy);
+  padding-top: 152px;   /* clears the fixed v8 nav */
+  padding-bottom: 0;
+}
+.fc-hero-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;   /* start edge = right in RTL */
+  gap: 16px;
+}
+.fc-hero-logo {
+  display: block;
+  width: 223px;
+  height: auto;
+}
+.fc-hero-title {
+  margin: 0;
+  width: 100%;
+  font-size: clamp(2.75rem, 5.8vw, 5.5rem);   /* Figma 88px */
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  color: var(--fc-white);
+  text-align: start;
+}
+
+/* ── Stat / topic rows ── */
+.fc-facts {
+  display: flex;
+  align-items: stretch;
+  margin-top: 48px;
+  border-top: 1px solid var(--fc-rule);
+}
+.fc-fact {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 24px 32px 0;
+  text-align: start;
+}
+/* Hairline sits on the inline-end edge so the first (right-most in
+   RTL) cell stays open and the rules land between cells. */
+.fc-fact + .fc-fact { border-inline-start: 1px solid var(--fc-rule); }
+
+.fc-fact-label {
+  font-size: 1.0625rem;   /* 17px */
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+  color: #fff;
+}
+.fc-fact-value {
+  font-size: 2.5rem;      /* 40px */
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--fc-green);
+}
+.fc-fact-note {
+  font-size: 0.9375rem;   /* 15px */
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+}
+/* The lower row swaps the green figure for a green label, and its
+   cell dividers turn green too. */
+.fc-facts--meta { margin-top: 0; }
+.fc-facts--meta .fc-fact { padding-bottom: 24px; }
+.fc-facts--meta .fc-fact + .fc-fact { border-inline-start-color: var(--fc-green); }
+.fc-facts--meta .fc-fact-label { color: var(--fc-green); }
+
+.fc-hero-figure {
+  margin: 56px auto 0;
+  max-width: 1280px;      /* Figma: 1280 inside the 1408 container */
+}
+.fc-hero-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ═══ Prose sections ═════════════════════════════════════════ */
+/* Heading in a fixed 360px column on the right (RTL), body copy
+   filling the rest. The pair is 1168 of the 1408 container and sits
+   flush to the start edge, leaving the Figma's 240px of air. */
+.fc-prose {
+  padding-block: 88px;
+  background: #fff;
+  color: var(--fc-ink);
+}
+.fc-prose--dark {
+  background: var(--fc-navy);
+  color: #fff;
+}
+.fc-prose-inner {
+  display: flex;
+  align-items: flex-start;
+  max-width: 1168px;
+  margin-inline-end: auto;
+}
+.fc-prose-heading {
+  flex: 0 0 360px;
+  padding-inline-end: 20px;
+  text-align: start;
+}
+.fc-prose-kicker {
+  margin: 0;
+  font-size: 2rem;        /* 32px */
+  font-weight: 700;
+  line-height: 1.2;
+}
+.fc-prose-title {
+  margin: 0;
+  font-size: 3rem;        /* 48px */
+  font-weight: 700;
+  line-height: 1.2;
+}
+.fc-prose-body {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  text-align: start;
+}
+.fc-prose-body p {
+  font-size: 1.25rem;     /* 20px */
+  font-weight: 400;
+  line-height: 1.6;       /* 32px */
+}
+.fc-prose-body b { font-weight: 700; }
+
+/* ═══ Full-width image bands ═════════════════════════════════ */
+.fc-band {
+  background: var(--fc-navy);
+  padding-block: 145px;
+}
+.fc-band img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ═══ Marketing-materials section (dark, two columns) ════════ */
+.fc-materials {
+  background: var(--fc-navy);
+  color: #fff;
+  padding-block: 145px;
+}
+.fc-materials .fc-prose {
+  padding-block: 0;
+  background: none;
+  color: inherit;
+}
+.fc-materials-figure { margin-top: 24px; }
+.fc-materials-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.fc-cols {
+  display: flex;
+  gap: 32px;
+  margin-top: 32px;
+}
+.fc-col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.fc-col-text {
+  padding-inline-end: 32px;
+  text-align: start;
+}
+.fc-col-title {
+  margin: 0 0 8px;
+  font-size: 3rem;        /* 48px */
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+}
+.fc-col-text p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #fff;
+}
+.fc-col img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* ═══ Testimonial ════════════════════════════════════════════ */
+.fc-quote {
+  background: #fff;
+  padding-block: 95px 58px;
+  text-align: center;
+}
+.fc-quote-body {
+  max-width: 959px;       /* Figma 958.5 */
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.fc-quote-body p {
+  font-size: 1.625rem;    /* 26px */
+  font-weight: 400;
+  line-height: 1.55;      /* 40.3px */
+  letter-spacing: -0.4px;
+  color: var(--fc-quote);
+}
+.fc-quote-cite {
+  display: block;
+  margin-top: 32px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  font-style: normal;
+  color: #2563eb;
+}
+
+/* ═══ Responsive ═════════════════════════════════════════════ */
+@media (max-width: 1150px) {
+  .fc-hero { padding-top: 116px; }
+  .fc-prose { padding-block: 64px; }
+  .fc-band, .fc-materials { padding-block: 80px; }
+  .fc-prose-inner { max-width: none; }
+  .fc-prose-heading { flex-basis: 300px; }
+}
+
+@media (max-width: 900px) {
+  /* Heading stacks above the copy; the 360px column stops earning
+     its width once the body drops under ~450px. */
+  .fc-prose-inner {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .fc-prose-heading {
+    flex: 0 0 auto;
+    width: 100%;
+    padding-inline-end: 0;
+  }
+  .fc-prose-title { font-size: 2.25rem; }
+  .fc-prose-kicker { font-size: 1.5rem; }
+  .fc-prose-body { gap: 24px; }
+
+  .fc-cols { flex-direction: column; gap: 48px; }
+  .fc-col-title { font-size: 2.25rem; }
+  .fc-col-text { padding-inline-end: 0; }
+
+  /* Stat cells go 1-per-row with a rule between them instead of
+     three cramped columns. */
+  .fc-facts { flex-direction: column; margin-top: 32px; }
+  .fc-facts--meta .fc-fact + .fc-fact { border-top-color: var(--fc-green); }
+  .fc-fact { padding: 20px 0; }
+  .fc-fact + .fc-fact {
+    border-inline-start: 0;
+    border-top: 1px solid var(--fc-rule);
+  }
+  .fc-facts--meta .fc-fact { padding-bottom: 20px; }
+
+  .fc-hero-figure { margin-top: 40px; }
+  .fc-quote-body p { font-size: 1.25rem; line-height: 1.6; }
+}
+
+@media (max-width: 600px) {
+  .fc-hero { padding-top: 96px; }
+  .fc-hero-logo { width: 170px; }
+  .fc-hero-title { letter-spacing: -1px; }
+  .fc-prose { padding-block: 48px; }
+  .fc-band, .fc-materials { padding-block: 56px; }
+  .fc-quote { padding-block: 56px 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fc-progress { transition: none; }
+}
