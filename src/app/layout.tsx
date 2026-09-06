@@ -9,6 +9,12 @@ export const metadata: Metadata = {
   title: "Two Otters — Free AI Audit",
   description:
     "Get a free UX & strategy audit of your product from Agent Amir and Agent Keren.",
+  // Proves ownership of the site to Google Search Console (URL-prefix property
+  // for https://two-otters.studio). Search Console re-checks it periodically —
+  // removing this un-verifies the property, so leave it in place.
+  verification: {
+    google: "elGuFhxcDmbZg2Oh3xmTxubZBz3ZAabP2Q0gzI4iZlc",
+  },
   alternates: {
     // "./" resolves per route, so each page declares itself canonical without
     // every layout having to repeat the URL. Language is a ?lang= param, not a
