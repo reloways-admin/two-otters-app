@@ -3,9 +3,18 @@ import "./globals.css";
 import "./v4/styles.css";
 
 export const metadata: Metadata = {
+  // Every relative metadata URL below resolves against this, so a page rendered
+  // on a preview host still points search engines at the real site.
+  metadataBase: new URL("https://two-otters.studio"),
   title: "Two Otters — Free AI Audit",
   description:
     "Get a free UX & strategy audit of your product from Agent Amir and Agent Keren.",
+  alternates: {
+    // "./" resolves per route, so each page declares itself canonical without
+    // every layout having to repeat the URL. Language is a ?lang= param, not a
+    // route, so both languages share one canonical — which is what we want.
+    canonical: "./",
+  },
 };
 
 export default function RootLayout({
