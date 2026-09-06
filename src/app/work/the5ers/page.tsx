@@ -92,12 +92,12 @@ export default function The5ersCaseStudy() {
 
       <NavV8 t={l.nav} lang={lang} onLangChange={setLang} hrefPrefix={`/?lang=${lang}`} />
 
-      {/* ── Hero ──
-          No client logo: the Figma frame still carries FinCat's, left over from
-          duplicating that template, and we have no The 5ers mark in the repo. */}
+      {/* ── Hero ── */}
       <section className="cs8-hero">
         <div className="cs8-container">
           <div className="cs8-hero-head">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/the5ers/cs/logo.svg" alt={t.logoAlt} className="cs8-hero-logo" />
             <h1 className="cs8-hero-title">{t.title}</h1>
           </div>
 

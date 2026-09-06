@@ -61,7 +61,9 @@
 /* ═══ Hero ═══════════════════════════════════════════════════ */
 .cs8-hero {
   background: var(--cs8-navy);
-  padding-top: 152px;   /* clears the fixed v8 nav */
+  /* The fixed nav is ~108px tall, so 152px left the client logo sitting
+     only 44px under it. This gives the mark room to read as its own thing. */
+  padding-top: 208px;
   padding-bottom: 0;
 }
 .cs8-hero-head {
@@ -72,8 +74,8 @@
 }
 .cs8-hero-logo {
   display: block;
-  width: 223px;
-  height: auto;
+  height: 50px;   /* Figma draws every client mark at this height */
+  width: auto;
 }
 .cs8-hero-title {
   margin: 0;
@@ -293,7 +295,7 @@
 
 /* ═══ Responsive ═════════════════════════════════════════════ */
 @media (max-width: 1150px) {
-  .cs8-hero { padding-top: 116px; }
+  .cs8-hero { padding-top: 160px; }
   .cs8-prose { padding-block: 64px; }
   .cs8-band, .cs8-materials { padding-block: 80px; }
   .cs8-prose-inner { max-width: none; }
@@ -336,8 +338,8 @@
 }
 
 @media (max-width: 600px) {
-  .cs8-hero { padding-top: 96px; }
-  .cs8-hero-logo { width: 170px; }
+  .cs8-hero { padding-top: 128px; }
+  .cs8-hero-logo { height: 38px; }
   .cs8-hero-title { letter-spacing: -1px; }
   .cs8-prose { padding-block: 48px; }
   .cs8-band, .cs8-materials { padding-block: 56px; }
