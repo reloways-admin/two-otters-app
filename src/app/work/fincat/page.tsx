@@ -185,7 +185,7 @@ export default function FinCatCaseStudy() {
              matches this section field-for-field ── */}
       <ContactV8 t={l.contact} />
 
-      <FooterV8 t={l.footer} />
+      <FooterV8 t={l.footer} hrefPrefix={`/?lang=${lang}`} />
     </main>
   )
 }

@@ -1,79 +1,136 @@
 /* Shared shell for the legal pages (privacy, accessibility).
    Deliberately plainer than the marketing site: these are documents people read
-   end-to-end, sometimes under stress, so measure and contrast beat personality. */
+   end-to-end, sometimes under stress, so measure and contrast beat personality.
+
+   IMPORTANT: every prose rule below is scoped to .legal-inner, never .legal.
+   The .legal class sits on the page wrapper, which also contains the shared nav
+   and footer — styling bare tags from there reaches into those components and
+   restyles them (it recoloured the footer tagline and indented its link lists).
+   .legal-inner is the document body and nothing else. */
 
 .legal {
-  background: var(--v8-bg, #F8F7FF);
-  color: var(--v8-text, #1E1B4B);
-  font-family: var(--v8-font, 'Google Sans', Arial, sans-serif);
+  background: var(--v8-white);
   min-height: 100vh;
-  padding: 120px 24px 96px;
+}
+
+.legal-main {
+  /* Clears the fixed v8 nav (~108px) with room to breathe under it. */
+  padding: 168px 24px 96px;
 }
 
 .legal-inner {
-  max-width: 720px;          /* ~75 characters — the readable measure for long prose */
+  max-width: 720px;          /* ~75 characters, the readable measure for long prose */
   margin: 0 auto;
 }
 
+/* ─── Back link ──────────────────────────────────────────────── */
 .legal-back {
-  display: inline-block;
-  margin-bottom: 32px;
-  color: var(--v8-text-mid, #4B5280);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 24px;
   text-decoration: none;
   font-size: 15px;
 }
 .legal-back:hover, .legal-back:focus-visible { text-decoration: underline; }
 
-.legal h1 {
+.legal-back-icon {
+  font-size: 22px;       /* the svg is sized in em, so this drives the glyph */
+  flex-shrink: 0;
+  transition: transform 0.15s;
+}
+/* Nudge toward where the link goes. In RTL that is to the right. */
+.legal-back:hover .legal-back-icon { transform: translateX(3px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .legal-back-icon { transition: none; }
+  .legal-back:hover .legal-back-icon { transform: none; }
+}
+
+/* ─── Tabs ───────────────────────────────────────────────────── */
+.legal-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--v8-border);
+  margin-bottom: 40px;
+}
+
+.legal-tab {
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;         /* sit the underline on the container's border */
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.legal-tab--active {
+  font-weight: 700;
+  border-bottom-color: var(--v8-purple);
+}
+
+/* ─── Prose ──────────────────────────────────────────────────── */
+.legal-inner h1 {
   font-size: clamp(30px, 5vw, 44px);
   line-height: 1.15;
   letter-spacing: -0.5px;
   margin: 0 0 12px;
+  color: var(--v8-text);
 }
 
 .legal-updated {
-  color: var(--v8-text-muted, #6B7280);
+  color: var(--v8-text-muted);
   font-size: 15px;
   margin: 0 0 40px;
 }
 
-.legal h2 {
+.legal-inner h2 {
   font-size: clamp(20px, 3vw, 25px);
   line-height: 1.3;
   margin: 48px 0 12px;
+  color: var(--v8-text);
 }
 
-.legal h3 {
+.legal-inner h3 {
   font-size: 17px;
   margin: 28px 0 8px;
+  color: var(--v8-text);
 }
 
-.legal p, .legal li {
+.legal-inner p, .legal-inner li {
   font-size: 17px;
   line-height: 1.75;
-  color: var(--v8-text-mid, #4B5280);
+  color: var(--v8-text-mid);
 }
 
-.legal p { margin: 0 0 16px; }
+.legal-inner p { margin: 0 0 16px; }
 
-.legal ul, .legal ol { margin: 0 0 16px; padding-inline-start: 22px; }
-.legal li { margin-bottom: 8px; }
+.legal-inner ul, .legal-inner ol { margin: 0 0 16px; padding-inline-start: 22px; }
+.legal-inner li { margin-bottom: 8px; }
 
-.legal a { color: var(--v8-purple, #5C3EEF); }
-.legal a:hover, .legal a:focus-visible { text-decoration: none; }
+/* Prose links. The navigation chrome re-claims its own colours below. */
+.legal-inner a { color: var(--v8-purple); }
+.legal-inner a:hover, .legal-inner a:focus-visible { text-decoration: none; }
 
-/* A visible focus ring everywhere — the whole point of these pages is that
+.legal-inner .legal-back { color: var(--v8-text-mid); }
+.legal-inner .legal-tab { color: var(--v8-text-muted); }
+.legal-inner .legal-tab:hover { color: var(--v8-text); }
+.legal-inner .legal-tab--active { color: var(--v8-text); }
+
+/* A visible focus ring everywhere: the whole point of these pages is that
    keyboard and screen-reader users can get through them. */
-.legal a:focus-visible, .legal button:focus-visible {
-  outline: 3px solid var(--v8-purple, #5C3EEF);
+.legal-inner a:focus-visible {
+  outline: 3px solid var(--v8-purple);
   outline-offset: 3px;
   border-radius: 3px;
 }
 
 .legal-note {
-  background: var(--v8-white, #fff);
-  border: 1px solid var(--v8-border, #E5E7EB);
-  border-radius: var(--v8-r-md, 20px);
+  background: var(--v8-tint);
+  border: 1px solid var(--v8-border);
+  border-radius: var(--v8-r-md);
   padding: 20px 24px;
   margin: 24px 0;
 }
@@ -81,18 +138,19 @@
 
 /* Processor / data tables scroll rather than push the page sideways */
 .legal-table-wrap { overflow-x: auto; margin: 0 0 24px; }
-.legal table { border-collapse: collapse; width: 100%; min-width: 460px; }
-.legal th, .legal td {
+.legal-inner table { border-collapse: collapse; width: 100%; min-width: 460px; }
+.legal-inner th, .legal-inner td {
   text-align: start;
   padding: 12px 14px;
-  border-bottom: 1px solid var(--v8-border, #E5E7EB);
+  border-bottom: 1px solid var(--v8-border);
   font-size: 16px;
   line-height: 1.6;
 }
-.legal th { color: var(--v8-text, #1E1B4B); font-weight: 700; }
-.legal td { color: var(--v8-text-mid, #4B5280); }
+.legal-inner th { color: var(--v8-text); font-weight: 700; }
+.legal-inner td { color: var(--v8-text-mid); }
 
 @media (max-width: 600px) {
-  .legal { padding: 88px 20px 64px; }
-  .legal p, .legal li { font-size: 16px; }
+  .legal-main { padding: 132px 20px 64px; }
+  .legal-inner p, .legal-inner li { font-size: 16px; }
+  .legal-tab { padding: 12px 12px; font-size: 15px; }
 }

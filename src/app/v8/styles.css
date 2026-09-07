@@ -15,7 +15,11 @@
   --v8-match-green:   #3DCB77;
   --v8-marquee-bg:    #3B82F6;
 
-  --v8-bg:            #F8F7FF;
+  --v8-bg:            #FFFFFF;
+  /* The old page background. It is still needed as a *tint over white* in the
+     couple of places that used --v8-bg to sit slightly apart from a white card,
+     which would otherwise vanish now that the page itself is white. */
+  --v8-tint:          #F8F7FF;
   --v8-bg-alt:        #F3F4F6;
   --v8-white:         #FFFFFF;
   --v8-black:         #0A0A0A;
@@ -637,7 +641,7 @@ html:has(.v8-page) body {
   color: var(--acc);
 }
 /* "coming soon" tile — muted, non-interactive */
-.v8-work-card--soon { background: var(--v8-bg); border-style: dashed; border-color: var(--v8-purple-line); }
+.v8-work-card--soon { background: var(--v8-tint); border-style: dashed; border-color: var(--v8-purple-line); }
 .v8-work-card--soon .v8-work-title,
 .v8-work-card--soon .v8-work-tagline,
 .v8-work-card--soon .v8-work-tags { color: var(--v8-text-muted); }
@@ -1510,7 +1514,7 @@ html:has(.v8-page) body {
   gap: 16px;
   transition: background 0.15s;
 }
-.v8-faq-q:hover { background: var(--v8-bg); }
+.v8-faq-q:hover { background: var(--v8-tint); }
 /* FAQ toggle icon — animated + → × */
 .v8-faq-icon {
   flex-shrink: 0;

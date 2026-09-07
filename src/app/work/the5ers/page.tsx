@@ -157,7 +157,7 @@ export default function The5ersCaseStudy() {
       </section>
 
       <ContactV8 t={l.contact} />
-      <FooterV8 t={l.footer} />
+      <FooterV8 t={l.footer} hrefPrefix={`/?lang=${lang}`} />
     </main>
   )
 }

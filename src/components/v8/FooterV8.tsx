@@ -6,11 +6,21 @@ type FooterT = typeof en.footer
 
 const CONTACT_LINKS = [
   { label: 'hello@two-otters.studio', href: 'mailto:hello@two-otters.studio' },
-  { label: 'Instagram',              href: 'https://instagram.com' },
+  { label: 'Instagram',              href: 'https://www.instagram.com/two_otters.studio/' },
+  { label: 'Facebook',               href: 'https://www.facebook.com/profile.php?id=61594012627095' },
+  // TODO: still the generic linkedin.com landing page, not a studio profile.
   { label: 'LinkedIn',               href: 'https://linkedin.com' },
 ]
 
-export default function FooterV8({ t }: { t: FooterT }) {
+/**
+ * `hrefPrefix` is what makes this footer usable off the homepage. The nav links
+ * are bare hashes (#offer, #faq), which resolve against whatever page is open —
+ * on /accessibility or /work/the5ers they pointed at anchors that do not exist
+ * there and did nothing. Sub-pages pass "/" (optionally with ?lang=) so the
+ * links travel home first. The homepage passes nothing and keeps bare hashes,
+ * which scroll without a navigation.
+ */
+export default function FooterV8({ t, hrefPrefix = '' }: { t: FooterT; hrefPrefix?: string }) {
   const taglineLines = t.tagline.split('\n')
 
   return (
@@ -33,7 +43,7 @@ export default function FooterV8({ t }: { t: FooterT }) {
           <h4 className="v8-footer-col-heading">{t.navHeading}</h4>
           <ul className="v8-footer-list">
             {t.navLinks.map(l => (
-              <li key={l.href}><a href={l.href}>{l.label}</a></li>
+              <li key={l.href}><a href={`${hrefPrefix}${l.href}`}>{l.label}</a></li>
             ))}
           </ul>
         </div>
