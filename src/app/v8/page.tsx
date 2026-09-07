@@ -31,6 +31,14 @@ export default function V8Page() {
     if (p === 'en' || p === 'he') setLang(p)
   }, [])
 
+  // The language toggle has to reach <html>, not just this subtree: assistive
+  // tech reads lang/dir off the document element, so leaving it stale makes a
+  // screen reader pronounce Hebrew with an English voice.
+  useEffect(() => {
+    document.documentElement.lang = lang
+    document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr'
+  }, [lang])
+
   return (
     <div className="v8-page" dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
       <NavV8 t={t.nav} lang={lang} onLangChange={setLang} />

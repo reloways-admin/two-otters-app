@@ -29,7 +29,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    // Hebrew is the primary language and the site is RTL, so that is the honest
+    // default for a crawler or a screen reader reading the document cold. The
+    // client syncs these when the visitor switches language — see v8/page.tsx.
+    <html lang="he" dir="rtl">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

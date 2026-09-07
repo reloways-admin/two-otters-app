@@ -1805,6 +1805,24 @@ html:has(.v8-page) body {
   color: rgba(255, 255, 255, 0.55);
 }
 
+.v8-footer-legal {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.v8-footer-legal a {
+  /* Brighter than the copyright line beside it: these are links people go
+     looking for, and at 13px the 0.55 alpha would sit under 4.5:1. */
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+}
+.v8-footer-legal a:hover,
+.v8-footer-legal a:focus-visible { color: #fff; text-decoration: underline; }
+
 /* ─── Responsive ─── */
 @media (max-width: 900px) {
   .v8-spiral-svg { display: none; }

@@ -11,6 +11,10 @@ const ROUTES = [
   { path: '/work/trade-the-pool', priority: 0.8 },
   { path: '/work/keren-rightler', priority: 0.8 },
   { path: '/work/that-perk', priority: 0.8 },
+  // Low priority but deliberately indexable — Meta and users both expect to be
+  // able to find these, and a policy nobody can reach is not a policy.
+  { path: '/privacy', priority: 0.3 },
+  { path: '/accessibility', priority: 0.3 },
 ] as const
 
 export default function sitemap(): MetadataRoute.Sitemap {

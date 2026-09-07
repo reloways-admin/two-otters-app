@@ -402,7 +402,11 @@
         "href": "#faq"
       }
     ],
-    "copyright": "© 2026 Two Otters Studio. כל הזכויות שמורות."
+    "copyright": "© 2026 Two Otters Studio. כל הזכויות שמורות.",
+    "legal": {
+      "privacy": "מדיניות פרטיות",
+      "accessibility": "הצהרת נגישות"
+    }
   },
   "caseFincat": {
     "title": "מקהילה לעסק",

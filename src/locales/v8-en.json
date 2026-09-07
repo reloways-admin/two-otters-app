@@ -403,7 +403,11 @@
         "href": "#faq"
       }
     ],
-    "copyright": "© 2026 Two Otters Studio. All rights reserved."
+    "copyright": "© 2026 Two Otters Studio. All rights reserved.",
+    "legal": {
+      "privacy": "Privacy Policy",
+      "accessibility": "Accessibility Statement"
+    }
   },
   "caseFincat": {
     "title": "From community to business",

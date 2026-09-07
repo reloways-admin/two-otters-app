@@ -53,6 +53,13 @@ export default function FooterV8({ t }: { t: FooterT }) {
 
       <div className="v8-footer-bottom">
         <span>{t.copyright}</span>
+        {/* Both are required to be reachable from every page: Meta wants a public
+            privacy-policy URL for the business page, and the accessibility
+            regulations expect the statement to be linked site-wide. */}
+        <ul className="v8-footer-legal">
+          <li><a href="/privacy">{t.legal.privacy}</a></li>
+          <li><a href="/accessibility">{t.legal.accessibility}</a></li>
+        </ul>
       </div>
     </footer>
   )
