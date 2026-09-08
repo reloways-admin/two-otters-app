@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     'מצב הנגישות של אתר Two Otters Studio: מה כבר נגיש, מה עדיין לא, ואיך פונים אלינו בבקשה להתאמת נגישות.',
 }
 
-const LAST_UPDATED = '7 בספטמבר 2026'
+const LAST_UPDATED = '8 בספטמבר 2026'
 
 export default function AccessibilityPage() {
   return (
@@ -115,6 +115,14 @@ export default function AccessibilityPage() {
       <p>
         נשתדל להגיב לכל פנייה תוך זמן סביר, ולתקן ליקוי שניתן לתקן במהירות
         האפשרית.
+      </p>
+      <p>
+        הסטודיו פועל תחת <bdi>Tulz Pte. Ltd.</bdi>
+      </p>
+      <p className="legal-address">
+        Tulz Pte. Ltd.
+        <br />
+        68 Circular Road, Singapore
       </p>
     </LegalShell>
   )

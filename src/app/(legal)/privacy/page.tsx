@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 /** Bump this whenever the substance changes: the date is what tells a reader
  *  (and a regulator) which version they are looking at. */
-const LAST_UPDATED = '7 בספטמבר 2026'
+const LAST_UPDATED = '8 בספטמבר 2026'
 
 export default function PrivacyPage() {
   return (
@@ -23,6 +23,20 @@ export default function PrivacyPage() {
       <h2>מי אנחנו</h2>
       <p>
         Two Otters Studio, סטודיו לאסטרטגיה, UX ועיצוב מוצר.
+        הסטודיו פועל תחת <bdi>Tulz Pte. Ltd.</bdi>, והיא הגורם שאחראי על המידע
+        שנאסף באתר.
+      </p>
+      <p className="legal-address">
+        Tulz Pte. Ltd.
+        <br />
+        68 Circular Road, Singapore
+      </p>
+      <p>
+        החברה רשומה בסינגפור והשירות ניתן בישראל, ולכן על השימוש באתר ועל המידע
+        שנאסף בו חל הדין הישראלי. מי שנמצא באיחוד האירופי זכאי בנוסף לזכויות
+        שמקנה ה-GDPR, כמפורט בסעיף הזכויות למטה.
+      </p>
+      <p>
         לכל שאלה בנושא פרטיות אפשר לפנות אלינו במייל{' '}
         <a href="mailto:hello@two-otters.studio">hello@two-otters.studio</a>.
       </p>

@@ -107,6 +107,16 @@
 
 .legal-inner p { margin: 0 0 16px; }
 
+/* The registered company name and address are one Latin run inside an RTL
+   document. Without the isolation the bidi algorithm throws the trailing dot of
+   "Ltd." to the wrong end of the line. Kept right-aligned so the block still
+   sits on the same edge as the Hebrew around it. */
+.legal-inner .legal-address {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: right;
+}
+
 .legal-inner ul, .legal-inner ol { margin: 0 0 16px; padding-inline-start: 22px; }
 .legal-inner li { margin-bottom: 8px; }
 
