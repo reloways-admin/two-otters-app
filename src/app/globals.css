@@ -16,6 +16,12 @@
 
 html {
   scroll-behavior: smooth;
+  /* The canvas behind the document, which is what you see when the elastic
+     scroll carries you past either end of the page. With no colour here the
+     browser borrows body's, and body is still on the old off-white. Every page
+     on this site closes on the navy footer, so an off-white strip appeared
+     under it on every overscroll. */
+  background-color: #1d2332;
 }
 
 body {
