@@ -416,11 +416,15 @@ html:has(.v8-page) body {
   background-image: linear-gradient(#fff, #fff), linear-gradient(90deg, #5aff00, #2eb62c);
   background-origin: border-box;
   background-clip: padding-box, border-box;
-  padding: 0 56px;
+  /* Inline-end clears the submit button; inline-start is just breathing room.
+     Logical properties so the pair swaps with the language. */
+  padding-block: 0;
+  padding-inline: 26px 152px;
   font-family: var(--v8-font);
   font-size: 15px;
   color: #1d2332;
-  text-align: center;
+  /* Starts where the reader does: right in Hebrew, left in English. */
+  text-align: start;
   outline: none;
   box-shadow: 0 12px 30px rgba(0,0,0,0.28);
 }
@@ -428,27 +432,47 @@ html:has(.v8-page) body {
 .v8-hero-input:focus-visible {
   box-shadow: 0 0 0 4px rgba(90,255,0,0.20), 0 12px 30px rgba(0,0,0,0.28);
 }
-.v8-hero-beta {
+/* The pill had no way to submit at all: the wand beside it is decoration, and
+   an icon nobody recognises is not an affordance. This is the button from the
+   Figma step-1 frame, sitting at the end of the line. */
+.v8-hero-go {
   position: absolute;
-  top: -11px;
-  left: 22px;
-  padding: 3px 8px;
-  border-radius: 8px;
-  background: linear-gradient(90deg, #5aff00, #2eb62c);
-  color: #fff;
-  font-size: 11px;
+  /* Pinned to the input, not centred on the container. The error message is a
+     sibling inside the same relative box, so a 50% top re-centred the button on
+     the taller box and dropped it out of the pill the moment an error showed.
+     6px is (56 - 44) / 2, the same inset as the inline-end below. */
+  top: 6px;
+  /* Logical, so it stays paired with the input's inline-end padding. */
+  inset-inline-end: 6px;
+  height: 44px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 70px;
+  background: #5aff00;
+  color: #1d2332;
+  font-family: var(--v8-font);
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.4px;
-  z-index: 2;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: filter 0.15s;
 }
-.v8-hero-wand {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  display: inline-flex;
-  pointer-events: none;
+.v8-hero-go:hover { filter: brightness(1.06); }
+.v8-hero-go:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+.v8-hero-error {
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  /* Coral lifted off the brand red so it clears 4.5:1 on the navy hero. */
+  color: #ff8b80;
+  text-align: center;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .v8-hero-go { transition: none; }
+}
+
 
 /* people — SAME height; flank the input in the grid, wave (in front) cuts them at the waist */
 .v8-hero-person {
@@ -509,7 +533,7 @@ html:has(.v8-page) body {
   .v8-hero { padding: 128px 14px 0; }
   .v8-hero-copy { max-width: 620px; }
   .v8-hero-desc { white-space: normal; }
-  .v8-hero-input { padding: 0 42px; font-size: 14px; }
+  .v8-hero-input { padding-inline: 22px 146px; font-size: 14px; }
   .v8-hero-cta {
     grid-template-columns: 1fr 1fr;
     max-width: 560px;
@@ -2039,4 +2063,17 @@ html:has(.v8-page) body {
   .v8-about-bubble { display: none; }
   .v8-footer { padding: 48px 20px 24px; }
   .v8-footer-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+
+@media (max-width: 620px) {
+  /* No room for a button inside the pill at this width, so it drops below. */
+  .v8-hero-input { padding-inline: 22px; }
+  .v8-hero-go {
+    position: static;
+    transform: none;
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    height: 48px;
+  }
 }

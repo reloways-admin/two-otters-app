@@ -42,7 +42,9 @@
     "amirAlt": "Amir Shalev",
     "kerenName": "Keren Reitler",
     "kerenRole": "Strategy, storytelling & product-language expert",
-    "kerenAlt": "Keren Reitler"
+    "kerenAlt": "Keren Reitler",
+    "submit": "Send it for review",
+    "errorInvalidUrl": "That doesn't look like a website address. Try pasting the full URL from your browser?"
   },
   "work": {
     "heading": "Work we’re proud of",
@@ -759,6 +761,150 @@
       "voice": "The 5ers tone of voice and content",
       "visual": "The 5ers visual language",
       "delivered": "The deliverables handed to The 5ers"
+    }
+  },
+  "audit": {
+    "details": {
+      "title": "We're about to start on your report",
+      "urlPrefix": "This is the address we'll run",
+      "urlChangeQuestion": "Not the right address?",
+      "urlChangeLink": "Change it here",
+      "firstNameLabel": "What's your first name?",
+      "firstNamePlaceholder": "What's your first name?",
+      "emailLabel": "Where should we send the report?",
+      "emailPlaceholder": "name@company.com",
+      "relationship": {
+        "question": "What's your connection to this site?",
+        "why": "We ask because the email address isn't connected to the site, and it helps us know who we're writing to.",
+        "options": {
+          "owner": "It's my company's site",
+          "employee": "I work there",
+          "consultant": "I advise them from outside",
+          "other": "I'm checking someone else's site"
+        }
+      },
+      "consentReport": "I agree to receive the report by email.",
+      "marketingOptIn": "I'd also like occasional design and product content. One click to unsubscribe.",
+      "submit": "Send me the audit",
+      "submitting": "Sending...",
+      "micro": "The report arrives within 1-2 business days. We won't send anything else.",
+      "errors": {
+        "firstName_required": "What should we call you?",
+        "invalid_email": "We need a working email address, that's where the report goes.",
+        "disposable_email": "That address is temporary, so the report won't reach you. Got a permanent one?",
+        "invalid_url": "That doesn't look like a website address. Try pasting the full URL from your browser?",
+        "consent_required": "We need this to be able to send you the report.",
+        "relationship_required": "Pick one so we know who we're writing to.",
+        "not_configured": "Something's off on our end. Email hello@two-otters.studio and we'll sort it.",
+        "send_failed": "That didn't send. Try again in a moment, and if it keeps happening, write to us.",
+        "bad_request": "Something in the details didn't go through. Check and try again.",
+        "network": "No connection right now. Check your network and try again."
+      },
+      "missingUrlTitle": "We're missing the address",
+      "missingUrlBody": "To get started we need the address of the site you'd like us to check.",
+      "missingUrlCta": "Enter the address",
+      "successTitle1": "Got it",
+      "successTitle2": "We're on it.",
+      "deliveryPrefix": "The audit of",
+      "deliveryMid": "will reach",
+      "deliverySuffix": "by",
+      "confirmBody": "We've just sent you a confirmation email. If it hasn't arrived within a few minutes, check Promotions or Spam and mark us as “not spam” — that way the report itself lands in the right place too.",
+      "deepenTitle": "In the meantime, let's go deeper",
+      "ctaCase": "Website rebuild case study",
+      "ctaInstagram": "Our Instagram"
+    },
+    "landing": {
+      "eyebrow": "Free homepage audit",
+      "title1": "Give us one link",
+      "title2": "Get the full picture",
+      "sub": "Amir and Keren review your homepage across four areas and send back a report with a score, findings and an order of play. No cost, no commitment, in your inbox within a day or two.",
+      "placeholder": "Paste your website address here",
+      "submit": "Send it for review",
+      "checking": "One moment, checking...",
+      "urlLabel": "The address you'd like us to review",
+      "trust": [
+        "No cost",
+        "No commitment",
+        "Report within 1-2 business days"
+      ],
+      "whatTitle": "What's in the report",
+      "whatSub": "A strategic report explaining what's happening on your page, why it's happening, and what to do about it.",
+      "areas": [
+        {
+          "score": 90,
+          "tone": "green",
+          "title": "Experience & call to action",
+          "verdict": "Already working. Leave it alone."
+        },
+        {
+          "score": 85,
+          "tone": "blue",
+          "title": "Strategy, positioning & messaging",
+          "verdict": "A small fix, a small spend."
+        },
+        {
+          "score": 50,
+          "tone": "red",
+          "title": "SEO + GEO visibility",
+          "verdict": "Needs fixing, and watching."
+        },
+        {
+          "score": 71,
+          "tone": "amber",
+          "title": "Visual language & UI",
+          "verdict": "Not broken, but it weakens you."
+        }
+      ],
+      "whyTitle": "Why it takes a day or two",
+      "whyLead": "Because we're not an AI studio.",
+      "whyBody": [
+        "Yes, we use AI tools. Our system reads the page, analyses it and scores it against the criteria we work to in the studio.",
+        "We've put real work into that system, but to be sure of the quality we go over every report by hand, correcting and adding what's needed so you get the most out of it.",
+        "That's why... it takes a day or two."
+      ],
+      "sampleTitle": "This is what a real report looks like",
+      "sampleSub": "A full report we ran on a real site, start to finish. Nothing blurred, and the interesting part isn't hidden behind a form.",
+      "sampleScore": "72",
+      "sampleScoreOf": "out of 100",
+      "sampleScoreLabel": "Overall score",
+      "faqTitle": "Three questions",
+      "faq": [
+        {
+          "q": "Is it really free? What's the catch?",
+          "a": "No catch. The audit is how we show you the way we think, instead of describing it in a call. If you feel like carrying on with us, great. If not, you're left with a report you can work from."
+        },
+        {
+          "q": "Will I get a sales call?",
+          "a": "We don't call. Once the report lands we'll send one email asking whether you'd like to go through it together, and if you don't reply, that's where it ends. No phone calls."
+        },
+        {
+          "q": "What do you do with my email?",
+          "a": "We send the report to it. Later on we might send you something worth reading, but don't worry — one click removes you and we part as friends."
+        }
+      ],
+      "errors": {
+        "invalid_url": "That doesn't look like a website address. Try pasting the full URL from your browser?",
+        "unreachable": "We couldn't reach that page. It might not be live yet, or it may be blocking automated access. Check the address and try again — if it keeps happening, write to us and we'll look manually.",
+        "password_protected": "That page is password protected, so we can't see it. Send an open address, or write to us and we'll find a way."
+      },
+      "deliverables": [
+        "An overall score out of 100, plus a separate score per area",
+        "Three screenshots from your site, pointing at the exact element",
+        "Every finding tagged: red flag, strength, quick win, worth noting",
+        "A prioritised order of play"
+      ],
+      "heroPhotoAlt": "Amir and Keren sitting together at a laptop, reviewing a web page",
+      "reportAlt": "An example of a full audit report, with an overall score and detailed findings",
+      "avatarsAlt": "Amir and Keren",
+      "scanning": "Scanning 10%",
+      "overall": {
+        "score": 72,
+        "outOf": "/100",
+        "label": "Overall score",
+        "alt": "Sample overall score: 72 out of 100"
+      },
+      "scrollHint": "Scroll for more",
+      "backToTop": "Back to top"
     }
   }
 }

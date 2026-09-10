@@ -1,0 +1,944 @@
+/* The audit intake screens (Figma: step-3 / step-4 / step-5).
+   A focused conversion screen: no site nav, one job on the page. Dark navy with
+   the dotted grid and the two green arcs from the file. */
+
+.au-screen {
+  --au-navy:  #1d2332;
+  --au-green: #5aff00;
+  --au-white: #fdfdfd;
+  --au-muted: rgba(253, 253, 253, 0.62);
+  --au-line:  rgba(253, 253, 253, 0.22);
+  --au-error: #ff8b80;   /* lifted off the Figma coral so it clears 4.5:1 on navy */
+
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  padding: clamp(72px, 12vh, 140px) clamp(20px, 5vw, 64px) 80px;
+  background-color: var(--au-navy);
+  /* Dotted grid, drawn rather than shipped as an image. */
+  background-image: radial-gradient(rgba(253, 253, 253, 0.10) 1px, transparent 1px);
+  background-size: 26px 26px;
+  color: var(--au-white);
+  font-family: var(--v8-font, 'Google Sans', Arial, sans-serif);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The two arcs. Decorative, so they stay out of the accessibility tree and
+   never intercept a click. */
+.au-screen::before,
+.au-screen::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  border: 22px solid var(--au-green);
+  pointer-events: none;
+}
+/* Physical left/right, not inset-inline: the Figma frame is already RTL, so
+   these sit top-left and bottom-right on screen and should stay there when the
+   visitor switches to English rather than mirroring with the text. */
+.au-screen::before {
+  width: 460px; height: 460px;
+  top: -230px; left: -150px;
+}
+.au-screen::after {
+  width: 620px; height: 620px;
+  bottom: -380px; right: -180px;
+}
+
+.au-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  /* frame: the column is 627 wide (x 682..1309 of 1920) and every line in it
+     runs from the reader's edge. This was centred, which is how it ended up
+     looking nothing like the drawing. */
+  max-width: 627px;
+  text-align: start;
+}
+.au-inner--narrow { max-width: 560px; }
+.au-inner--wide   { max-width: 660px; }
+
+.au-title {
+  font-size: clamp(30px, 5vw, 46px);
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  font-weight: 700;
+  margin: 0 0 18px;
+}
+
+.au-lede {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--au-muted);
+  margin: 0 0 32px;
+}
+
+/* ─── The address we are about to run ────────────────────────── */
+.au-target {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: var(--au-muted);
+  margin: 0 0 36px;
+}
+.au-target-label { color: var(--au-muted); }
+
+.au-chip {
+  background: var(--au-green);
+  color: var(--au-navy);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  /* Long hosts should wrap inside the pill, not stretch the row off-screen. */
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.au-target-change a { color: var(--au-white); }
+.au-target-change a:hover { text-decoration: none; }
+
+/* ─── Form ───────────────────────────────────────────────────── */
+.au-form { text-align: start; }
+
+.au-field { margin-bottom: 22px; }
+
+.au-label {
+  display: block;
+  font-size: 15px;
+  color: var(--au-muted);
+  margin-bottom: 8px;
+}
+
+.au-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 22px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: var(--au-white);
+  color: var(--au-navy);
+  font-family: inherit;
+  font-size: 16px;
+}
+.au-input::placeholder { color: #8b90a0; }
+.au-input:focus-visible {
+  outline: none;
+  border-color: var(--au-green);
+}
+.au-input[aria-invalid='true'] { border-color: var(--au-error); }
+
+/* ─── The conditional question ───────────────────────────────────
+   Opens on a grid row rather than a height, which is the one way to animate
+   from nothing to "however tall the content turns out to be" without measuring
+   it in script. The child carries the overflow. */
+.au-reveal {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    grid-template-rows 0.4s cubic-bezier(0.22, 0.9, 0.3, 1),
+    opacity 0.28s ease,
+    transform 0.4s cubic-bezier(0.22, 0.9, 0.3, 1);
+}
+.au-reveal > * { overflow: hidden; min-height: 0; }
+.au-reveal[data-open='true'] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .au-reveal { transition: none; }
+}
+
+/* ─── Radio group (step 4) ───────────────────────────────────── */
+.au-fieldset { border: 0; margin-inline: 0; padding: 0; }
+.au-legend { padding: 0; font-weight: 700; color: var(--au-white); }
+
+.au-radio,
+.au-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--au-white);
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.au-radio input,
+.au-check input {
+  /* Keep the native control: it is already keyboard operable, announced
+     correctly, and follows the platform's own focus ring. */
+  accent-color: var(--au-green);
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  flex-shrink: 0;
+}
+
+.au-check { color: var(--au-muted); margin-bottom: 14px; }
+
+.au-help {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--au-muted);
+  margin: 4px 0 0;
+}
+
+.au-error {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--au-error);
+  margin: 8px 0 0;
+}
+.au-error--form { margin: 0 0 16px; }
+.au-error--form:focus-visible { outline: 2px solid var(--au-error); outline-offset: 4px; }
+
+/* ─── Submit ─────────────────────────────────────────────────── */
+.au-submit {
+  display: block;
+  /* frame: the button closes the column at the reader's edge. */
+  margin: 30px 0 0;
+  margin-inline-end: auto;
+  padding: 15px 34px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--au-green);
+  color: var(--au-navy);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s, opacity 0.15s;
+}
+.au-submit:hover { transform: translateY(-1px); }
+.au-submit:disabled { opacity: 0.6; cursor: default; transform: none; }
+.au-submit:focus-visible { outline: 3px solid var(--au-white); outline-offset: 3px; }
+
+.au-micro {
+  font-size: 13px;
+  color: var(--au-muted);
+  margin: 16px 0 0;
+}
+
+.au-honeypot {
+  position: absolute;
+  inset-inline-start: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+/* ═══ Landing · Figma step-2 (node 2095:49847) ═════════════════
+   Measured off the frame rather than eyeballed. The frame is 1920 wide and
+   its content column is 1440 (x 240..1680), so every horizontal value below
+   is that ratio. Band edges were sampled from the 2x export:
+
+     hero            y    0..1080   dark
+     what's inside   y 1080..1916   WHITE
+     why two days    y 1916..2996   dark
+     a real report   y 2996..3580   WHITE
+     three questions y 3580..4659   dark                                    */
+
+.au-page {
+  --au-navy:  #1d2332;
+  --au-green: #5aff00;
+  --au-ink:   #1d2332;
+  --au-on-dark:  rgba(255, 255, 255, 0.72);
+  --au-on-light: #5b6478;
+  --au-track: #EBF0FB;
+  --au-orange:#FF8124;
+  --au-amber: #F1B700;
+  --au-red:   #FF5060;
+  /* 1440 of 1920 */
+  --au-col: min(1440px, 100% - 48px);
+
+  font-family: var(--v8-font, 'Google Sans', Arial, sans-serif);
+  background: var(--au-navy);
+  color: #fff;
+  overflow-x: clip;
+}
+
+.au-frame { width: var(--au-col); margin: 0 auto; }
+
+.au-sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+
+/* ─── Bands ──────────────────────────────────────────────────── */
+.au-band { position: relative; }
+
+/* The homepage hero's own dot field, same values, so the two pages match. */
+.au-band--dark {
+  background-color: #1d2332;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1.5px, transparent 1.5px);
+  background-size: 26px 26px;
+  color: #fff;
+}
+.au-band--light { background: #fff; color: var(--au-ink); }
+
+/* Band heights as a share of the 1920-wide frame, so the page keeps the
+   frame's proportions instead of collapsing to whatever the text needs. */
+/* The frame draws this band at a full 1080, which on a 1080-tall screen fills
+   the fold exactly and gives a visitor no reason to believe there is more page.
+   Deliberately shorter than drawn: 110 and 64 against the frame's 153 and 88,
+   and the photograph a shade narrower, which together leave the white band
+   peeking. The scroll cue below does the rest. */
+.au-hero  {
+  padding-block: clamp(28px, 5.73vw, 110px) clamp(64px, 3.33vw, 64px);
+  padding-bottom: clamp(76px, 5.2vw, 100px);
+}
+/* frame (redesign): the band still runs 1080..1915, but its whole contents are
+   now one 1436 x 720 block at y 1145, so the air at each end changed. 65 and 50
+   of 1920. */
+.au-band--light  { padding-block: clamp(32px, 3.39vw, 65px) clamp(32px, 2.6vw, 50px); }
+/* frame: 1915..2995, the illustration runs 2049..2836. 134 and 159. */
+.au-band--why { padding-block: clamp(40px, 6.98vw, 134px) clamp(40px, 8.28vw, 159px); }
+/* frame: 3579..4659, the title opens at 3806 and the card closes at 4432, so
+   the band carries 227 of air at each end. This was 125, which is why the last
+   band came out 274 short of the drawing. */
+.au-band--faq { padding-block: clamp(48px, 11.82vw, 227px); }
+
+/* ─── Hero ───────────────────────────────────────────────────── */
+/* logo: frame x 1422..1680 of 1920 -> flush with the column's far edge */
+/* frame x 1422..1680 — flush with the column's leading edge, which in RTL is
+   the right. margin-inline-END auto is what pins it there. */
+/* The frame puts the logo at y 153..198 and starts the photograph at 188, so
+   the row opens 10px before the logo's box closes. They never collide: the logo
+   sits at x 1422 and the photograph ends at 959. -10 of 1920. */
+.au-logo { display: block; width: fit-content; margin-inline-end: auto; margin-bottom: -0.52vw; }
+.au-logo img { display: block; height: clamp(26px, 2.4vw, 45px); width: auto; }
+
+/* The frame lays the photo left and the copy right whichever way the text
+   runs, so the row is explicitly LTR and the copy restores its own direction. */
+.au-hero-row {
+  direction: ltr;
+  display: grid;
+  /* Column is 1440 (frame x 240..1680). The copy sits at x 981..1680, i.e. the
+     trailing 48.5%; the photograph takes the rest and then some. */
+  grid-template-columns: 51.5% 48.5%;
+  align-items: center;
+}
+
+.au-hero-photo {
+  /* Measured off the viewport, not off the grid cell. The column's side gutter
+     collapses from 240px to 24px the moment the viewport drops under 1488, so a
+     bleed expressed as a share of the cell went from 38px off-screen at 1920 to
+     245px at 1440 and swallowed Amir. The frame draws the photograph from -38
+     to 959 of 1920, which is -2vw to 50vw at any width, so say that instead. */
+  width: 49.5vw;
+  /* The column's gutter, spelled out rather than derived from --au-col: that
+     token is `min(1440px, 100% - 48px)`, and a custom property substitutes as
+     text, so its 100% would re-resolve against this photo's own cell instead of
+     the page. Same value, computed where it means what it says. */
+  margin-inline-start: calc(-2vw - max((100vw - 1440px) / 2, 24px));
+  line-height: 0;
+}
+.au-hero-photo img {
+  width: 100%;
+  height: auto;
+  /* The frame's box is 997x804 and the photograph is 3:2, so the frame crops
+     17% of its width. Held off dead centre to leave Amir, who stands at the
+     leading edge, more room than the brick wall behind them. */
+  aspect-ratio: 997 / 804;
+  object-fit: cover;
+  object-position: 32% center;
+  border-radius: 4px;
+  /* measured from the top edge of the photo in the export: -2.83deg */
+  transform: rotate(-2.83deg);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+}
+
+.au-hero-copy { direction: rtl; }
+:root[dir='ltr'] .au-hero-copy { direction: ltr; }
+
+.au-eyebrow { font-size: clamp(12px, 0.94vw, 16px); color: var(--au-on-dark); margin: 0 0 clamp(10px, 1vw, 18px); }
+
+.au-h1 {
+  font-size: clamp(30px, 3.5vw, 64px);
+  line-height: 1.06;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 clamp(12px, 1.2vw, 22px);
+}
+.au-h1-accent { color: var(--au-green); }
+
+.au-hero-sub {
+  font-size: clamp(14px, 0.95vw, 17px);
+  line-height: 1.65;
+  color: var(--au-on-dark);
+  margin: 0 0 clamp(18px, 1.8vw, 32px);
+}
+
+/* ─── The ask ────────────────────────────────────────────────── */
+/* frame: the pill runs x 1053..1680 inside a copy column of 981..1680, so it
+   stops 72px short of the column's inline end — 72/698.4 of the cell. It was
+   running the column's full width, which is the other half of why it met the
+   photograph. */
+.au-url-form {
+  margin: 0 0 clamp(14px, 1.2vw, 22px);
+  /* Logical, so it lands away from the reader's edge in both languages: in
+     Hebrew that is the left, the side the photograph comes from. */
+  margin-inline-end: 10.3%;
+}
+.au-url-pill {
+  display: flex; align-items: center; gap: 8px;
+  background: #fff; border: 2px solid transparent; border-radius: 999px;
+  padding: 6px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+.au-url-pill:focus-within { border-color: var(--au-green); }
+.au-url-input {
+  flex: 1; min-width: 0; border: 0; background: transparent;
+  padding: 12px 18px; font-family: inherit; font-size: 15px;
+  color: var(--au-ink); text-align: start;
+}
+.au-url-input:focus-visible { outline: none; }
+.au-url-input::placeholder { color: #8b90a0; }
+.au-go {
+  flex-shrink: 0; border: 0; border-radius: 999px;
+  background: var(--au-green); color: var(--au-navy);
+  font-family: inherit; font-size: 14px; font-weight: 700;
+  padding: 13px 26px; cursor: pointer; white-space: nowrap;
+  transition: filter 0.15s;
+}
+.au-go:hover { filter: brightness(1.06); }
+.au-go:disabled { opacity: 0.6; cursor: default; }
+.au-go:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+.au-error { margin: 10px 0 0; font-size: 14px; line-height: 1.55; color: #ff8b80; }
+
+.au-trust { display: flex; align-items: center; gap: 10px; font-size: clamp(11px, 0.78vw, 14px); color: var(--au-on-dark); margin: 0; }
+/* Two circles that overlap by 13.5% of a diameter, measured off the frame's own
+   avatar export (148px circles spanning 276px). Sized through a variable
+   because the overlap has to be a share of the circle, and a percentage margin
+   would resolve against the container instead. */
+.au-trust-avatars {
+  --au-avatar: clamp(20px, 1.7vw, 30px);
+  display: inline-flex;
+  flex-shrink: 0;
+  /* Amir then Keren, the order they are drawn in, whichever way the line runs. */
+  direction: ltr;
+}
+.au-trust-avatars img {
+  display: block;
+  /* Width drives it and the ratio supplies the height, so --au-avatar can be a
+     percentage where the pair has to scale with its container (the scan
+     illustration) as well as a length where it does not (the hero). */
+  width: var(--au-avatar);
+  aspect-ratio: 1;
+  height: auto;
+  border-radius: 50%;
+}
+.au-trust-avatars img + img { margin-left: calc(var(--au-avatar) * -0.135); }
+
+/* ─── Headings ───────────────────────────────────────────────── */
+/* frame: heading block x 1015..1680 -> right-aligned in the column */
+/* frame: heading block x 1015..1680, so it sits at the reader's edge, which in
+   Hebrew is the right. margin-inline-END auto is what pins it there: START auto
+   pushes it away, and that is how this block ended up on the far side of the
+   page from the checklist it introduces. 52 to the cards. */
+.au-head { max-width: 46.3%; margin-inline-end: auto; margin-bottom: clamp(26px, 2.92vw, 56px); }
+
+.au-h2 {
+  font-size: clamp(24px, 2.4vw, 44px);
+  line-height: 1.14;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin: 0 0 clamp(8px, 0.8vw, 15px);
+}
+/* frame: title 3806..3874, card opens at 3914, so 40 between them. */
+.au-h2--center { text-align: center; margin-bottom: clamp(20px, 2.08vw, 40px); }
+.au-sub { font-size: clamp(13px, 0.9vw, 16px); line-height: 1.65; margin: 0; }
+.au-band--light .au-sub { color: var(--au-on-light); }
+.au-band--dark  .au-sub { color: var(--au-on-dark); }
+.au-body { font-size: clamp(13px, 0.9vw, 16px); line-height: 1.7; color: var(--au-on-dark); margin: 0 0 clamp(10px, 0.9vw, 16px); }
+
+/* ─── Score cards · frame: Frame 463, 1436 x 381 ─────────────────
+   1038 of scores, a 14 gutter, then the 384 dial. LTR placement because the
+   frame fixes which side each lands on; every card sets its own text back. */
+.au-scores {
+  direction: ltr;
+  display: grid;
+  grid-template-columns: 72.3% 26.7%;
+  gap: 0.97%;
+}
+/* frame: four 509 x 180 cards on a 20 gutter, and the frame fixes which score
+   lands in which corner, so this grid is placed LTR too. Only the leaves below
+   set the text back, otherwise the 2x2 comes out mirrored. */
+.au-cards {
+  direction: ltr;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(10px, 1.04vw, 20px);
+}
+.au-card, .au-overall { direction: rtl; }
+:root[dir='ltr'] .au-card,
+:root[dir='ltr'] .au-overall { direction: ltr; }
+
+.au-card,
+.au-overall {
+  background: #fff;
+  border: 1px solid #E8ECF5;
+  border-radius: clamp(10px, 0.83vw, 16px);
+  box-shadow: 0 2px 10px rgba(29, 35, 50, 0.05);
+}
+.au-card {
+  padding: clamp(12px, 0.83vw, 16px);
+  display: flex;
+  flex-direction: column;
+  /* frame: 180 tall. Without a floor the card collapses onto its text and the
+     row came out 331 against the drawn 381. */
+  min-height: clamp(148px, 9.38vw, 180px);
+  box-sizing: border-box;
+}
+
+/* frame: the title runs from the reader's edge and the score sits at the far
+   end of the same line — 40 tall against the title's 25. */
+.au-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.au-card-title { font-size: clamp(13px, 0.94vw, 18px); font-weight: 700; margin: 0; color: var(--au-ink); }
+.au-score {
+  font-size: clamp(22px, 1.88vw, 36px);
+  font-weight: 700;
+  line-height: 1;
+  /* The digits are the one place a tone appears at full strength, so they set
+     the card's colour before anything else is read. */
+  font-variant-numeric: tabular-nums;
+}
+.au-score--green { color: #00BC3A; }
+.au-score--blue  { color: #2672FF; }
+.au-score--red   { color: #FF5161; }
+.au-score--amber { color: #F2C020; }
+
+/* frame: a 14 tall bar filling from the reader's edge. */
+.au-meter {
+  display: block;
+  height: clamp(9px, 0.73vw, 14px);
+  border-radius: 999px;
+  background: var(--au-track);
+  overflow: hidden;
+  margin-top: clamp(10px, 1.15vw, 22px);
+}
+/* No auto margin: a block already sits at its container's inline start, which
+   in Hebrew is the right, and `margin-inline-start: auto` resolves to
+   margin-right there and shoved every bar to the wrong end. */
+.au-meter-fill { display: block; height: 100%; border-radius: 999px; width: var(--au-fill); }
+.au-meter-fill--green { background: #17AD46; }
+.au-meter-fill--blue  { background: #256FFA; }
+.au-meter-fill--red   { background: #FF3043; }
+.au-meter-fill--amber { background: #EFB600; }
+
+/* frame: a 478 x 63 tinted panel closing the card, the dot at the reader's
+   edge and the sentence beside it. */
+.au-verdict {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.15vw, 22px);
+  margin: clamp(10px, 1.15vw, 22px) 0 0;
+  padding: clamp(8px, 0.68vw, 13px) clamp(12px, 1.3vw, 25px);
+  border-radius: clamp(8px, 0.63vw, 12px);
+  font-size: clamp(12px, 0.83vw, 16px);
+  line-height: 1.4;
+  color: var(--au-ink);
+  /* frame: the panel is 63 tall and closes the card, so it stays put whether
+     the title above it runs to one line or two. */
+  min-height: clamp(40px, 3.28vw, 63px);
+  box-sizing: border-box;
+  margin-top: auto;
+}
+.au-verdict-dot {
+  flex-shrink: 0;
+  width: clamp(12px, 1.04vw, 20px);
+  height: clamp(12px, 1.04vw, 20px);
+  border-radius: 50%;
+}
+.au-verdict--green { background: #EDFCF2; } .au-verdict--green .au-verdict-dot { background: #01B201; }
+.au-verdict--blue  { background: #ECF4FF; } .au-verdict--blue  .au-verdict-dot { background: #005CD4; }
+.au-verdict--red   { background: #FFEBEC; } .au-verdict--red   .au-verdict-dot { background: #D91818; }
+.au-verdict--amber { background: #FFFBE9; } .au-verdict--amber .au-verdict-dot { background: #FFD900; }
+
+/* ─── Overall dial · frame: Frame 453, 384 x 381 ─────────────── */
+.au-overall {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 0.83vw, 16px);
+  padding: clamp(14px, 1.35vw, 26px);
+}
+/* frame: the ring is 273.7 across inside a 384 card. */
+.au-dial { display: block; width: 71.3%; height: auto; }
+.au-dial-track { stroke: var(--au-track); }
+.au-dial-arc--blue  { stroke: #2672FD; }
+.au-dial-arc--amber { stroke: #F0B601; }
+.au-dial-arc--red   { stroke: #FF505F; }
+
+/* Centred on the ring rather than placed in the flow, so the label below can
+   sit under the whole dial without shifting what is inside it. */
+.au-dial-face {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* The label below shifts the ring's centre up from the card's; this is that
+     same offset, so the face stays on the ring and not on the card. */
+  margin-top: clamp(-24px, -1.25vw, 0px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  pointer-events: none;
+}
+.au-dial-mark { display: block; width: clamp(26px, 2.24vw, 43px); height: auto; }
+.au-dial-wordmark {
+  margin-top: 6px;
+  font-size: clamp(7px, 0.47vw, 9px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--au-on-light);
+  direction: ltr;
+  white-space: nowrap;
+}
+.au-dial-score {
+  margin: clamp(8px, 0.83vw, 16px) 0 0;
+  font-size: clamp(22px, 1.72vw, 33px);
+  font-weight: 700;
+  color: var(--au-ink);
+  direction: ltr;
+  font-variant-numeric: tabular-nums;
+}
+.au-dial-score span { font-size: 0.62em; font-weight: 400; color: var(--au-on-light); }
+.au-overall-label { margin: 0; font-size: clamp(12px, 0.83vw, 16px); color: var(--au-on-light); }
+
+/* ─── Deliverables · frame x 1180..1680, right-aligned ───────── */
+/* frame: 500 wide at x 1177..1677, opening 56 under the score block. */
+.au-deliverables { list-style: none; margin: clamp(26px, 2.92vw, 56px) 0 0 auto; padding: 0; width: fit-content; }
+.au-deliverables li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: clamp(13px, 0.88vw, 16px); line-height: 1.5;
+  color: var(--au-ink); margin-bottom: clamp(8px, 0.8vw, 14px);
+}
+.au-tick { width: clamp(17px, 1.2vw, 22px); height: clamp(17px, 1.2vw, 22px); flex-shrink: 0; }
+
+/* ─── Splits ─────────────────────────────────────────────────── */
+/* LTR for the same reason as the hero: the frame fixes which side is which. */
+.au-split { direction: ltr; display: grid; align-items: center; }
+.au-split > * { direction: rtl; }
+:root[dir='ltr'] .au-split > * { direction: ltr; }
+
+/* illustration 805 wide, copy 558, of the 1440 column */
+.au-split { grid-template-columns: 56% 1fr; gap: 3%; }
+/* The report band flips: copy on the left, stack on the right. The stack is
+   taken out of flow below, so this grid only really places the copy. */
+.au-split--report { grid-template-columns: 49.44% 41.25%; gap: 9.31%; align-items: start; }
+/* frame: the copy is a 558 box at x 394..952 inside a 712 cell that starts at
+   240, so it sits at the cell's far edge. justify-self, not a margin: the grid
+   is forced LTR, so the item's own RTL does not decide where the box lands. */
+.au-split--report .au-split-copy { max-width: 78.4%; justify-self: end; }
+
+/* ─── Scan illustration · cluster is 805 x 794 in the frame ──── */
+/* frame: the cluster starts at x 142, which is 98px left of the 240 column, so
+   it reaches toward the page edge. Measured from the viewport like the hero
+   photograph, and clamped at 0 so it only bleeds while the gutter can spare it:
+   below ~1490 there is no gutter left and pulling further would put it under
+   the copy. 142 of 1920. */
+.au-scan {
+  position: relative; width: 100%; aspect-ratio: 805 / 794;
+  /* Physical left, not inline-start: .au-split forces the row LTR but each
+     child sets its own direction back to RTL, and a logical margin resolves
+     against the child's direction, so inline-start landed on the right. The
+     frame fixes which side the illustration is on, so name the side. */
+  margin-left: min(0px, calc(7.4vw - max((100vw - 1440px) / 2, 24px)));
+}
+.au-scan > * { position: absolute; }
+/* every offset below is that part's frame position inside the 805x794 box */
+/* The rings are the frame's, not new decoration: same thirteen radii, same
+   centre. Each one brightens in turn from the middle outward, so a single
+   sweep travels through the existing artwork rather than sitting on top of it.
+   The SVG box is 794 x 787 and its circles are centred in it, so the elements
+   sit at the box's own centre. */
+.au-scan-rings { left: 0; top: 0; width: 98.6%; aspect-ratio: 794 / 787; }
+.au-scan-rings i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--au-d);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border: 1px solid #59627B;
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: au-radar 4.6s linear infinite;
+  animation-delay: calc(var(--au-i) * 0.11s);
+}
+
+@keyframes au-radar {
+  0%, 26%, 100% { opacity: 0.28; border-color: #59627B; }
+  6%            { opacity: 0.95; border-color: var(--au-green); }
+  14%           { opacity: 0.45; border-color: #59627B; }
+}
+.au-scan-wire  {
+  left: 27.3%; top: 9.8%;  width: 41.9%;
+  /* The export is an opaque rectangle: the artwork is a rounded rect and the
+     four corners outside its 22px radius are filled white rather than left
+     transparent, which on the navy read as a pale hairline around the mock.
+     22/1023 across and 22/1792 down. */
+  border-radius: 2.15% / 1.23%;
+}
+
+.au-scan-line  { left: 22.9%; top: 37.5%; width: 50.7%; height: 3px; background: var(--au-green); }
+/* The white pill is the frame's, not a leftover: here the pair really does sit
+   on white. Two circles overlapping 13.5% fill the box at 53.6% each. */
+.au-scan-avatars {
+  --au-avatar: 53.6%;
+  left: 11.8%; top: 33.9%; width: 11.1%; height: auto;
+  display: flex;
+  background: #fff; border-radius: 999px; padding: 0.6% 0.9%;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+.au-scan-pill {
+  left: 73.5%; top: 34.4%;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: var(--au-ink);
+  font-size: clamp(11px, 1vw, 18px); font-weight: 700;
+  padding: 0.6em 1.1em; border-radius: 999px; white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+.au-scan-spinner {
+  width: 1em; height: 1em; border-radius: 50%;
+  border: 0.17em solid var(--au-green); border-top-color: transparent;
+  animation: au-spin 1.1s linear infinite;
+}
+@keyframes au-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .au-scan-spinner { animation: none; border-top-color: var(--au-green); }
+}
+
+.au-why-lead { font-size: clamp(15px, 1.15vw, 21px); font-weight: 700; margin: 0 0 clamp(10px, 1vw, 18px); }
+
+/* ─── Report stack ───────────────────────────────────────────── */
+/* In the frame it spans y 2852..3640 against a band edge at 2996, so roughly
+   a fifth of it sits up in the dark band. */
+/* frame: the white band runs 2995..3579, so 584 tall, and the copy's title sits
+   at 3183 with 270 of air under the block. 188 and 270 of 1920. */
+.au-band--report {
+  overflow: visible;
+  padding-block: clamp(40px, 9.79vw, 188px) clamp(40px, 14.06vw, 270px);
+}
+
+/* Out of flow, and that is the whole point. The stack is 788 tall against a
+   584 band: as a grid item it forced the band open to 1069px, nearly double,
+   and the page lost the effect the frame is going for. In the frame it runs
+   2852..3640, opening 143px up inside the dark band above and closing 61px
+   into the dark one below, so it reads as passing through the white rather
+   than living in it. Front sheet 565x779 at x 1155, all of 1920. */
+.au-report {
+  position: absolute;
+  /* frame: Group 58 is 595 x 797 at x 1095. Anchored to the white band's lower
+     edge so the stack opens up into the dark band above and stops clean here,
+     rather than carrying on over the section below. All of 1920. */
+  left: 57.03vw;
+  bottom: 0;
+  width: 30.99vw;
+  aspect-ratio: 595 / 797;
+}
+.au-report img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* No transform: the export already carries each sheet's own rotation. */
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.28));
+}
+
+/* ─── FAQ ────────────────────────────────────────────────────── */
+.au-faq {
+  /* frame: the card is 640 wide at x 640..1280, not 720. */
+  margin: 0 auto; max-width: 640px; background: #fff;
+  border-radius: 18px; padding: 4px clamp(20px, 2.4vw, 40px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+/* frame: each row is 172 tall. The card narrowing to its drawn 640 rewrapped
+   the answers, so the padding that gets there is 27, not the 41 it would have
+   needed at the old width. */
+.au-faq-item {
+  padding: clamp(18px, 1.41vw, 27px) 0;
+  /* The frame gives all three rows the same 172, which is what makes the card
+     read as an evenly ruled list. Our answers are not all the same length, so
+     without a floor the shorter two collapse and the rhythm goes. */
+  min-height: clamp(0px, 8.96vw, 172px);
+  box-sizing: border-box;
+  border-bottom: 1px solid #EDF0F6;
+}
+.au-faq-item:last-child { border-bottom: 0; }
+.au-faq dt { font-size: clamp(14px, 1vw, 18px); font-weight: 700; color: var(--au-ink); margin-bottom: 8px; }
+.au-faq dd { margin: 0; font-size: clamp(13px, 0.88vw, 16px); line-height: 1.7; color: var(--au-on-light); }
+
+/* ─── Draw the graphs on reveal ──────────────────────────────────
+   The resting state is the finished graph, so server-rendered HTML and anyone
+   without JavaScript reads the real numbers. The from-state is armed by script
+   before the first paint and only for visitors who have not asked for less
+   motion, which is why it hangs off a data attribute rather than a class in
+   the markup. */
+.au-meter-fill { transition: width 1s cubic-bezier(0.22, 0.9, 0.3, 1); transition-delay: calc(var(--au-i, 0) * 110ms); }
+.au-dial-arc   { transition: stroke-dasharray 1.2s cubic-bezier(0.22, 0.9, 0.3, 1); }
+
+.au-scores[data-draw='armed'] .au-meter-fill { width: 0; }
+.au-scores[data-draw='armed'] .au-dial-arc   { stroke-dasharray: 0 360; }
+.au-scores[data-draw='in'] .au-meter-fill { width: var(--au-fill); }
+.au-scores[data-draw='in'] .au-dial-arc   { stroke-dasharray: var(--au-sweep) 360; }
+
+/* ─── Scroll cue ─────────────────────────────────────────────────
+   A real control, not an ornament: it says where it goes and moving to it by
+   keyboard and pressing it does the same thing the arrow suggests. */
+.au-scroll-cue {
+  position: absolute;
+  bottom: clamp(18px, 1.7vw, 32px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--au-on-dark);
+  font: inherit;
+  font-size: clamp(11px, 0.73vw, 14px);
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.au-scroll-cue:hover { color: #fff; }
+.au-scroll-cue:focus-visible { outline: 3px solid var(--au-green); outline-offset: 3px; }
+.au-scroll-cue svg { display: block; width: clamp(18px, 1.25vw, 24px); height: auto; animation: au-nudge 1.9s ease-in-out infinite; }
+
+@keyframes au-nudge {
+  0%, 60%, 100% { transform: translateY(0); }
+  30%           { transform: translateY(5px); }
+}
+
+/* ─── Back to top ────────────────────────────────────────────────
+   Held out of the flow so it never lands on the copy, and away from the
+   reader's edge so it does not sit over the text in either language. */
+.au-to-top {
+  /* In the flow under the questions rather than floating: it is the end of the
+     page, which is exactly where wanting to go back up happens. */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(29, 35, 50, 0.92);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font: inherit;
+  font-size: clamp(12px, 0.78vw, 14px);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.au-to-top-row { display: flex; justify-content: center; margin-top: clamp(28px, 3vw, 56px); }
+.au-to-top:hover { background: #1d2332; border-color: var(--au-green); }
+.au-to-top:focus-visible { outline: 3px solid var(--au-green); outline-offset: 3px; }
+.au-to-top svg { display: block; width: 16px; height: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .au-meter-fill, .au-dial-arc, .au-to-top { transition: none; }
+  .au-scroll-cue svg { animation: none; }
+  /* The rings stay drawn at their resting weight; only the sweep stops. */
+  .au-scan-rings i { animation: none; opacity: 0.4; border-color: #59627B; }
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .au-page { --au-col: calc(100% - 40px); }
+  .au-hero-row, .au-split, .au-split--report { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .au-hero-row { direction: rtl; }
+  :root[dir='ltr'] .au-hero-row { direction: ltr; }
+  /* Stacked: the photograph is a full-width block, so it neither bleeds nor
+     crops. Nobody loses an arm to the viewport edge here. */
+  .au-hero-photo { width: 100%; margin-inline-start: 0; order: 2; }
+  .au-hero-photo img { aspect-ratio: auto; object-fit: fill; transform: rotate(-2deg); }
+  .au-logo { margin-bottom: 24px; }
+  .au-head { max-width: none; }
+  .au-scores { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .au-cards { grid-template-columns: minmax(0, 1fr); }
+  .au-overall { padding-block: 28px; }
+  .au-dial { width: min(240px, 60%); }
+  .au-deliverables { margin-inline: 0; width: auto; }
+  /* Stacked: nothing to pass through, so the stack comes back into the flow as
+     an ordinary full-width block. */
+  .au-report { position: static; width: 100%; aspect-ratio: auto; }
+  .au-band--report { padding-block: clamp(56px, 6.5vw, 125px); }
+  .au-split--report .au-split-copy { max-width: none; }
+  .au-scan { max-width: 460px; margin-inline: auto; }
+}
+
+@media (max-width: 560px) {
+  .au-url-pill { flex-direction: column; padding: 10px; border-radius: 22px; }
+  .au-url-input { width: 100%; text-align: center; }
+  .au-go { width: 100%; }
+}
+
+/* ─── Success screen (step 5) ────────────────────────────────── */
+.au-title--success { font-size: clamp(34px, 6vw, 56px); margin-bottom: 22px; }
+
+.au-target--success { margin-bottom: 26px; }
+
+/* The address is the subject of the sentence, the inbox is a detail — same pill,
+   quieter fill, so the two chips do not compete. */
+.au-chip--soft {
+  background: transparent;
+  color: var(--au-green);
+  border: 1px solid var(--au-green);
+  font-weight: 500;
+}
+
+.au-lede--tight { max-width: 520px; margin-inline: auto; margin-bottom: 52px; }
+
+.au-deepen {
+  font-size: clamp(20px, 3vw, 27px);
+  font-weight: 700;
+  margin: 0 0 22px;
+}
+
+.au-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.au-submit--inline { margin: 0; }
+
+.au-submit--ghost {
+  background: transparent;
+  color: var(--au-green);
+  border: 2px solid var(--au-green);
+  margin: 0;
+}
+.au-submit--ghost:hover { background: rgba(90, 255, 0, 0.12); }
+
+@media (prefers-reduced-motion: reduce) {
+  .au-submit { transition: none; }
+  .au-submit:hover { transform: none; }
+}
+
+@media (max-width: 600px) {
+  .au-screen { padding-inline: 20px; }
+  .au-screen::before { width: 300px; height: 300px; top: -160px; left: -110px; border-width: 16px; }
+  .au-screen::after  { width: 380px; height: 380px; bottom: -250px; right: -130px; border-width: 16px; }
+  .au-target { font-size: 14px; }
+}

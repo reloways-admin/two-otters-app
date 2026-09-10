@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from 'react'
 import en from '@/locales/v8-en.json'
+import { isValidSiteUrl, normaliseSiteHost } from '@/lib/audit-intake'
 
 type HeroT = typeof en.hero
 
@@ -16,12 +17,30 @@ const WAVE_PATH =
   'L 1520,34.8 L 1560,34.1 L 1600,33.3 L 1640,32.5 L 1680,31.8 L 1720,31 L 1760,30 ' +
   'L 1800,28.3 L 1840,26.6 L 1880,24.3 L 1920,23.2 L 1920,196 L 0,196 Z'
 
+/** Where the audit flow looks for the address it is about to review. */
+const STORE_URL = 'twootters.audit.url'
+
 export default function HeroV8({ t, lang = 'he' }: { t: HeroT; lang?: 'en' | 'he' }) {
   const [url, setUrl] = useState('')
+  const [error, setError] = useState('')
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // TODO: wire the paste-a-link audit report. Input is display-only for now.
+    if (!isValidSiteUrl(url)) {
+      setError(t.errorInvalidUrl)
+      return
+    }
+    // Land on the audit page with the address already filled in, not past it.
+    // That page is where the offer is actually explained — what is in the
+    // report, why it takes two days, what a real one looks like — so sending
+    // someone straight to the form would skip the part that earns the email.
+    const host = normaliseSiteHost(url)
+    try {
+      sessionStorage.setItem(STORE_URL, host)
+    } catch {
+      // Storage can be blocked; ?url= below carries it anyway.
+    }
+    window.location.href = `/audit?lang=${lang}&url=${encodeURIComponent(host)}`
   }
 
   return (
@@ -49,8 +68,10 @@ export default function HeroV8({ t, lang = 'he' }: { t: HeroT; lang?: 'en' | 'he
           </figcaption>
         </figure>
 
-        <form className="v8-hero-search" onSubmit={handleSubmit} role="search">
-          <span className="v8-hero-beta">{t.beta}</span>
+        {/* noValidate: type="url" makes the browser block submit and show its
+            own bubble, in its own language, before onSubmit ever runs. We want
+            the wording from the Figma "Errors" frame instead. */}
+        <form className="v8-hero-search" onSubmit={handleSubmit} role="search" noValidate>
           <input
             type="url"
             inputMode="url"
@@ -58,22 +79,14 @@ export default function HeroV8({ t, lang = 'he' }: { t: HeroT; lang?: 'en' | 'he
             placeholder={t.placeholder}
             aria-label={t.placeholder}
             value={url}
-            onChange={(e) => setUrl(e.target.value)}
+            onChange={(e) => { setUrl(e.target.value); if (error) setError('') }}
+            aria-invalid={error ? true : undefined}
+            aria-describedby={error ? 'v8-hero-url-err' : undefined}
           />
-          <span className="v8-hero-wand" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <defs>
-                <linearGradient id="v8-wand-grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#5AFF00" />
-                  <stop offset="1" stopColor="#2EB62C" />
-                </linearGradient>
-              </defs>
-              <path d="M3 21 13 11" stroke="url(#v8-wand-grad)" strokeWidth="2.4" strokeLinecap="round" />
-              <path d="M16 3l1.2 2.6L20 7l-2.8 1.4L16 11l-1.2-2.6L12 7l2.8-1.4L16 3z" fill="url(#v8-wand-grad)" />
-              <circle cx="7" cy="6" r="1.15" fill="url(#v8-wand-grad)" />
-              <circle cx="20.5" cy="14.5" r="1.15" fill="url(#v8-wand-grad)" />
-            </svg>
-          </span>
+          <button type="submit" className="v8-hero-go">{t.submit}</button>
+          {error && (
+            <p className="v8-hero-error" id="v8-hero-url-err" role="alert">{error}</p>
+          )}
         </form>
 
         <figure className="v8-hero-person v8-hero-person--keren">
