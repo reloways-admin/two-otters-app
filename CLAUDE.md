@@ -6,14 +6,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 npm run dev              # Next dev server on :3000 (.claude/launch.json runs it on :3001)
-npm run build            # Production build — the only real check we have
-npm start                # Serve the production build
+npm test                 # Vitest — the automated check for this repo
+npm run test:watch       # Vitest in watch mode
+npm run build            # Production build
 npx tsc --noEmit         # Type check
+npm start                # Serve the production build
 ```
 
-There is no test suite. `npm run lint` is **broken**: `next lint` was removed in Next 16 and
-there is no ESLint config in the repo, so the script fails with "Invalid project directory
-provided, no such directory: .../lint". Use `npm run build` (which type-checks) to validate a change.
+`npm run lint` is **broken**: `next lint` was removed in Next 16 and there is no ESLint config in
+the repo, so the script fails with "Invalid project directory provided, no such directory:
+.../lint". `npm test` is what replaces it.
 
 Environment variables are documented in `.env.example`; copy it to `.env.local`. Nothing
 outside the audit/contact/brand features needs them — the marketing site renders without any.
@@ -83,18 +85,12 @@ carries the metadata, as the case studies do.
 
 `/audit` → `/audit/details` → `/audit/thanks`. State moves through `sessionStorage`
 (`twootters.audit.*`), deliberately not the query string, so an email never lands in a URL.
-Submission hits [api/audit-request](src/app/api/audit-request/route.ts), which emails the studio and
-sends the visitor a confirmation (the confirmation failing is logged, not surfaced — we already
-have the lead).
+Submission hits [api/forms/audit-request](src/app/api/forms/audit-request/route.ts) — see **Forms**
+below for what happens then.
 
-[lib/audit-intake.ts](src/lib/audit-intake.ts) holds the validation rules and is run **twice**: on
-the client for instant feedback and again on the server, where it actually counts. Anything added
-there must hold on both sides — including the derived `needsRelationshipQuestion`, which the server
-re-derives rather than trusting the client to send.
-
-Both mail routes (`audit-request`, `contact`) declare `export const runtime = 'nodejs'` because
-nodemailer opens a real SMTP socket. Both use a hidden `website` honeypot field and answer `ok: true`
-when it is filled.
+[lib/audit-intake.ts](src/lib/audit-intake.ts) holds the validation rules, wrapped by the zod schema
+that both sides run. Anything added there must hold on both sides — including the derived
+`needsRelationshipQuestion`, which the server re-derives rather than trusting the client to send.
 
 ### The Claude audit pipeline (v1, largely dormant)
 
@@ -119,6 +115,99 @@ layout sets `metadataBase` plus `alternates.canonical: "./"` so every route decl
 canonical without repeating the URL, and the Google Search Console `verification` meta tag must stay
 in place or the property un-verifies. `next.config.ts` adds `X-Robots-Tag: noindex` for any
 `*.vercel.app` host. Funnel steps (`/audit/details`) set `robots: { index: false }` themselves.
+
+## Forms
+
+Every form posts to its own route under `src/app/api/forms/<name>/`, and each route is three lines:
+import the spec, import the shared handler, `export const POST = createFormRoute(spec)`.
+
+Behind that sit **two capabilities, not two vendors** ([ports.ts](src/lib/integrations/ports.ts)):
+
+| Port | Role | Adapters |
+|---|---|---|
+| `LeadRecorder` | durably record a lead *and* notify the team | `clickup`, `console` |
+| `Mailer` | write to the visitor | `brevo-group`, `brevo-transactional`, `console` |
+
+The ClickUp task **is** the lead, and ClickUp's own notifications are why there is no internal
+email anywhere — nodemailer is gone. `brevo-group` upserts the visitor into a Brevo list and lets
+Brevo's automation send; `brevo-transactional` sends a template directly. Both satisfy the same
+port, so `MAILER=brevo-transactional` is the whole switch.
+
+A form's `confirm.template` is a **logical** name, resolved per adapter in
+[src/config/integrations.json](src/config/integrations.json) — `audit-confirm` → Brevo list 19,
+`contact-confirm` → list 18. **Ids and mappings are config, not secrets**, so they live in that
+committed file where a teammate can review them in a diff; only tokens and API keys go in the
+environment. A matching env var (`MAIL_LIST_AUDIT_CONFIRM`, `CLICKUP_LIST_LEADS`, …) still wins,
+for the deployment that needs to differ. Adding a form with its own list is a spec plus one JSON
+line. A form with nothing to say sets `confirm: null`.
+
+Both current lists are **transactional**: people enter them by asking for a report or sending an
+enquiry, not by opting in. `marketingOptIn` is recorded on the ClickUp task and deliberately feeds
+no list, because marketing consent has to be given freely and cannot be the price of the service.
+Campaigning to either list would break that.
+
+**Adding a provider is a new adapter file plus a line in
+[registry.ts](src/lib/integrations/registry.ts)** — never a change to a route, a handler or a form
+spec. The [contract suite](src/lib/integrations/contract.test.ts) runs over every registered
+adapter, so a new one proves itself against the port rather than against a reviewer's attention.
+
+Six rules hold this together:
+
+1. **One route per form**, named after the form.
+2. **The spec owns the decisions, in vendor-neutral terms** — a title, tags, a due date, a flat
+   `fields` map, a logical template name. Vendor vocabulary (list ids, template ids, custom-field
+   ids) belongs to the adapter, which resolves it from env via
+   [naming.ts](src/lib/integrations/naming.ts).
+3. **The zod message *is* the API error code** — `z.string().min(1, 'firstName_required')`. The
+   handler returns the first issue's message verbatim; the client maps the code to locale copy, so
+   Hebrew and English never reach server code.
+4. **The same schema runs twice** — [schemas.ts](src/lib/forms/schemas.ts) is imported by the
+   client for instant feedback and re-run by the server, where it counts. The rules themselves
+   still live in [audit-intake.ts](src/lib/audit-intake.ts); the schema only arranges them.
+5. **A hidden `website` honeypot on every form.** Filled in ⇒ respond `ok: true`, record nothing.
+6. **Lead first, courtesy second.** The handler records, and only a recorded lead earns a
+   confirmation — so confirming a lead we failed to keep is impossible, not merely unlikely.
+
+That last rule drives the response shape: `{ ok: true, confirmed: true }` when both worked,
+`{ ok: true, confirmed: false }` when the mail failed (the lead is tagged `confirmation-failed` so
+a human sees it on the board), and `{ ok: false, error: 'send_failed' }` only when the lead itself
+could not be recorded. `/audit/thanks` shows "we've sent you a confirmation" **only** when
+`confirmed` is true. There is no fallback sink, so the structured `console.error` in
+[handler.ts](src/lib/forms/handler.ts) is the last line of defence — keep it complete.
+
+With an empty `.env.local` both ports fall back to their `console` adapter outside production, so
+every form is exercisable locally with no credentials. In production they do not fall back.
+
+## Working rules
+
+**Specs before implementation, BDD style.** Tests are co-located `*.test.ts` and named as
+behaviour — `it('rejects a disposable address with disposable_email')`, not `it('works')`. Write
+the spec, watch it fail, then make it pass. Route handlers are testable without a server: import
+the route's `POST` and hand it a `Request`.
+
+**Nothing reaches the browser console unless debugging.** Client code uses `debug()` from
+[debug.ts](src/lib/debug.ts), which is silent unless `NEXT_PUBLIC_DEBUG=1`. A visitor's console is
+not our log. Server-side `console.error` in route handlers is a different thing and stays.
+
+**Run `npm test` when it could plausibly be affected** — always after touching a schema, the
+handler, or an adapter, and before calling anything done.
+
+## Secrets never go in the frontend
+
+Anything sensitive stays server-side: read it from `process.env` inside a route handler, or
+inside a `src/lib` module that only route handlers import. **Never give a secret the
+`NEXT_PUBLIC_` prefix** — that inlines it as a literal string into the client bundle at build
+time, where anyone can read it in devtools, and where rotating it requires a rebuild.
+
+The single `NEXT_PUBLIC_` variable in this repo, `NEXT_PUBLIC_WEB3FORMS_KEY`, is a deliberately
+public form-submission key, not a credential. It is the exception, not a pattern to copy.
+
+Read server env *inside a function*, never at module top level — a top-level read in a statically
+prerendered page or server component is evaluated at build and frozen into the output. Every
+current read follows this (see `api/*/route.ts`, `lib/claude.ts`, `lib/brand-drive.ts`).
+
+A new credential means a new server route, never a new `NEXT_PUBLIC_` var. When in doubt:
+`npm run build && grep -r <VAR_NAME> .next/static` must come back empty.
 
 ## Conventions
 

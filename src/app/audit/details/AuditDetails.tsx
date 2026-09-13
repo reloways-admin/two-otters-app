@@ -6,13 +6,13 @@ import he from '@/locales/v8-he.json'
 import { STORE_DONE } from '../thanks/AuditThanks'
 import {
   isValidEmail,
-  isDisposableEmail,
   isValidSiteUrl,
   normaliseSiteHost,
   needsRelationshipQuestion,
   RELATIONSHIP_VALUES,
   type Relationship,
 } from '@/lib/audit-intake'
+import { auditRequestSchema } from '@/lib/forms/schemas'
 import '../audit.css'
 
 type Lang = 'en' | 'he'
@@ -94,15 +94,30 @@ export default function AuditDetails() {
     if (!needsRelationship && relationship) setRelationship('')
   }, [needsRelationship, relationship])
 
+  /** Which field each schema issue belongs under. Anything unlisted — a bad URL,
+   *  say, which was chosen a screen ago — sits above the button instead. */
+  const FIELD_FOR: Record<string, keyof FieldErrors> = {
+    firstName: 'firstName',
+    email: 'email',
+    relationship: 'relationship',
+    consentReport: 'consent',
+  }
+
+  /** The same schema the server runs. Here it buys instant feedback; there it
+   *  is the copy that counts. One definition, so the two cannot drift. */
   function validate(): FieldErrors {
+    const result = auditRequestSchema.safeParse({
+      url, firstName, email, relationship, consentReport, marketingOptIn,
+    })
+    if (result.success) return {}
+
     const next: FieldErrors = {}
-    if (!firstName.trim()) next.firstName = t.errors.firstName_required
-    if (!isValidEmail(email)) next.email = t.errors.invalid_email
-    // Worth catching here rather than after a round trip: we already know the
-    // report would be sent into a void.
-    else if (isDisposableEmail(email)) next.email = t.errors.disposable_email
-    if (!consentReport) next.consent = t.errors.consent_required
-    if (needsRelationship && !relationship) next.relationship = t.errors.relationship_required
+    for (const issue of result.error.issues) {
+      const code = issue.message as keyof typeof t.errors
+      const field = FIELD_FOR[String(issue.path[0])] ?? 'form'
+      // First issue per field wins, so someone is told one thing at a time.
+      if (!next[field]) next[field] = t.errors[code] ?? t.errors.send_failed
+    }
     return next
   }
 
@@ -124,7 +139,7 @@ export default function AuditDetails() {
 
     setStatus('sending')
     try {
-      const res = await fetch('/api/audit-request', {
+      const res = await fetch('/api/forms/audit-request', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
@@ -138,7 +153,12 @@ export default function AuditDetails() {
         // session really did submit — /audit/thanks refuses to congratulate a
         // cold visitor. The email travels through storage, never the URL.
         try {
-          sessionStorage.setItem(STORE_DONE, JSON.stringify({ host, email }))
+          // `confirmed` is the mailer's own answer. The thanks screen only
+          // promises a confirmation email when one actually went out.
+          sessionStorage.setItem(
+            STORE_DONE,
+            JSON.stringify({ host, email, confirmed: data.confirmed === true })
+          )
           sessionStorage.removeItem(STORE_URL)
           sessionStorage.removeItem(STORE_EMAIL)
         } catch { /* storage blocked; the thanks page will send them home */ }

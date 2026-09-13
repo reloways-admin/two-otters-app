@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 /** Bump this whenever the substance changes: the date is what tells a reader
  *  (and a regulator) which version they are looking at. */
-const LAST_UPDATED = '8 בספטמבר 2026'
+const LAST_UPDATED = '13 בספטמבר 2026'
 
 export default function PrivacyPage() {
   return (
@@ -104,8 +104,9 @@ export default function PrivacyPage() {
           <tbody>
             <tr><td>Vercel</td><td>אחסון האתר והפעלתו</td><td>ארה״ב</td></tr>
             <tr><td>Anthropic</td><td>ניתוח העמוד לצורך הפקת הדוח</td><td>ארה״ב</td></tr>
-            <tr><td>Google Workspace</td><td>קבלת הפניות ושליחת הדוח במייל</td><td>ארה״ב / אירופה</td></tr>
-            <tr><td>Web3Forms</td><td>העברת טופס יצירת הקשר לתיבת הדואר שלנו</td><td>ארה״ב</td></tr>
+            <tr><td>Google Workspace</td><td>שליחת הדוח והתכתבות איתכם במייל</td><td>ארה״ב / אירופה</td></tr>
+            <tr><td>ClickUp</td><td>ניהול הפניות שמגיעות מהטפסים באתר</td><td>ארה״ב</td></tr>
+            <tr><td>Brevo</td><td>שליחת מיילים אליכם, כמו אישור קבלת הבקשה</td><td>אירופה</td></tr>
             <tr><td>Cloudflare Turnstile</td><td>מניעת שליחות אוטומטיות וספאם</td><td>ארה״ב</td></tr>
           </tbody>
         </table>
