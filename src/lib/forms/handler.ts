@@ -1,7 +1,7 @@
 import { getMailer, getRecorder } from '@/lib/integrations/registry'
 import { withRetry } from '@/lib/integrations/retry'
 import { rowsToText } from '@/lib/integrations/compose'
-import type { Lead } from '@/lib/integrations/ports'
+import { NotConfiguredError, type Lead } from '@/lib/integrations/ports'
 import type { FormResponse, FormRouteDeps, FormSpec } from './types'
 
 /** The honeypot field every form carries. Filled in means a bot. */
@@ -52,7 +52,12 @@ export function createFormRoute<T>(spec: FormSpec<T>, deps: FormRouteDeps = {}) 
         error: String(err),
         lead: { title: lead.title, fields: lead.fields, body: rowsToText(lead.rows) },
       })
-      return json({ ok: false, error: 'send_failed' }, 502)
+      // A missing credential is our fault and retrying cannot fix it, so say
+      // that rather than telling the visitor to try again in a moment. The two
+      // codes carry different copy for exactly this reason.
+      return err instanceof NotConfiguredError
+        ? json({ ok: false, error: 'not_configured' }, 500)
+        : json({ ok: false, error: 'send_failed' }, 502)
     }
 
     if (!spec.confirm) return json({ ok: true, confirmed: false }, 200)
