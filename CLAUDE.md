@@ -178,6 +178,39 @@ could not be recorded. `/audit/thanks` shows "we've sent you a confirmation" **o
 With an empty `.env.local` both ports fall back to their `console` adapter outside production, so
 every form is exercisable locally with no credentials. In production they do not fall back.
 
+### Adding a new form
+
+The basic config is always the same two destinations:
+
+```
+internal (the team)    -> a ClickUp task in the Leads list      — always
+external (the visitor) -> a Brevo list whose automation sends   — optional
+```
+
+Five steps, none of which touch a route handler or an adapter:
+
+1. **Schema** — add it to [schemas.ts](src/lib/forms/schemas.ts), remembering that the message on
+   each rule *is* the error code the client will map to locale copy.
+2. **Spec** — a new `src/lib/forms/<name>.ts` using `defineForm`. `record` is mandatory (tags, a
+   title, the `rows` that become the task body, a flat `fields` map); `confirm` names a **logical**
+   template such as `'newsletter'`, or is `null` when the form has nothing to say to the visitor.
+3. **Route** — `src/app/api/forms/<name>/route.ts`, three lines:
+   `export const POST = createFormRoute(<name>Form)`.
+4. **Config** — one line in [integrations.json](src/config/integrations.json) mapping that logical
+   name to its Brevo list id, under `brevo-group.lists`. Nothing goes in the environment.
+5. **Client** — post JSON to `/api/forms/<name>` including the hidden `website` honeypot, and map
+   the returned `error` code to copy in the locale files.
+
+Tag the lead distinctly (`['audit']`, `['contact']`, …). All forms share one ClickUp list and are
+told apart by tag, which is also how a ClickUp Automation can route them to different people.
+
+Write the specs first (see **Working rules**), and `npm test` covers the new form the moment its
+schema and handler behaviour are described.
+
+**Give each form its own Brevo list.** Reusing one means a single automation for two different
+audiences, and the lists are transactional — people enter by asking for something, not by opting
+in — so mixing them muddies what each person actually consented to.
+
 ## Working rules
 
 **Specs before implementation, BDD style.** Tests are co-located `*.test.ts` and named as
