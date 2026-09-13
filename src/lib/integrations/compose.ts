@@ -24,3 +24,22 @@ export function rowsToText(rows: [string, string][]): string {
 
 export const escapeHtml = (s: string) =>
   s.replace(/[<>&]/g, c => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' })[c]!)
+
+/** A long-form answer — what the person actually wrote, not a one-word fact. */
+export interface LeadNote {
+  label: string
+  text: string
+}
+
+/**
+ * The whole task body: scannable facts first, then the message on its own.
+ *
+ * Prose reads badly as the tail of a bullet next to one-word values, and a
+ * paragraph someone took the trouble to write deserves to look like one. The
+ * person's own line breaks are kept — they paragraphed it for a reason.
+ */
+export function leadToMarkdown(rows: [string, string][], note?: LeadNote): string {
+  const facts = rowsToMarkdown(rows)
+  const text = note?.text.trim()
+  return text ? `${facts}\n\n**${note!.label}**\n\n${text}` : facts
+}

@@ -35,8 +35,9 @@ export const contactForm = defineForm<ContactInput>({
       ['טלפון', d.phone || '—'],
       ['חברה', d.company || '—'],
       ['תפקיד', d.role || '—'],
-      ['הודעה', d.message],
     ],
+    // The one thing they wrote in their own words. It gets its own block.
+    note: d => ({ label: 'הודעה', text: d.message }),
     replyTo: d => ({ email: d.email, name: d.name }),
   },
 

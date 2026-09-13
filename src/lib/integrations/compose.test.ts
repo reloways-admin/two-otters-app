@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { rowsToMarkdown, rowsToText } from './compose'
+import { leadToMarkdown, rowsToMarkdown, rowsToText } from './compose'
 
 const rows: [string, string][] = [
   ['שם', 'רונית לוי'],
@@ -33,5 +33,37 @@ describe('the body a lead carries', () => {
 
   it('copes with an empty set rather than emitting stray markup', () => {
     expect(rowsToMarkdown([])).toBe('')
+  })
+})
+
+describe('a lead whose person wrote something', () => {
+  const facts: [string, string][] = [
+    ['שם', 'רונית לוי'],
+    ['אימייל', 'ronit@acme.com'],
+  ]
+  const note = { label: 'הודעה', text: 'שלום, אנחנו בונים מוצר חדש\nונשמח לדבר.' }
+
+  it('keeps the facts scannable and the message apart from them', () => {
+    const body = leadToMarkdown(facts, note)
+    const [first, second] = body.split('\n\n')
+
+    expect(first).toBe('- **שם:** רונית לוי\n- **אימייל:** ronit@acme.com')
+    expect(second).toContain('**הודעה**')
+  })
+
+  it('gives the message room to breathe, and its own heading', () => {
+    expect(leadToMarkdown(facts, note)).toContain('**הודעה**\n\nשלום')
+  })
+
+  it('keeps the line breaks the person typed', () => {
+    expect(leadToMarkdown(facts, note)).toContain('מוצר חדש\nונשמח לדבר.')
+  })
+
+  it('renders just the list when there is no message — the audit form has none', () => {
+    expect(leadToMarkdown(facts)).toBe('- **שם:** רונית לוי\n- **אימייל:** ronit@acme.com')
+  })
+
+  it('omits an empty message rather than leaving a dangling heading', () => {
+    expect(leadToMarkdown(facts, { label: 'הודעה', text: '   ' })).not.toContain('הודעה')
   })
 })
