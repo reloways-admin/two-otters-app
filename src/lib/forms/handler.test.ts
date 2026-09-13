@@ -3,7 +3,7 @@ import { createFormRoute } from './handler'
 import { auditRequestForm } from './audit-request'
 import { contactForm } from './contact'
 import type { LeadRecorder, Mailer } from '@/lib/integrations/ports'
-import { DeliveryError } from '@/lib/integrations/ports'
+import { DeliveryError, NotConfiguredError } from '@/lib/integrations/ports'
 
 function stubRecorder(overrides: Partial<LeadRecorder> = {}) {
   return {
@@ -147,6 +147,33 @@ describe('when the lead cannot be recorded', () => {
     const logged = JSON.stringify((console.error as unknown as ReturnType<typeof vi.fn>).mock.calls)
     expect(logged).toContain('dana@acme.com')
     expect(logged).toContain('acme.com')
+  })
+})
+
+describe('when the deployment itself is misconfigured', () => {
+  beforeEach(() => {
+    recorder = stubRecorder({
+      configured: () => false,
+      record: vi.fn(async () => { throw new NotConfiguredError('clickup') }),
+    })
+  })
+
+  it('says so, rather than blaming the network', async () => {
+    const response = await run(validAudit)
+
+    // 'send_failed' tells the visitor to try again, which cannot work when a
+    // credential is missing. This code's copy tells them to write to us.
+    expect(await response.json()).toEqual({ ok: false, error: 'not_configured' })
+  })
+
+  it('answers 500, because the fault is ours and not an upstream one', async () => {
+    expect((await run(validAudit)).status).toBe(500)
+  })
+
+  it('still logs the whole submission so the lead is recoverable', async () => {
+    await run(validAudit)
+    const logged = JSON.stringify((console.error as unknown as ReturnType<typeof vi.fn>).mock.calls)
+    expect(logged).toContain('dana@acme.com')
   })
 })
 
