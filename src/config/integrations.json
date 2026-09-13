@@ -1,0 +1,42 @@
+{
+  "_comment": [
+    "Which form reaches which list, board or template. Not secrets — ids and",
+    "mappings, kept here so adding a form is a reviewable diff rather than a",
+    "dashboard field nobody can see. Tokens and API keys stay in the environment.",
+    "",
+    "Each key is an adapter name from src/lib/integrations/registry.ts, and each",
+    "section is that adapter's own vocabulary. An environment variable of the",
+    "matching name still wins, so one deployment can point somewhere else",
+    "without editing this file."
+  ],
+
+  "clickup": {
+    "list": "901222088251",
+    "_list": "Leads | Two Otters space",
+    "fields": {
+      "_comment": "Neutral field name -> ClickUp custom field id. Optional: every value already appears in the task description, so add one only to sort or filter the board by it. Keep 'relationship' a Text field, not a Dropdown.",
+      "email": "",
+      "phone": "",
+      "company": "",
+      "role": "",
+      "domainMatch": "",
+      "relationship": "",
+      "marketingOptIn": ""
+    }
+  },
+
+  "brevo-group": {
+    "lists": {
+      "_comment": "Logical template name -> Brevo list id. Both are transactional audiences: people enter by asking for a report or sending an enquiry, not by opting in. Do not campaign to them.",
+      "audit-confirm": "19",
+      "contact-confirm": "18"
+    }
+  },
+
+  "brevo-transactional": {
+    "templates": {
+      "_comment": "Logical template name -> Brevo template id. Only read when MAILER=brevo-transactional.",
+      "audit-confirm": ""
+    }
+  }
+}

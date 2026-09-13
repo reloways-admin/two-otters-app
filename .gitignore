@@ -6,6 +6,9 @@
 # testing
 /coverage
 
+# node's V8 compile cache, written when running scripts with a bare `node`
+/node-compile-cache
+
 # next.js
 /.next/
 /out/
@@ -35,3 +38,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/.claude/settings.local.json

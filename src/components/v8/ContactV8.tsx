@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { debug } from '@/lib/debug'
 import en from '@/locales/v8-en.json'
 
 type ContactT = typeof en.contact
@@ -10,6 +11,7 @@ export default function ContactV8({ t }: { t: ContactT }) {
     name: '', email: '', phone: '', company: '', role: '', message: '',
   })
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+  const [honeypot, setHoneypot] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -19,28 +21,17 @@ export default function ContactV8({ t }: { t: ContactT }) {
     e.preventDefault()
     setStatus('sending')
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('/api/forms/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
-          subject: `${t.emailSubjectPrefix} ${form.name}`,
-          from_name: form.name,
-          // Sender's email — Web3Forms sets this as the reply-to so you can reply directly.
-          email: form.email,
-          [t.emailLabels.name]: form.name,
-          [t.emailLabels.email]: form.email,
-          [t.emailLabels.phone]: form.phone,
-          [t.emailLabels.company]: form.company,
-          [t.emailLabels.role]: form.role,
-          message: form.message,
-        }),
+        body: JSON.stringify({ ...form, website: honeypot }),
       })
-      if (!res.ok) throw new Error(`Web3Forms responded ${res.status}`)
+      const data = await res.json().catch(() => null)
+      if (!res.ok || !data?.ok) throw new Error(data?.error ?? `server responded ${res.status}`)
       setStatus('success')
       setForm({ name: '', email: '', phone: '', company: '', role: '', message: '' })
     } catch (err) {
-      console.error('Contact form submit failed:', err)
+      debug('Contact form submit failed:', err)
       setStatus('error')
     }
   }
@@ -62,6 +53,18 @@ export default function ContactV8({ t }: { t: ContactT }) {
           </div>
 
           <form className="v8-contact-card" onSubmit={handleSubmit}>
+          {/* Hidden from people, irresistible to bots. The server answers a
+              filled-in one as if it worked and records nothing. */}
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            value={honeypot}
+            onChange={e => setHoneypot(e.target.value)}
+            style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+          />
           <div className="v8-form-row">
             <input className="v8-field" name="name" placeholder={t.namePlaceholder} value={form.name} onChange={handleChange} required />
             <input className="v8-field" name="email" type="email" placeholder={t.emailPlaceholder} value={form.email} onChange={handleChange} required />

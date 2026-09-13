@@ -13,7 +13,7 @@ const locales = { en, he } as const
  *  It is what separates "you just submitted" from "you typed this URL". */
 export const STORE_DONE = 'twootters.audit.done'
 
-type Done = { host: string; email: string }
+type Done = { host: string; email: string; confirmed: boolean }
 
 /**
  * Figma step-5, on its own URL so a conversion can be measured against it —
@@ -41,7 +41,9 @@ export default function AuditThanks() {
       const raw = sessionStorage.getItem(STORE_DONE)
       if (raw) {
         const parsed = JSON.parse(raw) as Partial<Done>
-        if (parsed?.host && parsed?.email) payload = { host: parsed.host, email: parsed.email }
+        if (parsed?.host && parsed?.email) {
+          payload = { host: parsed.host, email: parsed.email, confirmed: parsed.confirmed === true }
+        }
       }
     } catch {
       // Unreadable or blocked storage: treat it as "did not submit here".
@@ -82,7 +84,9 @@ export default function AuditThanks() {
           <span>{t.deliverySuffix} {due}.</span>
         </p>
 
-        <p className="au-lede au-lede--tight">{t.confirmBody}</p>
+        {/* Only claimed when the mailer actually accepted it. A provider
+            outage costs the nicety, never the promise's honesty. */}
+        {done.confirmed && <p className="au-lede au-lede--tight">{t.confirmBody}</p>}
 
         <h2 className="au-deepen">{t.deepenTitle}</h2>
 
