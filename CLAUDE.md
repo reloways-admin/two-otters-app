@@ -236,12 +236,13 @@ inside a `src/lib` module that only route handlers import. **Never give a secret
 `NEXT_PUBLIC_` prefix** — that inlines it as a literal string into the client bundle at build
 time, where anyone can read it in devtools, and where rotating it requires a rebuild.
 
-The single `NEXT_PUBLIC_` variable in this repo, `NEXT_PUBLIC_WEB3FORMS_KEY`, is a deliberately
-public form-submission key, not a credential. It is the exception, not a pattern to copy.
+The only `NEXT_PUBLIC_` variable in this repo is `NEXT_PUBLIC_DEBUG`, the flag behind
+[debug.ts](src/lib/debug.ts). A switch that decides whether client code logs is not a credential,
+which is why the public prefix is correct there. It is the exception, not a pattern to copy.
 
 Read server env *inside a function*, never at module top level — a top-level read in a statically
 prerendered page or server component is evaluated at build and frozen into the output. Every
-current read follows this (see `api/*/route.ts`, `lib/claude.ts`, `lib/brand-drive.ts`).
+current read follows this (see `lib/integrations/*`, `lib/claude.ts`, `lib/brand-drive.ts`).
 
 A new credential means a new server route, never a new `NEXT_PUBLIC_` var. When in doubt:
 `npm run build && grep -r <VAR_NAME> .next/static` must come back empty.
