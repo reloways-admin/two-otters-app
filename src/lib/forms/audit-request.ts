@@ -6,12 +6,17 @@ import {
 import { auditRequestSchema, type AuditRequestInput } from './schemas'
 import { defineForm } from './types'
 
-/** How each answer to "what is your connection to this site?" reads on the board. */
+/**
+ * How each answer to "what is your connection to this site?" reads on the board.
+ *
+ * English, like every label we write: the visitor's own words are theirs and
+ * stay untouched, but a value we derive is ours to make scannable.
+ */
 const RELATIONSHIP_LABELS: Record<string, string> = {
-  owner: 'זה האתר של החברה שלי',
-  employee: 'עובד/ת שם',
-  consultant: 'מלווה אותם מבחוץ',
-  other: 'בודק/ת אתר של מישהו אחר',
+  owner: 'Owns the company',
+  employee: 'Works there',
+  consultant: 'External consultant',
+  other: "Checking someone else's site",
 }
 
 export const auditRequestForm = defineForm<AuditRequestInput>({
@@ -19,7 +24,10 @@ export const auditRequestForm = defineForm<AuditRequestInput>({
   schema: auditRequestSchema,
 
   record: {
-    title: d => `בקשת אודיט - ${d.host}`,
+    // English so the board reads the same whichever language the visitor
+    // used, and so the line stays left-to-right: a Hebrew prefix in front of a
+    // domain leaves the browser to guess where the dash belongs.
+    title: d => `Audit request - ${d.host}`,
     tags: ['audit'],
     // The 1-2 business day promise the thanks page makes, as a date on the
     // board — so the commitment lives where the work is, not only in an email.
@@ -32,17 +40,12 @@ export const auditRequestForm = defineForm<AuditRequestInput>({
       marketingOptIn: d.marketingOptIn,
     }),
     rows: d => [
-      ['אתר לבדיקה', d.host],
-      ['שם', d.firstName],
-      ['אימייל', d.email],
-      [
-        'התאמת דומיין',
-        emailMatchesSite(d.email, d.url)
-          ? 'המייל שייך לדומיין של האתר'
-          : 'המייל אינו שייך לדומיין של האתר',
-      ],
-      ['הקשר לאתר', d.relationship ? RELATIONSHIP_LABELS[d.relationship] ?? d.relationship : '—'],
-      ['דיוור', d.marketingOptIn ? 'כן, הצטרפ/ה לרשימה' : 'לא'],
+      ['Site', d.host],
+      ['Name', d.firstName],
+      ['Email', d.email],
+      ['Email matches site', emailMatchesSite(d.email, d.url) ? 'Yes' : 'No'],
+      ['Relationship', d.relationship ? RELATIONSHIP_LABELS[d.relationship] ?? d.relationship : '—'],
+      ['Marketing opt-in', d.marketingOptIn ? 'Yes' : 'No'],
     ],
     replyTo: d => ({ email: d.email, name: d.firstName }),
   },
