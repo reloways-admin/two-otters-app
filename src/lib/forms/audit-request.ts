@@ -19,7 +19,10 @@ export const auditRequestForm = defineForm<AuditRequestInput>({
   schema: auditRequestSchema,
 
   record: {
-    title: d => `בקשת אודיט - ${d.host}`,
+    // English so the board reads the same whichever language the visitor
+    // used, and so the line stays left-to-right: a Hebrew prefix in front of a
+    // domain leaves the browser to guess where the dash belongs.
+    title: d => `Audit request - ${d.host}`,
     tags: ['audit'],
     // The 1-2 business day promise the thanks page makes, as a date on the
     // board — so the commitment lives where the work is, not only in an email.

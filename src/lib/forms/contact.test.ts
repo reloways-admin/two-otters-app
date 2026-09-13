@@ -8,6 +8,16 @@ const filled: ContactInput = {
 }
 const labels = (data: ContactInput) => contactForm.record.rows(data).map(([label]) => label)
 
+describe('the task title', () => {
+  it('is English, so the board scans the same whichever language the visitor used', () => {
+    expect(contactForm.record.title(filled)).toBe('Contact - Dana')
+  })
+
+  it('leads with English even when the name is Hebrew, so the line stays left-to-right', () => {
+    expect(contactForm.record.title({ ...filled, name: 'רונית לוי' })).toBe('Contact - רונית לוי')
+  })
+})
+
 describe('what the contact form puts on the ClickUp task', () => {
   it('lists the short facts, message excluded — that gets its own block', () => {
     expect(labels(filled)).toEqual(['שם', 'אימייל', 'טלפון', 'חברה', 'תפקיד'])

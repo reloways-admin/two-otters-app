@@ -17,7 +17,9 @@ export const contactForm = defineForm<ContactInput>({
   schema: contactSchema,
 
   record: {
-    title: d => `פנייה מהאתר - ${d.name}`,
+    // English prefix, for the same reason as the audit form: it anchors the
+    // line left-to-right even when the name that follows is Hebrew.
+    title: d => `Contact - ${d.name}`,
     tags: ['contact'],
     fields: d => ({
       email: d.email,
