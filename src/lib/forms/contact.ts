@@ -25,16 +25,18 @@ export const contactForm = defineForm<ContactInput>({
       company: d.company || null,
       role: d.role || null,
     }),
-    rows: d => (
-      [
-        ['שם', d.name],
-        ['אימייל', d.email],
-        ['טלפון', d.phone],
-        ['חברה', d.company],
-        ['תפקיד', d.role],
-        ['הודעה', d.message],
-      ] as [string, string][]
-    ).filter(([, value]) => Boolean(value)),
+    // Every question the form asks appears on the task, answered or not. An
+    // omitted row read as a lost field rather than a blank one, which made a
+    // half-filled form look like a broken integration — and a visible gap is
+    // useful anyway: it is the thing to ask about when you reply.
+    rows: d => [
+      ['שם', d.name],
+      ['אימייל', d.email],
+      ['טלפון', d.phone || '—'],
+      ['חברה', d.company || '—'],
+      ['תפקיד', d.role || '—'],
+      ['הודעה', d.message],
+    ],
     replyTo: d => ({ email: d.email, name: d.name }),
   },
 
