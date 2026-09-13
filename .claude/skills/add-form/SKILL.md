@@ -67,6 +67,11 @@ an adapter:
    in this file, never in `.env`.
 5. **Client** — post JSON to `/api/forms/<name>` including the hidden `website` honeypot, and map
    the returned `error` code to copy in `src/locales/v8-{he,en}.json`. Both languages, always.
+6. **Bot protection** — add the new route to the `protect` list in
+   [src/instrumentation-client.ts](../../../src/instrumentation-client.ts). **Do not skip this.**
+   The shared handler runs a BotID check on every form; a route the client never challenged has no
+   token to present, so the form would reject every real visitor. Local dev always answers HUMAN,
+   which means you will not notice until production.
 
 Then `npm test`. Add the form's own specs to
 [handler.test.ts](../../../src/lib/forms/handler.test.ts) and

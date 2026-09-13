@@ -6,7 +6,7 @@ export type FormResponse =
   | { ok: false; error: string }
 
 /** Codes the handler itself can produce; the rest come from the schema. */
-export type HandlerError = 'bad_request' | 'send_failed'
+export type HandlerError = 'bad_request' | 'send_failed' | 'not_configured' | 'blocked'
 
 export interface ParsedSchema<T> {
   safeParse(value: unknown): { success: true; data: T } | { success: false; error: { issues: { message: string }[] } }
@@ -43,6 +43,8 @@ export interface FormRouteDeps {
   recorder?: () => LeadRecorder
   mailer?: () => Mailer
   retry?: { attempts?: number; baseDelayMs?: number }
+  /** Injectable so the gate can be exercised both ways without a real browser. */
+  botCheck?: () => Promise<{ isBot: boolean }>
 }
 
 /** Identity helper: keeps each spec type-checked against its own schema. */
