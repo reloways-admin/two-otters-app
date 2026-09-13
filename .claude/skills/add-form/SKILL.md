@@ -72,28 +72,42 @@ Then `npm test`. Add the form's own specs to
 
 ## 3. Finding the ids
 
+Do not go hunting through APIs for these. **Ask the developer to paste the link** to the list and
+read the id out of it.
+
 ### ClickUp list id
 
-Normally you do not need a new one — every form shares the Leads list already in
-`integrations.json`. You only need this for a form that files somewhere else.
+Usually you need nothing: every form shares the Leads list already in `integrations.json`. You only
+need a new id for a form that files somewhere else.
 
-```bash
-CLICKUP_TOKEN=pk_… node scripts/clickup-setup.mjs            # every list, with its id
-CLICKUP_TOKEN=pk_… node scripts/clickup-setup.mjs --check ID # confirm an id is the list you think
+Ask them to **right-click the list in the sidebar → Copy link**. Two shapes come back, and the id
+sits in a different place in each:
+
+```
+https://app.clickup.com/90121898659/v/li/901222088251
+                        └ workspace ┘     └── list id ──┘      ← Copy link gives this
+
+https://app.clickup.com/90121898659/v/l/6-901222088251-1
+                        └ workspace ┘      └── list id ──┘     ← the address bar on a saved view
 ```
 
-From the UI instead: **right-click the list in the sidebar → Copy link**. The last segment is the
-id. Beware the address bar — on a saved view it shows `/v/l/6-901222088251-1`, which is a *view*
-id; the list id is the middle number. The script never has this ambiguity.
+The rule: **the list id is inside the `/v/…` part, never the number right after `.com/`** — that
+one is the workspace. In the `/v/l/` form the trailing `6-…-1` is a *view* identifier with the list
+id as its middle number; using the whole thing will fail with a 404.
+
+Read it back to them before writing it anywhere — "that's list `901222088251`, the Leads list?" —
+so a wrong copy-paste surfaces now rather than on the first real submission.
 
 ### Brevo list id
 
-Open the list in Brevo; the id is the last segment of the URL:
+Ask them to open the list in Brevo and paste the URL. The id is the last segment:
 
 ```
 https://app.brevo.com/contact/list-listing/id/19
-                                             ^^  MAIL_LIST_… / integrations.json
+                                              └┘ list id
 ```
+
+Brevo list ids are small integers, so if you see something long you have the wrong number.
 
 **Give each form its own list.** These are transactional audiences — people enter by asking for
 something, not by opting in — so one list per form keeps straight what each person consented to,
@@ -102,15 +116,16 @@ and lets each have its own automation.
 After creating the list, the sending itself is a **Brevo automation** on that list, not something
 this repo does: `brevo-group` puts the contact in, Brevo's automation writes the email. A 2xx means
 the contact was added, *not* that mail went out — if the automation is missing, the visitor gets
-nothing and we still report success. Check the automation exists.
+nothing and we still report success. Ask them to confirm the automation exists.
 
 ### ClickUp custom fields
 
-Optional and usually unnecessary: every value already appears in the task body. Add one only to
-sort or filter the board by it.
+Optional, and usually not worth it: every value already appears in the task body, so a field only
+buys sorting and filtering on the board. If they do want one, its id is not in any URL — fetch it
+ad hoc with the token already in `.env`:
 
 ```bash
-CLICKUP_TOKEN=pk_… node scripts/clickup-setup.mjs --fields LIST_ID
+node --env-file=.env -e 'fetch("https://api.clickup.com/api/v2/list/LIST_ID/field",{headers:{Authorization:process.env.CLICKUP_TOKEN}}).then(r=>r.json()).then(d=>d.fields.forEach(f=>console.log(f.id,f.name,f.type)))'
 ```
 
 Keep any field carrying a Hebrew label as **Text**, not Dropdown — a dropdown expects an option
