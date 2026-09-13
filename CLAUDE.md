@@ -46,7 +46,7 @@ only reachable from `/v2` and `/v3`.
 No i18n routing. The page component holds `const [lang, setLang] = useState<Lang>('he')`, picks a
 locale object (`locales[lang]`), and passes slices down as a `t` prop. Two effects matter and are
 copied into every top-level client page ([v8/page.tsx](src/app/v8/page.tsx),
-[LegalShell.tsx](src/app/(legal)/LegalShell.tsx), each case study): reading `?lang=` on mount so
+[LegalShell.tsx](src/app/%28legal%29/LegalShell.tsx), each case study): reading `?lang=` on mount so
 cross-page links keep the language, and writing `document.documentElement.lang`/`dir` so assistive
 tech gets the right voice. The root layout declares `lang="he" dir="rtl"` as the honest cold default.
 
@@ -145,6 +145,10 @@ Both current lists are **transactional**: people enter them by asking for a repo
 enquiry, not by opting in. `marketingOptIn` is recorded on the ClickUp task and deliberately feeds
 no list, because marketing consent has to be given freely and cannot be the price of the service.
 Campaigning to either list would break that.
+
+**What the forms are actually wired to** — list ids, the auto-assign automation, which Brevo
+attributes exist and which are silently dropped — is in
+[docs/integrations.md](docs/integrations.md). Read it before changing anything account-shaped.
 
 **Adding a provider is a new adapter file plus a line in
 [registry.ts](src/lib/integrations/registry.ts)** — never a change to a route, a handler or a form

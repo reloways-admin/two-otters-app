@@ -16,7 +16,9 @@ external (the visitor) -> a Brevo list whose automation sends   — optional, pe
 ```
 
 Read [CLAUDE.md](../../../CLAUDE.md) §Forms first if you have not already — it holds the six rules
-this skill assumes.
+this skill assumes — and [docs/integrations.md](../../../docs/integrations.md) for what the
+accounts actually contain: list ids, the ClickUp auto-assign automation, and which Brevo
+attributes exist versus which get silently dropped.
 
 ## 1. Ask before building
 
