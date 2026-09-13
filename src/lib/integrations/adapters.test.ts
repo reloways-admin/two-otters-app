@@ -143,11 +143,39 @@ describe('the Brevo group mailer, where the automation does the sending', () => 
     expect(result.id).toBe('42')
   })
 
-  it('sends the params as Brevo attributes, with the first name under FNAME', async () => {
+  it('uses the name Brevo actually defines, FIRSTNAME, not an invented one', async () => {
     const { impl, calls } = fakeFetch({ body: { id: 42 } })
     await createBrevoGroupMailer({ env, fetchImpl: impl }).send(mail)
 
-    expect(body(calls).attributes).toMatchObject({ FNAME: 'דנה', HOST: 'acme.com' })
+    // Brevo accepts the write and silently discards attributes it has no
+    // definition for, so a wrong name here fails invisibly.
+    expect(body(calls).attributes).toMatchObject({ FIRSTNAME: 'דנה' })
+    expect(body(calls).attributes).not.toHaveProperty('FNAME')
+  })
+
+  it('upper-cases anything else, which must exist in Brevo or it is dropped', async () => {
+    const { impl, calls } = fakeFetch({ body: { id: 42 } })
+    await createBrevoGroupMailer({ env, fetchImpl: impl }).send({
+      ...mail,
+      params: { host: 'acme.com', due: 'יום שלישי' },
+    })
+
+    expect(body(calls).attributes).toMatchObject({ HOST: 'acme.com', DUE: 'יום שלישי' })
+  })
+
+  it('maps the other standard Brevo names rather than inventing them', async () => {
+    const { impl, calls } = fakeFetch({ body: { id: 42 } })
+    await createBrevoGroupMailer({ env, fetchImpl: impl }).send({
+      ...mail,
+      to: { email: 'a@b.co' },
+      params: { firstName: 'Dana', lastName: 'Levi', role: 'CEO' },
+    })
+
+    expect(body(calls).attributes).toMatchObject({
+      FIRSTNAME: 'Dana',
+      LASTNAME: 'Levi',
+      JOB_TITLE: 'CEO',
+    })
   })
 
   it('says it is not configured when the list for that template is missing', async () => {

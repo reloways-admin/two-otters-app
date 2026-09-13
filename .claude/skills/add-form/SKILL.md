@@ -118,6 +118,17 @@ this repo does: `brevo-group` puts the contact in, Brevo's automation writes the
 the contact was added, *not* that mail went out — if the automation is missing, the visitor gets
 nothing and we still report success. Ask them to confirm the automation exists.
 
+**Attributes are dropped silently if Brevo has no definition for them.** Anything in
+`confirm.params` is sent as a contact attribute, but Brevo stores only the ones its account
+defines and discards the rest while still answering 2xx — so a template personalising on a missing
+attribute renders blank with no error anywhere. Brevo ships `FIRSTNAME`, `LASTNAME`, `JOB_TITLE`,
+`SMS` and a few more; **any other param needs a custom attribute created first** under
+Contacts → Settings → Contact attributes. Check what exists before relying on one:
+
+```bash
+node --env-file=.env -e 'fetch("https://api.brevo.com/v3/contacts/attributes",{headers:{"api-key":process.env.BREVO_API_KEY}}).then(r=>r.json()).then(d=>d.attributes.forEach(a=>console.log(a.name,a.type||"")))'
+```
+
 ### ClickUp custom fields
 
 Optional, and usually not worth it: every value already appears in the task body, so a field only

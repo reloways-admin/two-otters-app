@@ -61,16 +61,31 @@ export function createBrevoGroupMailer({ env, config = {}, fetchImpl = fetch }: 
   }
 }
 
-/** Brevo attribute names are upper case by convention; FNAME is its own. */
+/**
+ * Brevo's own names for the attributes it ships with. Getting one of these
+ * wrong fails *silently*: Brevo accepts the write, stores the contact, and
+ * discards any attribute it has no definition for — so a template that
+ * personalises on it simply renders blank.
+ *
+ * Anything not listed here is upper-cased and passed through, which means it
+ * must first exist as a custom attribute in the Brevo account (Contacts →
+ * Settings → Contact attributes) or it goes the same silent way.
+ */
+const BREVO_STANDARD_NAMES: Record<string, string> = {
+  firstName: 'FIRSTNAME',
+  lastName: 'LASTNAME',
+  role: 'JOB_TITLE',
+}
+
 function toBrevoAttributes(
   params: Record<string, unknown>,
   name?: string
 ): Record<string, unknown> {
   const attributes: Record<string, unknown> = {}
-  if (name) attributes.FNAME = name
+  if (name) attributes.FIRSTNAME = name
   for (const [key, value] of Object.entries(params)) {
-    if (value === undefined || value === null) continue
-    attributes[key === 'firstName' ? 'FNAME' : key.toUpperCase()] = value
+    if (value === undefined || value === null || value === '') continue
+    attributes[BREVO_STANDARD_NAMES[key] ?? key.toUpperCase()] = value
   }
   return attributes
 }
