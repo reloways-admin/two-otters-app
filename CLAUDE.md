@@ -168,7 +168,18 @@ Six rules hold this together:
 4. **The same schema runs twice** — [schemas.ts](src/lib/forms/schemas.ts) is imported by the
    client for instant feedback and re-run by the server, where it counts. The rules themselves
    still live in [audit-intake.ts](src/lib/audit-intake.ts); the schema only arranges them.
-5. **A hidden `website` honeypot on every form.** Filled in ⇒ respond `ok: true`, record nothing.
+5. **Two gates before any work.** A hidden `website` honeypot (filled in ⇒ respond `ok: true`,
+   record nothing), then **Vercel BotID**. Both run before the schema parse, so a bot costs a
+   header read rather than two API calls. A bot verdict returns `blocked` (403) rather than the
+   honeypot's silent `ok`, because BotID can misjudge a real person and someone who cannot submit
+   deserves to know.
+
+   **The protected paths must match on both sides.** [instrumentation-client.ts](src/instrumentation-client.ts)
+   lists which routes get challenged; the handler checks every one. A new route the client never
+   challenged has no token to present — so adding a form without adding its path there would
+   reject every real visitor. In local dev BotID always answers HUMAN, so this failure is
+   invisible until production; pass `developmentBypass: 'bot'` to `checkBotId` to exercise the
+   blocked path by hand.
 6. **Lead first, courtesy second.** The handler records, and only a recorded lead earns a
    confirmation — so confirming a lead we failed to keep is impossible, not merely unlikely.
 

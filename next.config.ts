@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withBotId } from "botid/next/config";
 
 const nextConfig: NextConfig = {
   // resvg ships a native binary — don't bundle it; require it at runtime.
@@ -18,4 +19,7 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// Proxies BotID's challenge script through our own domain. Without this an
+// ad-blocker can drop the third-party request and the protection quietly
+// weakens to nothing, with no error to notice.
+export default withBotId(nextConfig);

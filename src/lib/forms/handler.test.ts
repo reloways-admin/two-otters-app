@@ -45,6 +45,13 @@ let mailer: ReturnType<typeof stubMailer>
 const run = (payload: unknown, spec = auditRequestForm) =>
   createFormRoute(spec, { recorder: () => recorder, mailer: () => mailer, retry: { attempts: 1 } })(post(payload))
 
+const runAsBot = (payload: unknown) =>
+  createFormRoute(auditRequestForm, {
+    recorder: () => recorder,
+    mailer: () => mailer,
+    botCheck: async () => ({ isBot: true }),
+  })(post(payload))
+
 beforeEach(() => {
   recorder = stubRecorder()
   mailer = stubMailer()
@@ -174,6 +181,45 @@ describe('when the deployment itself is misconfigured', () => {
     await run(validAudit)
     const logged = JSON.stringify((console.error as unknown as ReturnType<typeof vi.fn>).mock.calls)
     expect(logged).toContain('dana@acme.com')
+  })
+})
+
+describe('when the bot check says no', () => {
+  it('refuses, and says so plainly enough for a misflagged person to act on', async () => {
+    const response = await runAsBot(validAudit)
+
+    expect(response.status).toBe(403)
+    expect(await response.json()).toEqual({ ok: false, error: 'blocked' })
+  })
+
+  it('records nothing and writes to nobody', async () => {
+    await runAsBot(validAudit)
+
+    expect(recorder.record).not.toHaveBeenCalled()
+    expect(mailer.send).not.toHaveBeenCalled()
+  })
+
+  it('checks before doing any work, not after', async () => {
+    // A bot should cost us one header read, not a schema parse and two API calls.
+    await runAsBot({ nonsense: true })
+    expect(recorder.record).not.toHaveBeenCalled()
+  })
+
+  it('lets a real visitor through untouched', async () => {
+    const response = await createFormRoute(auditRequestForm, {
+      recorder: () => recorder,
+      mailer: () => mailer,
+      botCheck: async () => ({ isBot: false }),
+    })(post(validAudit))
+
+    expect(await response.json()).toEqual({ ok: true, confirmed: true })
+  })
+
+  it('still answers a honeypot hit as if it worked, before the bot check runs', async () => {
+    const response = await runAsBot({ ...validAudit, website: 'http://spam.example' })
+
+    expect(await response.json()).toEqual({ ok: true, confirmed: true })
+    expect(recorder.record).not.toHaveBeenCalled()
   })
 })
 

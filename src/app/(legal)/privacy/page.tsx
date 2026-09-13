@@ -107,7 +107,7 @@ export default function PrivacyPage() {
             <tr><td>Google Workspace</td><td>שליחת הדוח והתכתבות איתכם במייל</td><td>ארה״ב / אירופה</td></tr>
             <tr><td>ClickUp</td><td>ניהול הפניות שמגיעות מהטפסים באתר</td><td>ארה״ב</td></tr>
             <tr><td>Brevo</td><td>שליחת מיילים אליכם, כמו אישור קבלת הבקשה</td><td>אירופה</td></tr>
-            <tr><td>Cloudflare Turnstile</td><td>מניעת שליחות אוטומטיות וספאם</td><td>ארה״ב</td></tr>
+            <tr><td>Vercel BotID</td><td>מניעת שליחות אוטומטיות וספאם מהטפסים</td><td>ארה״ב</td></tr>
           </tbody>
         </table>
       </div>

@@ -13,7 +13,13 @@ asking rather than assuming, and to leave the repo with passing specs.
 ```
 internal (the team)    -> a ClickUp task in the Leads list      — every form, mandatory
 external (the visitor) -> a Brevo list whose automation sends   — optional, per form
+protection             -> honeypot + Vercel BotID              — every form, mandatory
 ```
+
+**Every form is wrapped in BotID. There is no opt-out.** The check lives in the shared handler,
+so the server side is automatic — but the client side is not: the route must be listed in
+[src/instrumentation-client.ts](../../../src/instrumentation-client.ts) or the form rejects every
+real visitor. Treat that file as part of building a form, not an afterthought.
 
 Read [CLAUDE.md](../../../CLAUDE.md) §Forms first if you have not already — it holds the six rules
 this skill assumes — and [docs/integrations.md](../../../docs/integrations.md) for what the
@@ -67,6 +73,11 @@ an adapter:
    in this file, never in `.env`.
 5. **Client** — post JSON to `/api/forms/<name>` including the hidden `website` honeypot, and map
    the returned `error` code to copy in `src/locales/v8-{he,en}.json`. Both languages, always.
+6. **Bot protection** — add the new route to the `protect` list in
+   [src/instrumentation-client.ts](../../../src/instrumentation-client.ts). **Do not skip this.**
+   The shared handler runs a BotID check on every form; a route the client never challenged has no
+   token to present, so the form would reject every real visitor. Local dev always answers HUMAN,
+   which means you will not notice until production.
 
 Then `npm test`. Add the form's own specs to
 [handler.test.ts](../../../src/lib/forms/handler.test.ts) and
@@ -166,6 +177,18 @@ Also check the failure path — it is the part that protects a lead. Point the m
 and confirm you still get `ok:true` with `confirmed:false`, the task still created and tagged
 `confirmation-failed`.
 
+**Then prove the BotID wrapping, both ways.** A passing curl is not proof: local dev always
+answers HUMAN, so a form missing from the client list looks perfectly healthy until it reaches
+production and blocks everyone.
+
+```bash
+grep -n "<name>" src/instrumentation-client.ts   # must be there, method and all
+```
+
+To exercise the blocked path by hand, pass `developmentBypass: 'bot'` to `checkBotId` in the
+handler temporarily — expect `403 {"ok":false,"error":"blocked"}`, nothing recorded, nobody
+written to. Put it back afterwards.
+
 ## Things that will bite
 
 - **Never put a list id in `.env`.** Ids are config; only `CLICKUP_TOKEN` and `BREVO_API_KEY` are
@@ -175,3 +198,9 @@ and confirm you still get `ok:true` with `confirmed:false`, the task still creat
   functions egress from a shared pool — turn the restriction off for the API key.
 - **Client code uses `debug()`**, never `console.*`. See [src/lib/debug.ts](../../../src/lib/debug.ts).
 - **A form with no honeypot is a form bots will find.** The hidden `website` input is not optional.
+- **A form missing from `instrumentation-client.ts` rejects everyone, silently.** The handler
+  challenges every form; the client only attaches a token for routes it was told about, and a
+  route with no token reads as a bot. Local dev answers HUMAN regardless, so nothing looks wrong
+  until it is live and nobody can submit. This is the single easiest way to ship a broken form.
+- **Keep `checkLevel` matching on both sides** if you ever raise one above `basic`. A mismatch
+  between the client challenge and the server check fails closed.

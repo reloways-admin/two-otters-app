@@ -1,3 +1,4 @@
+import { checkBotId } from 'botid/server'
 import { getMailer, getRecorder } from '@/lib/integrations/registry'
 import { withRetry } from '@/lib/integrations/retry'
 import { rowsToText } from '@/lib/integrations/compose'
@@ -27,6 +28,17 @@ export function createFormRoute<T>(spec: FormSpec<T>, deps: FormRouteDeps = {}) 
     // is a bot. Answer as if it worked so they have nothing to tune against.
     if (typeof payload[HONEYPOT] === 'string' && payload[HONEYPOT].trim()) {
       return json({ ok: true, confirmed: true }, 200)
+    }
+
+    // Cheap gates first, and this one before any parsing: a bot should cost us
+    // a header read, not a schema parse and two API calls. It sits *after* the
+    // honeypot so an obvious bot still gets the answer that tells it nothing.
+    const { isBot } = await (deps.botCheck ?? checkBotId)()
+    if (isBot) {
+      // Deliberately not the honeypot's silent ok. BotID can misjudge a real
+      // person, and someone who cannot submit deserves to know that rather than
+      // believe a report is on its way.
+      return json({ ok: false, error: 'blocked' }, 403)
     }
 
     const parsed = spec.schema.safeParse(payload)
