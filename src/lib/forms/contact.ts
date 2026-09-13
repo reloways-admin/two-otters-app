@@ -32,14 +32,14 @@ export const contactForm = defineForm<ContactInput>({
     // half-filled form look like a broken integration — and a visible gap is
     // useful anyway: it is the thing to ask about when you reply.
     rows: d => [
-      ['שם', d.name],
-      ['אימייל', d.email],
-      ['טלפון', d.phone || '—'],
-      ['חברה', d.company || '—'],
-      ['תפקיד', d.role || '—'],
+      ['Name', d.name],
+      ['Email', d.email],
+      ['Phone', d.phone || '—'],
+      ['Company', d.company || '—'],
+      ['Role', d.role || '—'],
     ],
     // The one thing they wrote in their own words. It gets its own block.
-    note: d => ({ label: 'הודעה', text: d.message }),
+    note: d => ({ label: 'Message', text: d.message }),
     replyTo: d => ({ email: d.email, name: d.name }),
   },
 
