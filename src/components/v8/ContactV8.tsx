@@ -10,6 +10,8 @@ export default function ContactV8({ t }: { t: ContactT }) {
     name: '', email: '', phone: '', company: '', role: '', message: '',
   })
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+  // Hidden from people, irresistible to bots — anything here means "drop it".
+  const [honeypot, setHoneypot] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -19,24 +21,14 @@ export default function ContactV8({ t }: { t: ContactT }) {
     e.preventDefault()
     setStatus('sending')
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      // Posts to our own /api/contact, which mails through the studio's Google
+      // account. No third party, and the credential stays server-side.
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
-          subject: `${t.emailSubjectPrefix} ${form.name}`,
-          from_name: form.name,
-          // Sender's email — Web3Forms sets this as the reply-to so you can reply directly.
-          email: form.email,
-          [t.emailLabels.name]: form.name,
-          [t.emailLabels.email]: form.email,
-          [t.emailLabels.phone]: form.phone,
-          [t.emailLabels.company]: form.company,
-          [t.emailLabels.role]: form.role,
-          message: form.message,
-        }),
+        body: JSON.stringify({ ...form, website: honeypot }),
       })
-      if (!res.ok) throw new Error(`Web3Forms responded ${res.status}`)
+      if (!res.ok) throw new Error(`/api/contact responded ${res.status}`)
       setStatus('success')
       setForm({ name: '', email: '', phone: '', company: '', role: '', message: '' })
     } catch (err) {
@@ -78,6 +70,16 @@ export default function ContactV8({ t }: { t: ContactT }) {
             value={form.message}
             onChange={handleChange}
             required
+          />
+          <input
+            type="text"
+            name="website"
+            value={honeypot}
+            onChange={e => setHoneypot(e.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
           />
           <button type="submit" className="v8-contact-btn" disabled={status === 'sending'}>
             {status === 'sending' ? t.sendingBtn : t.submitBtn}

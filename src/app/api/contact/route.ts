@@ -40,8 +40,17 @@ export async function POST(req: NextRequest): Promise<NextResponse<ContactRespon
 
   // Checked after validation so a visitor still gets accurate feedback on their
   // input even if the server is misconfigured.
+  // Who we authenticate to Gmail as. On a Workspace where two-otters.studio is
+  // a secondary domain, this may have to be the primary-domain account that
+  // actually owns the mailbox, because only a real user can hold an App
+  // Password — an alias cannot.
   const user = process.env.GMAIL_USER
   const pass = process.env.GMAIL_APP_PASSWORD
+  // Who the mail appears to come from. Defaults to the login, but can be set to
+  // hello@two-otters.studio when we authenticate as someone else. Gmail only
+  // honours it if that address is a verified "Send mail as" identity on the
+  // account; otherwise it silently rewrites From back to the login.
+  const from = process.env.MAIL_FROM || user
   const to = process.env.CONTACT_TO || user
   if (!user || !pass) {
     // Our problem, not theirs — detail goes to the log, the client stays vague.
@@ -64,9 +73,9 @@ export async function POST(req: NextRequest): Promise<NextResponse<ContactRespon
     })
 
     await transporter.sendMail({
-      // Gmail rewrites From to the authenticated account anyway, so send as
-      // ourselves and put the visitor on Reply-To — hitting reply answers them.
-      from: `"Two Otters Studio" <${user}>`,
+      // Reply-To carries the visitor, so hitting reply in the studio inbox
+      // answers them rather than us.
+      from: `"Two Otters Studio" <${from}>`,
       to,
       replyTo: `"${name}" <${email}>`,
       subject: `פנייה מהאתר - ${name}`,
