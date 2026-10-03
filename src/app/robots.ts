@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
       // Superseded design versions and the internal brand kit. They render real
       // pages (/v8 is the live homepage's twin), so without this they compete
       // with the pages we actually want ranked.
-      disallow: ['/v2', '/v3', '/v4', '/v5', '/v6', '/v7', '/v8', '/brand', '/api/'],
+      disallow: ['/v2', '/v3', '/v4', '/v5', '/v6', '/v7', '/v8', '/v9', '/brand', '/api/'],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
     host: SITE_URL,

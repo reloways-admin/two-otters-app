@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 
 export const SITE_URL = 'https://two-otters.studio'
 
-/** The pages we want found. The /v2../v8 drafts and /brand are deliberately
+/** The pages we want found. The /v2../v9 drafts and /brand are deliberately
  *  absent — see robots.ts, which keeps them out of the index entirely. */
 const ROUTES = [
   { path: '/', priority: 1 },
