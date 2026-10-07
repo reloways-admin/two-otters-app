@@ -42,6 +42,9 @@ export default function NavV10({ t }: { t: NavT }) {
   const [megaTop, setMegaTop] = useState(120)
   const linksRef = useRef<HTMLDivElement>(null)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const burgerRef = useRef<HTMLButtonElement>(null)
+  const closeBtnRef = useRef<HTMLButtonElement>(null)
+  const drawerWasOpen = useRef(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -56,6 +59,19 @@ export default function NavV10({ t }: { t: NavT }) {
   useEffect(() => {
     document.body.style.overflow = drawer ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
+  }, [drawer])
+
+  // Keyboard users: Escape closes the drawer, focus moves into it on open and
+  // goes back to the hamburger on close (it used to stay behind the overlay).
+  useEffect(() => {
+    if (drawer) {
+      drawerWasOpen.current = true
+      closeBtnRef.current?.focus()
+      const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setDrawer(false) }
+      document.addEventListener('keydown', onKey)
+      return () => document.removeEventListener('keydown', onKey)
+    }
+    if (drawerWasOpen.current) { drawerWasOpen.current = false; burgerRef.current?.focus() }
   }, [drawer])
 
   useEffect(() => {
@@ -95,7 +111,7 @@ export default function NavV10({ t }: { t: NavT }) {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={light ? '/v8-logo-mark-dark.svg' : '/v8-logo-mark.svg'} alt="" aria-hidden="true" className="v8-nav-logo-mark" />
             </a>
-            <button className="v8-nav-hamburger" aria-label={t.openMenu} aria-expanded={drawer} onClick={() => setDrawer(true)}>
+            <button ref={burgerRef} className="v8-nav-hamburger" aria-label={t.openMenu} aria-expanded={drawer} onClick={() => setDrawer(true)}>
               <span className="v8-hamburger-bar" /><span className="v8-hamburger-bar" /><span className="v8-hamburger-bar" />
             </button>
           </div>
@@ -111,6 +127,12 @@ export default function NavV10({ t }: { t: NavT }) {
                   className={`v10-has-mega${openMega === mega.id ? ' open' : ''}`}
                   style={{ '--v10-mega-top': `${megaTop}px` } as CSSProperties}
                   onFocus={() => open(mega.id)}
+                  // Tabbing past the last card used to leave the panel open over the page.
+                  onBlur={e => {
+                    if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+                      setOpenMega(cur => (cur === mega.id ? null : cur))
+                    }
+                  }}
                   onKeyDown={e => { if (e.key === 'Escape') setOpenMega(null) }}
                 >
                   <a
@@ -179,7 +201,7 @@ export default function NavV10({ t }: { t: NavT }) {
         })}
         <a className="v8-btn-primary v10-dr-cta" href={ROUTES.contact}>{t.cta}</a>
       </div>
-      <button className="v10-drawer-close" aria-label={t.closeMenu} hidden={!drawer} onClick={() => setDrawer(false)}>×</button>
+      <button ref={closeBtnRef} className="v10-drawer-close" aria-label={t.closeMenu} hidden={!drawer} onClick={() => setDrawer(false)}>×</button>
     </>
   )
 }
