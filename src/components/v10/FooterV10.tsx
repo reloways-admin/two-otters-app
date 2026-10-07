@@ -1,4 +1,5 @@
 import he from '@/locales/v10-he.json'
+import { ROUTES, link } from './routes'
 
 type FooterT = typeof he.footer
 
@@ -34,7 +35,7 @@ export default function FooterV10({ t }: { t: FooterT }) {
           </svg>
         </span>
         <div className="v10-foot-audit-copy"><b>{t.auditTitle}</b><span>{t.auditText}</span></div>
-        <a className="v10-tool-cta" href="/audit">{t.auditCta}</a>
+        <a className="v10-tool-cta" href={ROUTES.audit}>{t.auditCta}</a>
       </div>
 
       <div className="v8-container v8-footer-inner">
@@ -50,13 +51,13 @@ export default function FooterV10({ t }: { t: FooterT }) {
         <div className="v8-footer-col">
           <h4 className="v8-footer-col-heading">{t.studioHeading}</h4>
           <ul className="v8-footer-list">
-            {t.studioLinks.map(l => <li key={l.label}><a href={l.href}>{l.label}</a></li>)}
+            {t.studioLinks.map(l => <li key={l.label}><a href={link(l.to)}>{l.label}</a></li>)}
           </ul>
         </div>
         <div className="v8-footer-col">
           <h4 className="v8-footer-col-heading">{t.partnersHeading}</h4>
           <ul className="v8-footer-list">
-            {t.partnersLinks.map(l => <li key={l.label}><a href={l.href}>{l.label}</a></li>)}
+            {t.partnersLinks.map(l => <li key={l.label}><a href={link(l.to)}>{l.label}</a></li>)}
           </ul>
         </div>
       </div>
@@ -81,8 +82,8 @@ export default function FooterV10({ t }: { t: FooterT }) {
       <div className="v8-footer-bottom">
         <span>{t.copyright}</span>
         <ul className="v8-footer-legal">
-          <li><a href="/privacy?lang=he">{t.legal.privacy}</a></li>
-          <li><a href="/accessibility?lang=he">{t.legal.accessibility}</a></li>
+          <li><a href={ROUTES.privacy}>{t.legal.privacy}</a></li>
+          <li><a href={ROUTES.accessibility}>{t.legal.accessibility}</a></li>
         </ul>
       </div>
     </footer>

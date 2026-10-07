@@ -1,4 +1,5 @@
 import he from '@/locales/v10-he.json'
+import { ROUTES } from './routes'
 
 type HeroT = typeof he.hero
 
@@ -51,8 +52,8 @@ export default function HeroV10({ t }: { t: HeroT }) {
                 {t.sub}<br className="v10-br-desktop" /> {t.subLine2}
               </p>
               <div className="v10-hero-actions">
-                <a className="v10-btn-lime" href="/schedule-a-call?lang=he">{t.ctaBook}</a>
-                <a className="v10-btn-outline" href="/audit">{t.ctaAudit}</a>
+                <a className="v10-btn-lime" href={ROUTES.book}>{t.ctaBook}</a>
+                <a className="v10-btn-outline" href={ROUTES.audit}>{t.ctaAudit}</a>
               </div>
               <p className="au-trust">
                 <span className="au-trust-avatars" role="img" aria-label={t.trustAlt}>

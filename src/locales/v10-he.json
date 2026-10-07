@@ -1,38 +1,110 @@
 {
   "nav": {
+    "logoLabel": "Two Otters Studio, לעמוד הבית",
+    "homeLabel": "בית",
     "links": [
       {
         "label": "עבודות",
-        "href": "#work"
+        "to": "work",
+        "section": "work"
       },
       {
         "label": "שירותים",
-        "href": "#offer"
-      },
-      {
-        "label": "שיטת הספירלה",
-        "href": "#spiral"
+        "to": "services",
+        "section": "services",
+        "menu": "services"
       },
       {
         "label": "לשותפים",
-        "href": "#partners"
+        "to": "partners",
+        "section": "partners",
+        "menu": "partners"
       },
       {
         "label": "עלינו",
-        "href": "#about"
-      },
-      {
-        "label": "שאלות",
-        "href": "#faq"
+        "to": "about",
+        "section": "about"
       },
       {
         "label": "קבעו שיחה",
-        "href": "/schedule-a-call"
+        "to": "book",
+        "section": "book"
+      }
+    ],
+    "menus": [
+      {
+        "id": "services",
+        "to": "services",
+        "kicker": "שירותים",
+        "title": "אז מה בא לכם שנעשה יחד?",
+        "text": "ארבעה שירותים, כולם על שיטת הספירלה. אפשר לקחת את כל התהליך, או רק את החלק שחסר לכם.",
+        "more": "לכל השירותים ←",
+        "cards": [
+          {
+            "to": "serviceMvp",
+            "color": "#5aff00",
+            "art": "/offer-illus-1-fast.svg",
+            "title": "מרעיון למוצר",
+            "text": "פרוטוטייפ עובד בספרינט, עד 6 שבועות."
+          },
+          {
+            "to": "serviceUpgrade",
+            "color": "#f8f800",
+            "art": "/offer-illus-2-upgrade.svg",
+            "title": "שדרוג אתר",
+            "text": "לקחת את האתר הקיים כמה רמות למעלה."
+          },
+          {
+            "to": "serviceMarketing",
+            "color": "#61fff2",
+            "art": "/offer-illus-3-marketing.svg",
+            "title": "תשתית שיווקית",
+            "text": "מסעות לקוח, אוטומציות ודשבורדים."
+          },
+          {
+            "to": "serviceNewsite",
+            "color": "#ff6d2c",
+            "art": "/offer-illus-4-new-brand.svg",
+            "title": "אתר למותג חדש",
+            "text": "בסיס מותגי ואתר, מאפס ועד שהוא באוויר."
+          }
+        ]
+      },
+      {
+        "id": "partners",
+        "to": "partners",
+        "kicker": "לשותפים",
+        "title": "עובדים יחד, מול הלקוח שלכם.",
+        "text": "אתם מחזיקים את הלקוח. אנחנו מביאים את האסטרטגיה, השפה והאפיון, ועובדים איתכם כצוות אחד.",
+        "more": "איך זה עובד ←",
+        "cards": [
+          {
+            "to": "partners",
+            "color": "#f8f800",
+            "art": "/spiral-colors.svg",
+            "title": "לסטודיו עיצוב",
+            "text": "כשהפרויקט מתחיל באסטרטגיה ובמיתוג, ואתם מחזיקים את העיצוב."
+          },
+          {
+            "to": "partners",
+            "color": "#a8b5fd",
+            "art": "/spiral-browser.svg",
+            "title": "לבית תוכנה",
+            "text": "אפיון ופרוטוטייפ שהלקוח כבר אישר, לפני שהצוות שלכם מתחיל לבנות."
+          },
+          {
+            "to": "partners",
+            "color": "#5aff00",
+            "art": "/spiral-megaphone.svg",
+            "title": "למומחה SEO",
+            "text": "מותג שיודע מה הוא אומר, ואתר שהמבנה שלו נבנה עם אסטרטגיית הקידום."
+          }
+        ]
       }
     ],
     "cta": "דברו איתנו",
     "openMenu": "פתח תפריט",
-    "closeMenu": "סגור תפריט"
+    "closeMenu": "סגירת התפריט"
   },
   "offer": {
     "heading": "אז... מה בא לכם שנעשה יחד?",
@@ -157,34 +229,37 @@
         "title": "חתול פיננסי",
         "subtitle": "פינטק · מרקטפלייס פיננסי",
         "tagline": "מקהילה לעסק. בסיס מותגי מאפס, שפה ויזואלית, אתר ותשתית שיווקית.",
-        "tags": "137% צמיחת קהל",
-        "href": "/work/fincat",
-        "color": "yellow",
-        "coverLabel": "FinCat",
+        "metric": "137%",
+        "metricLabel": "צמיחת קהל",
+        "to": "workFincat",
+        "accent": "#f8f800",
         "image": "/v10/fincat-card.webp",
-        "by": "ביחד"
+        "imagePosition": ""
       },
       {
         "title": "The 5ers",
-        "subtitle": "פרופ טריידינג · קהילת סוחרים",
+        "subtitle": "טריידינג · קהילת סוחרים",
         "tagline": "לתת פנים לכסף. בידול, סיפור מותג ומסרים, ומשם אפיון ושפה ויזואלית.",
-        "tags": "13 תבניות לאתר",
-        "href": "/work/the5ers",
-        "color": "green",
-        "coverLabel": "The5ers",
-        "image": "/v10/the5ers-card.webp"
+        "metric": "13",
+        "metricLabel": "תבניות לאתר",
+        "to": "work5ers",
+        "accent": "#5aff00",
+        "image": "/v10/the5ers-card.webp",
+        "imagePosition": ""
       },
       {
         "title": "Ewise",
         "subtitle": "מיתוג מעסיק · סטוריטלינג",
         "tagline": "בונים מחדש את סיפור המותג, הערכים וטון הדיבור, ומתרגמים אותם לשפה ויזואלית, לאתר ולסט אייקונים.",
-        "tags": "בתהליך עכשיו",
-        "href": "",
-        "color": "blue",
-        "coverLabel": "Ewise",
-        "image": "/v10/ewise-card.jpg"
+        "metric": "בתהליך",
+        "metricLabel": "עכשיו",
+        "to": "workEwise",
+        "accent": "#61fff2",
+        "image": "/v10/ewise-card.jpg",
+        "imagePosition": "top center"
       }
-    ]
+    ],
+    "all": "לכל העבודות ←"
   },
   "spiral": {
     "title1": "שיטת הספירלה",
@@ -221,8 +296,8 @@
         "illusAlt": "spaceship illustration"
       }
     ],
-    "moreTitle": "האסטרטגיה משפיעה על העיצוב (ולהפך...)",
-    "moreSub": "המשיכו איתנו לפיתוח אסטרטגיה ו-UX/UI מלאים, עד התוצאה המדויקת שלכם",
+    "moreTitle": "האסטרטגיה משפיעה\nעל העיצוב (ולהפך...)",
+    "moreSub": "המשיכו איתנו לפיתוח אסטרטגיה ו-UX/UI מלאים,\nעד התוצאה המדויקת שלכם",
     "steps": [
       {
         "num": "5",
@@ -248,7 +323,8 @@
         "subtitle": "ליווי עד שזה באוויר",
         "body": "מוודאים שהעיצוב וחוויית המשתמש מובנים נכון, עד שמה שיוצא לאוויר נראה בדיוק כמו מה שתכננו."
       }
-    ]
+    ],
+    "next": "אלה השלבים הבאים"
   },
   "testimonials": {
     "title": "היה לנו כיף לעבוד ביחד",
@@ -282,7 +358,8 @@
     "amirBubbleAlt": "אמיר שלו - מומחה UX/UI, אפיון ותרגום אסטרטגיה למוצר",
     "kerenBubbleAlt": "קרן רייטלר - מומחית אסטרטגיה, סטוריטלינג ושפה מוצרית",
     "amirPhotoAlt": "אמיר שלו",
-    "kerenPhotoAlt": "קרן רייטלר"
+    "kerenPhotoAlt": "קרן רייטלר",
+    "more": "עוד עלינו ←"
   },
   "faq": {
     "heading": "כנראה שזה מה שעובר לכם בראש",
@@ -492,34 +569,30 @@
     "studioLinks": [
       {
         "label": "עבודות",
-        "href": "#work"
+        "to": "work"
       },
       {
         "label": "שירותים",
-        "href": "#offer"
-      },
-      {
-        "label": "שיטת הספירלה",
-        "href": "#spiral"
+        "to": "services"
       },
       {
         "label": "עלינו",
-        "href": "#about"
+        "to": "about"
       }
     ],
     "partnersHeading": "לשותפים",
     "partnersLinks": [
       {
-        "label": "לסטודיו עיצוב",
-        "href": "#partners"
+        "label": "עובדים יחד",
+        "to": "partners"
       },
       {
-        "label": "לבית תוכנה",
-        "href": "#partners"
+        "label": "מתי מתאים שנעבוד יחד",
+        "to": "partners#pt-when"
       },
       {
-        "label": "למומחה SEO",
-        "href": "#partners"
+        "label": "5% על הפניה",
+        "to": "partners#pt-together"
       }
     ],
     "talkTitle": "בואו נדבר",
@@ -528,5 +601,11 @@
       "privacy": "מדיניות פרטיות",
       "accessibility": "הצהרת נגישות"
     }
+  },
+  "contactPage": {
+    "heroTop": "יש לכם ויז׳ן?",
+    "heroAccent": "מעולה.",
+    "title": "ספרו לנו מה עומד על הפרק.",
+    "sub": "שיחה ראשונה של 30 דקות. מדברים ישירות עם מי שעושה את העבודה."
   }
 }

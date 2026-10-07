@@ -1,16 +1,17 @@
 import he from '@/locales/v10-he.json'
+import { ROUTES } from './routes'
 
 type PartnersT = typeof he.partners
 
 /**
  * The partners band — studios, dev houses and SEO people who bring us in under
- * their client. In the artifact each fit links to its own partner page; those
- * pages aren't built yet, so here the band ends in one CTA to the call page.
+ * their client. The light ("negative") version: after the dark spiral, a white
+ * band with a navy outline breaks the run of dark sections.
  */
 export default function PartnersBandV10({ t }: { t: PartnersT }) {
   return (
     <section className="v10-sec v10-sec--band" id="partners">
-      <div className="v10-band">
+      <div className="v10-band v10-band--neg">
         <div>
           <h2>{t.title} <em>{t.titleAccent}</em></h2>
           <p>{t.sub}</p>
@@ -25,7 +26,7 @@ export default function PartnersBandV10({ t }: { t: PartnersT }) {
               </li>
             ))}
           </ul>
-          <a className="v10-btn-lime v10-band-cta" href="/schedule-a-call?lang=he">{t.cta}</a>
+          <a className="v10-btn-lime v10-band-cta" href={ROUTES.partners}>{t.cta}</a>
         </div>
       </div>
     </section>
