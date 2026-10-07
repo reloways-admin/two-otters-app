@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="780" viewBox="150 150 780 780">
+  
+  <g id="01 · layer bottom" transform="translate(200.0,200.0) scale(28.3333)"><path d="M11.577 12.397Q12.000 12.200 12.423 12.397L19.058 15.494Q21.000 16.400 19.058 17.306L12.423 20.403Q12.000 20.600 11.577 20.403L4.942 17.306Q3.000 16.400 4.942 15.494Z" fill="#FFFFFF" fill-rule="evenodd" stroke="#020202" stroke-width="0.533" stroke-linejoin="round" stroke-linecap="round"/></g>
+  <g id="02 · layer middle" transform="translate(200.0,200.0) scale(28.3333)"><path d="M11.577 8.597Q12.000 8.400 12.423 8.597L19.058 11.694Q21.000 12.600 19.058 13.506L12.423 16.603Q12.000 16.800 11.577 16.603L4.942 13.506Q3.000 12.600 4.942 11.694Z" fill="#5AFF00" fill-rule="evenodd" stroke="#020202" stroke-width="0.533" stroke-linejoin="round" stroke-linecap="round"/></g>
+  <g id="03 · layer top" transform="translate(200.0,200.0) scale(28.3333)"><path d="M11.577 4.797Q12.000 4.600 12.423 4.797L19.058 7.894Q21.000 8.800 19.058 9.706L12.423 12.803Q12.000 13.000 11.577 12.803L4.942 9.706Q3.000 8.800 4.942 7.894Z" fill="#FFFFFF" fill-rule="evenodd" stroke="#020202" stroke-width="0.533" stroke-linejoin="round" stroke-linecap="round"/></g>
+</svg>
