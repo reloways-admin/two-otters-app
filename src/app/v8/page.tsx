@@ -52,7 +52,7 @@ export default function V8Page() {
         <WhoWeAreV8 t={t.about} lang={lang} />
         <TestimonialsV8 t={t.testimonials} />
         <FaqV8 t={t.faq} />
-        <ContactV8 t={t.contact} />
+        <ContactV8 t={t.contact} lang={lang} />
       </main>
       <FooterV8 t={t.footer} />
     </div>

@@ -15,5 +15,6 @@ initBotId({
   protect: [
     { path: '/api/forms/audit-request', method: 'POST' },
     { path: '/api/forms/contact', method: 'POST' },
+    { path: '/api/booking/book', method: 'POST' },
   ],
 })

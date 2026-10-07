@@ -130,6 +130,11 @@ html:has(.v8-page) body {
   white-space: nowrap;
 }
 .v8-nav-link:hover { background: var(--v8-purple-soft); }
+/* Seven links (with "Book a call") leave the pill flush against the CTA just
+   above the 1150px hamburger switch; tighter link padding buys back the gap. */
+@media (max-width: 1280px) {
+  .v8-nav-link { padding: 6px 10px; }
+}
 .v8-nav-actions { display: flex; align-items: center; gap: 14px; justify-self: left; }
 .v8-nav-right { display: flex; align-items: center; gap: 12px; justify-self: right; }
 [dir="ltr"] .v8-nav-actions { justify-self: right; }
@@ -1655,6 +1660,17 @@ html:has(.v8-page) body {
   color: #0b0b0b;
   margin: 0;
   line-height: 1.7;
+}
+.v8-contact-alt {
+  margin: 4px 0 0;
+  font-size: 1rem;
+  color: var(--v8-text-mid);
+}
+.v8-contact-alt a {
+  color: var(--v8-purple);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 /* White form card — bordered, rounded-32px, Figma p-40px */
 .v8-contact-card {

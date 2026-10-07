@@ -6,6 +6,7 @@ export const SITE_URL = 'https://two-otters.studio'
  *  absent — see robots.ts, which keeps them out of the index entirely. */
 const ROUTES = [
   { path: '/', priority: 1 },
+  { path: '/schedule-a-call', priority: 0.9 },
   { path: '/work/the5ers', priority: 0.8 },
   { path: '/work/fincat', priority: 0.8 },
   { path: '/work/trade-the-pool', priority: 0.8 },

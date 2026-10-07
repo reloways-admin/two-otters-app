@@ -6,7 +6,7 @@ import en from '@/locales/v8-en.json'
 
 type ContactT = typeof en.contact
 
-export default function ContactV8({ t }: { t: ContactT }) {
+export default function ContactV8({ t, lang }: { t: ContactT; lang: 'en' | 'he' }) {
   const [form, setForm] = useState({
     name: '', email: '', phone: '', company: '', role: '', message: '',
   })
@@ -50,6 +50,11 @@ export default function ContactV8({ t }: { t: ContactT }) {
           <div className="v8-contact-heading">
             <h2 className="v8-contact-title">{t.title}</h2>
             <p className="v8-contact-sub">{t.sub}</p>
+            {/* Some people would rather pick a slot than write a paragraph. */}
+            <p className="v8-contact-alt">
+              {t.altPrompt}{' '}
+              <a href={`/schedule-a-call?lang=${lang}`}>{t.altLink}</a>
+            </p>
           </div>
 
           <form className="v8-contact-card" onSubmit={handleSubmit}>

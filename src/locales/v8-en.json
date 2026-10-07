@@ -24,6 +24,10 @@
       {
         "label": "FAQ",
         "href": "#faq"
+      },
+      {
+        "label": "Book a call",
+        "href": "/schedule-a-call"
       }
     ],
     "cta": "Let's Talk",
@@ -373,7 +377,9 @@
       "No commitment",
       "First call is free",
       "Response within 48 hours"
-    ]
+    ],
+    "altPrompt": "Rather talk?",
+    "altLink": "Book an intro call"
   },
   "footer": {
     "tagline": "UX/UI spec and working prototype -\nexactly what you had in mind. Just faster.",
@@ -797,7 +803,7 @@
         "relationship_required": "Pick one so we know who we're writing to.",
         "not_configured": "Something's off on our end. Email hello@two-otters.studio and we'll sort it.",
         "send_failed": "That didn't send. Try again in a moment, and if it keeps happening, write to us.",
-          "blocked": "We couldn't verify this submission. If you're seeing this by mistake, email hello@two-otters.studio and we'll sort it.",
+        "blocked": "We couldn't verify this submission. If you're seeing this by mistake, email hello@two-otters.studio and we'll sort it.",
         "bad_request": "Something in the details didn't go through. Check and try again.",
         "network": "No connection right now. Check your network and try again."
       },
@@ -906,6 +912,78 @@
       },
       "scrollHint": "Scroll for more",
       "backToTop": "Back to top"
+    }
+  },
+  "bookCall": {
+    "chip": "Intro call · 30 min · Free",
+    "title": "Let's talk about what you're building",
+    "sub": "Pick a time that suits you. In 30 minutes we'll get to know the product, the audience and what's stuck - and you'll leave with a clear next step, including a timeline and budget range.",
+    "stepsTitle": "What happens in those 30 minutes",
+    "steps": [
+      {
+        "title": "Project overview",
+        "text": "Share your screen and show us your site, app or Figma file. Tell us who it's for and what isn't working."
+      },
+      {
+        "title": "Live UX feedback",
+        "text": "Amir points out drop-off points, confusing flows and quick wins while you are still on the call."
+      },
+      {
+        "title": "Strategy and messaging",
+        "text": "Keren checks that the message, audience and positioning hold up - good design can't rescue an unclear story."
+      },
+      {
+        "title": "Timeline and budget",
+        "text": "You leave with a timeline and budget range on the call, and a written proposal within 48 hours."
+      }
+    ],
+    "calendarLabel": "Pick a time for the call",
+    "loading": "Checking when we’re free…",
+    "prevMonth": "Previous month",
+    "nextMonth": "Next month",
+    "weekdays": [
+      "Sun",
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat"
+    ],
+    "pickDay": "Pick a highlighted day to see open times",
+    "pickTime": "{date} · pick a time",
+    "tzNote": "Times shown in your time zone ({tz})",
+    "formLabel": "{date} · {time} · 30 min",
+    "namePlaceholder": "Full name",
+    "emailPlaceholder": "Email",
+    "topicLabel": "What should we talk about?",
+    "topics": [
+      "A new project",
+      "Partnership: studio, dev house or SEO",
+      "My Audit report",
+      "Something else"
+    ],
+    "messagePlaceholder": "Anything you’d like us to know before the call? (optional)",
+    "submit": "Book the call",
+    "sending": "Booking…",
+    "changeTime": "Pick another time",
+    "successTitle": "Booked! See you on {date}, {time}.",
+    "successText": "An invite with a Google Meet link is on its way to your inbox. Need to move it? Just reply to the invite.",
+    "emptyTitle": "No open times right now",
+    "emptyText": "The next few weeks are full. Leave your details and we’ll find a time with you.",
+    "unavailableTitle": "The calendar didn’t load",
+    "unavailableText": "Something went wrong on our end. Leave your details and we’ll find a time, or try again in a moment.",
+    "contactCta": "Leave your details",
+    "errors": {
+      "name_required": "What’s your name?",
+      "invalid_email": "That email doesn’t look right.",
+      "disposable_email": "We need a permanent address so the invite reaches you.",
+      "slot_taken": "That time was just taken. Please pick another.",
+      "blocked": "We couldn’t verify this booking. Email hello@two-otters.studio and we’ll set it up.",
+      "not_configured": "The calendar isn’t connected yet. Email hello@two-otters.studio and we’ll set it up.",
+      "send_failed": "The call wasn’t booked. Try again in a moment.",
+      "bad_request": "Something in the details didn’t go through. Check and try again.",
+      "network": "No connection right now. Check your network and try again."
     }
   }
 }

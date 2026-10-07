@@ -183,7 +183,7 @@ export default function FinCatCaseStudy() {
 
       {/* ── Closing CTA — the site's live contact form, which already
              matches this section field-for-field ── */}
-      <ContactV8 t={l.contact} />
+      <ContactV8 t={l.contact} lang={lang} />
 
       <FooterV8 t={l.footer} hrefPrefix={`/?lang=${lang}`} />
     </main>

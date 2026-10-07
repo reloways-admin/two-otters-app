@@ -75,5 +75,22 @@ export const contactSchema = z.object({
   message: text(CONTACT_LIMITS.message).refine(v => v.length > 0, 'message_required'),
 })
 
+/**
+ * Booking an intro call. `start` is the slot's UTC instant as the server sent
+ * it; whether it is still free is checked against the calendars, not here.
+ */
+export const bookingSchema = z.object({
+  name: text(CONTACT_LIMITS.name).refine(v => v.length > 0, 'name_required'),
+  email: emailField,
+  topic: text(120),
+  message: text(2000),
+  start: text(40)
+    .transform(v => Date.parse(v))
+    .refine(v => Number.isFinite(v), 'invalid_slot'),
+  /** The visitor's zone, so the lead says what time *they* booked. */
+  timeZone: text(64),
+})
+
 export type AuditRequestInput = z.output<typeof auditRequestSchema>
 export type ContactInput = z.output<typeof contactSchema>
+export type BookingInput = z.output<typeof bookingSchema>

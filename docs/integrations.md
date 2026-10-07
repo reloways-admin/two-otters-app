@@ -99,3 +99,27 @@ https://app.brevo.com/contact/list-listing/id/19          ← Brevo list
 
 The ClickUp list id is always inside the `/v/…` part, never the number right after `.com/` — that
 one is the workspace.
+
+## Google Calendar — booking intro calls
+
+`/schedule-a-call` is our own calendar UI over both founders' Google calendars
+(decided 6.10.2026 instead of Cal.com Teams; see decisions.md row 19).
+
+- **Rules** — duration, buffer, notice, horizon, who organizes, and each host's
+  hours *in their own time zone* — are in [src/config/booking.ts](../src/config/booking.ts).
+  The visitor is offered only the overlap, shown in their own zone.
+- **Credentials** are `GOOGLE_OAUTH_CLIENT_ID`, `GOOGLE_OAUTH_CLIENT_SECRET` and one
+  `GOOGLE_REFRESH_TOKEN_<HOST>` per host (see `.env.example`). Each host runs
+  `node scripts/google-calendar-token.mjs <host>` once and signs in with their own
+  account. No calendar is shared between the hosts.
+- **What happens on a booking:** the server re-checks the slot against both
+  calendars, creates the event in the organizer's calendar with a Meet link and
+  `sendUpdates=all` (Google emails the other host and the visitor), then records
+  a ClickUp lead tagged `booking`. The event comes first: if ClickUp fails the
+  call is still booked and the failure is logged.
+- **Scopes** are `calendar.freebusy` and `calendar.events` — we can see *when*
+  someone is busy, never what the meeting is.
+- **If bookings stop working**, the usual cause is a refresh token that died: the
+  consent screen was left in "Testing" (7-day tokens), or the host revoked access.
+  The server log says `token refresh for <host>: … invalid_grant`. Re-run the
+  script for that host and replace the variable in Vercel.

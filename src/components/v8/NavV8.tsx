@@ -33,6 +33,13 @@ export default function NavV8({ t, lang, onLangChange, hrefPrefix = '' }: Props)
 
   const close = () => setOpen(false)
 
+  // Section anchors ("#faq") hang off hrefPrefix so sub-pages point back at the
+  // homepage. A page link ("/schedule-a-call") must not: glued onto a prefix like
+  // "/?lang=he" it becomes "/?lang=he/schedule-a-call". It carries the language
+  // itself instead, the same way cross-page links do everywhere else.
+  const linkHref = (href: string) =>
+    href.startsWith('/') ? `${href}?lang=${lang}` : `${hrefPrefix}${href}`
+
   return (
     <>
       <nav className={`v8-nav${scrolled ? ' v8-nav--scrolled' : ''}${open ? ' v8-nav--menu-open' : ''}`}>
@@ -72,7 +79,7 @@ export default function NavV8({ t, lang, onLangChange, hrefPrefix = '' }: Props)
           {/* Center: nav links pill (desktop) */}
           <div className="v8-nav-links-wrap">
             {t.links.map(l => (
-              <a key={l.href} href={`${hrefPrefix}${l.href}`} className="v8-nav-link">{l.label}</a>
+              <a key={l.href} href={linkHref(l.href)} className="v8-nav-link">{l.label}</a>
             ))}
           </div>
 
@@ -103,7 +110,7 @@ export default function NavV8({ t, lang, onLangChange, hrefPrefix = '' }: Props)
           {t.links.map((l, i) => (
             <a
               key={l.href}
-              href={`${hrefPrefix}${l.href}`}
+              href={linkHref(l.href)}
               className="v8-nav-drawer-link"
               style={{ '--i': i } as CSSProperties}
               onClick={close}
