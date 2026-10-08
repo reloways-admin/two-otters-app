@@ -48,7 +48,7 @@
 .v10-services .wf-deliver b { display: block; font-size: 17px; }
 .v10-services .wf-deliver span { color: var(--v8-text-mid); font-size: 14.5px; line-height: 1.55; }
 .v10-services .wf-audit .wf-crumb { margin-bottom: 24px; }
-.v10-services .v8-svc-az, .v10-services .v8-spiral-step-num { font-weight: 700 !important; }
+.v10-services .v8-svc-az, .v10-services .v8-spiral-step-num { font-family: 'Anton', var(--v8-font); font-weight: 400 !important; }
 .v10-services .wf-services { display: grid; gap: 28px; margin-top: 36px; }
 .v10-services .wf-service { display: grid; grid-template-columns: 360px minmax(0, 1fr); border-radius: 28px; overflow: hidden; background: var(--wf-navy); color: #fff; scroll-margin-top: 110px; }
 .v10-services .wf-service-art { display: grid; place-items: end center; padding: 28px 20px 0; }

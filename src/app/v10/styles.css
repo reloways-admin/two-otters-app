@@ -111,7 +111,8 @@
 @media (max-width: 640px) { .v10 .v10-logos { padding: 32px 20px; } .v10 .v10-logos-row { gap: 22px 36px; } .v10 .v10-logo { height: 28px !important; } }
 
 /* ── Match section: big words stay readable above the otters ── */
-.v10 .v8-match-bigtext { z-index: 3; text-shadow: 0 2px 14px rgba(29,35,50,.55); }
+/* The big words sit behind the otters (v8's own stacking): on narrow screens,
+   where the two meet, the otter overlaps the words rather than the reverse. */
 .v10 .v8-match-otter { height: 210px; }
 
 /* ── Work: three across ── */
@@ -178,12 +179,12 @@
 
 /* ═══ Site-wide (every v10 page) ═══ */
 
-/* Google Sans only. The live site sets display words (the match cards, the
-   offer badge, step numbers) in Anton; Amir and Keren chose one family for v10,
-   so those words keep their weight and lose the second typeface. */
+/* Google Sans for everything except the display words the brand sets in Anton,
+   as the design and the live site do: IT'S A MATCH / SWIPE LEFT, the offer
+   badge, and the spiral step numbers. Anton has one weight, so they stay at
+   400 — a bolder weight would only be faked by the browser. */
 .v10, .v10 * { font-family: var(--v8-font); }
-.v10 .v8-match-bigtext { font-weight: 700; letter-spacing: -1px; }
-.v10 .v8-svc-az, .v10 .v8-spiral-step-num { font-weight: 700; }
+.v10 .v8-match-bigtext, .v10 .v8-svc-az, .v10 .v8-spiral-step-num { font-family: 'Anton', var(--v8-font); font-weight: 400; }
 .v10 :focus-visible { outline: 3px solid var(--v10-lime); outline-offset: 2px; }
 
 .v10 .v10-center { text-align: center; margin-top: 40px; }
