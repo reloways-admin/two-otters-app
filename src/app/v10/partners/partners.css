@@ -326,4 +326,11 @@
   .v10-partners .talk__copy { max-width: none; }
   .v10-partners .talk__people, .v10-partners .talk__people--duo { position: absolute; bottom: 0; inset-inline-end: 0; width: 50%; margin: 0; justify-content: center; }
   .v10-partners .talk__people--duo .talk__person img { height: clamp(290px, 40vw, 360px); }
+  /* Labels stay inside the photo's half, so Amir's never sits on the copy. */
+  .v10-partners .talk__cap--a { top: 2%; right: auto; left: 46%; }
+  .v10-partners .talk__cap--k { top: 40%; left: 0; right: auto; }
+}
+/* Same at 981–1380px: Amir's label used to reach into the copy column. */
+@media (min-width: 981px) and (max-width: 1380px) {
+  .v10-partners .talk__cap--a { top: 4%; right: auto; left: 46%; }
 }
