@@ -21,7 +21,9 @@ export const ROUTES = {
   partners: `${BASE}/partners`,
   about: `${BASE}/about`,
   contact: `${BASE}/contact`,
-  // Not built under /v10 yet: the live booking page and audit already work.
+  // Not built under /v10 yet: the live booking page, audit and the full
+  // FinCat case study already work.
+  caseFincat: '/work/fincat?lang=he',
   book: '/schedule-a-call?lang=he',
   audit: '/audit',
   privacy: '/privacy?lang=he',
