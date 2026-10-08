@@ -40,7 +40,8 @@ export default function ServiceMvpV10() {
     </section>
     <section className="sv-pain">
     <div className="v8-container">
-    <h2 className="sv-h2">נשמע{' '}<b>מוכר?</b></h2>
+    <h2 className="sv-h2">להיות פול גז בניוטרל<br /><b>זה כבר לא אתם...</b></h2>
+    <p className="sv-sub sv-sub--dark">בואו נראה אם זה נשמע מוכר</p>
     <div className="sv-bubbles">
     <p className="sv-bubble">״יש לנו רעיון מצוין, אבל כל אחד בצוות רואה אותו אחרת.״</p>
     <p className="sv-bubble sv-bubble--alt">״המפתחים מחכים לאפיון, ואנחנו עוד לא בטוחים מה בדיוק בונים.״</p>
@@ -52,13 +53,13 @@ export default function ServiceMvpV10() {
     <section className="sv-time">
     <div className="v8-container">
     <h2 className="sv-h2 sv-h2--light">שישה שבועות,{' '}<b>שבוע אחרי שבוע</b></h2>
-    <p className="sv-sub">כל שבוע נגמר במשהו שאפשר לראות. אתם לא מחכים לסוף כדי לדעת איפה אנחנו.</p>
+    <p className="sv-sub">בלי חודשים מתישים של אפיון. כל שבוע נגמר במשהו שאפשר לראות, ואתם לא מחכים לסוף כדי לדעת איפה אנחנו.</p>
     <ol className="sv-track">
     <li><span className="sv-wk">שבוע 1</span>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/step-1.svg" alt="" /><b>אסטרטגיה</b><p>מכירים את המוצר, את הקהל ואת השוק, ומחליטים מה בונים ולמה.</p><em>בריף אסטרטגי</em></li>
     <li><span className="sv-wk">שבוע 2</span>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/step-2.svg" alt="" /><b>מיפוי</b><p>מסע המשתמש ומפת המסכים: מה קורה, באיזה סדר, ומה קורה כשמשהו משתבש.</p><em>מפת מסכים</em></li>
     <li className="sv-wide"><span className="sv-wk">שבועות 3-4</span>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/step-3.svg" alt="" /><b>אפיון ופרוטוטייפ</b><p>בונים את המסכים כפרוטוטייפ עובד. כל כמה ימים אתם לוחצים, מגיבים, ואנחנו מדייקים.</p><em>פרוטוטייפ לחיץ</em></li>
     <li><span className="sv-wk">שבוע 5</span>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/v10/ico-cursor.png" alt="" /><b>דיוק</b><p>בודקים מול משתמשים או מול הצוות, ומתקנים מה שלא עובד.</p><em>סבב תיקונים</em></li>
-    <li><span className="sv-wk">שבוע 6</span>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/step-4.svg" alt="" /><b>האנד אוף</b><p>תיעוד, הערות וקווים מנחים, כדי שהצוות שממשיך מכאן לא ינחש.</p><em>חבילת מסירה</em></li>
+    <li><span className="sv-wk">שבוע 6</span>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/step-4.svg" alt="" /><b>Hand-Off</b><p>תיעוד, הערות וקווים מנחים, כדי שהצוות שממשיך מכאן לא ינחש.</p><em>חבילת מסירה</em></li>
     </ol>
     </div>
     </section>
@@ -69,7 +70,7 @@ export default function ServiceMvpV10() {
     <article><div className="sv-mock sv-mock--doc" aria-hidden="true"><b>בריף</b><i></i><i></i><i className="s"></i><i></i><i className="s"></i></div><b>בריף אסטרטגי חד</b><p>מה בונים, למי, ולמה דווקא ככה.</p></article>
     <article><div className="sv-mock sv-mock--flow" aria-hidden="true"><i></i><i></i><i></i><i></i><svg viewBox="0 0 200 120" preserveAspectRatio="none"><path d="M40 30 C 90 30, 90 30, 160 30 M40 30 C 60 90, 90 90, 100 90 M160 30 C 150 80, 120 90, 100 90" /></svg></div><b>אפיון UX</b><p>מה כל מסך עושה ואיך עוברים ביניהם.</p></article>
     <article><div className="sv-mock sv-mock--phone" aria-hidden="true"><span><i></i><i className="s"></i><i className="btn"></i><u></u></span></div><b>פרוטוטייפ עובד</b><p>אפשר ללחוץ עליו, להרגיש אותו ולשנות אותו.</p></article>
-    <article><div className="sv-mock sv-mock--files" aria-hidden="true"><i>flows.fig</i><i>specs.pdf</i><i>notes.md</i></div><b>האנד אוף מסודר</b><p>תיעוד וקווים מנחים לצוות שממשיך מכאן.</p></article>
+    <article><div className="sv-mock sv-mock--files" aria-hidden="true"><i>flows.fig</i><i>specs.pdf</i><i>notes.md</i></div><b>Hand-Off מסודר</b><p>תיעוד וקווים מנחים לצוות שממשיך מכאן.</p></article>
     </div>
     </div>
     </section>
@@ -81,7 +82,7 @@ export default function ServiceMvpV10() {
     <div className="on">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/step-1.svg" alt="" /><b>אסטרטגיה</b></div>
     <div className="on">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/step-2.svg" alt="" /><b>אפיון</b></div>
     <div className="on">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/step-3.svg" alt="" /><b>פרוטוטייפ</b></div>
-    <div className="on">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/step-4.svg" alt="" /><b>האנד אוף</b></div>
+    <div className="on">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/step-4.svg" alt="" /><b>Hand-Off</b></div>
     <div>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/spiral-megaphone.svg" alt="" /><b>שפה</b><small>+ אפשר להוסיף</small></div>
     <div>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/spiral-feather.svg" alt="" /><b>תוכן</b><small>+ אפשר להוסיף</small></div>
     <div>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/spiral-colors.svg" alt="" /><b>עיצוב</b><small>+ אפשר להוסיף</small></div>
