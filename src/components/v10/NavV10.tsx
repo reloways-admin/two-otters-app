@@ -88,6 +88,7 @@ export default function NavV10({ t }: { t: NavT }) {
   const open = (id: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current)
     const r = linksRef.current?.getBoundingClientRect()
+    // 12px gap under the pill; the hover bridge in styles.css is exactly this tall.
     if (r) setMegaTop(r.bottom + 12)
     setOpenMega(id)
   }
