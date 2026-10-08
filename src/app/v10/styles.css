@@ -397,7 +397,9 @@
 .v10 .v10-bigq blockquote::before { content: "״"; position: absolute; top: -22px; left: 50%; translate: -50% 0; font-size: 120px; line-height: 1; font-weight: 700; color: var(--v10-lime); }
 .v10 .v10-bigq figcaption { display: flex; align-items: center; gap: 12px; text-align: right; }
 .v10 .v10-bigq figcaption img, .v10 .v10-bigq-ini { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--v10-lime); }
-.v10 .v10-bigq-ini { display: grid; place-items: center; background: #3ECF7E; color: #fff; font-weight: 700; }
+/* No photo yet: initials in the brand's own pairing — lime on navy, inside the
+   same lime ring as the photos. White on mint was too faint to read. */
+.v10 .v10-bigq-ini { display: grid; place-items: center; background: var(--v10-navy); color: var(--v10-lime); font-weight: 700; font-size: 18px; letter-spacing: .02em; }
 .v10 .v10-bigq figcaption span { display: grid; color: #aeb5c7; font-size: 14px; }
 .v10 .v10-bigq figcaption b { color: #fff; font-size: 17px; }
 .v10 .v10-bigq-dots { display: flex; justify-content: center; gap: 8px; margin-top: 30px; }

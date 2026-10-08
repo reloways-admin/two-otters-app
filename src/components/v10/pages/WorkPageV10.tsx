@@ -76,7 +76,7 @@ export default function WorkPageV10() {
       </div>
       <div className="wf-cs-split">
         <figure className="wf-cs-board"><img src="/v10/work/pt-5ers-board.webp" alt="השפה הוויזואלית של The 5ers" loading="lazy" /><figcaption>שפה אחת לכל האתר, עם ניואנס לכל עמוד תווך</figcaption></figure>
-        <blockquote className="wf-cs-quote"><p>״קרן לקחה בעלות מלאה על הפרויקט, ועד מהרה הפכה לחלק בלתי נפרד מהצוות האסטרטגי הפנימי שלנו, שלא כמו כל צד שלישי אחר שהיינו מעורבים בו.״</p><footer><img src="/v10/work/gil-ben-hor.jpg" alt="" /><span><b>גיל בן חור</b>מנכ״ל ומייסד The 5ers</span></footer></blockquote>
+        <blockquote className="wf-cs-quote"><p>״קרן לקחה בעלות מלאה על הפרויקט, ועד מהרה הפכה לחלק בלתי נפרד מהצוות האסטרטגי הפנימי שלנו, שלא כמו כל צד שלישי אחר שהיינו מעורבים בו.״</p><footer><img src="/v10/gil-ben-hor.jpg" alt="" /><span><b>גיל בן חור</b>מנכ״ל ומייסד The 5ers</span></footer></blockquote>
       </div>
     </div>
   </section>

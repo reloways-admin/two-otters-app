@@ -72,7 +72,7 @@ export default function ServiceUpgradeV10() {
     <span className="sv-case-k">דוגמה מהעבודות</span>
     <h3>The 5ers</h3>
     <p className="sv-case-m">3 חודשי אסטרטגיה לפני העיצוב · 13 תבניות לאתר</p>
-    <blockquote><p>״קרן לקחה בעלות מלאה על הפרויקט, ועד מהרה הפכה לחלק בלתי נפרד מהצוות האסטרטגי הפנימי שלנו, שלא כמו כל צד שלישי אחר שהיינו מעורבים בו.״</p><footer>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/testimonials/gil-ben-hor.jpg" alt="" /><span><b>גיל בן חור</b>מנכ״ל ומייסד The 5ers</span></footer></blockquote>
+    <blockquote><p>״קרן לקחה בעלות מלאה על הפרויקט, ועד מהרה הפכה לחלק בלתי נפרד מהצוות האסטרטגי הפנימי שלנו, שלא כמו כל צד שלישי אחר שהיינו מעורבים בו.״</p><footer>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/v10/gil-ben-hor.jpg" alt="" /><span><b>גיל בן חור</b>מנכ״ל ומייסד The 5ers</span></footer></blockquote>
     <a className="sv-case-link" href={ROUTES.work5ers}>לפרויקט המלא ←</a>
     </div>
     </div>
