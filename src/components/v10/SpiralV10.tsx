@@ -1,5 +1,7 @@
+'use client'
+
+import { useState } from 'react'
 import he from '@/locales/v10-he.json'
-import { ROUTES } from './routes'
 
 type SpiralT = typeof he.spiral
 
@@ -19,11 +21,15 @@ const STEP_ILLUS: Record<string, string> = {
 }
 
 /**
- * The spiral method. On the homepage it stops after the four stages and hands
- * over to the services page ("these are the next steps"); the services page
- * shows steps 5–8 in full. `withSteps` picks which.
+ * The spiral method: four stages on the loop, then steps 5–8.
+ *
+ * On the homepage the steps start folded behind "all the steps" — the four
+ * stages are the pitch, the rest is for whoever wants the detail, and it opens
+ * in place rather than sending them to another page. The services page passes
+ * `steps="open"` and shows them outright.
  */
-export default function SpiralV10({ t, withSteps = false }: { t: SpiralT; withSteps?: boolean }) {
+export default function SpiralV10({ t, steps = 'toggle' }: { t: SpiralT; steps?: 'toggle' | 'open' }) {
+  const [open, setOpen] = useState(steps === 'open')
   const lines = (s: string) => s.split('\n').map((line, i, arr) => (
     <span key={i}>{line}{i < arr.length - 1 && <br className="v10-br-desktop" />}</span>
   ))
@@ -32,7 +38,7 @@ export default function SpiralV10({ t, withSteps = false }: { t: SpiralT; withSt
     <section className="v8-spiral" id="spiral">
       <div className="v8-container">
         <div className="v8-spiral-header">
-          <h2 className="v8-spiral-title">{t.title1}<br /><span className="bold">{t.titleBold}</span></h2>
+          <h2 className="v8-spiral-title">{t.title1}<br /><span className="v10-tilt">{t.titleBold}</span></h2>
           <p className="v8-spiral-sub">{t.sub}</p>
         </div>
 
@@ -63,8 +69,23 @@ export default function SpiralV10({ t, withSteps = false }: { t: SpiralT; withSt
           <p className="v8-spiral-more-sub">{lines(t.moreSub)}</p>
         </div>
 
-        {withSteps ? (
-          <div className="v8-spiral-steps">
+        {steps === 'toggle' && (
+          <div className="v10-center" style={{ marginTop: 28 }}>
+            <button
+              type="button"
+              className="v10-btn-lime v10-steps-toggle"
+              aria-expanded={open}
+              aria-controls="spiral-more-steps"
+              onClick={() => setOpen(o => !o)}
+            >
+              {open ? t.hideSteps : t.showSteps}
+              <span className="v10-steps-toggle-ico" aria-hidden="true">↓</span>
+            </button>
+          </div>
+        )}
+
+        <div id="spiral-more-steps" className={`v10-more-steps${open ? ' is-open' : ''}`} hidden={!open}>
+          <div className="v8-spiral-steps" style={steps === 'toggle' ? { marginTop: 56 } : undefined}>
             {t.steps.map(step => (
               <div key={step.num} className="v8-spiral-step">
                 {STEP_ILLUS[step.num] && <img src={STEP_ILLUS[step.num]} alt="" aria-hidden="true" className="v8-spiral-step-icon" />}
@@ -77,11 +98,7 @@ export default function SpiralV10({ t, withSteps = false }: { t: SpiralT; withSt
               </div>
             ))}
           </div>
-        ) : (
-          <div className="v10-center" style={{ marginTop: 28 }}>
-            <a className="v10-btn-lime" href={ROUTES.services}>{t.next}</a>
-          </div>
-        )}
+        </div>
         {/* eslint-enable @next/next/no-img-element */}
       </div>
     </section>

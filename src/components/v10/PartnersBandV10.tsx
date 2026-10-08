@@ -10,7 +10,7 @@ type PartnersT = typeof he.partners
  */
 export default function PartnersBandV10({ t }: { t: PartnersT }) {
   return (
-    <section className="v10-sec v10-sec--band" id="partners">
+    <section className="v10-sec v10-sec--band v10-sec--band-end" id="partners">
       <div className="v10-band v10-band--neg">
         <div>
           <h2>{t.title} <em>{t.titleAccent}</em></h2>

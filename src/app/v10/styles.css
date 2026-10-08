@@ -323,12 +323,6 @@
   .v10 .v10-offer .v8-svc-tags { margin-top: 22px; }
 }
 
-/* Personas: lighter body copy, and a lime outline on hover. */
-.v10 .v8-persona-card { padding-block: 26px; transition: transform .2s, border-color .2s; }
-.v10 .v8-persona-card:hover { transform: translateY(-4px); border-color: var(--v10-lime); }
-.v10 .v8-persona-title { font-size: 1.06rem; line-height: 1.35; }
-.v10 .v8-persona-text { font-size: .95rem; line-height: 1.6; color: #cdd2e0; }
-
 /* Work cards in the brand language; the metric pill sits on the same bottom
    line in every card, however long the tagline. */
 .v10 .v10-work .v8-work-grid { max-width: var(--v8-container, 1200px); }
@@ -359,5 +353,107 @@
 .v10 .v10-band--neg .v10-fit-list li b { color: var(--v10-navy); }
 .v10 .v10-band--neg .v10-fit-list li span { color: #4b5280; }
 .v10 .v10-band--neg .v10-band-cta { background: var(--v10-navy); color: #fff; box-shadow: 5px 5px 0 var(--v10-lime); }
-.v10 .v10-home .v10-sec--band { position: relative; z-index: 2; padding-top: 0; padding-bottom: 90px; margin-top: -40px; }
-@media (max-width: 860px) { .v10 .v10-home .v10-sec--band { padding-bottom: 70px; } }
+
+/* ── Homepage, Keren's order (8.10.2026) ──
+   Several dark sections now sit next to light ones, so each dark one is cut on
+   a slant at the top and curves gently at the bottom. The cut is a clip-path,
+   so the section's own padding has to make room for it. */
+.v10 .v10-sub { text-align: center; color: var(--v8-text-mid); font-size: 1.125rem; max-width: 640px; margin: 10px auto 0; line-height: 1.6; }
+.v10 .v10-gas { padding: 88px 40px 72px; }
+.v10 .v10-gas .v10-sub { margin-bottom: 44px; }
+.v10 .v10-gas-accent { color: var(--v8-purple, #5c3eef); }
+.v10 .v10-gas .v8-gas-illus-img { width: 100%; height: auto; }
+@media (max-width: 768px) { .v10 .v10-gas { padding: 64px 20px 48px; } }
+
+/* Spiral: "see and use it before it's built" on a tilted lime marker. */
+.v10 .v8-spiral-title .v10-tilt {
+  display: inline-block; background: var(--v10-lime); color: var(--v10-navy);
+  padding: .02em .28em .1em; border-radius: .18em; transform: rotate(-3deg); margin-top: .28em;
+  box-shadow: 6px 6px 0 #fff;
+}
+.v10 .v8-spiral-title:has(.v10-tilt) { margin-bottom: 36px; }
+@media (max-width: 600px) { .v10 .v8-spiral-title .v10-tilt { box-shadow: 4px 4px 0 #fff; font-size: .78em; } }
+.v10 .v10-home .v10-gas + .v8-spiral {
+  margin-top: 0; padding-top: calc(5vw + 64px);
+  clip-path: polygon(0 5vw, 100% 0, 100% calc(100% - 28px), 90% calc(100% - 18px), 80% calc(100% - 10px), 70% calc(100% - 4px), 60% calc(100% - 1px), 50% 100%, 40% calc(100% - 1px), 30% calc(100% - 4px), 20% calc(100% - 10px), 10% calc(100% - 18px), 0 calc(100% - 28px));
+}
+/* "All the steps" folds 05–08 open in place. */
+.v10 .v10-steps-toggle .v10-steps-toggle-ico { display: inline-block; transition: transform .25s; }
+.v10 .v10-steps-toggle[aria-expanded="true"] .v10-steps-toggle-ico { transform: rotate(180deg); }
+.v10 .v10-more-steps { opacity: 0; transform: translateY(-8px); transition: opacity .35s, transform .35s; }
+.v10 .v10-more-steps.is-open { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .v10 .v10-more-steps, .v10 .v10-steps-toggle-ico { transition: none; } }
+
+.v10 .v10-home .v8-work { padding-bottom: 190px; }
+@media (max-width: 768px) { .v10 .v10-home .v8-work { padding-bottom: 48px; } }
+
+/* Testimonials: one big rotating quote. */
+.v10 .v10-bigq-sec { padding-bottom: 170px; }
+.v10 .v10-bigq { max-width: 880px; margin: 36px auto 0; text-align: center; color: #fff; }
+.v10 .v10-bigq-slides { display: grid; }
+.v10 .v10-bigq-slide { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity .45s; display: grid; justify-items: center; gap: 26px; align-content: center; }
+.v10 .v10-bigq-slide.on { opacity: 1; visibility: visible; }
+.v10 .v10-bigq blockquote { margin: 0; position: relative; font-size: clamp(20px, 2.3vw, 30px); line-height: 1.55; font-weight: 500; color: #fff; padding-top: 54px; }
+.v10 .v10-bigq blockquote::before { content: "״"; position: absolute; top: -22px; left: 50%; translate: -50% 0; font-size: 120px; line-height: 1; font-weight: 700; color: var(--v10-lime); }
+.v10 .v10-bigq figcaption { display: flex; align-items: center; gap: 12px; text-align: right; }
+.v10 .v10-bigq figcaption img, .v10 .v10-bigq-ini { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--v10-lime); }
+.v10 .v10-bigq-ini { display: grid; place-items: center; background: #3ECF7E; color: #fff; font-weight: 700; }
+.v10 .v10-bigq figcaption span { display: grid; color: #aeb5c7; font-size: 14px; }
+.v10 .v10-bigq figcaption b { color: #fff; font-size: 17px; }
+.v10 .v10-bigq-dots { display: flex; justify-content: center; gap: 8px; margin-top: 30px; }
+.v10 .v10-bigq-dots button { width: 10px; height: 10px; border-radius: 50%; border: 0; padding: 0; background: #ffffff44; cursor: pointer; transition: width .2s; }
+.v10 .v10-bigq-dots button.on { background: var(--v10-lime); width: 28px; border-radius: 6px; }
+@media (prefers-reduced-motion: reduce) { .v10 .v10-bigq-slide { transition: none; } }
+
+/* Partners band at the end of the page: the light band on a dark diagonal. */
+.v10 .v10-home .v10-sec--band-end {
+  margin-top: 0; background: var(--v10-navy);
+  background-image: radial-gradient(circle, #ffffff10 1.5px, #0000 1.5px); background-size: 26px 26px;
+  padding: calc(5vw + 70px) 40px calc(5vw + 120px);
+  clip-path: polygon(0 5vw, 100% 0, 100% calc(100% - 5vw), 0 100%);
+}
+.v10 .v10-home .v10-sec--band-end .v10-band--neg { border-color: #fff; }
+/* The about photo pulls itself up over the section before it; lift the about
+   section above the band so the photo isn't clipped behind it. */
+.v10 .v10-home .v10-sec--band-end + .v8-about { position: relative; z-index: 3; }
+@media (max-width: 860px) { .v10 .v10-home .v10-sec--band-end { padding: calc(5vw + 48px) 20px calc(5vw + 90px); } }
+
+/* Match section near the end: the blue marquee is its top edge, no wave above. */
+.v10 .v10-home .v8-who {
+  background: var(--v10-navy); padding: calc(2.62vw + 8px) 0 120px; border-radius: 0;
+  clip-path: polygon(0 calc(5.24vw + 8px), 100% 8px, 100% calc(100% - 28px), 90% calc(100% - 18px), 80% calc(100% - 10px), 70% calc(100% - 4px), 60% calc(100% - 1px), 50% 100%, 40% calc(100% - 1px), 30% calc(100% - 4px), 20% calc(100% - 10px), 10% calc(100% - 18px), 0 calc(100% - 28px));
+}
+.v10 .v10-home .v8-who::before { -webkit-mask: none; mask: none; }
+.v10 .v10-home .v8-who .v8-who-body { padding-top: 64px; }
+.v10 .v10-home .v8-who .v8-match-grid { margin-bottom: 0; }
+
+/* ── Closing slab ── */
+.v10 .v10-cta { padding: calc(2.7vw + 36px) 0 calc(2.7vw + 48px); overflow: hidden; }
+.v10 .v10-cta-slab { position: relative; background: var(--v10-lime); transform: skewY(-3deg); padding: 110px 40px; border-block: 3px solid var(--v10-navy); }
+.v10 .v10-cta-slab > * { transform: skewY(3deg); }
+.v10 .v10-cta-copy { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; text-align: center; }
+.v10 .v10-cta-k { margin: 0 0 14px; font-weight: 700; font-size: 17px; color: var(--v10-navy); display: inline-block; background: #fff; border: 2px solid var(--v10-navy); border-radius: 999px; padding: 6px 18px; box-shadow: 3px 3px 0 var(--v10-navy); }
+.v10 .v10-cta-copy h2 { margin: 0; font-size: clamp(44px, 7.4vw, 112px); line-height: .98; font-weight: 700; color: var(--v10-navy); letter-spacing: -.01em; }
+.v10 .v10-cta-copy mark { background: var(--v10-navy); color: var(--v10-lime); padding: 0 .18em; border-radius: .18em; display: inline-block; transform: rotate(-2.5deg); box-shadow: 8px 8px 0 #fff; }
+.v10 .v10-cta-btn { display: inline-flex; align-items: center; gap: 12px; margin-top: 44px; background: var(--v10-navy); color: #fff; font-weight: 700; font-size: 19px; padding: 20px 38px; border-radius: 999px; text-decoration: none; border: 3px solid var(--v10-navy); box-shadow: 6px 6px 0 #fff; transition: transform .15s, box-shadow .15s; }
+.v10 .v10-cta-btn span { color: var(--v10-lime); font-size: 22px; }
+.v10 .v10-cta-btn:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 #fff; }
+.v10 .v10-cta-sticker { position: absolute; z-index: 3; background: #fff; color: var(--v10-navy); font-weight: 700; font-size: 16px; padding: 10px 18px; border: 2.5px solid var(--v10-navy); border-radius: 16px; box-shadow: 4px 4px 0 var(--v10-navy); white-space: nowrap; }
+.v10 .v10-cta-sticker em { font-style: normal; display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--v10-lime); border: 2px solid var(--v10-navy); font-size: 12px; margin-inline-start: 6px; }
+.v10 .v10-cta-sticker--a { top: 18%; inset-inline-start: 9%; rotate: -7deg; }
+.v10 .v10-cta-sticker--b { bottom: 20%; inset-inline-start: 13%; rotate: 5deg; background: var(--v10-violet); color: #fff; }
+.v10 .v10-cta-sticker--c { top: 24%; inset-inline-end: 10%; rotate: 6deg; }
+.v10 .v10-cta-hand { position: absolute; z-index: 1; bottom: -6px; inset-inline-end: 7%; width: clamp(110px, 12vw, 180px); opacity: .95; }
+.v10 .v10-cta-star { position: absolute; z-index: 1; bottom: 16%; inset-inline-end: 26%; width: 60px; }
+@media (max-width: 900px) {
+  .v10 .v10-cta-slab { padding: 80px 20px 120px; }
+  .v10 .v10-cta-sticker { font-size: 13px; padding: 7px 12px; }
+  .v10 .v10-cta-sticker--a { top: 6%; inset-inline-start: 5%; }
+  .v10 .v10-cta-sticker--c { top: auto; bottom: 9%; inset-inline-end: auto; inset-inline-start: 42%; }
+  .v10 .v10-cta-sticker--b { bottom: 9%; inset-inline-start: 5%; }
+  .v10 .v10-cta-hand { width: 90px; inset-inline-end: 3%; }
+  .v10 .v10-cta-star { display: none; }
+  .v10 .v10-cta-copy mark { box-shadow: 5px 5px 0 #fff; }
+  /* One line on a phone: at 19px the label wraps inside the pill. */
+  .v10 .v10-cta-btn { font-size: 16px; padding: 16px 26px; margin-top: 32px; white-space: nowrap; }
+}

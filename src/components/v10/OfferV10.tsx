@@ -25,16 +25,13 @@ const Arrow = () => (
  * rather than shared, because that one is on the live homepage.
  */
 export default function OfferV10({ t }: { t: OfferT }) {
-  const [badgeRaw, ...restArr] = t.heading.split('...')
-  const badge = badgeRaw.trim()
-  const rest = restArr.join('...').replace(/^[.\s]+/, '').trim()
-
   return (
     <section className="v8-offer v8-svc v10-offer" id="offer">
       <div className="v8-container">
         <h2 className="v8-svc-heading">
-          <span className="v8-svc-az">{badge}</span>
-          <span className="v8-svc-heading-text">{rest}</span>
+          <span className="v8-svc-heading-text">{t.headingPre}</span>
+          <span className="v8-svc-az">{t.headingBadge}</span>
+          <span className="v8-svc-heading-text">{t.headingPost}</span>
         </h2>
 
         <div className="v8-svc-filters">

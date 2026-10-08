@@ -7,7 +7,7 @@ const LOGOS = [
   { src: '/v10/logo-fincat.svg', alt: 'חתול פיננסי', kind: 'mono' },
   { src: '/v10/logo-the5ers.svg', alt: 'The5ers', kind: 'mono' },
   { src: '/v10/logo-alma.svg', alt: 'Alma', kind: 'mono' },
-  { src: '/v10/logo-ewise.png', alt: 'Ewise', kind: 'mono', height: 46 },
+  { src: '/v10/logo-ewise-v2.png', alt: 'Ewise', kind: 'mono', height: 44 },
   { src: '/v10/logo-thatperk.png', alt: 'That Perk', kind: 'raster', height: 38 },
 ] as const
 
