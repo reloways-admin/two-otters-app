@@ -27,7 +27,7 @@ export default function PartnersPageV10() {
 
 {/* ============ תוכן עניינים ============ */}
 <nav className="toc" aria-label="תוכן העמוד">
-  <div className="toc__in">{' '}<a href="#pt-why">למה הקמנו</a>{' '}<a href="#pt-give">מה זה נותן</a>{' '}<a href="#pt-when">מתי מתאים</a>{' '}<a href="#pt-steps">השלבים</a>{' '}<a href="#pt-work">עבודות</a>{' '}<a href="#pt-together">עובדים יחד</a>{' '}<a href="#pt-deliver">תוצרים</a>{' '}<a href="#pt-own">הפרויקטים שלנו</a>{' '}<a className="toc__cta" href="#pt-talk">בואו נדבר</a>
+  <div className="toc__in">{' '}<a href="#pt-why">למה הקמנו</a>{' '}<a href="#pt-give">מה זה נותן</a>{' '}<a href="#pt-when">מתי מתאים</a>{' '}<a href="#pt-steps">השלבים</a>{' '}<a href="#pt-work">עבודות</a>{' '}<a href="#pt-together">עובדים יחד</a>{' '}<a href="#pt-deliver">תוצרים</a>{' '}<a href="#pt-own">הפרויקטים שלנו</a>
   </div>
 </nav>
 

@@ -25,7 +25,7 @@ export default function PartnersEffectsV10() {
     on(lb, 'click', close)
     on(document, 'keydown', e => { if ((e as KeyboardEvent).key === 'Escape') close() })
 
-    const links = [...document.querySelectorAll<HTMLAnchorElement>('.v10-partners .toc a:not(.toc__cta)')]
+    const links = [...document.querySelectorAll<HTMLAnchorElement>('.v10-partners .toc a')]
     const map = new Map(links.map(a => [a.getAttribute('href')!.slice(1), a]))
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {

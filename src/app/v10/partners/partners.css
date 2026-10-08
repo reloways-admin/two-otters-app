@@ -294,3 +294,10 @@
   .v10-partners .talk__cap--a::after { display:none }
   .v10-partners .talk__people--duo .talk__person img { height:clamp(370px,38vw,460px) }
 }
+
+/* Section index (Amir, 8.10.2026): no "let's talk" button, the header already
+   has one; the links spread evenly across a wider bar with a little more
+   height, instead of bunching at one side. Narrow screens still scroll it. */
+.v10-partners .toc__in { max-width: 1280px; padding-block: 14px; justify-content: space-between; gap: 10px; }
+.v10-partners .toc a { font-size: 15px; padding: 8px 16px; }
+@media (max-width: 900px) { .v10-partners .toc__in { justify-content: flex-start; padding-block: 10px; } }
