@@ -1,5 +1,6 @@
 import he from '@/locales/v10-he.json'
 import { ROUTES, link } from './routes'
+import ArrowLeftV10 from './ArrowLeftV10'
 
 type FooterT = typeof he.footer
 
@@ -35,7 +36,7 @@ export default function FooterV10({ t }: { t: FooterT }) {
           </svg>
         </span>
         <div className="v10-foot-audit-copy"><b>{t.auditTitle}</b><span>{t.auditText}</span></div>
-        <a className="v10-tool-cta" href={ROUTES.audit}>{t.auditCta}</a>
+        <a className="v10-tool-cta" href={ROUTES.audit}>{t.auditCta} <ArrowLeftV10 size={18} /></a>
       </div>
 
       <div className="v8-container v8-footer-inner">
