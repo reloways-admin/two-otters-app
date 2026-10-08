@@ -302,3 +302,18 @@
 .v10-partners .toc__in { max-width: 1280px; padding-block: 14px; justify-content: center; gap: 6px; }
 .v10-partners .toc a { font-size: 15px; padding: 8px 16px; }
 @media (max-width: 900px) { .v10-partners .toc__in { justify-content: flex-start; padding-block: 10px; } }
+
+/* Four-across rows (the stages, "we're part of your team") (Amir, 8.10.2026).
+   Inside the 1100px container four cards were never wider than ~240px: tall,
+   narrow columns of text. Four across now only from 1360px, where these two
+   sections widen to 1320px (cards ~300px); below that they are a 2×2. */
+@media (max-width: 1359px) {
+  .v10-partners .g4 { grid-template-columns: repeat(2, 1fr); }
+}
+/* …and still one column on a phone (this rule comes after the original one). */
+@media (max-width: 620px) {
+  .v10-partners .g4 { grid-template-columns: 1fr; }
+}
+@media (min-width: 1360px) {
+  .v10-partners #pt-steps .container, .v10-partners #pt-together .container { max-width: 1320px; }
+}
