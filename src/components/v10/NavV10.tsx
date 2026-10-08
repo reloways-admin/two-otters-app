@@ -42,6 +42,7 @@ export default function NavV10({ t }: { t: NavT }) {
   const [openMega, setOpenMega] = useState<string | null>(null)
   const [megaTop, setMegaTop] = useState(120)
   const linksRef = useRef<HTMLDivElement>(null)
+  const navRef = useRef<HTMLElement>(null)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const burgerRef = useRef<HTMLButtonElement>(null)
   const closeBtnRef = useRef<HTMLButtonElement>(null)
@@ -52,6 +53,23 @@ export default function NavV10({ t }: { t: NavT }) {
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // The header's real height, as --v10-nav-h on the root, for anything that
+  // sticks right under it (the partners page's section index). It changes with
+  // the breakpoint and when scrolling shrinks the logo, so a fixed number left
+  // a strip of page showing between the two bars at some widths.
+  useEffect(() => {
+    const nav = navRef.current
+    if (!nav || typeof ResizeObserver === 'undefined') return
+    const root = document.documentElement
+    const set = () => root.style.setProperty('--v10-nav-h', `${Math.round(nav.getBoundingClientRect().height)}px`)
+    const ro = new ResizeObserver(set)
+    // border-box: scrolling shrinks the nav's padding, which a content-box
+    // observer (the default) never reports.
+    ro.observe(nav, { box: 'border-box' })
+    set()
+    return () => { ro.disconnect(); root.style.removeProperty('--v10-nav-h') }
   }, [])
 
   // A route change closes whatever was open.
@@ -104,7 +122,7 @@ export default function NavV10({ t }: { t: NavT }) {
 
   return (
     <>
-      <nav className={`v8-nav v10-nav${scrolled ? ' v8-nav--scrolled' : ''}${light ? ' v10-nav--light' : ''}`}>
+      <nav ref={navRef} className={`v8-nav v10-nav${scrolled ? ' v8-nav--scrolled' : ''}${light ? ' v10-nav--light' : ''}`}>
         <div className="v8-nav-inner">
           <div className="v8-nav-right">
             <a href={ROUTES.home} className="v8-nav-logo" aria-label={t.logoLabel}>

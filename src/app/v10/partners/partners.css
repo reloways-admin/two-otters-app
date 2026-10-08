@@ -233,7 +233,8 @@
 .v10-partners { font-size:16px;line-height:1.6;color:var(--text);background:var(--bg) }
 .v10-partners .hero { padding-top:150px }
 .v10-partners .hero__kicker { display:inline-block;margin-bottom:22px }
-.v10-partners .toc { top:68px }
+/* Directly under the header, whatever its height (NavV10 sets --v10-nav-h). */
+.v10-partners .toc { top: var(--v10-nav-h, 68px) }
 .v10-partners section[id] { scroll-margin-top:130px }
 @media (max-width:1024px) {
   .v10-partners .hero { padding-top:120px }
