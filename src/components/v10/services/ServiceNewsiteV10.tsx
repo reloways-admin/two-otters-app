@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import { ROUTES } from '@/components/v10/routes'
 import ArrowLeftV10 from '@/components/v10/ArrowLeftV10'
+import ServiceNavV10 from './ServiceNavV10'
 
 /**
  * Service page "service-newsite": hero, pains, timeline, deliverables, spiral, quote, FAQ, CTA.
@@ -99,7 +100,7 @@ export default function ServiceNewsiteV10() {
     </div>
     </div>
     </section>
-    <section className="sv-next"><a href={ROUTES.serviceMvp}><small>השירות הבא</small><span className="v10-next-label">מרעיון למוצר במהירות הבזק <ArrowLeftV10 /></span></a></section>
+    <ServiceNavV10 current="newsite" />
     
     </div>
   )

@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import { ROUTES } from '@/components/v10/routes'
 import ArrowLeftV10 from '@/components/v10/ArrowLeftV10'
+import ServiceNavV10 from './ServiceNavV10'
 
 /**
  * Service page "service-mvp": hero, pains, timeline, deliverables, spiral, quote, FAQ, CTA.
@@ -121,7 +122,7 @@ export default function ServiceMvpV10() {
     </div>
     </div>
     </section>
-    <section className="sv-next"><a href={ROUTES.serviceUpgrade}><small>השירות הבא</small><span className="v10-next-label">לשדרג את האתר הקיים <ArrowLeftV10 /></span></a></section>
+    <ServiceNavV10 current="mvp" />
     
     </div>
   )
