@@ -317,3 +317,13 @@
 @media (min-width: 1360px) {
   .v10-partners #pt-steps .container, .v10-partners #pt-together .container { max-width: 1320px; }
 }
+
+/* "Let's talk" band (Amir, 8.10.2026): keep the half-and-half layout — copy
+   on one side, the two of you on the other — down to 681px instead of
+   stacking at 980px. The photo scales with the band; only phones stack. */
+@media (min-width: 681px) and (max-width: 980px) {
+  .v10-partners .talk { grid-template-columns: 1fr 1fr; padding-bottom: clamp(34px, 5vw, 56px); min-height: 380px; overflow: hidden; }
+  .v10-partners .talk__copy { max-width: none; }
+  .v10-partners .talk__people, .v10-partners .talk__people--duo { position: absolute; bottom: 0; inset-inline-end: 0; width: 50%; margin: 0; justify-content: center; }
+  .v10-partners .talk__people--duo .talk__person img { height: clamp(290px, 40vw, 360px); }
+}
