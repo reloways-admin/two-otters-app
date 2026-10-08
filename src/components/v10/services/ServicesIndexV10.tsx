@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import { ROUTES } from '@/components/v10/routes'
+import ArrowLeftV10 from '@/components/v10/ArrowLeftV10'
 
 /**
  * The services page: four services, the spiral with steps 5–8, what you leave with.
@@ -41,7 +42,7 @@ export default function ServicesIndexV10() {
     <div><h3>למי זה מתאים</h3><p>יש לכם רעיון למוצר או לפלטפורמה, ואתם רוצים לראות אותו עובד לפני שמשקיעים בעיצוב מלא ובפיתוח.</p></div>
     <div><h3>מה מקבלים</h3><ul><li>בריף אסטרטגי חד</li><li>אפיון UX של המסכים והמעברים</li><li>פרוטוטייפ שאפשר ללחוץ עליו</li><li>תיעוד ו-Hand-Off לצוות הפיתוח</li></ul></div>
     </div>
-    <div className="wf-svc-foot"><a className="wf-btn-dark" href={ROUTES.serviceMvp}>אשמח לקרוא עוד ←</a><a className="wf-btn-ghost" href={ROUTES.contact}>שליחת הודעה</a></div>
+    <div className="wf-svc-foot"><a className="wf-btn-dark" href={ROUTES.serviceMvp}>אשמח לקרוא עוד <ArrowLeftV10 /></a><a className="wf-btn-ghost" href={ROUTES.contact}>שליחת הודעה</a></div>
     </div>
     </article>
     <article className="wf-service" id="svc-upgrade">
@@ -61,7 +62,7 @@ export default function ServicesIndexV10() {
     <div><h3>למי זה מתאים</h3><p>יש לכם אתר שעובד, אבל הוא כבר לא מספר מי אתם היום, לא מבדל אתכם ולא מביא את הפניות שהוא צריך.</p></div>
     <div><h3>מה מקבלים</h3><ul><li>סיפור מותג, מסרים וטון דיבור</li><li>מפת אתר ואפיון לכל עמוד</li><li>תוכן לכל העמודים</li><li>שפה עיצובית וקבצי עיצוב</li></ul></div>
     </div>
-    <div className="wf-svc-foot"><a className="wf-btn-dark" href={ROUTES.serviceUpgrade}>אשמח לקרוא עוד ←</a><a className="wf-btn-ghost" href={ROUTES.contact}>שליחת הודעה</a></div>
+    <div className="wf-svc-foot"><a className="wf-btn-dark" href={ROUTES.serviceUpgrade}>אשמח לקרוא עוד <ArrowLeftV10 /></a><a className="wf-btn-ghost" href={ROUTES.contact}>שליחת הודעה</a></div>
     </div>
     </article>
     <article className="wf-service" id="svc-marketing">
@@ -81,7 +82,7 @@ export default function ServicesIndexV10() {
     <div><h3>למי זה מתאים</h3><p>העבודה השיווקית אצלכם ידנית ומפוזרת בין כלים, ואין לכם תמונה ברורה של מה מביא לקוחות.</p></div>
     <div><h3>מה מקבלים</h3><ul><li>מיפוי מסע הלקוח</li><li>משפכים ואוטומציות</li><li>חיבור בין המערכות</li><li>דשבורד שמראה מה עובד</li></ul></div>
     </div>
-    <div className="wf-svc-foot"><a className="wf-btn-dark" href={ROUTES.serviceMarketing}>אשמח לקרוא עוד ←</a><a className="wf-btn-ghost" href={ROUTES.contact}>שליחת הודעה</a></div>
+    <div className="wf-svc-foot"><a className="wf-btn-dark" href={ROUTES.serviceMarketing}>אשמח לקרוא עוד <ArrowLeftV10 /></a><a className="wf-btn-ghost" href={ROUTES.contact}>שליחת הודעה</a></div>
     </div>
     </article>
     <article className="wf-service" id="svc-newsite">
@@ -102,7 +103,7 @@ export default function ServicesIndexV10() {
     <div><h3>למי זה מתאים</h3><p>אתם מותג חדש, או עסק שיוצא לריברנדינג, וצריכים לבנות בסיס מותגי ואתר מאפס.</p></div>
     <div><h3>מה מקבלים</h3><ul><li>מיצוב, קהלים וסיפור מותג</li><li>טון דיבור וטרמינולוגיה</li><li>אפיון ותוכן לאתר</li><li>שפה עיצובית וליווי עד שהאתר באוויר</li></ul></div>
     </div>
-    <div className="wf-svc-foot"><a className="wf-btn-dark" href={ROUTES.serviceNewsite}>אשמח לקרוא עוד ←</a><a className="wf-btn-ghost" href={ROUTES.contact}>שליחת הודעה</a></div>
+    <div className="wf-svc-foot"><a className="wf-btn-dark" href={ROUTES.serviceNewsite}>אשמח לקרוא עוד <ArrowLeftV10 /></a><a className="wf-btn-ghost" href={ROUTES.contact}>שליחת הודעה</a></div>
     </div>
     </article>
     </div>

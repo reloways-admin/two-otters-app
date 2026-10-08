@@ -5,6 +5,12 @@
    reaches the live v8 homepage. */
 
 .v10 {
+  /* Text on light surfaces is navy, not v8's blue-grey (Amir, 8.10.2026). The
+     grey read as washed out, and the lighter one (#6B7280) fell to 4.3:1 on the
+     tinted sections — under WCAG AA's 4.5:1. Navy on white is 15.7:1. Hierarchy
+     comes from size and weight instead of a paler colour. */
+  --v8-text-mid: #1d2332;
+  --v8-text-muted: #1d2332;
   --v10-navy: #1d2332;
   --v10-lime: #5aff00;
   --v10-yellow: #f8f800;
@@ -351,11 +357,11 @@
 }
 .v10 .v10-band--neg h2 { color: var(--v10-navy); }
 .v10 .v10-band--neg h2 em { color: var(--v10-navy); background: linear-gradient(transparent 58%, var(--v10-lime) 58%); padding: 0 .08em; }
-.v10 .v10-band--neg p { color: #4b5280; }
+.v10 .v10-band--neg p { color: var(--v10-navy); }
 .v10 .v10-band--neg .v10-band-label { color: var(--v10-navy); }
 .v10 .v10-band--neg .v10-fit-list li { background: #f8f7ff; border: 2px solid var(--v10-navy); box-shadow: 4px 4px 0 var(--v10-navy); }
 .v10 .v10-band--neg .v10-fit-list li b { color: var(--v10-navy); }
-.v10 .v10-band--neg .v10-fit-list li span { color: #4b5280; }
+.v10 .v10-band--neg .v10-fit-list li span { color: var(--v10-navy); }
 .v10 .v10-band--neg .v10-band-cta { background: var(--v10-navy); color: #fff; box-shadow: 5px 5px 0 var(--v10-lime); }
 
 /* ── Homepage, Keren's order (8.10.2026) ──
@@ -463,3 +469,6 @@
   /* One line on a phone: at 19px the label wraps inside the pill. */
   .v10 .v10-cta-btn { font-size: 16px; padding: 16px 26px; margin-top: 32px; white-space: nowrap; }
 }
+
+/* v8 rules that hard-code the old greys rather than use the variables. */
+.v10 .v8-section-sub, .v10 .v8-about-body { color: var(--v10-navy); }
