@@ -296,8 +296,8 @@
 }
 
 /* Section index (Amir, 8.10.2026): no "let's talk" button, the header already
-   has one; the links spread evenly across a wider bar with a little more
+   has one; the links sit centred, evenly spaced, on a wider bar with a little more
    height, instead of bunching at one side. Narrow screens still scroll it. */
-.v10-partners .toc__in { max-width: 1280px; padding-block: 14px; justify-content: space-between; gap: 10px; }
+.v10-partners .toc__in { max-width: 1280px; padding-block: 14px; justify-content: center; gap: 28px; }
 .v10-partners .toc a { font-size: 15px; padding: 8px 16px; }
 @media (max-width: 900px) { .v10-partners .toc__in { justify-content: flex-start; padding-block: 10px; } }
