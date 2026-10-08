@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import { ROUTES } from '@/components/v10/routes'
+import ArrowLeftV10 from '@/components/v10/ArrowLeftV10'
 
 /**
  * Service page "service-newsite": hero, pains, timeline, deliverables, spiral, quote, FAQ, CTA.
@@ -20,7 +21,7 @@ export default function ServiceNewsiteV10() {
     <span className="wf-crumb sv-crumb"><a href={ROUTES.services}>שירותים</a>{' '}/ אתר למותג חדש</span>
     <h1 className="sv-h1">אתר למותג<br /><span>חדש דנדש.</span></h1>
     <p className="sv-lead">מותג חדש צריך אתר שזוכרים ושמניע לפעולה. בונים אותו מהאסטרטגיה ועד הפיקסל האחרון: מהיר, מדויק ומוכן לאוויר. כי רושם ראשוני עושים פעם אחת.</p>
-    <div className="sv-hero-cta"><a className="sv-btn" href={ROUTES.book}>בואו נבנה אתר חדש{' '}<span aria-hidden="true">←</span></a><a className="sv-btn-ghost" href={ROUTES.contact}>שליחת הודעה</a></div>
+    <div className="sv-hero-cta"><a className="sv-btn" href={ROUTES.book}>בואו נבנה אתר חדש{' '}<span aria-hidden="true"><ArrowLeftV10 /></span></a><a className="sv-btn-ghost" href={ROUTES.contact}>שליחת הודעה</a></div>
     </div>
     <div className="sv-hero-art" aria-hidden="true">
     <span className="sv-ring"></span>
@@ -73,7 +74,7 @@ export default function ServiceNewsiteV10() {
     <h3>חתול פיננסי</h3>
     <p className="sv-case-m">בסיס מותגי מאפס · 5 חודשים מאפיון להשקה</p>
     <blockquote><p>״היכולת של אמיר לתקשר רעיונות בצורה ויזואלית פשוט יוצאת דופן. העבודה שלו מקצועית מבחינה טכנית וגם מלאת יצירתיות וחיים.״</p><footer>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/testimonials/adi-nudel.jpg" alt="" /><span><b>עדי נודל</b>מייסדת חתול פיננסי</span></footer></blockquote>
-    <a className="sv-case-link" href={ROUTES.workFincat}>לפרויקט המלא ←</a>
+    <a className="sv-case-link" href={ROUTES.workFincat}>לפרויקט המלא <ArrowLeftV10 size={18} /></a>
     </div>
     </div>
     </div>
@@ -94,11 +95,11 @@ export default function ServiceNewsiteV10() {
     <div className="wf-cta-copy">
     <p className="wf-cta-k">מותג חדש בדרך?</p>
     <h2>רושם ראשוני<br />עושים{' '}<mark>פעם אחת.</mark></h2>
-    <a className="wf-cta-btn" href={ROUTES.book}>בואו נבנה אתר חדש{' '}<span aria-hidden="true">←</span></a>
+    <a className="wf-cta-btn" href={ROUTES.book}>בואו נבנה אתר חדש{' '}<span aria-hidden="true"><ArrowLeftV10 size={24} /></span></a>
     </div>
     </div>
     </section>
-    <section className="sv-next"><a href={ROUTES.serviceMvp}><small>השירות הבא</small>מרעיון למוצר במהירות הבזק ←</a></section>
+    <section className="sv-next"><a href={ROUTES.serviceMvp}><small>השירות הבא</small><span className="v10-next-label">מרעיון למוצר במהירות הבזק <ArrowLeftV10 /></span></a></section>
     
     </div>
   )

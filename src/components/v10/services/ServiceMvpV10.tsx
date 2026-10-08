@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import { ROUTES } from '@/components/v10/routes'
+import ArrowLeftV10 from '@/components/v10/ArrowLeftV10'
 
 /**
  * Service page "service-mvp": hero, pains, timeline, deliverables, spiral, quote, FAQ, CTA.
@@ -20,7 +21,7 @@ export default function ServiceMvpV10() {
     <span className="wf-crumb sv-crumb"><a href={ROUTES.services}>שירותים</a>{' '}/ מרעיון למוצר</span>
     <h1 className="sv-h1">מרעיון למוצר<br /><span>במהירות הבזק.</span></h1>
     <p className="sv-lead">מתחילים מהאסטרטגיה, עוברים לאפיון ומגיעים לפרוטוטייפ עובד שאפשר ללחוץ עליו, להרגיש אותו ולשנות אותו. בסוף הספרינט הכל מאושר, מתועד ומוכן לשלב הבא.</p>
-    <div className="sv-hero-cta"><a className="sv-btn" href={ROUTES.book}>בואו נתחיל ספרינט{' '}<span aria-hidden="true">←</span></a><a className="sv-btn-ghost" href={ROUTES.contact}>שליחת הודעה</a></div>
+    <div className="sv-hero-cta"><a className="sv-btn" href={ROUTES.book}>בואו נתחיל ספרינט{' '}<span aria-hidden="true"><ArrowLeftV10 /></span></a><a className="sv-btn-ghost" href={ROUTES.contact}>שליחת הודעה</a></div>
     </div>
     <div className="sv-hero-art" aria-hidden="true">
     <span className="sv-ring"></span>
@@ -116,11 +117,11 @@ export default function ServiceMvpV10() {
     <div className="wf-cta-copy">
     <p className="wf-cta-k">יש לכם רעיון?</p>
     <h2>בעוד שישה שבועות<br />תוכלו{' '}<mark>ללחוץ עליו.</mark></h2>
-    <a className="wf-cta-btn" href={ROUTES.book}>בואו נתחיל ספרינט{' '}<span aria-hidden="true">←</span></a>
+    <a className="wf-cta-btn" href={ROUTES.book}>בואו נתחיל ספרינט{' '}<span aria-hidden="true"><ArrowLeftV10 size={24} /></span></a>
     </div>
     </div>
     </section>
-    <section className="sv-next"><a href={ROUTES.serviceUpgrade}><small>השירות הבא</small>לשדרג את האתר הקיים ←</a></section>
+    <section className="sv-next"><a href={ROUTES.serviceUpgrade}><small>השירות הבא</small><span className="v10-next-label">לשדרג את האתר הקיים <ArrowLeftV10 /></span></a></section>
     
     </div>
   )

@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import { ROUTES } from '@/components/v10/routes'
+import ArrowLeftV10 from '@/components/v10/ArrowLeftV10'
 
 /**
  * Service page "service-marketing": hero, pains, timeline, deliverables, spiral, quote, FAQ, CTA.
@@ -20,7 +21,7 @@ export default function ServiceMarketingV10() {
     <span className="wf-crumb sv-crumb"><a href={ROUTES.services}>שירותים</a>{' '}/ תשתית שיווקית</span>
     <h1 className="sv-h1">תשתית שיווקית<br /><span>שכל עסק צריך.</span></h1>
     <p className="sv-lead">בונים לכם מסעות לקוח, אוטומציות ודשבורדים שמחליפים את העבודה הידנית. ככה רואים סוף סוף מה מביא לקוחות, ומשקיעים רק במה שעובד. לעבוד חכם, לא קשה.</p>
-    <div className="sv-hero-cta"><a className="sv-btn" href={ROUTES.book}>בואו נבנה תשתית{' '}<span aria-hidden="true">←</span></a><a className="sv-btn-ghost" href={ROUTES.contact}>שליחת הודעה</a></div>
+    <div className="sv-hero-cta"><a className="sv-btn" href={ROUTES.book}>בואו נבנה תשתית{' '}<span aria-hidden="true"><ArrowLeftV10 /></span></a><a className="sv-btn-ghost" href={ROUTES.contact}>שליחת הודעה</a></div>
     </div>
     <div className="sv-hero-art" aria-hidden="true">
     <span className="sv-ring"></span>
@@ -73,7 +74,7 @@ export default function ServiceMarketingV10() {
     <h3>חתול פיננסי</h3>
     <p className="sv-case-m">5 משפכים אוטומטיים · 137% צמיחת קהל</p>
     <blockquote><p>״היכולת של אמיר לתקשר רעיונות בצורה ויזואלית פשוט יוצאת דופן. העבודה שלו מקצועית מבחינה טכנית וגם מלאת יצירתיות וחיים.״</p><footer>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/testimonials/adi-nudel.jpg" alt="" /><span><b>עדי נודל</b>מייסדת חתול פיננסי</span></footer></blockquote>
-    <a className="sv-case-link" href={ROUTES.workFincat}>לפרויקט המלא ←</a>
+    <a className="sv-case-link" href={ROUTES.workFincat}>לפרויקט המלא <ArrowLeftV10 size={18} /></a>
     </div>
     </div>
     </div>
@@ -94,11 +95,11 @@ export default function ServiceMarketingV10() {
     <div className="wf-cta-copy">
     <p className="wf-cta-k">עדיין עובדים ידנית?</p>
     <h2>תשתית שעובדת<br /><mark>בשבילכם.</mark></h2>
-    <a className="wf-cta-btn" href={ROUTES.book}>בואו נבנה תשתית{' '}<span aria-hidden="true">←</span></a>
+    <a className="wf-cta-btn" href={ROUTES.book}>בואו נבנה תשתית{' '}<span aria-hidden="true"><ArrowLeftV10 size={24} /></span></a>
     </div>
     </div>
     </section>
-    <section className="sv-next"><a href={ROUTES.serviceNewsite}><small>השירות הבא</small>אתר למותג חדש דנדש ←</a></section>
+    <section className="sv-next"><a href={ROUTES.serviceNewsite}><small>השירות הבא</small><span className="v10-next-label">אתר למותג חדש דנדש <ArrowLeftV10 /></span></a></section>
     
     </div>
   )

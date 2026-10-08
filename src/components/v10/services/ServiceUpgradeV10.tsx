@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import { ROUTES } from '@/components/v10/routes'
+import ArrowLeftV10 from '@/components/v10/ArrowLeftV10'
 
 /**
  * Service page "service-upgrade": hero, pains, timeline, deliverables, spiral, quote, FAQ, CTA.
@@ -20,13 +21,13 @@ export default function ServiceUpgradeV10() {
     <span className="wf-crumb sv-crumb"><a href={ROUTES.services}>שירותים</a>{' '}/ לשדרג את האתר הקיים</span>
     <h1 className="sv-h1">לשדרג את<br /><span>האתר הקיים.</span></h1>
     <p className="sv-lead">העסק התקדם, והאתר נשאר מאחור. בונים אותו מחדש סביב המטרות של היום: מסרים שמבדלים אתכם, מבנה שמוביל לפנייה, ועיצוב שמחזק את המוניטין. ואם זה ישאיר אבק לתחרות, לא נתנגד.</p>
-    <div className="sv-hero-cta"><a className="sv-btn" href={ROUTES.book}>בואו נשדרג את האתר{' '}<span aria-hidden="true">←</span></a><a className="sv-btn-ghost" href={ROUTES.contact}>שליחת הודעה</a></div>
+    <div className="sv-hero-cta"><a className="sv-btn" href={ROUTES.book}>בואו נשדרג את האתר{' '}<span aria-hidden="true"><ArrowLeftV10 /></span></a><a className="sv-btn-ghost" href={ROUTES.contact}>שליחת הודעה</a></div>
     </div>
     <div className="sv-hero-art" aria-hidden="true">
     <span className="sv-ring"></span>
     {/* eslint-disable-next-line @next/next/no-img-element */}<img className="sv-art-main" src="/offer-illus-2-upgrade.svg" alt="" />
     {/* eslint-disable-next-line @next/next/no-img-element */}<img className="sv-art-sat sv-art-sat--a wf-sa-old" src="/about-browser.svg" alt="" />{/* eslint-disable-next-line @next/next/no-img-element */}<img className="sv-art-sat sv-art-sat--b" src="/step-2.svg" alt="" />
-    <span className="wf-sa-chip sv-chip sv-chip--a"><s>האתר של פעם</s>{' '}←{' '}<b>האתר של היום</b></span>
+    <span className="wf-sa-chip sv-chip sv-chip--a"><s>האתר של פעם</s>{' '}<ArrowLeftV10 size={16} />{' '}<b>האתר של היום</b></span>
     <span className="wf-sa-chip sv-chip sv-chip--b">מסרים שמבדלים{' '}<em>✓</em></span>
     <span className="wf-sa-chip sv-chip sv-chip--c">מבנה שמוביל לפנייה</span>
     </div>
@@ -73,7 +74,7 @@ export default function ServiceUpgradeV10() {
     <h3>The 5ers</h3>
     <p className="sv-case-m">3 חודשי אסטרטגיה לפני העיצוב · 13 תבניות לאתר</p>
     <blockquote><p>״קרן לקחה בעלות מלאה על הפרויקט, ועד מהרה הפכה לחלק בלתי נפרד מהצוות האסטרטגי הפנימי שלנו, שלא כמו כל צד שלישי אחר שהיינו מעורבים בו.״</p><footer>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/v10/gil-ben-hor.jpg" alt="" /><span><b>גיל בן חור</b>מנכ״ל ומייסד The 5ers</span></footer></blockquote>
-    <a className="sv-case-link" href={ROUTES.work5ers}>לפרויקט המלא ←</a>
+    <a className="sv-case-link" href={ROUTES.work5ers}>לפרויקט המלא <ArrowLeftV10 size={18} /></a>
     </div>
     </div>
     </div>
@@ -94,11 +95,11 @@ export default function ServiceUpgradeV10() {
     <div className="wf-cta-copy">
     <p className="wf-cta-k">האתר נשאר מאחור?</p>
     <h2>הגיע הזמן<br /><mark>לאתר של היום.</mark></h2>
-    <a className="wf-cta-btn" href={ROUTES.book}>בואו נשדרג את האתר{' '}<span aria-hidden="true">←</span></a>
+    <a className="wf-cta-btn" href={ROUTES.book}>בואו נשדרג את האתר{' '}<span aria-hidden="true"><ArrowLeftV10 size={24} /></span></a>
     </div>
     </div>
     </section>
-    <section className="sv-next"><a href={ROUTES.serviceMarketing}><small>השירות הבא</small>תשתית שיווקית שכל עסק צריך ←</a></section>
+    <section className="sv-next"><a href={ROUTES.serviceMarketing}><small>השירות הבא</small><span className="v10-next-label">תשתית שיווקית שכל עסק צריך <ArrowLeftV10 /></span></a></section>
     
     </div>
   )

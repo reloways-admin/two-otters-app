@@ -411,3 +411,11 @@
   .v10-services .v10-stages .wf-service-art { aspect-ratio: 4 / 3; height: auto; }
   .v10-services .v10-stages .wf-service-cols > div:first-child { border-bottom-color: var(--v8-border); }
 }
+
+/* Solar arrows (ArrowLeftV10) in place of the text "←" (Amir, 8.10.2026).
+   The svg takes the colour of its wrapper, so the buttons keep their accent
+   arrow; these rules only centre it on the text. */
+.v10-services .sv-btn span, .v10-services .wf-cta-btn span { display: inline-flex; }
+.v10-services .sv-case-link { display: inline-flex; align-items: center; gap: 6px; }
+.v10-services .sv-next .v10-next-label { display: inline-flex; align-items: center; gap: 8px; }
+.v10-services .wf-sa-chip .v10-arrow { flex: none; }
