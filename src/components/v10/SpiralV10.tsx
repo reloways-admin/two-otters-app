@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import he from '@/locales/v10-he.json'
+import ArrowLeftV10 from './ArrowLeftV10'
 
 type SpiralT = typeof he.spiral
 
@@ -79,7 +80,7 @@ export default function SpiralV10({ t, steps = 'toggle' }: { t: SpiralT; steps?:
               onClick={() => setOpen(o => !o)}
             >
               {open ? t.hideSteps : t.showSteps}
-              <span className="v10-steps-toggle-ico" aria-hidden="true">↓</span>
+              <ArrowLeftV10 dir="down" className="v10-steps-toggle-ico" />
             </button>
           </div>
         )}

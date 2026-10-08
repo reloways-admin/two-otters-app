@@ -1,5 +1,6 @@
 import he from '@/locales/v10-he.json'
 import { ROUTES } from './routes'
+import ArrowLeftV10 from './ArrowLeftV10'
 
 type AboutT = typeof he.about
 
@@ -20,7 +21,7 @@ export default function AboutV10({ t }: { t: AboutT }) {
           </h2>
           <p className="v8-about-body">{t.body1}</p>
           <p className="v8-about-body">{t.body2} <b>{t.body3Bold}</b></p>
-          <a className="v10-btn-dark" href={ROUTES.about} style={{ marginTop: 24 }}>{t.more}</a>
+          <a className="v10-btn-dark" href={ROUTES.about} style={{ marginTop: 24 }}>{t.more} <ArrowLeftV10 /></a>
         </div>
 
         <div className="v8-about-visual">

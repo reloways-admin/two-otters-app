@@ -225,3 +225,7 @@
 .v10-work-page .wf-bigq-dots button.on { background:#5aff00;width:28px;border-radius:6px }
 .v10-work-page .wf-cs-cta { padding-top:max(70px,calc(2.7vw + 36px)) }
 .v10-work-page .wf-cs-cta { padding-top:calc(2.7vw + 36px) }
+
+/* Solar arrows in place of the text "←" (Amir, 8.10.2026). */
+.v10-work-page .wf-cs-more { display: inline-flex; align-items: center; gap: 8px; }
+.v10-work-page .wf-cta-btn span { display: inline-flex; }

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { usePathname } from 'next/navigation'
 import he from '@/locales/v10-he.json'
 import { ROUTES, link as href } from './routes'
+import ArrowLeftV10 from './ArrowLeftV10'
 
 type NavT = typeof he.nav
 type MegaT = NavT['menus'][number]
@@ -152,7 +153,7 @@ export default function NavV10({ t }: { t: NavT }) {
                         <span className="v10-kicker">{mega.kicker}</span>
                         <h3>{mega.title}</h3>
                         <p>{mega.text}</p>
-                        <span className="v10-more">{mega.more}</span>
+                        <span className="v10-more">{mega.more} <ArrowLeftV10 size={18} /></span>
                       </a>
                       {mega.cards.map(c => (
                         <div key={c.title} className="v10-mega-col">
@@ -187,7 +188,7 @@ export default function NavV10({ t }: { t: NavT }) {
               <summary className="v10-dr-top">{l.label}<Chevron /></summary>
               <div className="v10-dr-panel">
                 <a className="v10-dr-feature" href={href(mega.to)}>
-                  <span className="v10-kicker">{mega.kicker}</span><b>{mega.title}</b><span className="v10-more">{mega.more}</span>
+                  <span className="v10-kicker">{mega.kicker}</span><b>{mega.title}</b><span className="v10-more">{mega.more} <ArrowLeftV10 size={18} /></span>
                 </a>
                 {mega.cards.map(c => (
                   <a key={c.title} className="v10-dr-card" href={href(c.to)}>

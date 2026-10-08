@@ -1,5 +1,6 @@
 import he from '@/locales/v10-he.json'
 import { ROUTES } from './routes'
+import ArrowLeftV10 from './ArrowLeftV10'
 
 type CtaT = typeof he.cta
 
@@ -24,7 +25,7 @@ export default function CtaSlabV10({ t }: { t: CtaT }) {
         <div className="v10-cta-copy">
           <p className="v10-cta-k">{t.kicker}</p>
           <h2 id="v10-cta-h">{t.title}<br />{t.titleLine2} <mark>{t.titleMark}</mark></h2>
-          <a className="v10-cta-btn" href={ROUTES.book}>{t.button} <span aria-hidden="true">←</span></a>
+          <a className="v10-cta-btn" href={ROUTES.book}>{t.button} <span aria-hidden="true"><ArrowLeftV10 size={24} /></span></a>
         </div>
       </div>
     </section>

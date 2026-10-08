@@ -247,7 +247,13 @@
 .v10 .v10-mega-art img { height: 104px; width: auto; }
 .v10 .v10-mega-card b { font-size: 21px; padding: 14px 16px 2px; display: flex; justify-content: space-between; align-items: center; }
 .v10 .v10-mega-panel--5 .v10-mega-card b { font-size: 18px; }
-.v10 .v10-mega-card b::after { content: "‹"; font-size: 20px; color: var(--v8-text-muted); }
+/* Solar's alt-arrow-left-linear as the card's chevron, drawn through a mask so
+   it takes the text colour like the inline ArrowLeftV10 icons. */
+.v10 .v10-mega-card b::after {
+  content: ""; flex: none; width: 20px; height: 20px; background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 5L9 12L15 19'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 5L9 12L15 19'/%3E%3C/svg%3E") center / contain no-repeat;
+}
 .v10 .v10-mega-card small { font-size: 13.5px; color: var(--v8-text-muted); padding: 0 16px 16px; line-height: 1.5; }
 
 /* ── Mobile drawer: the same areas as the mega menus, as collapsible groups ── */
@@ -472,3 +478,8 @@
 
 /* v8 rules that hard-code the old greys rather than use the variables. */
 .v10 .v8-section-sub, .v10 .v8-about-body { color: var(--v10-navy); }
+
+/* Solar arrows in place of the text "←" (Amir, 8.10.2026): centre them on the text. */
+.v10 .v10-more { display: inline-flex; align-items: center; gap: 6px; }
+.v10 .v10-cta-btn span { display: inline-flex; }
+.v10 .v10-steps-toggle .v10-steps-toggle-ico { display: block; }

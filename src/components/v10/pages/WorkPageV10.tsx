@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import { ROUTES } from '@/components/v10/routes'
+import ArrowLeftV10 from '@/components/v10/ArrowLeftV10'
 
 /* eslint-disable @next/next/no-img-element */
 /**
@@ -50,7 +51,7 @@ export default function WorkPageV10() {
       <div className="wf-cs-split">
         <figure className="wf-cs-board"><img src="/v10/work/pt-fincat-board.webp" alt="השפה הוויזואלית של חתול פיננסי" loading="lazy" /><figcaption>השפה הוויזואלית: טיפוגרפיה, צבע, איורים ורכיבים</figcaption></figure>
         <blockquote className="wf-cs-quote"><p>״היכולת של אמיר לתקשר רעיונות בצורה ויזואלית פשוט יוצאת דופן. העבודה שלו מקצועית מבחינה טכנית וגם מלאת יצירתיות וחיים.״</p><footer><img src="/v10/work/adi-nudel.jpg" alt="" /><span><b>עדי נודל</b>מייסדת חתול פיננסי</span></footer></blockquote>
-      </div>{' '}<a className="wf-cs-more" href={ROUTES.caseFincat}>לסיפור המלא של חתול פיננסי ←</a>
+      </div>{' '}<a className="wf-cs-more" href={ROUTES.caseFincat}>לסיפור המלא של חתול פיננסי <ArrowLeftV10 size={18} /></a>
     </div>
   </section>
 
@@ -131,7 +132,7 @@ export default function WorkPageV10() {
       <img className="wf-cta-star wf-cta-star--b" src="/v10/work/ico-stars.png" alt="" aria-hidden="true" />{' '}<span className="wf-cta-sticker wf-cta-sticker--a">30 דקות</span>{' '}<span className="wf-cta-sticker wf-cta-sticker--b">בלי התחייבות</span>{' '}<span className="wf-cta-sticker wf-cta-sticker--c">כיוון ברור <em>✓</em></span>
       <div className="wf-cta-copy">
         <p className="wf-cta-k">כבר מתרגשים כי...</p>
-        <h2 id="wf-cta-h">הפרויקט הבא<br />יכול להיות <mark>שלכם.</mark></h2>{' '}<a className="wf-cta-btn" href={ROUTES.book}>לשיחת היכרות ללא עלות <span aria-hidden="true">←</span></a>
+        <h2 id="wf-cta-h">הפרויקט הבא<br />יכול להיות <mark>שלכם.</mark></h2>{' '}<a className="wf-cta-btn" href={ROUTES.book}>לשיחת היכרות ללא עלות <span aria-hidden="true"><ArrowLeftV10 size={24} /></span></a>
       </div>
     </div>
   </section>

@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import { ROUTES } from '@/components/v10/routes'
+import ArrowLeftV10 from '@/components/v10/ArrowLeftV10'
 
 /* eslint-disable @next/next/no-img-element */
 /**
@@ -18,7 +19,7 @@ export default function PartnersPageV10() {
   <div className="hero__copy">{' '}<span className="badge badge--lime hero__kicker">לסטודיואים, לבתי תוכנה ולמומחי SEO</span>
     <h1><span className="top">אסטרטגיה, מסעות לקוח, UX ו-UI.</span><span className="accent">נכנסים בכל שלב.</span></h1>
     <p className="hero__desc">אנחנו נכנסים לפרויקט שלכם ומתאימים את העבודה לצרכים שלו.<br /><span>עם אסטרטגיה או בלי, עם מיתוג קיים או בלי, לפני העיצוב או באמצע הדרך.</span></p>
-    <div className="hero__actions">{' '}<a className="btn-lime" href={ROUTES.book}>לשיחה של 30 דקות</a>{' '}<a className="btn-outline" href="#pt-when">מתי מתאים שנעבוד יחד ←</a>
+    <div className="hero__actions">{' '}<a className="btn-lime" href={ROUTES.book}>לשיחה של 30 דקות</a>{' '}<a className="btn-outline" href="#pt-when">מתי מתאים שנעבוד יחד <ArrowLeftV10 /></a>
     </div>
   </div>
   <div className="hero__wave" aria-hidden="true"><svg viewBox="0 0 1920 196" preserveAspectRatio="none"><path d="M0,0 L480,26 L960,39.4 L1200,40.4 L1440,36.4 L1920,23.2 L1920,196 L0,196 Z"></path></svg></div>

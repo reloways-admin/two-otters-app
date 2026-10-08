@@ -1,5 +1,6 @@
 import he from '@/locales/v10-he.json'
 import { ROUTES, link } from './routes'
+import ArrowLeftV10 from './ArrowLeftV10'
 
 type WorkT = typeof he.work
 
@@ -43,7 +44,7 @@ export default function WorkV10({ t }: { t: WorkT }) {
           ))}
         </div>
 
-        <div className="v10-center"><a className="v10-btn-lime" href={ROUTES.work}>{t.all}</a></div>
+        <div className="v10-center"><a className="v10-btn-lime" href={ROUTES.work}>{t.all} <ArrowLeftV10 /></a></div>
       </div>
     </section>
   )
