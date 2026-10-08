@@ -50,7 +50,7 @@ export default function ServicesIndexV10() {
     <span className="wf-sa-halo"></span>
     {/* eslint-disable-next-line @next/next/no-img-element */}<img className="wf-sa-main" src="/offer-illus-2-upgrade.svg" alt="" />
     {/* eslint-disable-next-line @next/next/no-img-element */}<img className="wf-sa-sat wf-sa-sat--tl wf-sa-old" src="/about-browser.svg" alt="" />
-    <span className="wf-sa-chip wf-sa-chip--a"><s>האתר של פעם</s>{' '}←{' '}<b>האתר של היום</b></span>
+    <span className="wf-sa-chip wf-sa-chip--a"><s>האתר של פעם</s>{' '}<ArrowLeftV10 size={16} />{' '}<b>האתר של היום</b></span>
     <span className="wf-sa-chip wf-sa-chip--b">מסרים שמבדלים{' '}<em>✓</em></span>
     </div>
     <div className="wf-service-body">
@@ -143,7 +143,7 @@ export default function ServicesIndexV10() {
     </div>
     </div>
     </section>
-    <section className="wf-sec wf-sec--start"><div className="wf-band wf-band--start"><div><h2>לא בטוחים{' '}<em>מאיפה להתחיל?</em></h2><p>שיחה של 30 דקות, או בדיקה של האתר הקיים שלכם.</p><a className="wf-btn-lime wf-start-btn" href={ROUTES.contact}>דברו איתנו ←</a></div><div className="wf-start-pic" aria-hidden="true">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/v10/services/duo-start.webp" alt="" /></div></div></section>
+    <section className="wf-sec wf-sec--start"><div className="wf-band wf-band--start"><div><h2>לא בטוחים{' '}<em>מאיפה להתחיל?</em></h2><p>שיחה של 30 דקות, או בדיקה של האתר הקיים שלכם.</p><a className="wf-btn-lime wf-start-btn" href={ROUTES.contact}>דברו איתנו <ArrowLeftV10 /></a></div><div className="wf-start-pic" aria-hidden="true">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/v10/services/duo-start.webp" alt="" /></div></div></section>
     
     </div>
   )
