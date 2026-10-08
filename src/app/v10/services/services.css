@@ -379,3 +379,35 @@
 
 @keyframes wfSaFloat {0%,100%{translate:0 0}50%{translate:0 -7px}}
 @keyframes svTap {0%{transform:scale(.4);opacity:1}100%{transform:scale(1.8);opacity:0}}
+
+/* ─── Services index as alternating stages (Amir, 8.10.2026) ───
+   Each service is a white "stage": its existing illustration panel on one side
+   and the copy on plain white on the other, swapping sides from one service to
+   the next (illustration right first, in RTL). The dark card wrapper is gone,
+   so the copy switches from light-on-navy to the page's dark-on-white. */
+.v10-services .v10-stages { gap: clamp(72px, 9vw, 140px); margin-top: 24px; }
+.v10-services .v10-stages .wf-service {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px);
+  align-items: center; background: none; color: var(--v8-text); border-radius: 0; overflow: visible;
+}
+.v10-services .v10-stages .wf-service:nth-child(even) .wf-service-art { order: 2; }
+.v10-services .v10-stages .wf-service-art { border-radius: 28px; min-height: 0; aspect-ratio: 5 / 5.4; border: 2px solid var(--wf-navy); }
+.v10-services .v10-stages .wf-service-body { padding: 0; }
+.v10-services .v10-stages .wf-service h2 { color: var(--wf-navy); font-size: clamp(30px, 3.4vw, 46px); }
+.v10-services .v10-stages .wf-service-sub { color: var(--v8-text-mid); }
+.v10-services .v10-stages .wf-service-desc p { color: var(--v8-text-mid); font-size: 17px; }
+.v10-services .v10-stages .wf-service-tags span { color: var(--v8-text-mid); border-color: var(--v8-border); }
+.v10-services .v10-stages .wf-service-cols { border-top-color: var(--v8-border); }
+.v10-services .v10-stages .wf-service-cols > div:first-child { border-inline-end-color: var(--v8-border); }
+.v10-services .v10-stages .wf-service-cols h3 { color: var(--v8-purple, #5c3eef); }
+.v10-services .v10-stages .wf-service-cols p, .v10-services .v10-stages .wf-service-cols li { color: var(--v8-text); }
+.v10-services .v10-stages .wf-service .wf-btn-dark { background: var(--wf-navy); color: #fff; }
+.v10-services .v10-stages .wf-btn-ghost { color: var(--wf-navy); border-color: var(--wf-navy); }
+.v10-services .v10-stages .wf-btn-ghost:hover { background: var(--v8-tint, #f8f7ff); border-color: var(--wf-navy); }
+@media (max-width: 900px) {
+  .v10-services .v10-stages .wf-service { grid-template-columns: 1fr; gap: 28px; }
+  /* On a phone the illustration always leads, whichever side it had. */
+  .v10-services .v10-stages .wf-service:nth-child(even) .wf-service-art { order: 0; }
+  .v10-services .v10-stages .wf-service-art { aspect-ratio: 4 / 3; height: auto; }
+  .v10-services .v10-stages .wf-service-cols > div:first-child { border-bottom-color: var(--v8-border); }
+}

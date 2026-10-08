@@ -23,8 +23,7 @@ export default function ServicesIndexV10() {
     </section>
     <section className="wf-sec" style={{ paddingTop: "20px" }}>
     <div className="v8-container">
-    <div className="v8-svc-filters"><a href={ROUTES.serviceMvp} className="v8-svc-filter">מרעיון למוצר</a><a href={ROUTES.serviceUpgrade} className="v8-svc-filter">שדרוג אתר</a><a href={ROUTES.serviceMarketing} className="v8-svc-filter">תשתית שיווקית</a><a href={ROUTES.serviceNewsite} className="v8-svc-filter">אתר למותג חדש</a></div>
-    <div className="wf-services">
+    <div className="wf-services v10-stages">
     <article className="wf-service" id="svc-mvp">
     <div className="wf-service-art" style={{ '--sa': "#5aff00" } as CSSProperties} aria-hidden="true">
     <span className="wf-sa-halo"></span>
