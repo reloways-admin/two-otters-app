@@ -1,14 +1,11 @@
 /**
- * Every v10 link goes through here. The site is being built page by page under
- * /v10; a page that doesn't exist yet points at its closest live stand-in, so
- * switching it over later is a one-line change.
- *
- * When v10 is promoted to the root, the /v10 prefix comes off in one place.
+ * Every v10 link goes through here. v10 is the live site at the root, so BASE
+ * is empty; the old /v10/* addresses redirect here (next.config.ts).
  */
-const BASE = '/v10'
+const BASE = ''
 
 export const ROUTES = {
-  home: BASE,
+  home: '/',
   work: `${BASE}/work`,
   workFincat: `${BASE}/work#wk-fincat`,
   work5ers: `${BASE}/work#wk-5ers`,
@@ -21,12 +18,14 @@ export const ROUTES = {
   partners: `${BASE}/partners`,
   about: `${BASE}/about`,
   contact: `${BASE}/contact`,
-  book: `${BASE}/schedule-a-call`,
-  // Not built under /v10 yet: audit and the full FinCat case study already work.
-  caseFincat: '/work/fincat?lang=he',
+  // Booking isn't live yet (it stays on site-next), so every "book a call"
+  // leads to the contact form. Point this at the booking page when it ships.
+  book: `${BASE}/contact`,
+  // Pages that predate v10 and still work as they are.
+  caseFincat: '/work/fincat',
   audit: '/audit',
-  privacy: '/privacy?lang=he',
-  accessibility: '/accessibility?lang=he',
+  privacy: '/privacy',
+  accessibility: '/accessibility',
 } as const
 
 export type RouteKey = keyof typeof ROUTES

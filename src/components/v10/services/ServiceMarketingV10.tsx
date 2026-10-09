@@ -8,7 +8,7 @@ import ServiceNavV10 from './ServiceNavV10'
  *
  * Ported mechanically from the next-site artifact (version 1791388654, 7.10.2026),
  * page "#service-marketing", so the approved markup and copy stay exactly as Amir and Keren
- * signed them off. Styles: app/v10/services/services.css (the artifact's own
+ * signed them off. Styles: app/(site)/services/services.css (the artifact's own
  * rules, scoped under .v10-services). Copy is still inline here; moving it into
  * a locale file is a follow-up (see the 7.10 review report).
  */

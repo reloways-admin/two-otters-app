@@ -11,11 +11,11 @@ type MegaT = NavT['menus'][number]
 
 /** Pages whose top is a light, coloured hero (the four service pages) need the
  *  dark logo and hamburger from the start, not only once the nav turns white. */
-const isLightTop = (path: string) => /^\/v10\/services\/[^/]+/.test(path)
+const isLightTop = (path: string) => /^\/services\/[^/]+/.test(path)
 
 /** Which top-level item a path belongs to, so the pill marks where you are. */
 function activeKey(path: string): string | null {
-  const seg = path.replace(/^\/v10\/?/, '').split('/')[0]
+  const seg = path.replace(/^\//, '').split('/')[0]
   return seg || null
 }
 
@@ -36,7 +36,7 @@ const Chevron = () => (
  * invisible bridge (::before on the panel) covers the gap itself.
  */
 export default function NavV10({ t }: { t: NavT }) {
-  const pathname = usePathname() ?? '/v10'
+  const pathname = usePathname() ?? '/'
   const [scrolled, setScrolled] = useState(false)
   const [drawer, setDrawer] = useState(false)
   const [openMega, setOpenMega] = useState<string | null>(null)
