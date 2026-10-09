@@ -2,10 +2,21 @@ import type { MetadataRoute } from 'next'
 
 export const SITE_URL = 'https://two-otters.studio'
 
-/** The pages we want found. The /v2../v9 drafts and /brand are deliberately
- *  absent — see robots.ts, which keeps them out of the index entirely. */
+/** The pages we want found. The /v2../v10 history pages and /brand are
+ *  deliberately absent — see robots.ts, which keeps them out of the index
+ *  entirely. So is /schedule-a-call, which only redirects to /contact. */
 const ROUTES = [
   { path: '/', priority: 1 },
+  { path: '/en', priority: 0.8 },
+  { path: '/services', priority: 0.9 },
+  { path: '/services/mvp', priority: 0.8 },
+  { path: '/services/upgrade', priority: 0.8 },
+  { path: '/services/marketing', priority: 0.8 },
+  { path: '/services/new-site', priority: 0.8 },
+  { path: '/work', priority: 0.9 },
+  { path: '/partners', priority: 0.8 },
+  { path: '/about', priority: 0.8 },
+  { path: '/contact', priority: 0.9 },
   { path: '/work/the5ers', priority: 0.8 },
   { path: '/work/fincat', priority: 0.8 },
   { path: '/work/trade-the-pool', priority: 0.8 },
