@@ -12,6 +12,16 @@ export const metadata: Metadata = {
   description:
     'A strategy, branding and UX studio. First we build a working prototype you can click, and from real use we refine, write and design until everything fits just right.',
   alternates: { canonical: '/en', languages: { he: '/', en: '/en' } },
+  openGraph: {
+    type: 'website',
+    siteName: 'Two Otters Studio',
+    locale: 'en_US',
+    url: '/en',
+    title: 'Two Otters Studio · Strategy, branding and UX in one place',
+    description: 'We start from the end, and the results are better. First a working prototype you can click, then we refine, write and design.',
+    images: [{ url: '/og/two-otters-en.jpg', width: 1200, height: 630, alt: 'Amir and Keren, Two Otters Studio: we start from the end and the results are better' }],
+  },
+  twitter: { card: 'summary_large_image', images: ['/og/two-otters-en.jpg'] },
 }
 
 /**
