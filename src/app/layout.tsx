@@ -21,6 +21,22 @@ export const metadata: Metadata = {
     // route, so both languages share one canonical — which is what we want.
     canonical: "./",
   },
+  // The card a link shows when it is shared (WhatsApp, LinkedIn, Slack, X):
+  // one image for the whole site for now. /en overrides it with the English
+  // card. The images are rendered from an HTML mock-up at 1200x630, the size
+  // every platform crops to.
+  openGraph: {
+    type: "website",
+    siteName: "Two Otters Studio",
+    locale: "he_IL",
+    title: "Two Otters Studio · אסטרטגיה, מיתוג ו-UX ממקום אחד",
+    description: "אנחנו מתחילים מהסוף, והתוצאות טובות יותר. קודם פרוטוטייפ עובד שאפשר ללחוץ עליו, ומשם מדייקים, כותבים ומעצבים.",
+    images: [{ url: "/og/two-otters-he.jpg", width: 1200, height: 630, alt: "אמיר וקרן, Two Otters Studio: אנחנו מתחילים מהסוף והתוצאות טובות יותר" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og/two-otters-he.jpg"],
+  },
 };
 
 export default function RootLayout({
