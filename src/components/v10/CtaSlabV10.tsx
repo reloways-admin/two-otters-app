@@ -13,7 +13,9 @@ type CtaT = typeof he.cta
 export default function CtaSlabV10({ t }: { t: CtaT }) {
   const [a, b, c] = t.stickers
   return (
-    <section className="v10-cta" aria-labelledby="v10-cta-h">
+    // id="contact": the case studies and legal pages still link to "/#contact"
+    // (v8's form); this is the nearest thing on the home page, one click from it.
+    <section className="v10-cta" id="contact" aria-labelledby="v10-cta-h">
       <div className="v10-cta-slab">
         {/* eslint-disable @next/next/no-img-element */}
         <img className="v10-cta-hand" src="/otter-hand.svg" alt="" aria-hidden="true" />
