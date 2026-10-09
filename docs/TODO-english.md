@@ -1,14 +1,17 @@
 # TODO: English for the new site
 
-The new site (v10, live at the root since the launch-v10 branch) is **Hebrew only**.
-There is no English toggle and no English route. `/?lang=en` just renders the
-Hebrew home page.
+The new site (v10, live at the root since the launch-v10 branch) is Hebrew,
+except the **homepage, which is translated at `/en`** (strings in
+`src/locales/v10-en.json`). The flag in the header switches between `/` and
+`/en` on every page; the English menu and footer lead to pages that are still
+Hebrew. The old site's `/?lang=en` redirects to `/en`.
 
-**The whole new site must be translated to English** before an English toggle comes back.
+To translate another page: give it an `/en/...` route under `src/app/(en)/en/`,
+add its strings to `v10-en.json`, and point the flag at it.
 
 ## Pages to translate
 
-- `/` (home)
+- ~~`/` (home)~~ done, at `/en`
 - `/services`
 - `/services/mvp`
 - `/services/upgrade`

@@ -31,6 +31,14 @@ const nextConfig: NextConfig = {
       // addresses lead to the contact form instead of a page that can fail.
       { source: "/schedule-a-call", destination: "/contact", permanent: true },
       { source: "/v10/schedule-a-call", destination: "/contact", permanent: true },
+      // The old site switched language with ?lang=en; the English homepage
+      // now has its own address. Temporary, since /en may grow into more pages.
+      {
+        source: "/",
+        has: [{ type: "query", key: "lang", value: "en" }],
+        destination: "/en",
+        permanent: false,
+      },
       // v10 was built under /v10 and now lives at the root. Only the page
       // addresses move: the images and video stay at /v10/*.
       { source: "/v10", destination: "/", permanent: true },

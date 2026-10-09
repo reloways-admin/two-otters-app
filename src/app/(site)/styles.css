@@ -483,3 +483,18 @@
 .v10 .v10-more { display: inline-flex; align-items: center; gap: 6px; }
 .v10 .v10-cta-btn span { display: inline-flex; }
 .v10 .v10-steps-toggle .v10-steps-toggle-ico { display: block; }
+
+/* English homepage (/en): the frame is right-to-left by design, so the few
+   things that point the way you read flip with it. */
+.v10[dir="ltr"] .v10-arrow:not(.v10-steps-toggle-ico) { transform: scaleX(-1); }
+.v10-dr-lang { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; font-weight: 700; color: inherit; text-decoration: none; }
+.v10-dr-lang img { border-radius: 3px; }
+/* Blocks the Hebrew frame pins to right-to-left on purpose; on /en they read
+   left to right. (The logo marquee keeps its direction: it only sets which
+   way the strip scrolls.) */
+.v10[dir="ltr"] :is(.v10-drawer, .v10-duo-body, .v10-mega-panel) { direction: ltr; }
+.v10[dir="ltr"] :is(.v8-about-text, .v8-svc-body) { direction: ltr; text-align: left; }
+.v10[dir="ltr"] :is(.v8-match-bigtext, .v8-section-heading, figcaption) { text-align: left; }
+/* The strip still scrolls the Hebrew way, but each phrase reads left to right,
+   so quotes and dashes land where English puts them. */
+.v10[dir="ltr"] .v8-marquee-text { direction: ltr; unicode-bidi: isolate; }

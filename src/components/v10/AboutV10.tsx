@@ -28,8 +28,8 @@ export default function AboutV10({ t }: { t: AboutT }) {
           <div className="v8-about-frame">
             {/* eslint-disable @next/next/no-img-element */}
             <img src="/about-couch.jpg" alt={`${t.amirPhotoAlt} · ${t.kerenPhotoAlt}`} className="v8-about-couch" />
-            <img src="/about-bubble-amir.svg" alt={t.amirBubbleAlt} className="v8-about-bubble v8-about-bubble--amir" />
-            <img src="/about-bubble-keren.svg" alt={t.kerenBubbleAlt} className="v8-about-bubble v8-about-bubble--keren" />
+            <img src={'amirBubble' in t ? String(t.amirBubble) : '/about-bubble-amir.svg'} alt={t.amirBubbleAlt} className="v8-about-bubble v8-about-bubble--amir" />
+            <img src={'kerenBubble' in t ? String(t.kerenBubble) : '/about-bubble-keren.svg'} alt={t.kerenBubbleAlt} className="v8-about-bubble v8-about-bubble--keren" />
             <img src="/about-browser.svg" alt="" className="v8-about-deco v8-about-deco--browser" aria-hidden="true" />
             <img src="/about-horse.svg" alt="" className="v8-about-deco v8-about-deco--knight" aria-hidden="true" />
             {/* Name tags stand in for the bubbles on mobile */}

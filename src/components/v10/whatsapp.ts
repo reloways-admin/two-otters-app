@@ -18,6 +18,7 @@ const GREETING: Record<WhatsAppPerson, string> = {
   keren: 'היי קרן, הגעתי מהאתר של Two Otters ויש לי שאלה',
 }
 
-export function whatsappLink(who: WhatsAppPerson): string {
-  return `https://wa.me/${NUMBERS[who]}?text=${encodeURIComponent(GREETING[who])}`
+/** `greeting` overrides the Hebrew first line (the English homepage passes its own). */
+export function whatsappLink(who: WhatsAppPerson, greeting?: string): string {
+  return `https://wa.me/${NUMBERS[who]}?text=${encodeURIComponent(greeting ?? GREETING[who])}`
 }

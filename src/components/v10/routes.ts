@@ -6,6 +6,7 @@ const BASE = ''
 
 export const ROUTES = {
   home: '/',
+  homeEn: '/en',
   work: `${BASE}/work`,
   workFincat: `${BASE}/work#wk-fincat`,
   work5ers: `${BASE}/work#wk-5ers`,

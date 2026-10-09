@@ -62,7 +62,7 @@ export default function OfferV10({ t }: { t: OfferT }) {
                   </div>
                 </div>
                 <p className="v8-svc-tags">
-                  <span className="v8-svc-timing">{card.timing} של</span>
+                  <span className="v8-svc-timing">{card.timing} {'timingSuffix' in t ? String(t.timingSuffix) : 'של'}</span>
                   {card.tags.map(tag => (
                     <span key={tag} className="v8-svc-tag-item">
                       <span className="v8-svc-sep" aria-hidden="true">//</span>

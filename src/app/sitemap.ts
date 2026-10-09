@@ -7,6 +7,7 @@ export const SITE_URL = 'https://two-otters.studio'
  *  entirely. So is /schedule-a-call, which only redirects to /contact. */
 const ROUTES = [
   { path: '/', priority: 1 },
+  { path: '/en', priority: 0.8 },
   { path: '/services', priority: 0.9 },
   { path: '/services/mvp', priority: 0.8 },
   { path: '/services/upgrade', priority: 0.8 },

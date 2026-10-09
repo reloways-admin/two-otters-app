@@ -35,7 +35,19 @@ const Chevron = () => (
  * to it. It closes only after the pointer has been away for 350ms, and an
  * invisible bridge (::before on the panel) covers the gap itself.
  */
-export default function NavV10({ t }: { t: NavT }) {
+/** `lang` picks the flag: on the Hebrew pages it offers English (only the
+ *  homepage is translated so far, at /en), and on /en it offers Hebrew. */
+export default function NavV10({ t, lang = 'he' }: { t: NavT; lang?: 'he' | 'en' }) {
+  const homeHref = lang === 'en' ? ROUTES.homeEn : ROUTES.home
+  const langSwitch = lang === 'en'
+    ? { href: ROUTES.home, img: '/language-hebrew.svg', label: 'עברית', hreflang: 'he' }
+    : { href: ROUTES.homeEn, img: '/language-english.svg', label: 'English', hreflang: 'en' }
+  const flag = (
+    <a className="v8-nav-lang" href={langSwitch.href} hrefLang={langSwitch.hreflang} aria-label={langSwitch.label}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={langSwitch.img} alt="" width={28} height={28} />
+    </a>
+  )
   const pathname = usePathname() ?? '/'
   const [scrolled, setScrolled] = useState(false)
   const [drawer, setDrawer] = useState(false)
@@ -125,7 +137,7 @@ export default function NavV10({ t }: { t: NavT }) {
       <nav ref={navRef} className={`v8-nav v10-nav${scrolled ? ' v8-nav--scrolled' : ''}${light ? ' v10-nav--light' : ''}`}>
         <div className="v8-nav-inner">
           <div className="v8-nav-right">
-            <a href={ROUTES.home} className="v8-nav-logo" aria-label={t.logoLabel}>
+            <a href={homeHref} className="v8-nav-logo" aria-label={t.logoLabel}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={light ? '/v8-logo-dark.svg' : '/v8-logo-white.svg'} alt="The Two Otters Studio" className="v8-nav-logo-img" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -191,13 +203,14 @@ export default function NavV10({ t }: { t: NavT }) {
           </div>
 
           <div className="v8-nav-actions">
+            {flag}
             <a href={ROUTES.contact} className="v8-btn-primary v8-nav-cta-desktop">{t.cta}</a>
           </div>
         </div>
       </nav>
 
       <div className="v10-drawer" hidden={!drawer} onClick={e => { if ((e.target as Element).closest('a')) setDrawer(false) }}>
-        <a className="v10-dr-top" href={ROUTES.home}>{t.homeLabel}</a>
+        <a className="v10-dr-top" href={homeHref}>{t.homeLabel}</a>
         {t.links.map(l => {
           const mega = l.menu ? menus[l.menu] : null
           if (!mega) return <a key={l.label} className="v10-dr-top" href={href(l.to)}>{l.label}</a>
@@ -220,6 +233,10 @@ export default function NavV10({ t }: { t: NavT }) {
           )
         })}
         <a className="v8-btn-primary v10-dr-cta" href={ROUTES.contact}>{t.cta}</a>
+        <a className="v10-dr-lang" href={langSwitch.href} hrefLang={langSwitch.hreflang}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={langSwitch.img} alt="" width={24} height={24} /> {langSwitch.label}
+        </a>
       </div>
       <button ref={closeBtnRef} className="v10-drawer-close" aria-label={t.closeMenu} hidden={!drawer} onClick={() => setDrawer(false)}>×</button>
     </>
