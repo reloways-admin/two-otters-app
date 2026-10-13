@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { debug } from '@/lib/debug'
+import { ROUTES } from '@/components/v10/routes'
 import he from '@/locales/v10-he.json'
 
 type ContactT = typeof he.contact
@@ -10,8 +11,8 @@ type ContactT = typeof he.contact
  * The /contact form. A fork of v8's ContactV8 as it is on the live v8 page, so
  * v8 stays untouched: same fields, same /api/forms/contact endpoint (ClickUp +
  * Brevo, honeypot, BotID), same v8-contact styles. Only the strings come from
- * v10-he.json. No "prefer to talk? book a call" link: booking isn't live yet,
- * and every booking button already leads here.
+ * v10-he.json. Under the heading, a "prefer to talk?" link to the booking page,
+ * for people who would rather pick a slot than write a paragraph.
  */
 export default function ContactV10({ t }: { t: ContactT }) {
   const [form, setForm] = useState({
@@ -57,6 +58,10 @@ export default function ContactV10({ t }: { t: ContactT }) {
           <div className="v8-contact-heading">
             <h2 className="v8-contact-title">{t.title}</h2>
             <p className="v8-contact-sub">{t.sub}</p>
+            <p className="v8-contact-alt">
+              {t.altPrompt}{' '}
+              <a href={ROUTES.book}>{t.altLink}</a>
+            </p>
           </div>
 
           <form className="v8-contact-card" onSubmit={handleSubmit}>

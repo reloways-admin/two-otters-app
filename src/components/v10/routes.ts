@@ -19,9 +19,9 @@ export const ROUTES = {
   partners: `${BASE}/partners`,
   about: `${BASE}/about`,
   contact: `${BASE}/contact`,
-  // Booking isn't live yet (it stays on site-next), so every "book a call"
-  // leads to the contact form. Point this at the booking page when it ships.
-  book: `${BASE}/contact`,
+  // Every "book a call" on the site: the calendar, where both founders approve
+  // the request by email (lib/booking/requests.ts).
+  book: `${BASE}/schedule-a-call`,
   // Pages that predate v10 and still work as they are.
   caseFincat: '/work/fincat',
   audit: '/audit',
