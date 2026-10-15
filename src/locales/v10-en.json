@@ -386,9 +386,9 @@
     "body3": "",
     "body3Bold": "Together, it's one place.",
     "amirBubbleAlt": "Amir Shalev - UX/UI expert, specification and translating strategy into product",
-    "kerenBubbleAlt": "Keren Reitler - strategy, storytelling and product-language expert",
+    "kerenBubbleAlt": "Keren Rightler - strategy, storytelling and product-language expert",
     "amirPhotoAlt": "Amir Shalev",
-    "kerenPhotoAlt": "Keren Reitler",
+    "kerenPhotoAlt": "Keren Rightler",
     "more": "More about us",
     "amirBubble": "/bubble-amir-english.svg",
     "kerenBubble": "/bubble-keren-english.svg"
@@ -460,7 +460,7 @@
     "label": "Ask us directly",
     "people": [
       {
-        "name": "Keren Reitler",
+        "name": "Keren Rightler",
         "role": "Strategy, messaging and brand story",
         "photo": "/v10/au-keren.png",
         "text": "Got a question about strategy, messaging or your brand story? Write to me, I'm here.",
