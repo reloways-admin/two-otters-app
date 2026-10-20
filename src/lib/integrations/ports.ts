@@ -22,6 +22,8 @@ export interface Lead {
   fields: Record<string, string | number | boolean | null>
   /** Label/value pairs, in order, for the human-readable body. */
   rows: [string, string][]
+  /** Free text the person wrote, kept apart from the one-word facts. */
+  note?: { label: string; text: string }
   replyTo?: { email: string; name?: string }
 }
 

@@ -28,6 +28,7 @@ export interface FormSpec<T> {
     dueDate?: (data: T) => number
     fields: (data: T) => Lead['fields']
     rows: (data: T) => [string, string][]
+    note?: (data: T) => { label: string; text: string }
     replyTo?: (data: T) => { email: string; name?: string }
   }
   /** null when the form has nothing to say back to the visitor. */

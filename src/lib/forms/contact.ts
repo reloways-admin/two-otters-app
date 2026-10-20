@@ -17,7 +17,9 @@ export const contactForm = defineForm<ContactInput>({
   schema: contactSchema,
 
   record: {
-    title: d => `פנייה מהאתר - ${d.name}`,
+    // English prefix, for the same reason as the audit form: it anchors the
+    // line left-to-right even when the name that follows is Hebrew.
+    title: d => `Contact - ${d.name}`,
     tags: ['contact'],
     fields: d => ({
       email: d.email,
@@ -25,16 +27,19 @@ export const contactForm = defineForm<ContactInput>({
       company: d.company || null,
       role: d.role || null,
     }),
-    rows: d => (
-      [
-        ['שם', d.name],
-        ['אימייל', d.email],
-        ['טלפון', d.phone],
-        ['חברה', d.company],
-        ['תפקיד', d.role],
-        ['הודעה', d.message],
-      ] as [string, string][]
-    ).filter(([, value]) => Boolean(value)),
+    // Every question the form asks appears on the task, answered or not. An
+    // omitted row read as a lost field rather than a blank one, which made a
+    // half-filled form look like a broken integration — and a visible gap is
+    // useful anyway: it is the thing to ask about when you reply.
+    rows: d => [
+      ['Name', d.name],
+      ['Email', d.email],
+      ['Phone', d.phone || '—'],
+      ['Company', d.company || '—'],
+      ['Role', d.role || '—'],
+    ],
+    // The one thing they wrote in their own words. It gets its own block.
+    note: d => ({ label: 'Message', text: d.message }),
     replyTo: d => ({ email: d.email, name: d.name }),
   },
 

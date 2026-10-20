@@ -112,6 +112,7 @@ function toLead<T>(spec: FormSpec<T>, data: T): Lead {
     dueDate: spec.record.dueDate?.(data),
     fields: spec.record.fields(data),
     rows: spec.record.rows(data),
+    note: spec.record.note?.(data),
     replyTo: spec.record.replyTo?.(data),
   }
 }

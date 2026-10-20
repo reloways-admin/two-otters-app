@@ -23,6 +23,18 @@ action `Update assignees` → Keren and Amir. The API source scopes it to submis
 tasks created by hand in the UI are not touched. This automation *is* the notification that
 replaced internal email, so if it is disabled, leads arrive silently.
 
+The Leads list defines six custom fields — Last Contact Date, Lead Score, Status, Lead Source,
+Contact Phone Number and Follow-Up Action. Only two could ever be ours to fill, and neither is:
+
+- **Lead Source** already defaults to `Website` in ClickUp, so sending it would be redundant.
+- **Contact Phone Number** is a `phone` type, which demands E.164. A local-format number like
+  `052-9876543` is rejected with *"Value is not a valid phone number"* — and ClickUp fails the
+  **entire task creation**, not just that field. Wiring it would cost leads for the sake of a
+  column, so `phone` stays unmapped and the number lives in the task body instead.
+
+The rest — Lead Score, Follow-Up Action, Last Contact Date, Status — are human judgement and
+nothing a form could know.
+
 **Custom fields: none configured, on purpose.** Every value already appears in the task
 description, so a field only buys sorting and filtering. `integrations.json` has empty slots
 ready under `clickup.fields`; fill one with a field id to start populating it. Any field carrying

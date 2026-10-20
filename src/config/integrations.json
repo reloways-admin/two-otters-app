@@ -14,7 +14,7 @@
     "list": "901222088251",
     "_list": "Leads | Two Otters space",
     "fields": {
-      "_comment": "Neutral field name -> ClickUp custom field id. Optional: every value already appears in the task description, so add one only to sort or filter the board by it. Keep 'relationship' a Text field, not a Dropdown.",
+      "_comment": "Neutral field name -> ClickUp custom field id. Optional: every value already appears in the task description, so add one only to sort or filter the board by it. Keep 'relationship' a Text field, not a Dropdown. 'phone' stays empty on purpose: ClickUp's phone type demands E.164 and rejects the entire task for a local-format number, so wiring it would cost leads. Lead Source is left out on purpose: the field already defaults to Website in ClickUp.",
       "email": "",
       "phone": "",
       "company": "",

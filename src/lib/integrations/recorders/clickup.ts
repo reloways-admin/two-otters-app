@@ -1,6 +1,6 @@
 import type { AdapterOptions, Annotation, Env, Lead, LeadRecorder, LeadRef } from '../ports'
 import { DeliveryError, NotConfiguredError } from '../ports'
-import { rowsToMarkdown } from '../compose'
+import { leadToMarkdown } from '../compose'
 import { clickUpFieldEnvKey } from '../naming'
 import { mapping, setting, type AdapterConfig } from '../config'
 
@@ -47,7 +47,7 @@ export function createClickUpRecorder({ env, config = {}, fetchImpl = fetch }: A
 
       const task = (await call(`/list/${listId()}/task`, {
         name: lead.title,
-        markdown_content: rowsToMarkdown(lead.rows),
+        markdown_content: leadToMarkdown(lead.rows, lead.note),
         tags: lead.tags,
         due_date: lead.dueDate,
         due_date_time: false,
