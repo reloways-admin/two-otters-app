@@ -77,12 +77,22 @@ export default function BookCallV8({ t, lang, contactHref = `/?lang=${lang}#cont
       month: new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' }),
       date: new Intl.DateTimeFormat(locale, { weekday: 'long', day: 'numeric', month: 'long' }),
       time: new Intl.DateTimeFormat(locale, { hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }),
-      zone: new Intl.DateTimeFormat(locale, { timeZoneName: 'long' }),
+      // "Israel Time", not "Israel Daylight Time" / "שעון ישראל (קיץ)": the
+      // note already sits in parentheses, and the season flips mid-horizon.
+      // longGeneric is newer than 'long', so older browsers fall back.
+      zone: (() => {
+        try {
+          return new Intl.DateTimeFormat(locale, { timeZoneName: 'longGeneric' })
+        } catch {
+          return new Intl.DateTimeFormat(locale, { timeZoneName: 'long' })
+        }
+      })(),
     }),
     [locale]
   )
-  const zoneName =
-    fmt.zone.formatToParts(new Date()).find(p => p.type === 'timeZoneName')?.value ?? timeZone
+  const zoneName = (fmt.zone.formatToParts(new Date()).find(p => p.type === 'timeZoneName')?.value ?? timeZone)
+    // The fallback's "(קיץ)" would nest parentheses inside the note's own.
+    .replace(/\s*\([^)]*\)/g, '')
 
   if (availability.state === 'loading' || !view) {
     return (

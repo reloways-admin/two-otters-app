@@ -14,7 +14,7 @@ import { decidePage } from './decide-page'
  * The booking endpoints, built from injectable parts so the specs can run them
  * without a network — the same shape as lib/forms/handler.ts.
  *
- *   GET  /api/booking/slots     free half-hours for the next 30 days
+ *   GET  /api/booking/slots     free half-hours for the next horizonDays (60)
  *   POST /api/booking/book      a visitor's request (holds + approval emails)
  *   GET  /api/booking/decide    a host's approve / decline link: a page with
  *                               one button, so mail scanners that open links

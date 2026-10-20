@@ -40,7 +40,7 @@ export const BOOKING = {
   /** Kept clear before and after anything already in either calendar. */
   bufferMin: 15,
   minNoticeHours: 12,
-  horizonDays: 30,
+  horizonDays: 60,
   /**
    * A request waits this long for both hosts to approve. After that its holds
    * stop blocking the calendars, its approval links stop working, and the
