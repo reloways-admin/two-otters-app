@@ -27,10 +27,8 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
-      // Booking isn't live yet (it stays on site-next), so the booking
-      // addresses lead to the contact form instead of a page that can fail.
-      { source: "/schedule-a-call", destination: "/contact", permanent: true },
-      { source: "/v10/schedule-a-call", destination: "/contact", permanent: true },
+      // The booking page lived at /v10/schedule-a-call while v10 was a draft.
+      { source: "/v10/schedule-a-call", destination: "/schedule-a-call", permanent: true },
       // The old site switched language with ?lang=en; the English homepage
       // now has its own address. Temporary, since /en may grow into more pages.
       {

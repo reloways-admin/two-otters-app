@@ -1656,6 +1656,18 @@ html:has(.v8-page) body {
   margin: 0;
   line-height: 1.7;
 }
+/* "Prefer to talk? Book a call" under the contact heading. */
+.v8-contact-alt {
+  margin: 4px 0 0;
+  font-size: 1rem;
+  color: var(--v8-text-mid);
+}
+.v8-contact-alt a {
+  color: var(--v8-purple);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 /* White form card — bordered, rounded-32px, Figma p-40px */
 .v8-contact-card {
   background: #fff;

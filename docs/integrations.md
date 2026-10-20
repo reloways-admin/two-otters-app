@@ -99,3 +99,56 @@ https://app.brevo.com/contact/list-listing/id/19          ← Brevo list
 
 The ClickUp list id is always inside the `/v/…` part, never the number right after `.com/` — that
 one is the workspace.
+
+## Google Calendar — booking intro calls
+
+`/schedule-a-call` is our own calendar UI over both founders' Google calendars
+(decided 6.10.2026 instead of Cal.com Teams; see decisions.md row 19).
+
+- **Rules** — duration, buffer, notice, horizon, who organizes, and each host's
+  hours *in their own time zone* — are in [src/config/booking.ts](../src/config/booking.ts).
+  The visitor is offered only the overlap, shown in their own zone.
+- **Credentials** are `GOOGLE_OAUTH_CLIENT_ID`, `GOOGLE_OAUTH_CLIENT_SECRET` and one
+  `GOOGLE_REFRESH_TOKEN_<HOST>` per host (see `.env.example`). Each host runs
+  `node scripts/google-calendar-token.mjs <host>` once and signs in with their own
+  account. No calendar is shared between the hosts.
+- **What happens on a booking** (since 8.10.2026 a booking is a *request*; both
+  hosts must approve it — see [src/lib/booking/requests.ts](../src/lib/booking/requests.ts)):
+  1. The server re-checks the slot against both calendars, then writes a private
+     "Pending: Two Otters call" hold into **each** host's calendar with that host's
+     own token — no attendees, so nobody is emailed — and emails each host
+     (`BOOKING_HOST_EMAIL_<HOST>`) their own signed approve / decline links. A
+     ClickUp lead tagged `booking-request` follows. The visitor sees "request received".
+  2. A link opens a one-button page (`/api/booking/decide`); the button decides.
+     Mail scanners that open links therefore cannot approve anything. Links are
+     HMAC-signed with `BOOKING_LINK_SECRET`, name one host and one action, die
+     after 24 hours, and are safe to click twice.
+  3. When the last host approves: the holds go, one meeting is created in the
+     organizer's calendar with the other host as attendee and a Meet link
+     (Google invites that host), and the visitor gets **our own** email from
+     `BOOKING_FROM_EMAIL` with an `.ics`. The visitor is never a Google attendee.
+  4. A decline removes the holds and asks the visitor to pick another time.
+  5. After `holdHours` (24) without both approvals, the request stops blocking
+     the next time availability is read (holds turn transparent), and the
+     expiry job — `GET /api/booking/expire` with `Authorization: Bearer $CRON_SECRET`,
+     not scheduled yet — emails the visitor and deletes the holds.
+- **State** lives on the organizer's hold as private extended properties, and on
+  the meeting once confirmed. There is no database.
+- **Email** is SMTP (nodemailer): `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`,
+  `SMTP_PASS`, sending as `BOOKING_FROM_EMAIL` / `BOOKING_FROM_NAME`. For a Gmail
+  send-as alias, log in as the mailbox that owns the alias with an app password.
+  With no SMTP, or with the mock calendar, mail goes to the **outbox** instead:
+  the console, plus `.eml` / `.ics` files in `.next/cache/booking-outbox`.
+- **Test safety:** `BOOKING_TEST_ALLOWLIST` (addresses or `@domain`) drops mail
+  to anyone not on it. Outside production — including Vercel previews — real
+  SMTP with an empty allowlist sends to nobody.
+- **Local run without Google:** leave the Google variables empty (or set
+  `BOOKING_CALENDAR=mock`). The mock calendar keeps holds and meetings in
+  `.next/cache/booking-mock.json`; `BOOKING_CLOCK_OFFSET_HOURS=25` moves the
+  clock forward to watch a request expire.
+- **Scopes** are `calendar.freebusy` and `calendar.events` — we can see *when*
+  someone is busy, never what the meeting is.
+- **If bookings stop working**, the usual cause is a refresh token that died: the
+  consent screen was left in "Testing" (7-day tokens), or the host revoked access.
+  The server log says `token refresh for <host>: … invalid_grant`. Re-run the
+  script for that host and replace the variable in Vercel.
