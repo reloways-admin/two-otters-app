@@ -9,11 +9,11 @@ export default function robots(): MetadataRoute.Robots {
       // in), so they stay crawlable even though the /v10 pages are blocked.
       // Google takes the longest matching rule, so these win over '/v10'.
       allow: ['/', '/v10/*.webp', '/v10/*.png', '/v10/*.jpg', '/v10/*.svg', '/v10/*.mp4'],
-      // Superseded design versions and the internal brand kit. They render real
-      // pages (/v8 was the homepage before v10), so without this they compete
-      // with the pages we actually want ranked. /v10/* only redirects to the
+      // The old design versions (/v2–/v9) and /brand answer 404 outside `next
+      // dev` (see src/proxy.ts), so they are not listed here: naming them was a
+      // signpost to pages nobody should visit. /v10/* only redirects to the
       // live pages now.
-      disallow: ['/v2', '/v3', '/v4', '/v5', '/v6', '/v7', '/v8', '/v9', '/v10', '/brand', '/api/'],
+      disallow: ['/v10', '/api/'],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
     host: SITE_URL,

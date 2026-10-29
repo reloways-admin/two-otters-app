@@ -3,8 +3,8 @@ import type { MetadataRoute } from 'next'
 export const SITE_URL = 'https://two-otters.studio'
 
 /** The pages we want found. The /v2../v10 history pages and /brand are
- *  deliberately absent — see robots.ts, which keeps them out of the index
- *  entirely. */
+ *  deliberately absent; outside `next dev` they
+ *  answer 404 (see src/proxy.ts). */
 const ROUTES = [
   { path: '/', priority: 1 },
   { path: '/en', priority: 0.8 },

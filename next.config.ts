@@ -2,11 +2,49 @@ import type { NextConfig } from "next";
 import { withBotId } from "botid/next/config";
 
 const nextConfig: NextConfig = {
+  // No reason to tell every visitor which framework serves the site.
+  poweredByHeader: false,
+
   // resvg ships a native binary — don't bundle it; require it at runtime.
   serverExternalPackages: ["@resvg/resvg-js"],
 
   async headers() {
     return [
+      {
+        // Baseline browser protections, from the outside security review of
+        // 24.10.2026. The CSP is Report-Only on purpose: it changes nothing
+        // for visitors, it only reports what it would have blocked in the
+        // browser console. Enforce it once a few weeks pass with no reports.
+        // Google Fonts is the only outside origin the pages load; BotID is
+        // proxied through our own domain by withBotId below, so 'self' covers
+        // it. 'unsafe-inline' scripts are Next's own inline bootstrap: a nonce
+        // would force every page to render per request and lose the CDN cache.
+        // frame-ancestors is ignored in Report-Only, which is why
+        // X-Frame-Options carries the anti-framing rule today.
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+          {
+            key: "Content-Security-Policy-Report-Only",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline'",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+              "font-src 'self' https://fonts.gstatic.com",
+              "img-src 'self' data: blob:",
+              "media-src 'self'",
+              "connect-src 'self'",
+              "frame-ancestors 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+              "object-src 'none'",
+            ].join("; "),
+          },
+        ],
+      },
       {
         // Deployment URLs serve the whole site too. The canonical tag already
         // points at two-otters.studio, but this is the unambiguous version:
@@ -14,13 +52,6 @@ const nextConfig: NextConfig = {
         source: "/:path*",
         has: [{ type: "host", value: ".*\\.vercel\\.app" }],
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
-      },
-      {
-        // v8 was the homepage until v10 replaced it; it stays reachable at /v8
-        // as history (robots.ts disallows it too). A header, not page metadata,
-        // so v8's own files stay exactly as they shipped.
-        source: "/v8",
-        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
       },
     ];
   },
