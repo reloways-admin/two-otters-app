@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 import { withBotId } from "botid/next/config";
 
 const nextConfig: NextConfig = {
+  // No reason to tell every visitor which framework serves the site.
+  poweredByHeader: false,
+
   // resvg ships a native binary — don't bundle it; require it at runtime.
   serverExternalPackages: ["@resvg/resvg-js"],
 
@@ -49,13 +52,6 @@ const nextConfig: NextConfig = {
         source: "/:path*",
         has: [{ type: "host", value: ".*\\.vercel\\.app" }],
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
-      },
-      {
-        // v8 was the homepage until v10 replaced it; it stays reachable at /v8
-        // as history (robots.ts disallows it too). A header, not page metadata,
-        // so v8's own files stay exactly as they shipped.
-        source: "/v8",
-        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
       },
     ];
   },

@@ -23,7 +23,7 @@ export default function KerenRightlerCaseStudy() {
 
   return (
     <main className="cs" dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
-      <NavV6 t={locales[lang].nav} lang={lang} onLangChange={setLang} hrefPrefix={`/v6?lang=${lang}`} />
+      <NavV6 t={locales[lang].nav} lang={lang} onLangChange={setLang} hrefPrefix={`/?lang=${lang}`} />
 
       {/* Hero */}
       <header className="cs-hero">
@@ -70,8 +70,8 @@ export default function KerenRightlerCaseStudy() {
             <h2>{t.finalTitle}</h2>
             <p>{t.finalSub}</p>
             <div className="cs-final-row">
-              <a className="cs-final-btn" href={`/v6?lang=${lang}#contact`}>{t.finalCta}</a>
-              <a className="cs-final-ghost" href={`/v6?lang=${lang}#work`}>{t.finalGhost}</a>
+              <a className="cs-final-btn" href="/contact">{t.finalCta}</a>
+              <a className="cs-final-ghost" href="/work">{t.finalGhost}</a>
             </div>
           </div>
         </div>

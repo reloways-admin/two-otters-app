@@ -33,11 +33,10 @@ The site was redesigned in place as `/v2` … `/v8`. Each version is a self-cont
 - `src/components/vN/*.tsx` (`HeroV8`, `NavV8`, …)
 - `src/locales/vN-en.json` + `vN-he.json`
 
-**v8 is live.** [src/app/page.tsx](src/app/page.tsx) is a one-line re-export of `./v8/page`, so `/`
-and `/v8` are the same page. Older versions are kept as working references, **served only by
+**v10 is live**, at the top level: the `(site)` route group is the Hebrew site and `(en)/en` the
+English homepage. `/v8` was the homepage before it. Older versions are kept as working references, **served only by
 `npm run dev`**: [proxy.ts](src/proxy.ts) answers 404 for `/v2`–`/v9`, `/brand` and `/api/brand/*`
-everywhere else, the live site included. When changing
-the homepage, edit the v8 files — never `src/app/page.tsx`.
+everywhere else, the live site included. Live pages must never link to them.
 
 Components in `src/components/*.tsx` (no version folder) are the original v1 audit-app UI and are
 only reachable from `/v2` and `/v3`.
