@@ -34,8 +34,9 @@ The site was redesigned in place as `/v2` … `/v8`. Each version is a self-cont
 - `src/locales/vN-en.json` + `vN-he.json`
 
 **v8 is live.** [src/app/page.tsx](src/app/page.tsx) is a one-line re-export of `./v8/page`, so `/`
-and `/v8` are the same page. Older versions are kept as working references and are excluded
-from search in [robots.ts](src/app/robots.ts) and [sitemap.ts](src/app/sitemap.ts). When changing
+and `/v8` are the same page. Older versions are kept as working references, **served only by
+`npm run dev`**: [proxy.ts](src/proxy.ts) answers 404 for `/v2`–`/v9`, `/brand` and `/api/brand/*`
+everywhere else, the live site included. When changing
 the homepage, edit the v8 files — never `src/app/page.tsx`.
 
 Components in `src/components/*.tsx` (no version folder) are the original v1 audit-app UI and are
@@ -92,13 +93,13 @@ below for what happens then.
 that both sides run. Anything added there must hold on both sides — including the derived
 `needsRelationshipQuestion`, which the server re-derives rather than trusting the client to send.
 
-### The Claude audit pipeline (v1, largely dormant)
+### The Claude audit pipeline (removed 29.10.2026)
 
-[lib/claude.ts](src/lib/claude.ts) runs a three-call chain — Agent Amir (UX) → Agent Keren
-(strategy, receives Amir's output) → Synthesis — each returning JSON parsed into the types in
-[types/audit.ts](src/types/audit.ts). Prompts live in `src/lib/agents/`. Exposed at
-[api/audit](src/app/api/audit/route.ts) and consumed only by the `/v2` and `/v3` drafts; the live
-`/audit` funnel is a human-delivered report, not this.
+`/api/audit` ran a three-call Claude chain for the `/v2` and `/v3` drafts. It had no bot check and
+no rate limit, so the route, `lib/claude.ts`, `lib/agents/` and the Anthropic SDK were deleted
+after the outside security review. `/v2` and `/v3` still render, but their audit form now fails.
+The live `/audit` funnel is a human-delivered report and never used it. The full pipeline is kept
+at the tag `archive/all-versions-2026-10-29`.
 
 ### Brand kit (`/brand`)
 
@@ -253,7 +254,7 @@ which is why the public prefix is correct there. It is the exception, not a patt
 
 Read server env *inside a function*, never at module top level — a top-level read in a statically
 prerendered page or server component is evaluated at build and frozen into the output. Every
-current read follows this (see `lib/integrations/*`, `lib/claude.ts`, `lib/brand-drive.ts`).
+current read follows this (see `lib/integrations/*`, `lib/brand-drive.ts`).
 
 A new credential means a new server route, never a new `NEXT_PUBLIC_` var. When in doubt:
 `npm run build && grep -r <VAR_NAME> .next/static` must come back empty.

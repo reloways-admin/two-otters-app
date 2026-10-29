@@ -11,13 +11,12 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.40.0",
     "@resvg/resvg-js": "^2.6.2",
     "@types/nodemailer": "^8.0.2",
     "botid": "^1.5.11",
     "figma-squircle": "^1.1.0",
     "framer-motion": "^12.38.0",
-    "next": "^16.2.2",
+    "next": "^16.2.12",
     "nodemailer": "^7.0.13",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

@@ -1,0 +1,4 @@
+Contact: mailto:hello@two-otters.studio
+Expires: 2027-10-29T00:00:00.000Z
+Preferred-Languages: en, he
+Canonical: https://two-otters.studio/.well-known/security.txt
