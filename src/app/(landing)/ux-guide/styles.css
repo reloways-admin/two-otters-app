@@ -218,3 +218,18 @@
   .uxg .chip-wrap.chip-green > .nw{background:var(--green);color:var(--navy)}
   .uxg .chip-wrap.chip-navy > .nw{background:var(--navy);color:var(--green)}
 }
+
+/* ---------- optical centring of highlight text (Amir, 2026-11-12) ----------
+   Hebrew letters have almost nothing below the baseline, but the line box
+   reserves descender space there, so equal padding leaves the words riding
+   high. Measured in the browser, the gap under the letters ran ~0.16em larger
+   than the gap above; the top padding takes that back. In em so it holds at
+   every heading size. */
+.uxg .chip{line-height:1;padding:.22em .4em .12em}
+.uxg .hero h1 .chip{padding:.22em .4em .12em}
+.uxg .about .hi .chip{padding:.22em .4em .12em}
+.uxg .final h2 .chip{padding:.29em .62em .17em}
+@media (max-width:640px){
+  .uxg .chip-wrap{padding:0!important}
+  .uxg .chip-wrap > .nw{line-height:1;padding:.22em .4em .12em}
+}
