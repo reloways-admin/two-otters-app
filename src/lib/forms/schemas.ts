@@ -93,6 +93,23 @@ export const bookingSchema = z.object({
   lang: z.enum(['he', 'en']).catch('he'),
 })
 
+/**
+ * The free UX guide (/ux-guide), the paid-ads lead magnet: a first name and an
+ * address, nothing else. The utm_* fields are copied from the page's address
+ * by the client so each lead says which ad brought it; they are optional and
+ * cut short like every other free-text field.
+ */
+export const uxGuideSchema = z.object({
+  firstName: text(LIMITS.firstName).refine(v => v.length > 0, 'firstName_required'),
+  email: emailField,
+  utmSource: text(200),
+  utmMedium: text(200),
+  utmCampaign: text(200),
+  utmContent: text(200),
+  utmTerm: text(200),
+})
+
 export type AuditRequestInput = z.output<typeof auditRequestSchema>
 export type ContactInput = z.output<typeof contactSchema>
 export type BookingInput = z.output<typeof bookingSchema>
+export type UxGuideInput = z.output<typeof uxGuideSchema>

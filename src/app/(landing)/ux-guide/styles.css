@@ -1,0 +1,235 @@
+/* Keren's /ux-guide landing page (claude.ai artifact, 2026-11), scoped under .uxg
+   so the root layout's global styles and this page cannot leak into each other.
+   Generated from her stylesheet: edit here, not in the artifact. */
+.uxg{color-scheme:light;
+  --navy:#1D2332;--navy-2:#202F56;--paper:#FAFAF9;--line:#E3E6EE;--mute:#5E677C;--soft:#F1F2F6;
+  --green:#5AFF00;--violet:#945EEE;--yellow:#F8F800;--cyan:#61FFF2;--orange:#FA6824;
+  --r:20px;--shadow:4px 4px 0 var(--navy);--shadow-lg:6px 6px 0 var(--navy);
+}
+.uxg *,.uxg{box-sizing:border-box;margin:0;padding:0}
+.uxg{scroll-behavior:smooth;overflow-x:clip}
+.uxg{font-family:"Google Sans",Arial,sans-serif;background:var(--paper);color:var(--navy);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
+.uxg img{max-width:100%;height:auto;display:block}
+.uxg .wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+.uxg .nw{white-space:nowrap}
+.uxg section{padding:96px 0}
+.uxg .dots{background-color:var(--navy);background-image:radial-gradient(circle,var(--navy-2) 2px,transparent 2.2px);background-size:24px 24px}
+.uxg .eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:14px;color:var(--violet);margin-bottom:12px}
+.uxg h2{font-size:clamp(32px,4.2vw,54px);line-height:1.06;font-weight:800;letter-spacing:-.015em}
+.uxg .sub{font-size:19px;color:var(--mute);margin-top:14px;max-width:620px}
+.uxg .chip{display:inline-block;padding:2px 16px 8px;border-radius:10px;transform:rotate(-2deg)}
+.uxg .chip-green{background:var(--green);color:var(--navy)}
+.uxg .chip-navy{background:var(--navy);color:var(--green)}
+.uxg .sticker{position:absolute;display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--navy);border:2px solid var(--navy);box-shadow:var(--shadow);border-radius:14px;padding:7px 14px;font-weight:800;font-size:15px;white-space:nowrap;z-index:3}
+.uxg .sticker img{width:30px;height:30px;margin-block:-6px}
+.uxg .sticker.violet{background:var(--violet);color:#fff}
+.uxg .sticker.yellow{background:var(--yellow)}
+.uxg .bob{animation:uxg-bob 4.5s ease-in-out infinite}
+.uxg .bob.d2{animation-delay:-1.5s}
+.uxg .bob.d3{animation-delay:-3s}
+@keyframes uxg-bob{0%,100%{translate:0 0}50%{translate:0 -8px}}
+.uxg .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 28px;border-radius:999px;border:0;font:inherit;font-weight:800;font-size:17px;cursor:pointer;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}
+.uxg .btn svg{width:18px;height:18px;transition:transform .2s ease}
+.uxg .btn:hover svg{transform:translateX(-4px)}
+.uxg .btn-green{background:var(--green);color:var(--navy)}
+.uxg .btn-green:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(90,255,0,.35)}
+.uxg .btn-navy{background:var(--navy);color:#fff}
+.uxg .btn-navy:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(29,35,50,.3)}
+.uxg .form{display:grid;grid-template-columns:1fr 1.3fr auto;gap:10px;padding:8px;border-radius:26px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);max-width:640px}
+.uxg .form input{min-height:56px;border-radius:999px;border:0;padding:0 20px;font:inherit;font-size:16px;background:#fff;color:var(--navy);outline:none;width:100%}
+.uxg .form input:focus-visible{box-shadow:0 0 0 3px var(--green)}
+.uxg .form input[type=email]{direction:ltr;text-align:right}
+.uxg .form input[type=email]::placeholder{direction:rtl}
+.uxg .form-light{background:#fff;border:2px solid var(--navy);box-shadow:var(--shadow-lg)}
+.uxg .form-light input{background:var(--soft)}
+.uxg .form-light input:focus-visible{box-shadow:0 0 0 3px var(--violet)}
+.uxg .micro{margin-top:12px;font-size:14px;opacity:.75}
+.uxg .done{display:none;align-items:center;gap:14px;max-width:640px;padding:18px 22px;border-radius:22px;background:var(--green);color:var(--navy);font-weight:800;font-size:19px;text-align:right}
+.uxg .done img{width:54px;flex:none}
+.uxg .done span{display:block;font-weight:400;font-size:15px}
+.uxg form.sent,.uxg form.sent + .micro{display:none}
+.uxg form.sent ~ .done{display:flex}
+.uxg .top{position:absolute;inset:0 0 auto;z-index:5;padding:22px 0}
+.uxg .top .wrap{display:flex;justify-content:space-between;align-items:center}
+.uxg .top img{height:28px;width:auto}
+.uxg .top a{color:#fff;opacity:.7;font-size:14px;text-decoration:none}
+.uxg .top a:hover{opacity:1}
+.uxg .hero{position:relative;color:#fff;overflow:hidden;padding:128px 0 110px}
+.uxg .hero-grid{position:relative;display:grid;grid-template-columns:1.35fr .65fr;gap:56px;align-items:center}
+.uxg .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;font-size:14px;font-weight:700;border:1.5px solid rgba(255,255,255,.28)}
+.uxg .pill i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(90,255,0,.18)}
+.uxg .hero h1{font-size:clamp(38px,4.6vw,62px);line-height:1.04;font-weight:800;letter-spacing:-.02em;margin-top:22px}
+.uxg .hero h1 .chip{margin-top:12px;padding:2px 18px 10px}
+.uxg .lead{font-size:clamp(18px,1.6vw,21px);margin:26px 0 30px;color:rgba(255,255,255,.82)}
+.uxg .lead b{color:#fff}
+.uxg .cover{position:relative;justify-self:center;width:min(310px,100%);isolation:isolate}
+.uxg .cover::before{content:"";position:absolute;width:128%;aspect-ratio:1;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;background:var(--violet);z-index:-1}
+.uxg .cover>img:not(.spark){border-radius:14px;transform:rotate(3deg);box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.uxg .cover .s1{top:22px;right:-38px;rotate:-8deg}
+.uxg .cover .s2{top:46%;right:-46px;rotate:6deg}
+.uxg .cover .s3{bottom:-18px;right:24px;rotate:-4deg}
+.uxg .cover .spark{position:absolute;width:78px;top:-40px;left:-22px;z-index:3}
+.uxg .marquee{background:var(--green);border-block:2px solid var(--navy);transform:rotate(-1.4deg);margin:-26px -20px 0;position:relative;z-index:4;overflow:hidden}
+.uxg .track{display:flex;width:max-content;padding:14px 0;animation:uxg-slide 40s linear infinite;font-weight:800;font-size:20px;white-space:nowrap}
+.uxg .track span{display:inline-flex;align-items:center;gap:30px;padding-inline-start:30px}
+.uxg .track span::after{content:"✦";font-size:16px}
+@keyframes uxg-slide{to{transform:translateX(50%)}}
+.uxg .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.uxg .pain{position:relative;background:#fff;border:2px solid var(--navy);border-radius:var(--r);box-shadow:var(--shadow);padding:26px 24px 24px;transition:transform .2s ease,box-shadow .2s ease}
+.uxg .pain:hover{transform:translate(-2px,-2px) rotate(-.6deg);box-shadow:var(--shadow-lg)}
+.uxg .pain .ico{width:84px;height:84px;margin-bottom:14px}
+.uxg .pain .big{font-size:38px;font-weight:800;line-height:1.05;letter-spacing:-.02em}
+.uxg .pain .big em{font-style:normal;color:var(--orange)}
+.uxg .pain p{font-size:17px;margin-top:10px}
+.uxg .twist{margin-top:60px;display:grid;grid-template-columns:1.25fr .75fr;gap:34px;align-items:center;color:#fff;border-radius:30px;padding:44px}
+.uxg .twist h3{font-size:clamp(30px,3.4vw,46px);line-height:1.08;font-weight:800}
+.uxg .twist h3 .chip{margin-top:10px}
+.uxg .twist p{font-size:18px;color:rgba(255,255,255,.82);margin-top:18px;max-width:560px}
+.uxg .proof{position:relative;background:#fff;color:var(--navy);border:2px solid var(--navy);border-radius:22px;padding:28px 24px 24px;box-shadow:6px 6px 0 var(--green);rotate:2deg}
+.uxg .proof .num{font-size:clamp(40px,4.4vw,58px);font-weight:800;line-height:1;letter-spacing:-.03em;display:flex;gap:10px;align-items:center}
+.uxg .proof .num small{font-size:.55em;color:var(--mute)}
+.uxg .proof .num .up{color:var(--violet)}
+.uxg .proof p{font-size:16px;margin-top:12px;color:var(--mute)}
+.uxg .proof b{color:var(--navy)}
+.uxg .proof .tag{position:absolute;top:-16px;right:18px;background:var(--yellow);border:2px solid var(--navy);border-radius:10px;padding:2px 12px;font-weight:800;font-size:14px;rotate:-3deg}
+.uxg .inside{background:#fff;border-block:1px solid var(--line)}
+.uxg .inside-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+.uxg .inside-head .q{font-weight:700;font-size:16px;background:var(--soft);border-radius:16px;padding:14px 18px;max-width:330px}
+.uxg .inside-head .q b{display:block;font-size:22px;font-weight:800}
+.uxg .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.uxg .card{position:relative;border-radius:var(--r);padding:24px;min-height:220px;border:2px solid var(--navy);display:flex;flex-direction:column;gap:8px;transition:transform .2s ease,box-shadow .2s ease}
+.uxg .card:hover{transform:translate(-2px,-2px);box-shadow:var(--shadow)}
+.uxg .card:hover .ico{transform:rotate(-8deg) scale(1.06)}
+.uxg .card .ico{width:66px;height:66px;margin-bottom:6px;transition:transform .25s ease}
+.uxg .card h3{font-size:23px;line-height:1.15;font-weight:800}
+.uxg .card p{font-size:16px;line-height:1.5}
+.uxg .c1{background:var(--yellow)}
+.uxg .c2{background:#fff}
+.uxg .c3{background:var(--cyan)}
+.uxg .c4{background:#fff}
+.uxg .c5{background:var(--violet);color:#fff}
+.uxg .c6{background:var(--green)}
+.uxg .check{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr 1.1fr;gap:28px;align-items:center;background:var(--paper);border:2px dashed var(--navy);border-radius:var(--r);padding:28px}
+.uxg .check>img{width:96px}
+.uxg .check h3{font-size:28px;line-height:1.15;font-weight:800}
+.uxg .check p{margin-top:6px;color:var(--mute)}
+.uxg .list{list-style:none;display:grid;gap:9px}
+.uxg .list li{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 14px;font-size:15px}
+.uxg .list li i{flex:none;width:22px;height:22px;border-radius:6px;border:2px solid var(--navy);display:grid;place-items:center;font-style:normal;font-size:13px;font-weight:800}
+.uxg .list li.y i{background:var(--green)}
+.uxg .list li.n i{background:var(--orange);color:#fff;border-color:var(--orange)}
+.uxg .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.uxg .about .hi{display:inline-flex;align-items:center;gap:10px;margin-bottom:14px}
+.uxg .about .hi .chip{font-size:30px;font-weight:800;padding:0 14px 6px}
+.uxg .about .hi img{width:48px;rotate:-18deg}
+.uxg .about-text p{font-size:18px;color:var(--mute);margin-top:16px;max-width:520px}
+.uxg .about-text p b{color:var(--navy)}
+.uxg .about-photo{position:relative;width:min(440px,100%);justify-self:center;margin-block:30px}
+.uxg .about-photo .couch{border-radius:18px;rotate:3deg;aspect-ratio:600/830;object-fit:cover;width:100%}
+.uxg .about-photo img:not(.couch){position:absolute}
+.uxg .about-photo .b-amir{width:33%;left:-4%;top:28%}
+.uxg .about-photo .b-keren{width:33%;right:-6%;top:29%}
+.uxg .about-photo .browser{width:36%;left:38%;bottom:-6%}
+.uxg .about-photo .horse{width:32%;right:-10%;bottom:-8%}
+.uxg .final{position:relative;background:var(--green);clip-path:polygon(0 70px,100% 0,100% 100%,0 100%);padding:150px 0 120px;text-align:center;overflow:hidden}
+.uxg .final h2{font-size:clamp(40px,6vw,84px);line-height:1;position:relative;z-index:2}
+.uxg .final h2 .chip{background:var(--navy);color:#fff;padding:4px 26px 14px;border-radius:22px;margin-top:12px}
+.uxg .final .sub{color:var(--navy);opacity:.8;margin:22px auto 30px}
+.uxg .final .form{margin-inline:auto}
+.uxg .final .micro{color:var(--navy)}
+.uxg .final .done{margin-inline:auto;background:var(--navy);color:#fff}
+.uxg .final .otter{position:absolute;width:230px;left:4%;bottom:-20px;z-index:1}
+.uxg .final .f1{top:150px;right:8%;rotate:7deg}
+.uxg .final .f2{top:250px;left:9%;rotate:-8deg}
+.uxg .final .f3{bottom:130px;right:6%;rotate:-5deg}
+.uxg footer{background:var(--navy);color:rgba(255,255,255,.6);font-size:14px;padding:28px 0}
+.uxg footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.uxg footer img{height:24px;width:auto}
+.uxg footer a{color:#fff;text-decoration:none}
+.uxg .burst{position:fixed;width:34px;height:34px;pointer-events:none;z-index:50;animation:uxg-pop 1.1s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes uxg-pop{from{transform:translate(0,0) rotate(0) scale(.4);opacity:1}to{transform:translate(var(--dx),var(--dy)) rotate(var(--r)) scale(1);opacity:0}}
+.uxg .mcta{display:none}
+@media (min-width:901px){.uxg .hero h1 .nw{white-space:nowrap}}
+@media (max-width:900px){.uxg .hero{padding:100px 0 96px}
+.uxg .hero-grid{grid-template-columns:1fr;gap:64px}
+.uxg .cover{width:min(200px,56%)}
+.uxg .pain-grid,.uxg .bento{grid-template-columns:1fr}
+.uxg .twist{grid-template-columns:1fr;padding:32px 24px}
+.uxg .proof{rotate:1deg;margin-top:10px}
+.uxg .inside-head{flex-direction:column;align-items:flex-start}
+.uxg .check{grid-template-columns:1fr}
+.uxg .check>img{width:76px}
+.uxg .about-grid{grid-template-columns:1fr;gap:36px}
+.uxg .about-photo{width:min(330px,86%)}
+.uxg .final .otter{width:150px;left:-10px;bottom:-14px}
+.uxg .final .f2{display:none}
+.uxg .final .f1{top:110px;right:4%}
+.uxg .final .f3{bottom:auto;top:110px;right:auto;left:6%}
+.uxg section{padding:72px 0}}
+@media (max-width:640px){.uxg{font-size:16px}
+.uxg .form{grid-template-columns:1fr}
+.uxg .form .btn{width:100%}
+.uxg .cover .s1{right:-24px}
+.uxg .cover .s2{right:-30px}
+.uxg .track{font-size:17px}
+.uxg .final .sticker{display:none}
+.uxg .twist h3{font-size:28px}
+.uxg .final{padding:130px 0 180px;clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)}
+.uxg .mcta{display:flex;position:fixed;inset:auto 12px 12px;z-index:20;transition:transform .25s ease,opacity .25s ease}
+.uxg .mcta.hide{transform:translateY(130%);opacity:0;pointer-events:none}
+.uxg .mcta .btn{width:100%;box-shadow:0 10px 30px rgba(29,35,50,.35)}}
+@media (prefers-reduced-motion:reduce){.uxg *,.uxg,.uxg *::before{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* ---------- added for the live page ---------- */
+.uxg{min-height:100vh}
+.uxg .hp{position:absolute;inset-inline-start:-9999px;width:1px;height:1px;opacity:0}
+.uxg .form button[disabled]{opacity:.7;cursor:progress}
+.uxg .err{margin-top:10px;font-size:15px;font-weight:700;color:var(--orange)}
+.uxg .final .err{color:#C2410C}
+.uxg .done a{color:inherit;font-weight:800}
+.uxg footer .legal{display:flex;gap:16px}
+.uxg footer .legal a{color:inherit}
+
+/* ---------- contrast pass (Amir, 2026-11-12: "the text is too gray") ----------
+   Her draft leaned on opacity and a light grey for body copy; on the dark hero
+   and the lime slab that read as washed out. Full-strength text, darker muted
+   tone, and placeholders that are clearly readable. */
+.uxg{--mute:#3F475A}
+.uxg .lead{color:#fff}
+.uxg .micro{opacity:1;color:rgba(255,255,255,.92);font-weight:500}
+.uxg .final .sub{opacity:1;font-weight:500}
+.uxg .final .micro{color:var(--navy)}
+.uxg .twist p{color:rgba(255,255,255,.94)}
+.uxg .top a{opacity:.92}
+.uxg footer{color:rgba(255,255,255,.82)}
+.uxg .form input{font-weight:500}
+.uxg .form input::placeholder{color:#59617A;opacity:1}
+.uxg .form-light input::placeholder{color:#4A5266}
+/* The proof card sits inside .twist; keep its copy dark (the rule above is for the white-on-navy paragraph). */
+.uxg .twist .proof p{color:var(--mute)}
+
+/* ---------- phone: a highlight that wraps becomes one strip per line ----------
+   (Amir, 2026-11-12) A two-line chip read as one heavy block and rode into the
+   line above. On phones each line gets its own tilted strip that hugs its
+   words, with a real line break between them. */
+@media (max-width:640px){
+  .uxg .chip-wrap{display:block;background:none!important;padding:0!important;border-radius:0;transform:none;margin-top:14px}
+  .uxg .chip-wrap > .nw{display:block;width:fit-content;padding:2px 14px 8px;border-radius:10px;transform:rotate(-2deg)}
+  .uxg .chip-wrap > .nw + .nw{margin-top:6px}
+  .uxg .chip-wrap.chip-green > .nw{background:var(--green);color:var(--navy)}
+  .uxg .chip-wrap.chip-navy > .nw{background:var(--navy);color:var(--green)}
+}
+
+/* ---------- optical centring of highlight text (Amir, 2026-11-12) ----------
+   Hebrew letters have almost nothing below the baseline, but the line box
+   reserves descender space there, so equal padding leaves the words riding
+   high. Measured in the browser, the gap under the letters ran ~0.16em larger
+   than the gap above; the top padding takes that back. In em so it holds at
+   every heading size. */
+.uxg .chip{line-height:1;padding:.22em .4em .12em}
+.uxg .hero h1 .chip{padding:.22em .4em .12em}
+.uxg .about .hi .chip{padding:.22em .4em .12em}
+.uxg .final h2 .chip{padding:.29em .62em .17em}
+@media (max-width:640px){
+  .uxg .chip-wrap{padding:0!important}
+  .uxg .chip-wrap > .nw{line-height:1;padding:.22em .4em .12em}
+}
