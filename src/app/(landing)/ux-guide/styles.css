@@ -188,3 +188,19 @@
 .uxg .done a{color:inherit;font-weight:800}
 .uxg footer .legal{display:flex;gap:16px}
 .uxg footer .legal a{color:inherit}
+
+/* ---------- contrast pass (Amir, 2026-11-12: "the text is too gray") ----------
+   Her draft leaned on opacity and a light grey for body copy; on the dark hero
+   and the lime slab that read as washed out. Full-strength text, darker muted
+   tone, and placeholders that are clearly readable. */
+.uxg{--mute:#3F475A}
+.uxg .lead{color:#fff}
+.uxg .micro{opacity:1;color:rgba(255,255,255,.92);font-weight:500}
+.uxg .final .sub{opacity:1;font-weight:500}
+.uxg .final .micro{color:var(--navy)}
+.uxg .twist p{color:rgba(255,255,255,.94)}
+.uxg .top a{opacity:.92}
+.uxg footer{color:rgba(255,255,255,.82)}
+.uxg .form input{font-weight:500}
+.uxg .form input::placeholder{color:#59617A;opacity:1}
+.uxg .form-light input::placeholder{color:#4A5266}
