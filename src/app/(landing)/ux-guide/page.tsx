@@ -51,7 +51,7 @@ export default function UxGuidePage() {
               <span className="pill"><i></i>מדריך UX חינמי לבעלי עסקים</span>
               <h1>
                 <span className="nw">הלקוחות כבר</span> <span className="nw">באתר שלכם.</span><br />
-                <span className="chip chip-green"><span className="nw">בואו נעזור</span> <span className="nw">להם לקנות.</span></span>
+                <span className="chip chip-green chip-wrap"><span className="nw">בואו נעזור</span> <span className="nw">להם לקנות.</span></span>
               </h1>
               <p className="lead"><b>12 תיקונים קטנים שהופכים ביקור לקנייה.</b><br />בלי אתר חדש. <span className="nw">בלי עוד שקל לפרסום.</span></p>
               <GuideForm variant="dark" />
@@ -101,7 +101,7 @@ export default function UxGuidePage() {
               <div>
                 <h3>
                   <span className="nw">זה לא אתם.</span> <span className="nw">וזה לא המוצר.</span><br />
-                  <span className="chip chip-green"><span className="nw">זה משהו קטן</span> <span className="nw">בעמוד.</span></span>
+                  <span className="chip chip-green chip-wrap"><span className="nw">זה משהו קטן</span> <span className="nw">בעמוד.</span></span>
                 </h3>
                 <p>שדה מיקוד בקורס דיגיטלי. מחיר שקופץ בקופה. כפתור שלא ברור לאן הוא מוביל. ולאנשים אין סבלנות (ובצדק).</p>
               </div>
@@ -120,7 +120,7 @@ export default function UxGuidePage() {
             <div className="inside-head">
               <div>
                 <span className="eyebrow">מה יוצא לכם מזה</span>
-                <h2>12 תיקונים קטנים.<br /><span className="chip chip-navy">הרבה יותר מכירות.</span></h2>
+                <h2>12 תיקונים קטנים.<br /><span className="chip chip-navy chip-wrap"><span className="nw">הרבה יותר</span> <span className="nw">מכירות.</span></span></h2>
               </div>
             </div>
 

@@ -204,3 +204,17 @@
 .uxg .form input{font-weight:500}
 .uxg .form input::placeholder{color:#59617A;opacity:1}
 .uxg .form-light input::placeholder{color:#4A5266}
+/* The proof card sits inside .twist; keep its copy dark (the rule above is for the white-on-navy paragraph). */
+.uxg .twist .proof p{color:var(--mute)}
+
+/* ---------- phone: a highlight that wraps becomes one strip per line ----------
+   (Amir, 2026-11-12) A two-line chip read as one heavy block and rode into the
+   line above. On phones each line gets its own tilted strip that hugs its
+   words, with a real line break between them. */
+@media (max-width:640px){
+  .uxg .chip-wrap{display:block;background:none!important;padding:0!important;border-radius:0;transform:none;margin-top:14px}
+  .uxg .chip-wrap > .nw{display:block;width:fit-content;padding:2px 14px 8px;border-radius:10px;transform:rotate(-2deg)}
+  .uxg .chip-wrap > .nw + .nw{margin-top:6px}
+  .uxg .chip-wrap.chip-green > .nw{background:var(--green);color:var(--navy)}
+  .uxg .chip-wrap.chip-navy > .nw{background:var(--navy);color:var(--green)}
+}
